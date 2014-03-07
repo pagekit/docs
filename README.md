@@ -1,0 +1,4 @@
+docs
+====
+
+The Pagekit Documentation

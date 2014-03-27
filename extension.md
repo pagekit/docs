@@ -43,6 +43,8 @@ This produces the following file structure inside the directory `extensions/hell
 - `extension.json`: Metadata for the system and the marketplace
 - `extension.php`: Extension bootstrap and configuration
 
+Can't see your changes in the frontend? Don't forget to enable your extension in the admin area.
+
 ## Metadata
 
 *extension.json* is a JSON representation of your extension's metadata (license, author etc). This is mainly needed when distributing the extension via the marketplace, but is also important for how the extension is listed in the backend.

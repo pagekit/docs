@@ -29,6 +29,8 @@ This produces the following file structure inside the directory `themes/mytheme`
 - *theme.json*: metadata for the system and the marketplace
 - *theme.php*: theme configuration, setup and custom code
 
+Can't see your changes in the frontend? Don't forget to enable your theme in the admin area.
+
 ## Metadata
 
 *theme.json* is a JSON representation of your theme's metadata (license, author etc). This is mainly needed when distributing the theme via the marketplace, but is also important for how the theme is listed in the backend.

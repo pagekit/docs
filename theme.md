@@ -1,6 +1,14 @@
 # Themes
 
-To give you full control over Pagekit's appearance, a powerful theming system is right by your side. The easiest way to get started with a new theme is by using our command line tool to create the skeleton file structure.
+Themes and extensions in Pagekit very much the same. The biggest difference
+you will encounter will be in naming things *theme.php* instead of
+*extension.php* and a few basic configuration differences. Except for that, try
+not to think in terms of *developing a theme* vs. *developing an extension* but
+rather understand that you have access to Pagekit's framework all the time.
+
+To give you full control over Pagekit's appearance, a powerful theming system is
+right by your side. The easiest way to get started with a new theme is by using
+our command line tool to create the skeleton file structure.
 
 ```
 cd path/to/pagekit

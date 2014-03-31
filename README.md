@@ -15,3 +15,4 @@ Symfony components.
   7. [The Application](application.md)
   8. [Controller](controller.md)
   9. [View and Response](view-response.md)
+  10. [Migrations](migration.md)

@@ -16,3 +16,4 @@ Symfony components.
   8. [Controller](controller.md)
   9. [View and Response](view-response.md)
   10. [Migrations](migration.md)
+  11. [Translations](translation.md)

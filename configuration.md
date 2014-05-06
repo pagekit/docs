@@ -39,9 +39,15 @@ Usable in `theme.php` and `extension.php`:
 
     You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
 
-  - **settings**: The route to your settings screen. If set, a *Settings* button will appear next to your theme (or extension) in the admin interface.
+  - **settings**: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widget.md).
+  
+  Example: 
 
-    Example: `'settings' => '@hello/hello/settings'`
+  ```php
+  'settings' => array(
+      'system'  => 'hello/admin/settings.razr.php'
+  ),
+  ```
 
   - Feel free to add your own configuration properties. From your `Theme` instance (or `Extension`), you will have have access to the configuration array via `$this->config`. Also, you can use `$this->getConfig('colours.background')` to access nested config arrays via dot notation.
 
@@ -55,7 +61,7 @@ Usable in `theme.php` and `extension.php`:
 
 Usable in `theme.php` only:
 
-- **positions**: As we've seen before, you can define positions that you can publish widgets (menus, ...) in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](theme.md))
+- **positions**: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](theme.md))
 
   ```php
   return array(
@@ -107,3 +113,48 @@ Usable in `extension.php` only:
       'description' => 'Warning: Give to trusted roles only; security implications.'
   ),
   ```
+
+## Settings screen
+
+It is easy to add a settings screen to your theme (or extension).
+
+Add to `theme.php`:
+
+```php
+    'settings' => array(
+        'system'  => 'theme://alpha/views/admin/settings.razr.php'
+    )
+```
+
+Create the according file holding a form with all your configuration options, i.e. `hello/views/admin/settings.razr.php`. This form has to be submitted to `@system/extensions/savesettings` (with a parameter specifying your theme name / extension name).
+
+You can create any form elements as long as you keep to a certain naming convention. The form is supposed to send an array of options,
+therefore all input field are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.
+
+Remember to include `@token()` inside your form for security purposes.
+
+Your settings screen will be accessible from the extensions (or theme) overview.
+
+```html
+<form class="uk-form uk-form-horizontal" action="@url.route('@system/extensions/savesettings', ['name' => 'hello'])" method="post">
+
+    <div class="uk-form-row">
+        <label for="form-hello-message" class="uk-form-label">@trans('Message')</label>
+        <div class="uk-form-controls">
+            <input id="form-hello-message" type="text" name="config[message]" value="@config['message']">
+        </div>
+    </div>
+
+  <div class="pk-options">
+        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
+        <a class="uk-button" href="@url.route('@system/system/index')">@trans('Close')</a>
+    </div>
+
+    <p>
+        @trans('This settings page is just for demonstration purposes.')
+    </p>
+
+    @token()
+
+</form>
+```

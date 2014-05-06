@@ -28,20 +28,14 @@ You will be asked for the following information:
 
 This produces the following file structure inside the directory `extensions/hello`. You can also just create the files manually, in case you do not want to use the command line tool.
 
-```
-.
-+-- src
-|   +-- Controller
-|   |   +-- DefaultController.php
-|   +-- HelloExtension.php
-+-- extension.json
-+-- extension.php
-```
-
-- `src/Controller/DefaultController.php`: Default controller class
-- `src/HelloExtension.php`: Main class, boots the extension
-- `extension.json`: Metadata for the system and the marketplace
-- `extension.php`: Extension bootstrap and configuration
+| Folder / File | Description |
+|---------------|-------------|
+| `/src` | Place all your code in this folder. |
+| `/src/Controller` | Place your controllers here. |
+| `/src/Controller/DefaultController.php`| This is the default controller class. |
+| `/src/HelloExtension.php` | The main class of the extension, that will boot the extension. |
+| `/extension.json` | Holds metadata for the system and the marketplace. |
+| `/extension.php` | Holds the extension bootstrap and configuration code. |
 
 Can't see your changes in the frontend? Don't forget to enable your extension in the admin area.
 

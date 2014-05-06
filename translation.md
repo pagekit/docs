@@ -1,6 +1,6 @@
 # Translation
 
-Pagekit includes capabilities for extensions and themes to display their messages in a language according to the set locale. Notice that there is a difference between languages and locales, as their might be different version of a certain language spoken in a particular region (for example `en_GB` vs `en_US`). 
+Pagekit includes capabilities for extensions and themes to display their messages in a language according to the set locale. Notice that there is a difference between languages and locales, as there might be different versions of a certain language spoken in a particular region (for example `en_GB` vs. `en_US`). 
 
 ## Language files
 

@@ -1,6 +1,6 @@
 # Themes
 
-Themes and extensions in Pagekit very much the same. The biggest difference
+Themes and extensions in Pagekit are very much the same. The biggest difference
 you will encounter will be in naming things *theme.php* instead of
 *extension.php* and a few basic configuration differences. Except for that, try
 not to think in terms of *developing a theme* vs. *developing an extension* but
@@ -12,22 +12,17 @@ our command line tool to create the skeleton file structure.
 
 ```
 cd path/to/pagekit
-pagekit theme:generate mytheme
+./pagekit theme:generate mytheme
 ```
 
 This produces the following file structure inside the directory `themes/mytheme`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
 
-```
-.
-+-- templates/
-|   +--template.razr.php
-+-- theme.json
-+-- theme.php
-```
-
-- *template.razr.php*: main markup file
-- *theme.json*: metadata for the system and the marketplace
-- *theme.php*: theme configuration, setup and custom code
+| Folder / File | Description |
+|---------------|-------------|
+| `/templates` | The markup files are located in this folder |
+| `/templates/template.razr.php` | The main markup file |
+| `theme.json` | Holds the metadata for the system and the marketplace |
+| `theme.php` | Holds the themes configuration, setup and custom code |
 
 Can't see your changes in the frontend? Don't forget to enable your theme in the admin area.
 
@@ -62,6 +57,7 @@ Note how the `extra` property can be used to set a screenshot that is displayed 
 
 *theme.php* contains PHP code for theme configuration. In the beginning it's fine to start with a *theme.php* that just returns an empty configuration array. You can set options later when you need them. We will talk about detailed configuration options in the [configuration](configuration.md) chapter.
 
+
 ```php
 <?php
 
@@ -71,7 +67,8 @@ return array();
 
 ## Templating
 
-Templating in Pagekit is powered using the [Razr Templating engine](https://github.com/pagekit/razr). *templates/template.razr.php* is the main layout file. Here's a minimal example:
+Templating in Pagekit is powered using the [Razr Templating engine](https://github.com/pagekit/razr). *templates/template.razr.php* is the main layout file. 
+Here's a minimal example:
 
 ```html
 <!DOCTYPE html>
@@ -109,7 +106,7 @@ come pre-defined with Pagekit.
 
 Positions are a concept of defining areas in your markup that are known to Pagekit, so that you can publish multiple widgets inside those positions. Usually, these positions are used for the logo, menus, sidebars and so on. In this example we want to add a footer position.
 
-Define the position in your `theme.php`
+Define the position in your `theme.php`.
 
 ```php
 return array(
@@ -131,3 +128,37 @@ Inside `templates/template.razr.php` you will determine the actual rendering loc
 ```
 
 Whenever a widget is published in the *footer* position, it will now be rendered at your specified location.
+
+## Renderer
+
+By default, a widget will be be rendered to the widget position without any additional markup. To change this, you can provide a custom renderer to the `render` function. A renderer can be implemented in PHP or using the Razr template engine.
+
+To use a custom renderer `footer`, you can pass it as a value for the `renderer` parameter. 
+
+```html
+@app.position.render('footer', ['renderer' => 'footer'])
+```
+
+Now we create a renderer `position.footer.razr.php` in `views/renderer/`.
+In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@widgets` (or `$widgets` if you're writing the renderer in plain PHP).
+
+The renderer could look like this:
+
+```html
+@foreach (widgets as widget)
+<div class="footerclass">
+    @(widget.showTitle ? "<h3>" ~ widget.title ~ "</h3>")
+    @provider.render(widget, options)
+</div>
+@endforeach
+```
+
+All widgets published in the footer position will now rendered in a `<div>`-box with the CSS class `footerclass`. If the title should be displayed it will be rendered in `<h3>`.
+
+## Where to go from here?
+
+Now that you have a basic theme, you may want to:
+
+- add additional configuration to your theme. See (Configuration)[configuration.md]
+- add a settings page to your theme. See (Settings)[settings.md]
+- upload your theme to the Pagekit marketplace so others can enjoy it. See (Marketplace)[marketplace.md]

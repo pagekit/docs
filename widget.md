@@ -4,17 +4,17 @@ Widgets are components that render small chunks of content. To determine where
 that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
 in specific widget positions that are defined by the theme.
 
-Extension and themes can come with widgets, with no difference in development.
+Extensions and themes can come with widgets, with no difference in development.
 
 ## Basic structure
 
 
 The central location of the widget's behaviour is defined in a class
 that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
-In the following example the class extends `Type`, which basically makes the class
-`ApplicationAware` in order to have `$this(‘view')` available for view rendering 
-(and all other Application services actually). 
-Don't be confused by this, a detailed explanation follows in the [Application](application.md) chapter.
+In the following example the class extends `ApplicationAware` in order to
+have `$this(‘view')` available for view rendering (and all other Application
+services actually). Don't be confused by this, a detailed explanation follows
+in the [Application](application.md) chapter.
 
 `hello/src/HelloWidget.php`:
 
@@ -23,10 +23,11 @@ Don't be confused by this, a detailed explanation follows in the [Application](a
 
 namespace Pagekit\Hello;
 
-use Pagekit\Widget\Model\Type;
+use Pagekit\Framework\ApplicationAware;
+use Pagekit\Widget\Model\TypeInterface;
 use Pagekit\Widget\Model\WidgetInterface;
 
-class HelloWidget extends Type
+class HelloWidget extends ApplicationAware implements TypeInterface
 {
     /* unique identifier */
     public function getId()
@@ -40,16 +41,18 @@ class HelloWidget extends Type
         return __('Hello Widget!');
     }
 
-    /* 
-        description displayed in admin area
+    /* description displayed in admin area */
+    public function getDescription(WidgetInterface $widget = null))
+    {
+        return __('Hello Demo Widget');
+    }
 
-        optionally, if a widget gets passed, it returns 
-        information representing the current configuration
-        of the widget. A weather widget would return the configured
-        location for example. Displayed in the widget listing in
-        Settings > Dashboard.
+    /* returns information representing the current configuration
+    of the widget. A weather widget would return the configured
+    location for example. Displayed in the widget listing in
+    Settings > Dashboard.
     */
-    public function getDescription(WidgetInterface $widget = null)
+    public function getInfo(WidgetInterface $widget)
     {
         return __('Hello Demo Widget');
     }
@@ -77,31 +80,31 @@ Hello Widget!
 
 ## Read and write widget configuration
 
-As you can see, the methods `getDescription`, `render` and `renderForm` have a `$widget`
+As you can see, the methods `getInfo`, `render` and `renderForm` have a `$widget`
 parameter of the type `WidgetInterface`. That objects holds a representation
 of the widget's configuration (actually the data stored in the `system_widget`
 table in the database). Use this object to read and write widget configuration.
 
 Read properties with:
 
-- `getId()` returns the widget's unique *id*
-- `getTitle()` the widget's *title*
-- `getType()` the widget's *type* (`widget.hello` in our case)
-- `getPosition()` position the widget is assigned to
-- `getStatus()` widget status (`WidgetInterface::STATUS_ENABLED` or `WidgetInterface::STATUS_DISABLED`)
-- `getSettings()` returns the complete settings array
+- `getId()` Get the widget's unique *id*.
+- `getTitle()` Get the widget's *title*.
+- `getType()` Get the widget's *type* (`widget.hello` in our case).
+- `getPosition()` Get the position the widget is assigned to.
+- `getStatus()` Get the widget's status (`WidgetInterface::STATUS_ENABLED` or `WidgetInterface::STATUS_DISABLED`).
+- `getSettings()` Get the complete settings array.
 
 Read and write single settings properties with:
 
-- `get($name, $default = null)` to read a widget setting
-- `set($name, $value)` to write a widget setting
-- `remove($name)` to remove a widget setting
+- `get($name, $default = null)` Get a specific widget setting.
+- `set($name, $value)` Write a specific widget setting.
+- `remove($name)` Remove a specific widget setting.
 
 ## Register the widget
 
 We've now created the basic widget behaviour. Now we have to make sure
 Pagekit knows about the widget. This is done in the `extension.php` (or
-`theme.php`)
+`theme.php`).
 
 ```PHP
 <?php
@@ -114,12 +117,13 @@ use Pagekit\Widget\Event\RegisterWidgetEvent;
 
 class HelloExtension extends Extension
 {
+
     public function boot(Application $app)
     {
         parent::boot($app);
 
         $app->on('system.widget', function(RegisterWidgetEvent $event) {
-            $event->register('Pagekit\Hello\HelloWidget');
+            $event->register(new HelloWidget);
         });
 
     }
@@ -128,10 +132,11 @@ class HelloExtension extends Extension
 
 When our extension boots we make sure to call the `boot` method of our parent.
 
-Then we are free to hook into the `system.widget` event and register a callback. 
-Within that callback, we can now register our `HelloWidget`. Note how `register`
-requires the given class to implement `TypeInterface` as we've seen in the sample
-code above.
+Then we are free to hook into the Application's `system.widget` event with a callback.
+With that callback, we can now access the `widgets` service of our Application
+instance to register our `HelloWidget`. Note how `register` requires the
+given class to implement `TypeInterface` as we've seen in the sample code
+above.
 
 ## Try out your widget
 
@@ -154,8 +159,8 @@ in action.
 ## Create a dashboard widget
 
 You can also create widgets for the *Dashboard* in the admin area. Those work
-exactly the same, the only difference being the registration event we listen for:
-`system.dashboard` (also the configuration is stored in the `system_user`
+exactly the same, the only difference being the way the widget is registered
+at the Application (and the configuration is stored in or in the `system_user`
 table, because dashboard widgets are specific for every user's dashboard).
 
 ```PHP
@@ -169,12 +174,13 @@ use Pagekit\Widget\Event\RegisterWidgetEvent;
 
 class HelloExtension extends Extension
 {
+
     public function boot(Application $app)
     {
         parent::boot($app);
 
         $app->on('system.dashboard', function(RegisterWidgetEvent $event) {
-            $event->register('Pagekit\Hello\HelloWidget');
+            $event->register(new HelloWidget);
         });
     }
 }

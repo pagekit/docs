@@ -43,7 +43,7 @@ extension name matches the package name in the marketplace.
 ## Alternative upload
 
 If, for any reason, you prefer not to use the command line tool to upload
-your extension, you can simple *zip* the contents of your extension folder,
+your extension, you can simply *zip* the contents of your extension folder,
 navigate to the *Releases* tab of your extension on pagekit.com and select the file
 upload to upload a new release manually.
 

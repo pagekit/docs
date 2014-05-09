@@ -134,14 +134,11 @@ $app->on('hello.boot', function($event) use ($app){
 });
 ```
 
-Dispatch events with the following syntax or use the trigger shortcut.
+Dispatch events with the following syntax.
 
 ```PHP
 // dispatch event, optional second $event parameter
 $app['events']->dispatch('hello.boot');
-
-// shorthand
-$app->trigger('hello.boot');
 ```
 
 ## Event types

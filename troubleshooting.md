@@ -4,21 +4,21 @@ If you run into problems with Pagekit, there are a few steps you should try.
 
 ## System requirements
 
-Check if your webserver meets the system requirements mentioned in the [Quickstart chapter](quickstart.md).
+Check, if your webserver meets the system requirements mentioned in the [Quickstart chapter](quickstart.md).
 
 ## Clear Cache
 
 
-If outdated data stored in the cache causes unexpected behavior, clearing the Cache will fix these issues. 
+If outdated data stored in the cache causes unexpected behavior, clearing the cache will fix these issues.
 
 - **From the browser**: Go to the *Settings* screen and click on the *Clear Cache* button.
-- **From the command line**: You can also clear the cache with Pagekit's command line interface. Open terminal and change to the Pagekit folder, then run `./pagekit clear-cache`
+- **From the command line**: You can also clear the cache with Pagekit's command line interface. Open terminal and change to the Pagekit folder, then run `./pagekit clear-cache`.
 
 
 ## System Information
 
 A lot of times when an error occurs, you will have to retrieve more information about the system environment Pagekit runs on.
-Pagekit offers you this information in the Control Panel, just go to *Settings > Info*.
+Pagekit offers this information in the Control Panel, just go to *Settings > Info*.
 
 | Menu | Description |
 |------|-------------|

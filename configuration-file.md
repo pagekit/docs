@@ -1,15 +1,12 @@
 # Configuration File
 
-Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here, you will find the database credentials, debug, profiler and cache settings and so on.
-
-If you have to change, say the database connection settings because the database server has changed, you can do it in this file. The configuration is stored in a PHP Array.
+Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug, profiler and cache settings. The configuration is stored in a PHP Array.
 
 
 ## Database
 
-The database connection settings are stored in `database['connections']`. You will see the connection data that you have provided during the installation process here.
+The database connection settings are stored in `database['connections']`. Here you can find the connection data  you have provided during the installation process:
 
-Example:
 ```php
 'database' =>
   array (
@@ -28,8 +25,8 @@ Example:
   ),
 ```
 
-It is also possible to configure more than one database connection.
-The default connection is then defined in `database['default']`, in the example above `mysql` is the connection Pagekit uses.
+**Note** It is also possible to configure more than one database connection.
+The default connection is defined in `database['default']`. In the example above Pagekit uses `mysql`.
 
 ## App
 
@@ -41,7 +38,7 @@ In the `app` section you can enable the debug output or disable the cache. This 
 | `debug` | Enable debug mode if you are a developer to get debug output. |
 | `nocache` | Disabling the cache can be useful in a development environment. Remember to enable it on the production server. |
 
-Example:
+This is what a production configuration might look like:
 ```php
 'app' =>
   array (
@@ -54,13 +51,14 @@ Example:
 
 ## Cache
 
-Pagekit offers two different caching methods *APC* and *File*. Initially the cache is set to `auto` so Pagekit will select the caching method automatically.
+Pagekit offers two different caching methods `apc` and `file`. Initially the cache is set to `auto` so Pagekit will select the caching method automatically.
 
 | Field | Description |
 |-------|-------------|
 | `storage` | Configure which cache system should be used by Pagekit. The possible values are `auto`, `file` and `apc`. |
 
-Example:
+
+In this example the caching method is selected automatically:
 ```php
 'cache' =>
   array (
@@ -72,13 +70,13 @@ Example:
 ## Profiler
 
 If you are a developer, you'll want to enable the profiler. It collects data about the requests that are made, monitors the memory usage, counts database queries and so on. This is useful when debugging your code.
-When enabled, you will see the profiler-toolbar at the bottom of the page.
+When enabled, you will see the profiler toolbar at the bottom of the page.
 
 | Field | Description |
 |-------|-------------|
 | `enabled` | Enable or disable the profiler. |
 
-Example:
+In this example the profiler is disabled:
 ```php
 'profiler' =>
   array (

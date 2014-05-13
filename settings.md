@@ -4,7 +4,7 @@ Click on *Settings* in the main navigation to see all important settings in one 
 
 ![System settings overview](/images/settings-overview.png)
 
-## System settings
+## System
 
 ### Site
 

@@ -25,22 +25,19 @@ First of all, extract the downloaded archive and copy the contained folders and 
 
 ### Set the permissions
 
-Before you start with the installation process, ensure that the folders you've just uploaded have the right permission settings. Pagekit needs to be able to write to the following files and directories and each of their subdirectories:
-  - `/app`
-  - `/extensions`
-  - `/storage`
-  - `/themes`
-  - `config.php`
+Before you start with the installation process, ensure that the folders you've just uploaded have the right permission settings. We recommend CHMOD *755*. Pagekit needs to be able to write to the following files and directories and each of their subdirectories:
 
-The actual permission settings depend on the user that the webserver is running with and the owner of the folders.
-
-| User / Group     | Permissions |
+| File / Folder    | Description |
 |------------------|-------------|
-| same user        | 744         |
-| different user, same group       | 774         |
-| different user, different group  | 777         |
+| `/app`           | Stores temporary, cache and log files.        |
+| `/extensions`    | To install and update extensions.             |
+| `/storage`       | Stores binary files you upload to your site.  |
+| `/themes`        | To install and update themes.                 |
+| `config.php`     | Installer will write to this file.            |
 
-**Important** You should always avoid '777' permissions on your production webserver, since this will allow anyone who has access to the machine to edit the files.
+The actual permission settings depend on the user that the webserver is running with and the owner of the folders. If your webserver has problems with the CHMOD *755*, you can also try *775* and lastly *777* in this order.
+
+**Important** You should always avoid *777* permissions on your production webserver, since this will allow anyone who has access to the machine to edit the files.
 
 ### Create the database
 
@@ -56,11 +53,11 @@ In the first step of the installation process we give Pagekit some information t
 
 | Field | Description |
 |-------|-------------|
-| `Host`     | Enter the host name of your database server. If the webserver and database server are on the same machine, this will be 'localhost' or '127.0.0.1'                                                                     |
+| `Host`     | Enter the host name of your database server. If the webserver and database server are on the same machine, this will be *localhost* or *127.0.0.1*  |
 | `User`     | Enter a MySQL username that has access to the database. |
 | `Password` | Enter the MySQL user's password.                        |
 | `Database` | Enter the database name.                                |
-| `Table Prefix` | You can change the prefix that is used for the database tables. The default prefix is `pk_`.                                     |
+| `Table Prefix` | You can change the prefix that is used for the database tables. The default prefix is `pk_`.  |
 
 ### Step 2: Create a User
 
@@ -72,15 +69,15 @@ Finally we enter the name of your site and a description. Once the installation 
 
 ## Updating
 
-**Important** Before you perform an update, make sure you have a backup of the current Pagekit installation and your database.
+Before you perform an update, make sure you have a backup of the current Pagekit installation and your database. That way you can always recover previous states of your installation in case something goes wrong.
 
 ### 1-Click Update
 
-You can update Pagekit using the update function in Pagekit's Administration. Open *Settings > Update* and click the 'Update' button.
+You can update Pagekit using the update function in Pagekit's Administration. Open *Settings > Update* and click the *Update* button.
 
 ### Manual Update
 
 To update Pagekit manually, download the latest release from http://pagekit.com and extract the archive.
 Now upload the folder to your webserver and overwrite the existing files in the Pagekit folder.
 
-To make sure that the update was successful, just open *Settings > Info*. If everything went smoothly, you should see the new version number under 'Pagekit Version'.
+To make sure that the update was successful, just open *Settings > Info*. If everything went smoothly, you should see the new version number under *Pagekit Version*.

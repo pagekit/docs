@@ -39,9 +39,9 @@ Usable in `theme.php` and `extension.php`:
 
     You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
 
-  - **settings**: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widget.md).
-  
-  Example: 
+  - **settings**: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
+
+  Example:
 
   ```php
   'settings' => array(
@@ -61,7 +61,7 @@ Usable in `theme.php` and `extension.php`:
 
 Usable in `theme.php` only:
 
-- **positions**: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](theme.md))
+- **positions**: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](themes.md))
 
   ```php
   return array(

@@ -5,7 +5,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with
 Symfony components.
 
 1. Getting Started
-  1. [Quickstart (Requirements, Installation, Updates)](quickstart.md)
+  1. [Quickstart](quickstart.md)
   2. [Folder Structure](folder-structure.md)
   3. [Configuration File](configuration-file.md)
   4. [Troubleshooting](troubleshooting.md)

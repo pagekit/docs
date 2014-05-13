@@ -1,6 +1,6 @@
 # Settings
 
-Click on *Settings* in the main navigation to see all important settings in one place - split into *system settings* and *extension settings*.
+Click on *Settings* in the main navigation to see all important settings in one place - split into *System settings* and *Extension settings*.
 
 ![System settings overview](/images/settings-overview.png)
 
@@ -16,7 +16,7 @@ Configure settings for your site's email communication. Pagekit uses the *PHP ma
 
 ### Localization
 
-Set the language of website and admin area, set the locale the site should use to display dates.
+Set the language of the website and admin area and set the locale the site should use to display dates.
 
 ### System
 

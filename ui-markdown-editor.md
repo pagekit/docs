@@ -22,7 +22,9 @@ To insert an image, just click the image icon and a placeholder area will appear
 
 ![Adding and image, step 3](/images/markdown-image-3.png)
 
-Adding videos or other binary files works just the same - and when you've inserted your files you can always go to the *Settings* dialog again.
+**Note** Adding videos or other binary files works just the same - and when you've inserted your files you can always go to the *Settings* dialog again.
+
+## Inserting Links
 
 Links have a little pencil icon that you can click to call up the settings panel - either select the link's destination or manually enter a URL.
 

@@ -11,14 +11,14 @@ Use drag and drop to move an entry to another position or to change the renderin
 Pagekit comes with the pre-defined widget types *Login*, *Menu* and *Text*, extensions can add more widget types to this list.
 
 When editing a widget, you will have the *Settings* tab selected by default. Its content depends on the type of the widget. For a text widget you will have a content editing area, for a menu widget options to select a menu and so on.
-Every widget type has a set of options available on the right side where you can enable/disable the widget and assign it to a widget position in your theme.
+Every widget type has a set of options available on the right side where you can enable or disable the widget and assign it to a widget position in your theme.
 
 ![Edit a widget](/images/widgets-edit.png)
 
-The *Assignment* tab allows you to choose which pages the widget will be rendered on. Alternatively you can use simple patterns to match URLs where you want to display the wdidget. You can insert one pattern per line. Use the "\*" character as a wildcard and exclude pages by prepending an exclamation mark to the path. Example paths: `blog` for the blog page, `blog/*` for blog entries or `!blog` if you want to exclude the blog.
+The *Assignment* tab allows you to choose which pages the widget will be rendered on. Alternatively you can use simple patterns to match URLs where you want to display the widget. You can insert one pattern per line. Use the "\*" character as a wildcard and exclude pages by prepending an exclamation mark to the path. Example paths: `blog` for the blog page, `blog/*` for blog entries or `!blog` if you want to exclude the blog.
 
 ![Widget menu assignment](/images/widgets-assignment.png)
 
-The *Theme* tab includes configuration settings for the Widget's appearance. Choose a panel style (like a box around the widget's content), add a badge and choose to center the widget's content. Note that these settings are specific to your activated theme.
+The *Theme* tab includes configuration settings for the widget's appearance. You can choose a panel style (like a box around the widget's content), add a badge and center the widget's content. Note that these settings are specific to your activated theme.
 
 ![Widget theme settings](/images/widgets-theme.png)

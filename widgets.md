@@ -2,9 +2,7 @@
 
 Widgets are components that render small chunks of content. To determine where
 that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
-in specific widget positions that are defined by the theme.
-
-Extensions and themes can come with widgets, with no difference in development.
+in specific widget positions that are defined by the theme. Extensions and themes can come with widgets, with no difference in development.
 
 ## Basic structure
 
@@ -71,7 +69,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
 }
 ```
 
-In order for this example to work make sure to create a view file
+**Important** In order for this example to work make sure to create a view file
 `hello/views/widget.php` that could look like as follows.
 
 ```HTML
@@ -81,24 +79,28 @@ Hello Widget!
 ## Read and write widget configuration
 
 As you can see, the methods `getInfo`, `render` and `renderForm` have a `$widget`
-parameter of the type `WidgetInterface`. That objects holds a representation
+parameter of the type `WidgetInterface`. That object holds a representation
 of the widget's configuration (actually the data stored in the `system_widget`
 table in the database). Use this object to read and write widget configuration.
 
 Read properties with:
 
-- `getId()` Get the widget's unique *id*.
-- `getTitle()` Get the widget's *title*.
-- `getType()` Get the widget's *type* (`widget.hello` in our case).
-- `getPosition()` Get the position the widget is assigned to.
-- `getStatus()` Get the widget's status (`WidgetInterface::STATUS_ENABLED` or `WidgetInterface::STATUS_DISABLED`).
-- `getSettings()` Get the complete settings array.
+| Configuration | Description |
+|---------------|-------------|
+| `getId()`       | Get the widget's unique ID. |
+| `getTitle()`    | Get the widget's title. |
+| `getType()`     | Get the widget's type (`widget.hello` in our case). |
+| `getPosition()` | Get the position the widget is assigned to. |
+| `getStatus()`   | Get the widget's status (`WidgetInterface::STATUS_ENABLED` or `WidgetInterface::STATUS_DISABLED`). |
+| `getSettings()` | Get the complete settings array. |
 
 Read and write single settings properties with:
 
-- `get($name, $default = null)` Get a specific widget setting.
-- `set($name, $value)` Write a specific widget setting.
-- `remove($name)` Remove a specific widget setting.
+| Configuration | Description |
+|---------------|-------------|
+| `get($name, $default = null)`  | Get a specific widget setting.   |
+| `set($name, $value)`           | Write a specific widget setting. |
+| `remove($name)`                | Remove a specific widget setting.|
 
 ## Register the widget
 

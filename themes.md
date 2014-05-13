@@ -12,10 +12,10 @@ our command line tool to create the skeleton file structure.
 
 ```
 cd path/to/pagekit
-./pagekit theme:generate mytheme
+./pagekit theme:generate MY-THEME
 ```
 
-This produces the following file structure inside the directory `/themes/mytheme`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
+This produces the following file structure inside the directory `/themes/MY-THEME`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
 
 | Folder / File | Description |
 |---------------|-------------|
@@ -32,7 +32,7 @@ This produces the following file structure inside the directory `/themes/mytheme
 
 ```json
 {
-    "name": "mytheme",
+    "name": "MY-THEME",
     "version": "0.0.1",
     "type": "theme",
     "title": "MyTheme",
@@ -53,7 +53,7 @@ This produces the following file structure inside the directory `/themes/mytheme
 
 ## Configuration
 
-`theme.php` contains PHP code for theme configuration. In the beginning it's fine to start with a `theme.php` that just returns an empty configuration array. You can set options later when you need them. We will talk about detailed configuration options in the [configuration](configuration.md) chapter.
+`theme.php` contains PHP code for the theme configuration. In the beginning it's fine to start with a `theme.php` that just returns an empty configuration array. You can set options later when you need them. We will talk about detailed configuration options in the [Configuration](configuration.md) chapter.
 
 
 ```php
@@ -65,7 +65,7 @@ return array();
 
 ## Templating
 
-Templating in Pagekit is powered using the [Razr Templating engine](https://github.com/pagekit/razr). `/templates/template.razr.php` is the main layout file.
+Templating in Pagekit is powered by the [Razr Templating engine](https://github.com/pagekit/razr). `/templates/template.razr.php` is the main layout file.
 Here's a minimal example:
 
 ```html
@@ -91,11 +91,11 @@ Now head to the browser, enable your theme from the backend and give it a go. Yo
 So far, our site looks pretty dull. To add some of your own css and JavaScript, add the following line in the `<head>` section of `/templates/template.razr.php`.
 
 ```html
-@style('mytheme', 'theme://mytheme/assets/css/mytheme.css')
-@script('mytheme', 'theme://mytheme/assets/js/theme.js', ['jquery', 'uikit'])
+@style('MY-THEME', 'theme://MY-THEME/assets/css/MY-THEME.css')
+@script('MY-THEME', 'theme://MY-THEME/assets/js/theme.js', ['jquery', 'uikit'])
 ```
 
-Make sure to create `/themes/mytheme/assets/css/mytheme.css` and `/themes/mytheme/assets/js/theme.js`.
+Make sure to create `/themes/MY-THEME/assets/css/MY-THEME.css` and `/themes/MY-THEME/assets/js/theme.js`.
 Note how the JavaScript we include has two requirements, that we add as a list. These get automatically
 resolved to be included before `/js/theme.js` is included. `jquery` and `uikit` are aliases that
 come pre-defined with Pagekit.
@@ -137,7 +137,7 @@ To use a custom renderer `footer`, you can pass it as a value for the `renderer`
 @app.position.render('footer', ['renderer' => 'footer'])
 ```
 
-Now we create a renderer `position.footer.razr.php` in `/views/renderer/`.
+Now we create a renderer `position.footer.razr.php` in `/views/renderer`.
 In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@widgets` (or `$widgets` if you're writing the renderer in plain PHP).
 
 The renderer could look like this:
@@ -151,12 +151,12 @@ The renderer could look like this:
 @endforeach
 ```
 
-All widgets published in the footer position will now be rendered inside a `<div>` with the CSS class `footerclass`. If the title should be displayed, it will be rendered as a `<h3>`.
+All widgets published in the footer position will now be rendered inside a `<div>` with the CSS class `.footerclass`. If the title should be displayed, it will be rendered as a `<h3>`.
 
 ## Where to go from here?
 
 Now that you have a basic theme, you may want to:
 
-- add additional configuration to your theme. See [Configuration](configuration.md)
-- add a settings page to your theme. See [Settings](settings.md)
-- upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md)
+- Add additional configuration to your theme. See [Configuration](configuration.md) for more information.
+- Add a settings page to your theme. See [Settings](settings.md) for more information.
+- Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.

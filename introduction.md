@@ -1,6 +1,4 @@
-# Developer
-
-## Introduction
+# Introduction
 
 To always have our latest code revision (not necessarily stable), checkout our master branch from github.
 

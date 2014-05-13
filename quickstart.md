@@ -44,15 +44,13 @@ The actual permission settings depend on the user that the webserver is running 
 
 ### Create the database
 
-Next thing we need to do is create an empty database for Pagekit to work with using a tool like [phpMyAdmin](http://http://www.phpmyadmin.net/).
-
-If your hoster limits you to only one database which is already used by another application, you can still use it. Pagekit prefixes its tables to avoid conflicts.
+Next thing we need to do is create an empty database for Pagekit to work with using a tool like [phpMyAdmin](http://http://www.phpmyadmin.net/). If your hoster limits you to only one database which is already used by another application, you can still use it. Pagekit prefixes its tables to avoid conflicts.
 
 ### Run the installation
 
 Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver followed by `/installer`, e.g. `http://example.com/pagekit/installer`. This will take you to the start screen of the installation.
 
-#### Database
+### Step 1: Database information
 
 In the first step of the installation process we give Pagekit some information to connect to the database we created earlier.
 
@@ -64,25 +62,23 @@ In the first step of the installation process we give Pagekit some information t
 | `Database` | Enter the database name.                                |
 | `Table Prefix` | You can change the prefix that is used for the database tables. The default prefix is `pk_`.                                     |
 
-#### Create a User
+### Step 2: Create a User
 
 Now you need to create your user account for Pagekit. This user will have admin access and will be able to log in to Pagekit's control panel, once the installation is finished.
 
-#### Site Settings
+### Step 3: Site Settings
 
-Finally we enter the name of your site and a description.
-
-Once the installation was successfull you can log in to Pagekit's control panel with the account we created. You can access the login screen by appending `/admin` to your URL.
+Finally we enter the name of your site and a description. Once the installation was successful you can log in to Pagekit's control panel with the account we created. You can access the login screen by appending `/admin` to your URL.
 
 ## Updating
 
 **Important** Before you perform an update, make sure you have a backup of the current Pagekit installation and your database.
 
-#### 1-Click Update
+### 1-Click Update
 
 You can update Pagekit using the update function in Pagekit's Administration. Open *Settings > Update* and click the 'Update' button.
 
-#### Manual Update
+### Manual Update
 
 To update Pagekit manually, download the latest release from http://pagekit.com and extract the archive.
 Now upload the folder to your webserver and overwrite the existing files in the Pagekit folder.

@@ -14,7 +14,7 @@ registered and how to ask for advanced options from the user.
 Extend `Pagekit\System\Link\Link` and implement the three methods `getRoute`, `getLabel` and `renderForm`. Note: `$this(‘view')` is a shortcut to access the `view` service. A detailed explanation will follow in the
 [Application](application.md) chapter.
 
-`hello/src/HelloLink.php`:
+In your extension, create the file `hello/src/HelloLink.php`:
 
 ```php
 <?php

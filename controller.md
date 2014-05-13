@@ -74,7 +74,7 @@ the next sections.
 A lot of the controller's behaviour is determined by information annotated to
 the class and methods.
 
-- **@Route**: Define the route the controller (or controller action) will be mounted at. Can be
+- `@Route` Define the route the controller (or controller action) will be mounted at. Can be
 annotated to class and method definitions.
 
   By default, a method called `greetAction` will be mounted as `/greet` under the
@@ -109,7 +109,7 @@ annotated to class and method definitions.
   ```
 
 
-- **@View**: The view file to be rendered.
+- `@View` The view file to be rendered.
 
   Render `<extensions>/hello/views/index.razr.php`:
 
@@ -127,7 +127,7 @@ annotated to class and method definitions.
   More about view rendering in the [View and Response](view-response.md) chapter.
 
 
-- **@Request**: Handle parameter passing from the http request to the method.
+- `@Request` Handle parameter passing from the http request to the method.
 
   You can specify the types of data passed via GET and POST request and match
   them to parameters passed to the method.
@@ -146,7 +146,7 @@ annotated to class and method definitions.
   public function saveAction($id, $title, $config) { ... }
   ```
 
-- **@Access**: Check for user permissions.
+- `@Access` Check for user permissions.
 
   Controllers should always be specific for the frontend or the backend. So
   far we have seen controllers for the frontend. A backend (or admin) controller
@@ -191,7 +191,7 @@ annotated to class and method definitions.
     public function editAction() { ... }
   ```
 
-- **@Token**: Check for Token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery).
+- `@Token` Check for Token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery).
 
   Add `@Token` to your action annotation and include the `@token()` call in the
   view that submits a form to this method.

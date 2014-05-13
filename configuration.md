@@ -6,12 +6,12 @@ Both `theme.php` for a theme and `extension.php` for an extension are the bootst
 
 Usable in `theme.php` and `extension.php`:
 
-  - **main**: If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or
+  - `main`: If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or
     `Extension`).
 
     Example: `'main' => Pagekit\\Hello\\HelloExtension`
 
-  - **autoload**: Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.org/psr/psr-4/).
+  - `autoload`: Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
     ```php
     'autoload' => array(
@@ -19,11 +19,11 @@ Usable in `theme.php` and `extension.php`:
     ),
     ```
 
-  - **resources**: Array with two keys.
+  - `resources`: Array with two keys.
 
-    - **export**: Register the `view://` and `asset://` stream wrapper to point to your theme's (or extension's) `views` and `assets` directory.
+    - `export`: Register the `view://` and `asset://` stream wrapper to point to your theme's (or extension's) `views` and `assets` directory.
 
-    - **overrides**: Possibility to overwrite `view://` and `asset://` properties, for example to allow for custom views of a system extension.
+    - `overrides`: Possibility to overwrite `view://` and `asset://` properties, for example to allow for custom views of a system extension.
 
     ```php
     'resources' => array(
@@ -39,7 +39,7 @@ Usable in `theme.php` and `extension.php`:
 
     You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
 
-  - **settings**: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
+  - `settings`: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
 
   Example:
 
@@ -61,7 +61,7 @@ Usable in `theme.php` and `extension.php`:
 
 Usable in `theme.php` only:
 
-- **positions**: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](themes.md))
+- `positions`: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](themes.md))
 
   ```php
   return array(
@@ -78,18 +78,18 @@ Usable in `theme.php` only:
 
 Usable in `extension.php` only:
 
-  - **controllers**: The paths to your controllers. You can use [glob](http://php.net/glob) syntax. Used for automatic route registration. Set a string with glob syntax or an array with multiple paths.
+  - `controllers`: The paths to your controllers. You can use [glob](http://php.net/glob) syntax. Used for automatic route registration. Set a string with glob syntax or an array with multiple paths.
 
     Example: `'controllers' => 'src/Controller/*Controller.php'`
 
-  - **menu**: Array of menu items. Each element has a unique string identifier that should consist of the extension name or and a telling title in case you have several menu items, i.e. `hello` or `hello: settings`. Each menu item is identified by an array with the following properties.
+  - `menu`: Array of menu items. Each element has a unique string identifier that should consist of the extension name or and a telling title in case you have several menu items, i.e. `hello` or `hello: settings`. Each menu item is identified by an array with the following properties.
 
-      - **label**: Label of the menu item. String is localized automatically if a translation is available.
-      - **parent**: Identifier of parent menu item
-      - **url**: Named route
-      - **access**: List permissions needed for an item to be visible to a user. Attention: Implement access control inside your controller, visibility of a menu item does not take care of that.
-      - **active**: Use [glob](http://php.net/glob) syntax to match to current url and determine, if a menu item is considered *active*
-      - **priority**: Optional sort order, defaults to 0.
+      - `label`: Label of the menu item. String is localized automatically if a translation is available.
+      - `parent`: Identifier of parent menu item
+      - `url`: Named route
+      - `access`: List permissions needed for an item to be visible to a user. Attention: Implement access control inside your controller, visibility of a menu item does not take care of that.
+      - `active`: Use [glob](http://php.net/glob) syntax to match to current url and determine, if a menu item is considered *active*
+      - `priority`: Optional sort order, defaults to 0.
 
     ```php
     'menu' => array(
@@ -102,7 +102,7 @@ Usable in `extension.php` only:
     ),
     ```
 
-  - **permissions**: List of permissions that can be assigned to user groups. the unique identifier should consist of the extension name followed by a brief identifying title of the permission (colons and spaces allowed). A description is optional and can be used to explain what this does. Check out *Users > Permissions* to see how this is displayed to the user.
+  - `permissions`: List of permissions that can be assigned to user groups. the unique identifier should consist of the extension name followed by a brief identifying title of the permission (colons and spaces allowed). A description is optional and can be used to explain what this does. Check out *Users > Permissions* to see how this is displayed to the user.
 
   ```php
   'system: manage url aliases' => array(

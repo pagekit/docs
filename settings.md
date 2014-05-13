@@ -2,25 +2,23 @@
 
 Click on *Settings* in the main navigation to see all important settings in one place - split into *system settings* and *extension settings*.
 
-## System settings
-
 ![System settings overview](/images/settings-overview.png)
 
-### Settings
+## System settings
 
-#### Site
+### Site
 
 Fill in main information about your site, set your frontpage and enable Maintenance mode.
 
-#### Email
+### Email
 
 Configure settings for your site's email communication. Pagekit uses the *PHP mailer* by default, but you can also enable the *SMTP mailer* and enter your credentials.
 
-#### Localization
+### Localization
 
 Set the language of website and admin area, set the locale the site should use to display dates.
 
-#### System
+### System
 
 To enable Pagekit's automatic communication with the marketplace (automatic downloads and updates of extensions), you need an *API key*. Log in to [www.pagekit.com](http//www.pagekit.com) to generate your API key.
 
@@ -51,7 +49,7 @@ The *Storage* area gives you an overview over your uploaded files. Using the sim
 
 In this section you can update Pagekit with one click in case a new version is available.
 
-### URL aliases
+## URL aliases
 
 Pagekit allows you to change URL aliases to anything you want.
 

@@ -50,7 +50,7 @@ The according view file utilizes the [Razr templating language](https://github.c
 
 ```
 
-## View layout
+### View layout
 
 By default, views are rendered in a surrounding layout, usually defined
 by the theme. That is why the above examples don't just generate two lines of
@@ -72,7 +72,7 @@ View file `<extensions>/hello/views/theme.razr.php`:
 </section>
 ```
 
-# Templating
+## Templating
 
 The views are rendered using the [Razr templating engine](https://github.com/pagekit/razr)
 which offers output functionality and control structures.
@@ -80,7 +80,7 @@ which offers output functionality and control structures.
 Pagekit exends the Razr language with a few features you can use in your
 templates.
 
-## Link to routes
+### Link to routes
 
 As seen earlier, each route has a name that you can use to dynamically generate
 links to the specific route. This is also possible inside the Razr template.
@@ -96,7 +96,7 @@ You can link to assets like images or other files using `@url.to`.
 <img src="@url.to('extensions/hello/extension.svg')" alt="Extension icon" />
 ```
 
-## Localized strings
+### Localized strings
 
 To make a string translateable, wrap it in `@trans`.
 
@@ -112,9 +112,9 @@ Translateable pluralisation.
 
 More about i18n (internationalization) in a later chapter.
 
-# Response
+## Response
 
-## Redirect
+### Redirect
 
 Use `redirect($url, $parameters = array(), $status = 302, $headers = array())`
 to redirect from a controller action.
@@ -136,7 +136,7 @@ public function redirectAction()
 }
 ```
 
-## Return JSON
+### Return JSON
 
 Returns a JSON representation of any object.
 
@@ -149,7 +149,7 @@ public function jsonAction()
 
 ```
 
-## Custom response and error pages
+### Custom response and error pages
 
 Using `create($content = '', $status = 200, $headers = array())` you
 can return any custom HTTP response.
@@ -161,7 +161,7 @@ function forbiddenAction()
 }
 ```
 
-## Download
+### Download
 
 Using `download($file, $name = null, $headers = array())` you can link to a file
 to be downloaded. Sets `Content-Disposition: attachment` to force

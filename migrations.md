@@ -1,22 +1,21 @@
+# Migrations
 
-## Migrations
-
-An extension (or theme) can be either *enabled*, *disabled* or *not installed*.
+An extension (or theme) can be either enabled, disabled or not installed.
 When changing the state, you might need to modify your database schema or run
 other custom code. To do so, there are three actions you can hook into.
 
-- **enable**: triggered when the extension is activated after installation
+- `enable`: triggered when the extension is activated after installation
   and when it is activated after a new version has been installed
-- **disable**: triggered when you *disable* the extension from the admin area and when
+- `disable`: triggered when you disable the extension from the admin area and when
   the extension gets temporarily disabled for a version update.
-- **uninstall**: trigger when you *remove* it from the admin area
+- `uninstall`: trigger when you remove it from the admin area
 
 
 ## Enable hook
 
 Make sure your extension extends the framework's base class
-`Pagekit\Extension\Extension` which comes with an *enable* method that does
-nothing by default. Overwrite *enable* to run your own code.
+`Pagekit\Extension\Extension` which comes with an `enable` method that does
+nothing by default. Overwrite `enable` to run your own code.
 
 ```php
 <?php

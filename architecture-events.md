@@ -1,15 +1,13 @@
-# Folder structure
+# Architecture and Events
 
-To get an overview of the files and folders in Pagekit see the (Folder Structure)[folder-structure.md] document.
-
-As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
+To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) document. As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
 
 - JavaScript and CSS libraries, i.e. jQuery, UIKit etc.
 - third party PHP libraries Symfony, Doctrine etc.
 - Razr Templating Engine, Pagekit's Components and the Pagekit Framework.
 
 
-# Architecture
+## Architecture
 
 In the center of Pagekit's architecture sits the Application, an instance of
 `Pagekit\Framework\Application`. The application is the first instance to
@@ -34,7 +32,7 @@ which takes care of the lowest level of request handling.
 Communication of the different parts of the system happens through events. More
 to that in the *Events* section below.
 
-# Request lifecycle
+## Request lifecycle
 
 For a deeper understanding of the control flow inside Pagekit's internals, let
 us have a look at what happens when a request goes through all Pagekit layers.
@@ -45,7 +43,7 @@ on every request. Here, the two basic phases get kicked off. First,
 The second phase is the actual request handling phase. Let's look at these two
 separately.
 
-## 1. The bootstrap phase
+### 1. The bootstrap phase
 
 Bootstrapping happens in `app/app.php` and consists of reading the default
 config `app/config/app.php`, merging it with the user config `config.php` and
@@ -61,7 +59,7 @@ has not been installed yet, this is the place where the extensions to be loaded
 is limited to the *installer* extension which will result in the installer to
 be displayed to the user at the end of phase two.
 
-## 2. The request handling phase
+### 2. The request handling phase
 
 When the bootstrap process has finished, the Application's run method will start
 handling the http request. From the Application's perspective, request handling
@@ -74,7 +72,7 @@ a response, meaning that it will render views and strings into a response or
 throw an exception to be returned. This response then gets handed back to the
 layers sitting above which can modify the response object.
 
-# Events
+## Events
 
 The central component of communication between all parts of the system is
 the EventDispatcher which can be accessed via `$app['events']` (or
@@ -141,7 +139,7 @@ Dispatch events with the following syntax.
 $app['events']->dispatch('hello.boot');
 ```
 
-## Event types
+### Event types
 
 There is a number of different event types. A lot of the events you encounter
 actually come from the kernel, you can find them with a detailed description

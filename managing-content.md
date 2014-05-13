@@ -14,15 +14,15 @@ The editor's toolbar supports you with common markdown elements and allows you t
 
 To insert an image, just click the image icon and a placeholder area will appear in the content preview. Hover over the placeholder and click on the *Settings* button. A modal will appear where you can choose a picture or drag and drop the desired image file from your local file browser.
 
-Step 1: Settings for a blank image.
+### Step 1: Settings for a blank image
 
 ![Adding and image, step 1](/images/markdown-image-1.png)
 
-Step 2: Select an image from the storage.
+### Step 2: Select an image from the storage
 
 ![Adding and image, step 2](/images/markdown-image-2.png)
 
-Step 3: Updated settings for your chosen image.
+### Step 3: Updated settings for your chosen image
 
 ![Adding and image, step 3](/images/markdown-image-3.png)
 

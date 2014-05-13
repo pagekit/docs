@@ -9,7 +9,7 @@ There are several kinds of extensions, yet they all follow the same basic patter
 Just like with themes, the command line tool supports you in generating the skeleton file structure for your new extension:
 
 ```
-pagekit extension:generate <extension_name>`
+pagekit extension:generate <extension_name>
 ```
 
 To get started, let's build a simple extension called `hello` (You can download the complete Hello extension from the marketplace).

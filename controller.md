@@ -49,7 +49,7 @@ class HelloController extends Controller
 
 The class is annotated with `@Route("/hello")`, causing the Controller to
 be *mounted* at `http://example.com/hello/`, meaning it will respond to all
-requests to that url and sub-urls like `http://example.com/hello/settings`.
+requests to that URL and sub-URLs like `http://example.com/hello/settings`.
 
 By default, your extension (or theme) will be booted
 and a set of default routes will be generated automatically. You can

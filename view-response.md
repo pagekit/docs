@@ -7,7 +7,7 @@ services.
 
 ## Render a view
 
-Use the *@View* annotation to determine which view file should be rendered.
+Use the `@View` annotation to determine which view file should be rendered.
 The action method returns an array with data the template engine will use to
 render the view file.  Note how `head.title` is a special value used to render
 as the page's `<title>`.
@@ -75,9 +75,7 @@ View file `<extensions>/hello/views/theme.razr.php`:
 ## Templating
 
 The views are rendered using the [Razr templating engine](https://github.com/pagekit/razr)
-which offers output functionality and control structures.
-
-Pagekit exends the Razr language with a few features you can use in your
+which offers output functionality and control structures. Pagekit exends the Razr language with a few features you can use in your
 templates.
 
 ### Link to routes
@@ -126,7 +124,7 @@ function redirectAction()
 }
 ```
 
-In case your controller extends `Pagekit\Framework\Controller\Controller` you
+In case your controller extends `Pagekit\Framework\Controller\Controller`, you
 can directly access the `redirect` method.
 
 ```PHP

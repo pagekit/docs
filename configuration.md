@@ -9,7 +9,7 @@ Usable in `theme.php` and `extension.php`:
   - `main`: If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or
     `Extension`).
 
-    Example: `'main' => Pagekit\\Hello\\HelloExtension`
+    `'main' => Pagekit\\Hello\\HelloExtension`
 
   - `autoload`: Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
@@ -41,7 +41,7 @@ Usable in `theme.php` and `extension.php`:
 
   - `settings`: Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
 
-  Example:
+
 
   ```php
   'settings' => array(
@@ -51,7 +51,6 @@ Usable in `theme.php` and `extension.php`:
 
   - Feel free to add your own configuration properties. From your `Theme` instance (or `Extension`), you will have have access to the configuration array via `$this->config`. Also, you can use `$this->getConfig('colours.background')` to access nested config arrays via dot notation.
 
-    Example:
 
     ```php
     'colours' => array('background' => '#ccc', 'text' => '#333');
@@ -61,7 +60,7 @@ Usable in `theme.php` and `extension.php`:
 
 Usable in `theme.php` only:
 
-- `positions`: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. (See chapter about [theming](themes.md))
+- `positions`: As we've seen before, you can define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. See the chapter about [theming](themes.md)) for more information.
 
   ```php
   return array(
@@ -80,7 +79,7 @@ Usable in `extension.php` only:
 
   - `controllers`: The paths to your controllers. You can use [glob](http://php.net/glob) syntax. Used for automatic route registration. Set a string with glob syntax or an array with multiple paths.
 
-    Example: `'controllers' => 'src/Controller/*Controller.php'`
+    `'controllers' => 'src/Controller/*Controller.php'`
 
   - `menu`: Array of menu items. Each element has a unique string identifier that should consist of the extension name or and a telling title in case you have several menu items, i.e. `hello` or `hello: settings`. Each menu item is identified by an array with the following properties.
 
@@ -128,8 +127,8 @@ Add to `theme.php`:
 
 Create the according file holding a form with all your configuration options, i.e. `hello/views/admin/settings.razr.php`. This form has to be submitted to `@system/extensions/savesettings` (with a parameter specifying your theme name / extension name).
 
-You can create any form elements as long as you keep to a certain naming convention. The form is supposed to send an array of options,
-therefore all input field are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.
+You can create any form element as long as you keep to a certain naming convention. The form is supposed to send an array of options,
+therefore all input fields are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.
 
 Remember to include `@token()` inside your form for security purposes.
 

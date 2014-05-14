@@ -5,7 +5,7 @@ Pagekit.
 
 ## Configuration
 
-Database credentials are stored in config.php. Pagekit supports `mysql`and
+Database credentials are stored in `config.php`. Pagekit supports `mysql`and
 `sqlite`.
 
 ```
@@ -28,9 +28,7 @@ Database credentials are stored in config.php. Pagekit supports `mysql`and
 All table names include the prefix of your Pagekit installation. To dynamically
 address tables in the backend,
 use the table name with the `@` symbol as a placeholder for the prefix. As
-a convention you should start the table name with your extension name.
-
-Example: *options* table for the `foobar` extension: `@foobar_option`
+a convention you should start the table name with your extension name, e.g. *options* table for the `foobar` extension: `@foobar_option`
 
 ## Database utility
 

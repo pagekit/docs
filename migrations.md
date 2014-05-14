@@ -4,12 +4,11 @@ An extension (or theme) can be either enabled, disabled or not installed.
 When changing the state, you might need to modify your database schema or run
 other custom code. To do so, there are three actions you can hook into.
 
-- `enable`: triggered when the extension is activated after installation
-  and when it is activated after a new version has been installed
-- `disable`: triggered when you disable the extension from the admin area and when
-  the extension gets temporarily disabled for a version update.
-- `uninstall`: trigger when you remove it from the admin area
-
+| Action | Description |
+|--------|-------------|
+| `enable`     | Triggered when the extension is activated after installation. |
+| `disable`    | Triggered when you disable the extension from the admin area and when the extension gets temporarily disabled for a version update. |
+| `uninstall`  | Triggered when you remove it from the admin area. |
 
 ## Enable hook
 
@@ -35,7 +34,7 @@ class HelloExtension extends Extension
 ```
 
 You can use the `migrator` service to
-automatically run any migration scripts needed, as long as you stick to certain
+automatically run any migration script needed, as long as you stick to certain
 conventions.
 
 ```PHP
@@ -47,14 +46,14 @@ public function enable()
 }
 ```
 
-The migrator will look in the `migrations` folder of your extension, get all
+The migrator will look in the `/migrations` folder of your extension, get all
 migrations newer than the database value of the `hello:version` option,
 run all those scripts and then set the new value to be `$version`, which is the
 resulting version after the migrator has finished.
 
 ### Migration files
 
-Migration files are typically located in the `migrations` folder of your
+Migration files are typically located in the `/migrations` folder of your
 extension and need to stick to certain conventions.
 
 A migration file is named using the date and time plus a name of your chosing:
@@ -116,7 +115,7 @@ care of needed database changes yourself.
 
 When your extension gets disabled (either by the user or when installing an
 update), you can overwrite the `disable` method in
-your `Extension` subclass, just the way you did in the *enable* case.
+your `Extension` subclass, just the way you did in the `enable` case.
 
 ```PHP
 <?php

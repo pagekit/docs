@@ -8,17 +8,15 @@ and rendering views from your extension.
 A central task solved by Pagekit is *Routing*. When the browser hits a URL,
 the framework will determine which controller action will be called.
 
-If a route is not unique across your application, the one that hast been added
-first is the one being used. As this is framework internal behaviour that might
-change, you should not rely on this but rather make sure your routes are unique.
-
-If no route exists for a requested URL, a 404 error will be shown.
+If a route is not unique across your application, the one that has been added
+first is the one being used. As this is framework internal behavior that might
+change, you should not rely on this but rather make sure your routes are unique. If no route exists for a requested URL, a 404 error will be shown.
 
 
 ## General controller structure
 
 Your Controller is a class that needs to be linked from your `extension.php`
-(see [configuration](configuration.md) for details). While a controller class does not necessarily have to extend
+(see [Configuration](configuration.md) for details). While a controller class does not necessarily have to extend
 `Pagekit\Framework\Controller\Controller`, it will usually still do so. By
 subclassing the base Controller class, you gain access to the Application
 instance and therefore to all services (e.g. `$this('db')` for the database
@@ -56,13 +54,15 @@ requests to that url and sub-urls like `http://example.com/hello/settings`.
 By default, your extension (or theme) will be booted
 and a set of default routes will be generated automatically. You can
 use the command line tool to view the newly registered routes (along with all
-core routes), just execute `./pagekit routes`.
+core routes). Just execute `./pagekit routes`.
 
 Here is how to understand a route:
 
- - **Name** `@hello/hello/settings`: The name of the route, can be used to generate URLs (has to be unique).
- - **URI** `/hello/settings`: The path to access this route in the browser.
- - **Action** `Pagekit\Hello\Controller\DefaultController::settingsAction`: The controller action that will be called.
+| Route  | Description |
+|--------|-------------|
+| **Name** `@hello/hello/settings`                                          | The name of the route, can be used to generate URLs (has to be unique). |
+| **URI** `/hello/settings`                                                 | The path to access this route in the browser. |
+| **Action** `Pagekit\Hello\Controller\DefaultController::settingsAction`   | The controller action that will be called. |
 
 By default, routes will be of the form `http://example.com/<extension>/<controller>/<action>`. A special action is
 `indexAction` which will not be mounted at `.../index`, but at `.../`.
@@ -71,7 +71,7 @@ the next sections.
 
 ## Annotations
 
-A lot of the controller's behaviour is determined by information annotated to
+A lot of the controller's behavior is determined by information annotated to
 the class and methods.
 
 - `@Route` Define the route the controller (or controller action) will be mounted at. Can be

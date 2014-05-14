@@ -1,10 +1,10 @@
 # Architecture and Events
 
-To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) document. As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
+To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) doc. As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
 
 - JavaScript and CSS libraries, i.e. jQuery, UIKit etc.
 - third party PHP libraries Symfony, Doctrine etc.
-- Razr Templating Engine, Pagekit's Components and the Pagekit Framework.
+- Razr Templating Engine, Pagekit's components and the Pagekit framework.
 
 
 ## Architecture
@@ -17,7 +17,7 @@ section).
 The application also functions as a [Pimple dependency injection container](http://pimple.sensiolabs.org/),
 the main location to hold all service providers. Service providers are a
 central concept to understand, as they bundle the functionality of certain
-Components and other parts of the framework and make it accessible throughout
+components and other parts of the framework and make it accessible throughout
 the application - also from your extensions and themes.
 
 A service provider is a class that implements the two methods `register` and
@@ -39,14 +39,14 @@ us have a look at what happens when a request goes through all Pagekit layers.
 
 The entry point of all request handling is `index.php` which the webserver calls
 on every request. Here, the two basic phases get kicked off. First,
-`app/app.php` is loaded which holds all bootstrap code to setup the Application.
+`/app/app.php` is loaded, which holds all bootstrap code to setup the Application.
 The second phase is the actual request handling phase. Let's look at these two
 separately.
 
 ### 1. The bootstrap phase
 
-Bootstrapping happens in `app/app.php` and consists of reading the default
-config `app/config/app.php`, merging it with the user config `config.php` and
+Bootstrapping happens in `/app/app.php` and consists of reading the default
+config `/app/config/app.php`, merging it with the user config `config.php` and
 passing the resulting configuration array to a fresh Application instance.
 
 Then, all service providers defined in the configuration are being registered
@@ -54,9 +54,9 @@ at the application. A connection to the database is established and an array
 of extension to load later is generated (the actual loading happens in the second
 phase).
 
-If the config file is missing or the database connection reveals that Pagekit
+If the `config` file is missing or the database connection reveals that Pagekit
 has not been installed yet, this is the place where the extensions to be loaded
-is limited to the *installer* extension which will result in the installer to
+is limited to the *Installer* extension which will result in the installer to
 be displayed to the user at the end of phase two.
 
 ### 2. The request handling phase
@@ -75,7 +75,7 @@ layers sitting above which can modify the response object.
 ## Events
 
 The central component of communication between all parts of the system is
-the EventDispatcher which can be accessed via `$app['events']` (or
+the `EventDispatcher` which can be accessed via `$app['events']` (or
 `$this('events')` when extending ApplicationAware). Every part can
 listen to certain events and trigger events itself.
 

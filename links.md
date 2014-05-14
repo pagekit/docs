@@ -3,18 +3,20 @@
 Pagekit's concept of links allows for a reusable link picker (for
 example when linking from a menu item or when linking from the
 markdown editor). The user can choose a type of link and get further
-options depending on that choice. Linking to a *page* for example
-will present the user with a *list of pages* to choose from.
+options depending on that choice. Linking to a page for example
+will present the user with a list of pages to choose from.
 
 In this section we will explain how custom link types can be
 registered and how to ask for advanced options from the user.
 
 ## Basic structure
 
-Extend `Pagekit\System\Link\Link` and implement the three methods `getRoute`, `getLabel` and `renderForm`. Note: `$this(‘view')` is a shortcut to access the `view` service. A detailed explanation will follow in the
+Extend `Pagekit\System\Link\Link` and implement the three methods `getRoute`, `getLabel` and `renderForm`.
+
+**Note** `$this(‘view')` is a shortcut to access the `view` service. A detailed explanation will follow in the
 [Application](application.md) chapter.
 
-In your extension, create the file `hello/src/HelloLink.php`:
+In your extension, create the file `/hello/src/HelloLink.php`:
 
 ```php
 <?php
@@ -78,7 +80,7 @@ JavaScript as well.
 </script>
 ```
 
-The HTML with the input text field is straight-forward. The JavaScript is a bit
+The HTML with the input text field is pretty straight-forward. The JavaScript is a bit
 more complex. As you can see, we register a link defined by our route (`@route`
 will be rendered to be `@hello/greet/name` by razr).
 

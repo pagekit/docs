@@ -136,6 +136,12 @@ To use a custom renderer `footer`, you can pass it as a value for the `renderer`
 ```html
 @app.position.render('footer', ['renderer' => 'footer'])
 ```
+We will need to register the custom renderer to make it availabe in the theme. To do so, open the main class and register the renderer in the `boot`method.
+```php
+$app->on('system.position.renderer', function($event) use ($app) {
+    $event->register('footer', 'theme://MY-THEME/views/renderer/position.footer.razr.php');
+});
+```
 
 Now we create a renderer `position.footer.razr.php` in `/views/renderer`.
 In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@widgets` (or `$widgets` if you're writing the renderer in plain PHP).

@@ -7,7 +7,7 @@ to and from the database.
 
 Use `set($key, $value, $autoload=null)` to set an option.
 
-| Option  | Description |
+| Param   | Description |
 |---------|-------------|
 | `$key`           | String to uniquely identify the option. In order not to have name collisions with other extensions, you should prefix the option with your extension's name, e.g. `hello:version`. |
 | `$value`          | The value you want to store. This can be of the type `int`, `str` and `array`. |

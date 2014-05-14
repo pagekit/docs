@@ -11,7 +11,9 @@ Usable in `theme.php` and `extension.php`:
 If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or
     `Extension`).
 
-    `'main' => Pagekit\\Hello\\HelloExtension`
+```php
+'main' => Pagekit\\Hello\\HelloExtension
+```
 
 ### Autoload
 

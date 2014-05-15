@@ -104,7 +104,7 @@ The `menu` property is an array of menu items. Each element has a unique string 
 
 | Property  | Description |
 |-----------|-------------|
-| `label`     | The extension name, `foobar` in this example. Must match your local extension name. Unique across the markeplace. |
+| `label`     | The menu item label. |
 | `parent`    | Identifier of parent menu item. |
 | `access`    | List permissions needed for an item to be visible to a user. Attention: Implement access control inside your controller, visibility of a menu item does not take care of that. |
 | `active`    | Use [glob](http://php.net/glob) syntax to match to current URL and determine, if a menu item is considered *active*. |

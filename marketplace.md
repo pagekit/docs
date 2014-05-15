@@ -20,9 +20,9 @@ Log in on pagekit.com and navigate to the *Developer* section. Hit the
 
 | Field  | Description |
 |--------|-------------|
-| *Name*           | The extension name, `foobar` in this example. Must match your local extension name. Unique across the markeplace. |
-| *Title*          | The extension title, *Simple dummy extension* in this example. |
-| *Package type*   | Extension or theme, *Extension* in this example. |
+| *Name*           | The extension name. Must match your local extension name. Unique across the markeplace. |
+| *Title*          | The extension title. |
+| *Package type*   | It can be an extension or theme. |
 
 Hit *Create* and you will be presented with a settings screen for your new
 package. Leave this as it is, but notice how the *Status* of the package is set

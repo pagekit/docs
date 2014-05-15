@@ -49,7 +49,7 @@ Next thing we need to do is create an empty database for Pagekit to work with us
 
 Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver followed by `/installer`, e.g. `http://example.com/pagekit/installer`. This will take you to the start screen of the installation.
 
-#### Step 1: Database information
+#### Step 1 - Database information
 
 In the first step of the installation process we give Pagekit some information to connect to the database we created earlier.
 
@@ -61,11 +61,11 @@ In the first step of the installation process we give Pagekit some information t
 | `Database` | Enter the database name.                                |
 | `Table Prefix` | You can change the prefix that is used for the database tables. The default prefix is `pk_`.  |
 
-#### Step 2: Create a User
+#### Step 2 - Create a User
 
 Now you need to create your user account for Pagekit. This user will have admin access and will be able to log in to Pagekit's control panel, once the installation is finished.
 
-#### Step 3: Site Settings
+#### Step 3 - Site Settings
 
 Finally we enter the name of your site and a description. Once the installation was successful you can log in to Pagekit's control panel with the account we created. You can access the login screen by appending `/admin` to your URL.
 

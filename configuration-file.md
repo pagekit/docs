@@ -40,7 +40,6 @@ In the `app` section you can enable the debug output or disable the cache. This 
 | `debug` | Enable debug mode if you are a developer to get debug output. |
 | `nocache` | Disabling the cache can be useful in a development environment. Remember to enable it on the production server. |
 
-Example:
 ```php
 'app' =>
   array (
@@ -49,7 +48,6 @@ Example:
     'nocache' => '0',
   ),
 ```
-
 
 ## Cache
 
@@ -62,7 +60,6 @@ In `cache` section the configured caching method is stored. Initially the cache 
 | 'file' | Set the caching method to store caching data in a file in '/app/cache' |
 
 
-Example:
 ```php
 'cache' => array (
     'caches' => array (
@@ -73,7 +70,6 @@ Example:
 ),
 ```
 
-
 ## Profiler
 
 If you are a developer, you'll want to enable the profiler. It collects data about the requests that are made, monitors the memory usage, counts database queries and so on. This is useful when debugging your code.
@@ -83,7 +79,6 @@ When enabled, you will see the profiler toolbar at the bottom of the page.
 |-------|-------------|
 | `enabled` | Enable or disable the profiler. |
 
-Example:
 ```php
 'profiler' =>
   array (

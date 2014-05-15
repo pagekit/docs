@@ -1,6 +1,8 @@
 # Configuration File
 
-Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug, profiler and cache settings. The configuration is stored in a PHP Array.
+Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug, profiler and cache settings.
+
+You can configure the settings in Pagekit *Settings > System* or edit them in this config file.
 
 
 ## Database
@@ -34,11 +36,11 @@ In the `app` section you can enable the debug output or disable the cache. This 
 
 | Field | Description |
 |-------|-------------|
-| `key` | A unique key, used for encryption. |
+| `key` | A unique key that is used for encryption. |
 | `debug` | Enable debug mode if you are a developer to get debug output. |
 | `nocache` | Disabling the cache can be useful in a development environment. Remember to enable it on the production server. |
 
-This is what a production configuration might look like:
+Example:
 ```php
 'app' =>
   array (
@@ -51,19 +53,24 @@ This is what a production configuration might look like:
 
 ## Cache
 
-Pagekit offers two different caching methods `apc` and `file`. Initially the cache is set to `auto` so Pagekit will select the caching method automatically.
+In `cache` section the configured caching method is stored. Initially the cache is set to `auto`.
 
-| Field | Description |
-|-------|-------------|
-| `storage` | Configure which cache system should be used by Pagekit. The possible values are `auto`, `file` and `apc`. |
+| Setting | Description |
+|---------|-------------|
+| 'auto' | Pagekit will automatically select the best caching method that is available. |
+| 'apc' | Set the caching method to use [APC](http://www.php.net/manual/de/book.apc.php) |
+| 'file' | Set the caching method to store caching data in a file in '/app/cache' |
 
 
-In this example the caching method is selected automatically:
+Example:
 ```php
-'cache' =>
-  array (
-    'storage' => 'auto',
-  ),
+'cache' => array (
+    'caches' => array (
+        'main' => array (
+            'storage' => 'auto'
+        )
+    )
+),
 ```
 
 
@@ -76,7 +83,7 @@ When enabled, you will see the profiler toolbar at the bottom of the page.
 |-------|-------------|
 | `enabled` | Enable or disable the profiler. |
 
-In this example the profiler is disabled:
+Example:
 ```php
 'profiler' =>
   array (

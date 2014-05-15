@@ -32,7 +32,7 @@ extension.
 ## Upload
 
 From the command line, use the `pagekit` command line tool to upload your
-extension.
+extension. In this example `foobar` is the extension name.
 
 ```
 ./pagekit extension:upload foobar

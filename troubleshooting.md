@@ -11,8 +11,11 @@ Check, if your webserver meets the system requirements mentioned in the [Quickst
 
 If outdated data stored in the cache causes unexpected behavior, clearing the cache will fix these issues.
 
-- **From the browser**: Go to the *Settings* screen and click on the *Clear Cache* button.
-- **From the command line**: You can also clear the cache with Pagekit's command line interface. Open terminal and change to the Pagekit folder, then run `./pagekit clear-cache`.
+###From the browser
+Go to the *Settings* screen and click on the *Clear Cache* button.
+
+###From the command line
+You can also clear the cache with Pagekit's command line interface. Open terminal and change to the Pagekit folder, then run `./pagekit clear-cache`.
 
 
 ## System Information

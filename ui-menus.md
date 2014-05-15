@@ -2,7 +2,7 @@
 
 This is the place where you manage the site's menus. You can see an overview of all menus on the left and their pending items on the right. Hover over a single entry to see an edit and remove button for that menu.
 
-![Menu overview](/images/menu-overview.png)
+![Menu overview](images/menu-overview.png)
 
 Items can be arranged quickly via drag-and drop. Click the green or red circle in the status column to enable or disable a menu item.
 

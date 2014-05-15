@@ -10,7 +10,7 @@ A user's profile contains a *Username* (used to login, limited to alphanumeric c
 
 The user's profile picture is displayed as a [Gravatar](https://gravatar.com/) depending on the given email address.
 
-![Users overview](/images/users.png)
+![Users overview](images/users.png)
 
 ## Permissions
 

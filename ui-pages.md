@@ -6,8 +6,8 @@ A slug is a computer friendly version of the title so that it can be included in
 
 By default, the page is *unpublished*. When you are done creating the content and saving the page, click the red *unpublished* label to publish the page.
 
-![Pages overview](/images/pages-overview.png)
+![Pages overview](images/pages-overview.png)
 
 Page settings are available from the overview - or from the single page edit view.
 
-![Edit a page](/images/pages-edit.png)
+![Edit a page](images/pages-edit.png)

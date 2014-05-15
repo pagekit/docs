@@ -4,4 +4,4 @@ The Dashboard is the first thing you see when entering the Pagekit administratio
 
 It is up to you what information you want to have displayed here. To manage which widgets are being displayed and what order they appear in, go to *Settings > Dashboard*.
 
-![Dashboard](/images/dashboard.png)
+![Dashboard](images/dashboard.png)

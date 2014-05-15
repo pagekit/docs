@@ -26,7 +26,7 @@ You will be asked for the following information:
 | *Email*         | Enter your email address. |
 | *PHP Namespace* | PHP namespace of the extension, e.g. `Pagekit\Hello`. |
 
-This produces the following file structure inside the directory `extensions/hello`. You can also just create the files manually, in case you do not want to use the command line tool.
+This produces the following file structure inside the directory `/extensions/hello`. You can also just create the files manually, in case you do not want to use the command line tool.
 
 | Folder / File | Description |
 |---------------|-------------|

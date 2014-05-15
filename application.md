@@ -1,4 +1,4 @@
-# The Application
+# Application
 
 All services you have available in Pagekit are set as dependency-injected
 properties at the `Application` instance. `$app['db']` for example will give you
@@ -60,7 +60,7 @@ trait `Pagekit\Framework\ApplicationTrait`, so you are not limited to
 `extend`, as seen in the above example, but you can also insert the
 functionality provided with the `use` keyword.
 
-**Important**: This breaks PHP 5.3 compatibility.
+**Important** This breaks PHP 5.3 compatibility.
 
 ```PHP
 namespace Pagekit\HelloExtension;

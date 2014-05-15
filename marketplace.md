@@ -6,7 +6,7 @@ admin interface.
 
 ## Get an API key
 
-Log in on pagekit.com and grab your *API key* from the account settings.
+Log in on the [Pagekit website](http://pagekit.com) and grab your *API key* from the account settings.
 Navigate to your local Pagekit installation and paste the key in the
 according textbox in *Settings > System*.
 

@@ -60,9 +60,9 @@ Here is how to understand a route:
 
 | Route  | Description |
 |--------|-------------|
-| **Name** `@hello/hello/settings`                                          | The name of the route, can be used to generate URLs (has to be unique). |
-| **URI** `/hello/settings`                                                 | The path to access this route in the browser. |
-| **Action** `Pagekit\Hello\Controller\DefaultController::settingsAction`   | The controller action that will be called. |
+| Name <br> `@hello/hello/settings`                                          | The name of the route, can be used to generate URLs (has to be unique). |
+| URI <br> `/hello/settings`                                                 | The path to access this route in the browser. |
+| Action <br> `Pagekit\Hello\Controller\DefaultController::settingsAction`   | The controller action that will be called. |
 
 By default, routes will be of the form `http://example.com/<extension>/<controller>/<action>`. A special action is
 `indexAction` which will not be mounted at `.../index`, but at `.../`.

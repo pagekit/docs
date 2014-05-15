@@ -9,17 +9,19 @@ Make sure your server meets the following requirements.
 - Apache 2.2+
 - MySQL Server 5.1+
 - PHP Version 5.3.7+
-- PHP extensions:
-  - JSON extension
-  - Session extension
-  - ctype extension
-  - Tokenizer extension
-  - SimpleXML extension
-  - cURL extension
-  - mbstring extension
-  - PCRE extension (version 8.0+)
-  - ZIP extension
-  - PDO extension with MySQL drivers
+
+**PHP extensions**
+
+- JSON extension
+- Session extension
+- ctype extension
+- Tokenizer extension
+- SimpleXML extension
+- cURL extension
+- mbstring extension
+- PCRE extension (version 8.0+)
+- ZIP extension
+- PDO extension with MySQL drivers
 
 ## Installation
 

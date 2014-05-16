@@ -7,23 +7,25 @@ Pagekit includes capabilities for extensions and themes to display their message
 Pagekit's core extensions come with language files provided.
 
 ```
-.
-+-- languages
-|   +-- /en_US
-|   |   +-- messages.po
-|   |   +-- messages.mo
-|   +-- /de_DE
-|   |   +-- messages.po
-|   |   +-- messages.mo
-|   +-- messages.pot
+/languages
+
+  /en_US
+    messages.po
+    messages.mo
+
+  /de_DE
+    messages.po
+    messages.mo
+
+  messages.pot
 ```
 
 | Folder / File  | Description |
 |----------------|-------------|
-| `messages.pot`                   | This is the main file to include all translatable strings with their default translation (usually just the English version). This file is used as a base to create localized versions. |
 | `/en_US` <br> `/de_DE`           | Each folder corresponds to a locale, its name is used to match the user's locale. |
 | `messages.po`                    | The localized version based on `messages.pot`. |
 | `messages.mo`                    | A binary version compiled from `messages.po`. Translation will work without this file, but it will probably be a tiny bit slower. |
+| `messages.pot`                   | This is the main file to include all translatable strings with their default translation (usually just the English version). This file is used as a base to create localized versions. |
 
 The translation is a simple mapping from the English version of the string to a localized version.
 

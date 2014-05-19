@@ -27,7 +27,7 @@ Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.o
 
 ### Resources
 
-The `resources`property is an array with two keys.
+The `resources` property is an array with two keys.
 
 | Property  | Description |
 |-----------|-------------|
@@ -46,7 +46,7 @@ The `resources`property is an array with two keys.
 ),
 ```
 
-You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
+**Note** You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
 
 ### Settings
 

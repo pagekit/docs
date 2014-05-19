@@ -2,10 +2,9 @@
 
 Widgets are components that render small chunks of content. To determine where
 that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
-in specific widget positions that are defined by the theme. Extensions and themes can come with widgets, with no difference in development.
+in specific widget positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
 ## Basic structure
-
 
 The central location of the widget's behaviour is defined in a class
 that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
@@ -70,7 +69,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
 ```
 
 **Important** In order for this example to work make sure to create a view file
-`hello/views/widget.php` that could look like as follows.
+`hello/views/widget.php` that could contain the following.
 
 ```HTML
 Hello Widget!
@@ -104,9 +103,8 @@ Read and write single settings properties with:
 
 ## Register the widget
 
-We've now created the basic widget behaviour. Now we have to make sure
-Pagekit knows about the widget. This is done in the `extension.php` (or
-`theme.php`).
+Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `extension.php` or
+`theme.php`.
 
 ```PHP
 <?php
@@ -184,6 +182,8 @@ class HelloExtension extends Extension
 }
 ```
 
-To add a widget to your admin dashboard, navigate to *Settings > Dashboard* in
-the admin area, click *Add Widget* and choose the *Hello Widget*. Save and
-go to the admin dashboard to see your widget in action.
+To see your widget in action, add it to your admin dashboard:
+
+1. Open *Settings > Dashboard* in the admin area.
+2. Click *Add Widget* and choose the *Hello Widget*.
+3. Save and go to the admin dashboard to view the widget

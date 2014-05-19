@@ -72,8 +72,8 @@ In `cache` section the configured caching method is stored. Initially the cache 
 
 ## Profiler
 
-If you are a developer, you'll want to enable the profiler. It collects data about the requests that are made, monitors the memory usage, counts database queries and so on. This is useful when debugging your code.
-When enabled, you will see the profiler toolbar at the bottom of the page.
+Enabling the profiler will give you valuable information as a developer. It collects data about the requests that are made, monitors the memory usage, counts database queries and so on. This is useful when debugging and profiling your code.
+When enabled, the profiler toolbar is located at the bottom of the page.
 
 | Field | Description |
 |-------|-------------|

@@ -4,15 +4,19 @@ You have started using Pagekit and want to add to its functionality - great!
 
 Some of Pagekit's default functionality has been implemented using extensions (Pages, the Installer and even the Admin interface). Also, search for the *Hello Extension* in the marketplace as it is a collection of examples and best-practices for extension development. Just browse the `/extensions` directory for a bit.
 
+## Basic structure
+
 There are several kinds of extensions, yet they all follow the same basic pattern. This chapter will give you a brief overview on the general approach. Just like with themes, the command line tool supports you in generating the skeleton file structure for your new extension:
 
-```
+```bash
 pagekit extension:generate <extension_name>
 ```
 
-To get started, let's build a simple extension called *Hello* (You can download the complete *Hello extension* from the marketplace).
+To get started, let's build a simple extension called *Hello*. 
 
-```
+**Note** You can download the complete *Hello extension* from the marketplace.
+
+```bash
 cd path/to/pagekit
 pagekit extension:generate hello
 ```
@@ -41,7 +45,7 @@ This produces the following file structure inside the directory `/extensions/hel
 
 ## Metadata
 
-`extension.json` is a JSON representation of your extension's metadata (license, author etc). This is mainly needed when distributing the extension via the marketplace, but is also important for how the extension is listed in the backend.
+`extension.json` is a JSON representation of your extension's metadata (license, author etc). This is mainly needed when distributing the extension via the [marketplace](marketplace.md), but is also important for how the extension is listed in the backend.
 
 ```json
 {

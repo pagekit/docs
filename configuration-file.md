@@ -55,9 +55,9 @@ In `cache` section the configured caching method is stored. Initially the cache 
 
 | Setting | Description |
 |---------|-------------|
-| 'auto' | Pagekit will automatically select the best caching method that is available. |
-| 'apc' | Set the caching method to use [APC](http://www.php.net/manual/de/book.apc.php) |
-| 'file' | Set the caching method to store caching data in a file in '/app/cache' |
+| `auto` | Pagekit will automatically select the best caching method that is available. |
+| `apc` | Set the caching method to use [APC](http://www.php.net/manual/de/book.apc.php) |
+| `file` | Set the caching method to store caching data in a file in '/app/cache' |
 
 
 ```php

@@ -72,7 +72,7 @@ the next sections.
 ## Annotations
 
 A lot of the controller's behavior is determined by information annotated to
-the class and methods, here is a quick overview, a detailed description for each annotation follows below.
+the class and methods. Here is a quick overview, a detailed description for each annotation follows below.
 
 | Annotation       | Description |
 |------------------|-------------|

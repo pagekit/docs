@@ -86,23 +86,26 @@ To translate your extension, use the command line to which will extract all tran
 
 This will create `/extension/hello/languages/messages.pot` which includes all translateable strings. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
 
-Create a folder for the locale you want to translate for (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). The advantage of tools like this is the automatic creation of the binary \*.mo file.
+Create a folder for the locale you want to translate for (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). The advantage of tools like this is the automatic creation of the binary `*.mo` file.
 
 ## Update language files
 
-When you add, remove and change some strings in your extension and re-run `./pagekit extension:translate hello`, the `messages.pot` file will be regenerated. You now need to update your localized \*.po and \*.mo files. Of course this can be done manually. If you're using [poEdit](http://www.poedit.net/) though, there's a better method.
+When you add, remove and change some strings in your extension and re-run `./pagekit extension:translate hello`, the `messages.pot` file will be regenerated. You now need to update your localized `*.po` and `*.mo` files. Of course this can be done manually. If you're using [poEdit](http://www.poedit.net/) though, there's a better method.
 
-In poEdit, open the already localized file, i.e. `/de_DE/messages.po`. Now, from the menu, choose *Catalog > Update from POT file* and select the newly generated `messages.pot`. You will be presented with the changes and differences between the two files. Include translations for any new strings and save the file. `messages.mo` will automatically be saved as well.
+1. Open the already localized file in poEdit, i.e. `/de_DE/messages.po`
+2. From the menu, choose *Catalog > Update from POT file*
+3. Select the newly generated `messages.pot`. 
+4. In the next dialog, include translations for any new strings and save the file. `messages.mo` will automatically be saved as well.
 
 ## How a locale is determined
 
-When the installer is run, the locale is determined automatically by checking what locales the user's browser accepts.
+When the Installer is run, the locale is determined automatically by checking what locales the user's browser accepts. When Pagekit has been set up, you can set the language in the admin area. 
 
-When Pagekit has been set up, you can set the language in the admin area. Note how only languages are available that the system extension knows. That means that even if an extension comes with languages files for [Taushiro](http://en.wikipedia.org/wiki/Taushiro_language), you can only ever set a locale that is available for the system extension.
+**Note** You can only select languages that are available for the system extension.
 
 ## Working with message domains
 
-The `__(...)`/`@trans` function and the `_c(...)`/`@transchoice` function have a third parameter to set a *domain*. The default domain is called `messages`, which is why we have been dealing with `messages.*` files so far. All extensions share their strings in this domain. That is why strings translated by the system extension can be used right away without the need to translate them again. This includes common terms like *Save*, *Error* or the names of the months.
+The `__(...)`/`@trans` function and the `_c(...)`/`@transchoice` function have a third parameter to set a *domain*. The default domain is called `messages`, which is why we have been dealing with `messages.*` files so far. All extensions share their strings in this domain. That is why strings translated by the system extension can be used right away without the need to translate them again. This includes common terms like *Save*, *Error* or the name of a *month*.
 
 Indeed, when we called `./pagekit extension:translate hello` earlier, the resulting `messages.pot` did not include any of the system's messages, even if they occured in the hello extension.
 

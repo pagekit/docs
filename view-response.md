@@ -57,8 +57,10 @@ by the theme. That is why the above examples don't just generate two lines of
 output but a complete HTML document. To disable this, you can set the
 `layout` parameter to `false`.
 
-- Using the annotation: `@View("hello/index.razr.php", layout=false)`
-- Using the service directly: `$this('view')->setLayout(false);`
+| Method                       | Example                                      |
+|------------------------------|----------------------------------------------|
+| Using the annotation         | `@View("hello/index.razr.php", layout=false)`|
+| Using the `view` service     | `$this('view')->setLayout(false);`           |
 
 Or provide a different layout `$this('view')->setLayout('hello/theme.razr.php');`
 
@@ -108,7 +110,7 @@ Translateable pluralisation.
 @transchoice('{0} No posts found|{1} %posts% post found|]1,Inf[ %posts% posts found', users|length, ['%posts%' => posts|length])
 ```
 
-More about i18n (internationalization) in a later chapter.
+More about i18n (internationalization) in the [translation chapter](translation.md).
 
 ## Response
 

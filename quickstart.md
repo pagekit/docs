@@ -16,7 +16,7 @@ In addition, Pagekit needs certain PHP extensions to be enabled. Check out the d
 
 First of all, extract the downloaded archive and copy the contained folders and files to your webserver directory.
 
-### Set the permissions
+### 1. Set the permissions
 
 Before you start with the installation process, ensure that the folders you've just uploaded have the right permission settings. We recommend CHMOD *755*. Pagekit needs to be able to write to the following files and directories and each of their subdirectories:
 
@@ -32,11 +32,11 @@ The actual permission settings depend on the user that the webserver is running 
 
 **Important** You should always avoid *777* permissions on your production webserver, since this will allow anyone who has access to the machine to edit the files.
 
-### Create the database
+### 2. Create the database
 
 Next thing we need to do is create an empty database for Pagekit to work with using a tool like [phpMyAdmin](http://http://www.phpmyadmin.net/). If your hoster limits you to only one database which is already used by another application, you can still use it. Pagekit prefixes its tables to avoid conflicts.
 
-### Run the installation
+### 3. Run the installation
 
 Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver followed by `/installer`, e.g. `http://example.com/pagekit/installer`. This will take you to the start screen of the installation.
 

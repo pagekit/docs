@@ -1,6 +1,6 @@
 # Controller
 
-The controller is the central location for handling requests, setting routes
+The Controller is the central location for handling requests, setting routes
 and rendering views from your extension.
 
 ## Routing basics
@@ -13,7 +13,7 @@ first is the one being used. As this is framework internal behavior that might
 change, you should not rely on this but rather make sure your routes are unique. If no route exists for a requested URL, a 404 error will be shown.
 
 
-## General controller structure
+## Basic structure
 
 Your Controller is a class that needs to be linked from your `extension.php`
 (see [Configuration](configuration.md) for details). While a controller class does not necessarily have to extend
@@ -45,6 +45,7 @@ class HelloController extends Controller
     {
         // ...
     }
+?>
 ```
 
 The class is annotated with `@Route("/hello")`, causing the Controller to
@@ -74,15 +75,23 @@ the next sections.
 A lot of the controller's behavior is determined by information annotated to
 the class and methods.
 
+| Annotation       | Description |
+|------------------|-------------|
+| `@Route`         | Route to mount an action or the whole controller.  |
+| `@View`          | The view file used for rendering.                  |
+| `@Request`       | Handle parameter passing from the http request to the method.  |
+| `@Access`        | Check for user permissions.                        |
+| `@Token`         | Protection against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery).            |
+
 ### @Route
 
 Define the route the controller (or controller action) will be mounted at. Can be
 annotated to class and method definitions.
 
-  By default, a method called `greetAction` will be mounted as `/greet` under the
-  class' route. To add custom routes, you can add any number of additional routes
-  to a method. Routes can also include parameters which will be passed to the
-  method.
+By default, a method called `greetAction` will be mounted as `/greet` under the
+class' route. To add custom routes, you can add any number of additional routes
+to a method. Routes can also include parameters which will be passed to the
+method.
 
   ```php
     /**
@@ -96,11 +105,11 @@ annotated to class and method definitions.
     }
   ```
 
-  Parameters can be specified to fulfil certain requirements (for example limit
-  to numbers). You can name a route so that you can reference from your
-  code. use `defaults` in case a parameter was not specified by the user
+Parameters can be specified to fulfil certain requirements (for example limit
+to numbers). You can name a route so that you can reference from your
+code. use `defaults` in case a parameter was not specified by the user
 
-  ```php
+```php
     /**
      * @Route("/view/{id}", name="@hello/view/id", requirements={"id"="\d+"})
      */
@@ -108,16 +117,14 @@ annotated to class and method definitions.
     {
         // ...
     }
-  ```
+```
 
 
 ### @View
 
-The view file to be rendered.
+Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr.php`:
 
-  Render `<extensions>/hello/views/index.razr.php`:
-
-  ```php
+```php
     /**
      * @View("hello/view.razr.php")
      */
@@ -126,24 +133,22 @@ The view file to be rendered.
         // ...
         return array('id' => $id);
     }
-    ```
+```
 
-  More about view rendering in the [View and Response](view-response.md) chapter.
+More about view rendering in the [View and Response](view-response.md) chapter.
 
 
 ### @Request
 
-  Handle parameter passing from the http request to the method.
+You can specify the types of data passed via GET and POST request and match
+them to parameters passed to the annotated method.
 
-  You can specify the types of data passed via GET and POST request and match
-  them to parameters passed to the method.
+The array maps *name* to *type*. *name* is the key inside the request data.
+*type* can be `int`, `string`, `array` and advanced types like `int[]` for an
+array of integers. If not type is specified, `string` is assumed by default.
 
-  The array maps *name* to *type*. *name* is the key inside the request data.
-  *type* can be `int`, `string`, `array` and advanced types like `int[]` for an
-  array of integers. If not type is specified, `string` is assumed by default.
-
-  The order of the keys will define the order in which parameters are being
-  passed to the method. The parameter name in the method head can be anything.
+The order of the keys will define the order in which parameters are being
+passed to the method. The parameter name in the method head can be anything.
 
   ```php
   /**
@@ -154,14 +159,14 @@ The view file to be rendered.
 
 ### @Access
 
-  Check for user permissions.
+You can specify certain user permissions required to access a specific method or the whole controller.
 
-  Controllers should always be specific for the frontend or the backend. So
-  far we have seen controllers for the frontend. A backend (or admin) controller
-  will only be accessible for users with the admin area access permission. Also, all
-  routes for that controller will have a leading `admin/` in the URL. As a
-  result, views will also render in the admin layout and not in the default
-  theme layout.
+Controllers should always be specific for the frontend or the backend. So
+far we have seen controllers for the frontend. A backend controller
+will only be accessible for users with the admin area access permission. Also, all
+routes for that controller will have a leading `admin/` in the URL. As a
+result, views will also render in the admin layout and not in the default
+theme layout.
 
   ```php
   /**
@@ -170,16 +175,16 @@ The view file to be rendered.
   class SettingsController { ...
   ```
 
-  Now, only users with the admin area access permission can access the controller
-  actions. If you want to use further restrictions and only allow certain users
-  to do specific actions (like manage users etc.) you can add restrictions to
-  single controller actions.
+Now, only users with the admin area access permission can access the controller
+actions. If you want to use further restrictions and only allow certain users
+to do specific actions (like manage users etc.) you can add restrictions to
+single controller actions.
 
-  Define permissions in the `extension.php` (or `theme.php`) and
-  combine them however you want. Access restrictions from the controller level will
-  be combined with access restrictions on the single actions. Therefore you can
-  set a basic *minimimum* access level for your controller and limit certain
-  actions (like administrative actions) to users with more specific permissions.
+Define permissions in the `extension.php` (or `theme.php`) and
+combine them however you want. Access restrictions from the controller level will
+be combined with access restrictions on the single actions. Therefore you can
+set a basic *minimimum* access level for your controller and limit certain
+actions (like administrative actions) to users with more specific permissions.
 
   ```php
     /**
@@ -188,9 +193,9 @@ The view file to be rendered.
     public function saveAction() { ... }
   ```
 
-  Of course, you can also use these restrictions even if the controller is no
-  admin area controller. You can also check for admin permissions on single controller
-  actions.
+Of course, you can also use these restrictions even if the controller is no
+admin area controller. You can also check for admin permissions on single controller
+actions.
 
   ```php
     /**
@@ -201,8 +206,8 @@ The view file to be rendered.
 
 ### @Token
 
-  Check for Token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `@Token` to your action annotation and include the `@token()` call in the
-  view that submits a form to this method.
+Check for Token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `@Token` to your action annotation and include the `@token()` call in the
+view that submits a form to this method.
 
 ## Generating URLs
 

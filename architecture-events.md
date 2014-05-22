@@ -9,10 +9,13 @@ To get an overview of the files and folders in Pagekit see the [Folder Structure
 
 ## Architecture
 
-In the center of Pagekit's architecture sits the Application, an instance of
+### Application
+
+In the center of Pagekit's architecture sits the application, an instance of
 `Pagekit\Framework\Application`. The application is the first instance to
 receive a request and return a response (more to that in the *request lifecycle*
-section).
+section). It holds a `Router` object which sits on top of the `HttpKernel`
+that takes care of the lowest level of request handling.
 
 The application also functions as a [Pimple dependency injection container](http://pimple.sensiolabs.org/),
 the main location to hold all service providers. Service providers are a
@@ -20,14 +23,13 @@ central concept to understand, as they bundle the functionality of certain
 components and other parts of the framework and make it accessible throughout
 the application - also from your extensions and themes.
 
+### Service Providers
+
 A service provider is a class that implements the two methods `register` and
 `boot`. The `register` method will be called in the Application's bootstrap
 phase, the `boot` in the Application's request handling process.
 `register` is expected to assign the service to a property of the Application,
 i.e. `$app['db']` to access the database service from every point in the code.
-
-The application holds a `Router` object which sits on top of the `HttpKernel`
-which takes care of the lowest level of request handling.
 
 Communication of the different parts of the system happens through events. More
 to that in the *Events* section below.
@@ -146,8 +148,4 @@ actually come from the kernel, you can find them with a detailed description
 in `Symfony\Component\HttpKernel\KernelEvents`. Since every component can
 dispatch events at any given time, there are a lot of different events.
 
-A great tool to see the events is the profiler toolbar that you can enable in
-Pagekit's admin area in the *Settings > System* section. You will get a bar
-at the bottom of the browser window - just navigate to the *Events* tab to see
-a detailed overview of events in your system and event listeners that were not
-called during this request.
+**Note** A great tool to see all events is the profiler toolbar that you can enable in Pagekit's admin area.

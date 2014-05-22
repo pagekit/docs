@@ -4,13 +4,13 @@ When you are done developing your extension, you will want to put it in the
 Pagekit marketplace. By this, it will be installable from any Pagekit
 admin interface.
 
-## 1. Get an API key
+## Get an API key
 
 Log in on the [Pagekit website](http://pagekit.com) and grab your *API key* from the account settings.
 Navigate to your local Pagekit installation and paste the key in the
 according textbox in *Settings > System*.
 
-## 2. Create a package
+## Create a package
 
 Before we can upload our extension for the first time, we have to create
 a package in the marketplace.
@@ -29,41 +29,42 @@ package. Leave this as it is, but notice how the *Status* of the package is set
 to *Unpublished* by default. We'll get back to this after uploading our
 extension.
 
-## 3. Upload
+## Upload
 
 From the command line, use the `pagekit` command line tool to upload your
 extension. In this example `foobar` is the extension name.
 
-```
+```bash
 ./pagekit extension:upload foobar
 ```
 
 **Note** If the command fails with `Error: package not found`, please make sure the
 extension name matches the package name in the marketplace.
 
-## 4. Alternative upload
+## Alternative upload
 
-If, for any reason, you prefer not to use the command line tool to upload
-your extension, you can simply *zip* the contents of your extension folder,
-navigate to the *Releases* tab of your extension on pagekit.com and select the file
-upload to upload a new release manually.
+If, for any reason, you prefer not to use the command line tool you can also upload your extension manually.
 
-Be careful to have your files on the root level of the zip file or the file
-will not be considered a valid package.
+1. Simply *zip* the contents of your extension folder.
+2. Login to [pagekit.com](http://pagekit.com), navigate to your extension and select the *Releases* tab.
+3. Upload the ZIP file and a new, but still unpublished release will be created automatically.
 
+**Note** Be careful to have your files on the root level of the zip file or the file will not be considered a valid package.
 
-## 5. Releases
+## Releases
 
-Switch back to the browser and navigate to the *Releases* tab of your
-extension (you might need to refresh your browser to see your new upload). You
-will see a newly generated release *0.0.1* which is still marked
-as *Draft*. Hit the *Publish* button next to the release to make the release
-publicly available. Still, your package is *unpublished*. Switch to the
-*Settings* tab to set the *Status* of your package to *Published*.
+When an extension has been uploaded you still have to release it before it can be accessed from the marketplace.
+
+1. Login to [pagekit.com](http://pagekit.com), navigate to your extension and select the *Releases* tab (refresh the page if the needed).
+2. A newly generated release *0.0.1* is available but still marked
+as *Draft*. This version number is taken from the extension's `extension.json` or the theme's `theme.json`.
+3. Hit the *Publish* button next to the release to make the release
+available to the public.
+4. Switch to the *Settings* tab and set the *Status* of your package to *Published* as well.
 
 Congratulations, your extension is now part of the Pagekit marketplace.
 
-## 6. Versions
+## Versions
 
 When you have finished a new version of your extension and try to upload it
 to the marketplace, make sure to increase the *version* number in the

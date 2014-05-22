@@ -4,7 +4,7 @@ Widgets are components that render small chunks of content. To determine where
 that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
 in specific widget positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
-## 1. Basic structure
+## Basic structure
 
 The central location of the widget's behaviour is defined in a class
 that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
@@ -77,7 +77,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
 Hello Widget!
 ```
 
-## 2. Read and write widget configuration
+## Read and write widget configuration
 
 As you can see, the methods `getInfo`, `render` and `renderForm` have a `$widget`
 parameter of the type `WidgetInterface`. That object holds a representation
@@ -103,7 +103,7 @@ Read and write single settings properties with:
 | `set($name, $value)`           | Write a specific widget setting. |
 | `remove($name)`                | Remove a specific widget setting.|
 
-## 3. Register the widget
+## Register the widget
 
 Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `extension.php` or
 `theme.php`.
@@ -138,7 +138,7 @@ instance to register our `HelloWidget`. Note how `register` requires the
 given class to implement `TypeInterface` as we've seen in the sample code
 above.
 
-## 4. Try out your widget
+## Try out your widget
 
 Go to the admin area and make sure to enable the extension. You can download
 the `HelloExtension` from the marketplace, which will include the `HelloWidget`.

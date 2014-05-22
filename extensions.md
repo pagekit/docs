@@ -4,7 +4,7 @@ You have started using Pagekit and want to add to its functionality - great!
 
 Some of Pagekit's default functionality has been implemented using extensions (Pages, the Installer and even the Admin interface). Also, search for the *Hello Extension* in the marketplace as it is a collection of examples and best-practices for extension development. Just browse the `/extensions` directory for a bit.
 
-## 1. Basic structure
+## Basic structure
 
 There are several kinds of extensions, yet they all follow the same basic pattern. This chapter will give you a brief overview on the general approach. Just like with themes, the command line tool supports you in generating the skeleton file structure for your new extension:
 
@@ -43,7 +43,7 @@ This produces the following file structure inside the directory `/extensions/hel
 
 **Important** Can't see your changes in the frontend? Don't forget to enable your extension in the admin area.
 
-## 2. Metadata
+## Metadata
 
 `extension.json` is a JSON representation of your extension's metadata (license, author etc). This is mainly needed when distributing the extension via the [marketplace](marketplace.md), but is also important for how the extension is listed in the backend.
 
@@ -68,7 +68,7 @@ This produces the following file structure inside the directory `/extensions/hel
 }
 ```
 
-## 3. Configuration
+## Configuration
 
 `extension.php` contains PHP code for extension configuration. The default file that is created takes care of autoloading your controllers and other classes in your namespace. It also determines your main Extension instance (with `HelloExtension` being a subclass of `Pagekit\Framework\Extension`). It also registers the resource locator `view://` to be expanded into the absolute path of the `views` folder inside your extension.
 

@@ -53,7 +53,6 @@ The `resources` property is an array with two keys.
 Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
 
 
-
 ```php
 'settings' => array(
     'system'  => 'hello/admin/settings.razr.php'
@@ -152,7 +151,7 @@ Create the according file holding a form with all your configuration options, i.
 You can create any form element as long as you keep to a certain naming convention. The form is supposed to send an array of options,
 therefore all input fields are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.
 
-Remember to include `@token()` inside your form for security purposes.
+**Note** Remember to include `@token()` inside your form for security purposes.
 
 Your settings screen will be accessible from the extensions (or theme) overview.
 

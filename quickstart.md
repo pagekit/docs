@@ -1,6 +1,8 @@
 # Quickstart
 
-Download the latest version from the [Pagekit website](http://pagekit.com). This document will guide you through the installation process.
+<p class="uk-article-lead">This document will guide you through Pagekit's installation process.</p>
+
+<a class="uk-button uk-button-large uk-button-primary" href="http://pagekit.com">Download Pagekit</a>
 
 ## System requirements
 

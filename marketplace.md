@@ -4,13 +4,13 @@ When you are done developing your extension, you will want to put it in the
 Pagekit marketplace. By this, it will be installable from any Pagekit
 admin interface.
 
-## Get an API key
+## 1. Get an API key
 
 Log in on the [Pagekit website](http://pagekit.com) and grab your *API key* from the account settings.
 Navigate to your local Pagekit installation and paste the key in the
 according textbox in *Settings > System*.
 
-## Create a package
+## 2. Create a package
 
 Before we can upload our extension for the first time, we have to create
 a package in the marketplace.
@@ -29,7 +29,7 @@ package. Leave this as it is, but notice how the *Status* of the package is set
 to *Unpublished* by default. We'll get back to this after uploading our
 extension.
 
-## Upload
+## 3. Upload
 
 From the command line, use the `pagekit` command line tool to upload your
 extension. In this example `foobar` is the extension name.
@@ -41,7 +41,7 @@ extension. In this example `foobar` is the extension name.
 **Note** If the command fails with `Error: package not found`, please make sure the
 extension name matches the package name in the marketplace.
 
-## Alternative upload
+## 4. Alternative upload
 
 If, for any reason, you prefer not to use the command line tool to upload
 your extension, you can simply *zip* the contents of your extension folder,
@@ -52,7 +52,7 @@ Be careful to have your files on the root level of the zip file or the file
 will not be considered a valid package.
 
 
-## Releases
+## 5. Releases
 
 Switch back to the browser and navigate to the *Releases* tab of your
 extension (you might need to refresh your browser to see your new upload). You
@@ -63,7 +63,7 @@ publicly available. Still, your package is *unpublished*. Switch to the
 
 Congratulations, your extension is now part of the Pagekit marketplace.
 
-## Versions
+## 6. Versions
 
 When you have finished a new version of your extension and try to upload it
 to the marketplace, make sure to increase the *version* number in the

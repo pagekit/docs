@@ -6,7 +6,7 @@ you will encounter will be in naming things `theme.php` instead of
 not to think in terms of developing a theme vs. developing an extension but
 rather understand that you have access to Pagekit's framework all the time.
 
-## Basic structure
+## 1. Basic structure
 
 The easiest way to get started with a new theme is by using
 our command line tool to create the skeleton file structure.
@@ -27,7 +27,7 @@ This produces the following file structure inside the directory `/themes/MY-THEM
 
 **Note** Can't see your changes in the frontend? Don't forget to enable your theme in the admin area.
 
-## Metadata
+## 2. Metadata
 
 `theme.json` is a JSON representation of your theme's metadata (license, author etc). This is mainly needed when distributing the theme via the marketplace, but is also important for how the theme is listed in the backend.
 
@@ -52,7 +52,7 @@ This produces the following file structure inside the directory `/themes/MY-THEM
 }
 ```
 
-## Configuration
+## 3. Configuration
 
 `theme.php` contains PHP code for the theme configuration. In the beginning it's fine to start with a `theme.php` that just returns an empty configuration array. You can set options later when you need them. We will talk about detailed configuration options in the [Configuration](configuration.md) chapter.
 
@@ -64,7 +64,7 @@ This produces the following file structure inside the directory `/themes/MY-THEM
 return array();
 ```
 
-## Templating
+## 4. Templating
 
 Templating in Pagekit is powered by the [Razr Templating engine](https://github.com/pagekit/razr). `/templates/template.razr.php` is the main layout file.
 Here's a minimal example:
@@ -87,7 +87,7 @@ Note how `@action(...)` calls an action that views and controllers can hook into
 
 Now head to the browser, enable your theme from the backend and give it a go. You should get a very plain output of your content. Now that you've seen the basics, let's go for something more fancy.
 
-## Adding CSS and JavaScript
+## 5. Adding CSS and JavaScript
 
 So far, our site looks pretty dull. To add some of your own CSS and JavaScript, add the following line in the `<head>` section of `/templates/template.razr.php`.
 
@@ -104,7 +104,7 @@ The mandatory first parameter is an identifier used to reference this script or 
 
 Note how the JavaScript in our example has two dependencies added as a list. These get resolved to be included before `/js/theme.js` is included. `jquery` and `uikit` are aliases that come pre-defined with Pagekit.
 
-## Widget positions
+## 5. Widget positions
 
 Positions are a concept of defining areas in your markup that are known to Pagekit, so that you can publish multiple widgets inside those positions. Usually, these positions are used for the logo, menus, sidebars and so on. In this example we want to add a footer position.
 
@@ -131,7 +131,7 @@ Inside `/templates/template.razr.php` you will determine the actual rendering lo
 
 Whenever a widget is published in the `footer` position, it will now be rendered at your specified location.
 
-## Renderer
+## 6. Renderer
 
 By default, a widget will be be rendered to the widget position without any additional markup. To change this, you can provide a custom renderer to the `render` function. A renderer can be implemented in PHP or using the Razr template engine.
 
@@ -163,7 +163,7 @@ The renderer could look like this:
 
 All widgets published in the footer position will now be rendered inside a `<div>` with the CSS class `.footerclass`. If the title should be displayed, it will be rendered as a `<h3>`.
 
-## Where to go from here?
+## 7. Where to go from here?
 
 Now that you have a basic theme, you may want to:
 

@@ -4,7 +4,7 @@ Widgets are components that render small chunks of content. To determine where
 that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
 in specific widget positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
-## Basic structure
+## 1. Basic structure
 
 The central location of the widget's behaviour is defined in a class
 that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
@@ -12,6 +12,8 @@ In the following example the class extends `ApplicationAware` in order to
 have `$this(‘view')` available for view rendering (and all other Application
 services actually). Don't be confused by this, a detailed explanation follows
 in the [Application](application.md) chapter.
+
+**Note** Wrapping a string in a call of the double underscore function `__(...)` makes it translatable. More on that in the [translation chapter](translation.md).
 
 `hello/src/HelloWidget.php`:
 
@@ -75,7 +77,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
 Hello Widget!
 ```
 
-## Read and write widget configuration
+## 2. Read and write widget configuration
 
 As you can see, the methods `getInfo`, `render` and `renderForm` have a `$widget`
 parameter of the type `WidgetInterface`. That object holds a representation
@@ -101,7 +103,7 @@ Read and write single settings properties with:
 | `set($name, $value)`           | Write a specific widget setting. |
 | `remove($name)`                | Remove a specific widget setting.|
 
-## Register the widget
+## 3. Register the widget
 
 Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `extension.php` or
 `theme.php`.
@@ -136,7 +138,7 @@ instance to register our `HelloWidget`. Note how `register` requires the
 given class to implement `TypeInterface` as we've seen in the sample code
 above.
 
-## Try out your widget
+## 4. Try out your widget
 
 Go to the admin area and make sure to enable the extension. You can download
 the `HelloExtension` from the marketplace, which will include the `HelloWidget`.

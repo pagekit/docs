@@ -1,5 +1,7 @@
 # Migrations
 
+<p class="uk-article-lead">Use migrations to run code when your extension is installed or updated.</p>
+
 An extension (or theme) can be either enabled, disabled or not installed.
 When changing the state, you might need to modify your database schema or run
 other custom code. To do so, there are three actions you can hook into.

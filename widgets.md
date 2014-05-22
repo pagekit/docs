@@ -1,8 +1,8 @@
 # Widgets
 
-Widgets are components that render small chunks of content. To determine where
-that content will be rendered, the admin area has a *Widgets* section where you can publish a widget
-in specific widget positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
+<p class="uk-article-lead">Widgets are components that render small chunks of content.</p> 
+
+To determine where a Widget's content will be rendered, the admin area has a *Widgets* section to publish widgets in specific positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
 ## Basic structure
 

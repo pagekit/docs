@@ -1,6 +1,6 @@
 # Troubleshooting
 
-If you run into problems with Pagekit, there are a few steps you should try.
+<p class="uk-article-lead">If you run into problems with Pagekit, there are a few steps you should try.</p>
 
 ## System requirements
 

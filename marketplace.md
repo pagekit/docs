@@ -1,8 +1,7 @@
 # Marketplace
 
-When you are done developing your extension, you will want to put it in the
-Pagekit marketplace. By this, it will be installable from any Pagekit
-admin interface.
+<p class="uk-article-lead">When you put your extension or them in the marketplace, it will be installable from any Pagekit
+admin interface.</p>
 
 ## Get an API key
 

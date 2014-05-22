@@ -1,6 +1,6 @@
 # Extensions
 
-You have started using Pagekit and want to add to its functionality - great!
+<p class="uk-article-lead">You have started using Pagekit and want to add to its functionality - great!</p>
 
 Some of Pagekit's default functionality has been implemented using extensions (Pages, the Installer and even the Admin interface). Also, search for the *Hello Extension* in the marketplace as it is a collection of examples and best-practices for extension development. Just browse the `/extensions` directory for a bit.
 

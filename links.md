@@ -1,5 +1,7 @@
 # Links
 
+<p class="uk-article-lead">Add your own link types with custom parameters to Pagekit.</p>
+
 Pagekit's concept of links allows for a reusable link picker (for
 example when linking from a menu item or when linking from the
 markdown editor). The user can choose a type of link and get further

@@ -1,6 +1,6 @@
 # Folder Structure
 
-The following table gives you an overview on the folder structure in Pagekit.
+<p class="uk-article-lead">The following table gives you an overview on the folder structure in Pagekit.</p>
 
 | Folder | Description |
 |--------|-------------|

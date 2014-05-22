@@ -1,8 +1,10 @@
 # Introduction
 
+<p class="uk-article-lead">Get starting with development of extensions and themes for Pagekit.</p>
+
 To always have our latest code revision (not necessarily stable), checkout our master branch from [github](https://github.com/pagekit/pagekit). To do so, change to your web server's directory in the terminal and run the following commands:
 
-```bash
+```shell
 git clone git@github.com:pagekit/pagekit.git
 composer install
 ```
@@ -13,7 +15,7 @@ Now open `/install` in the browser to run the web-based installer.
 
 A great tool you can - and should - consult for a lot of tasks is the Pagekit command line tool. To see a complete overview of all available commands, navigate to the Pagekit folder and run `./pagekit list`.
 
-```bash
+```shell
 cd path/to/pagekit/
 ./pagekit list
 ```

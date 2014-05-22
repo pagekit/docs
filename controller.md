@@ -1,7 +1,7 @@
 # Controller
 
-The Controller is the central location for handling requests, setting routes
-and rendering views from your extension.
+<p class="uk-article-lead">The Controller is the central location for handling requests, setting routes
+and rendering views from your extension.</p>
 
 ## Routing basics
 

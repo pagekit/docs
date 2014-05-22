@@ -25,7 +25,6 @@ service, `$this('view')` for the view service).
 
 ```php
 <?php
-
 namespace Pagekit\Hello\Controller;
 
 use Pagekit\Framework\Controller\Controller;
@@ -73,7 +72,7 @@ the next sections.
 ## Annotations
 
 A lot of the controller's behavior is determined by information annotated to
-the class and methods.
+the class and methods, here is a quick overview, a detailed description for each annotation follows below.
 
 | Annotation       | Description |
 |------------------|-------------|
@@ -94,15 +93,15 @@ to a method. Routes can also include parameters which will be passed to the
 method.
 
   ```php
-    /**
-     * @Route("/greet", name="@hello/greet/world")
-     * @Route("/greet/{name}", name="@hello/greet/name")
-     * @View("hello/greet.razr.php")
-     */
-    public function greetAction($name = 'World')
-    {
-        // ...
-    }
+/**
+ * @Route("/greet", name="@hello/greet/world")
+ * @Route("/greet/{name}", name="@hello/greet/name")
+ * @View("hello/greet.razr.php")
+ */
+public function greetAction($name = 'World')
+{
+    // ...
+}
   ```
 
 Parameters can be specified to fulfil certain requirements (for example limit
@@ -110,13 +109,13 @@ to numbers). You can name a route so that you can reference from your
 code. use `defaults` in case a parameter was not specified by the user
 
 ```php
-    /**
-     * @Route("/view/{id}", name="@hello/view/id", requirements={"id"="\d+"})
-     */
-    public function viewAction($id = 1)
-    {
-        // ...
-    }
+/**
+ * @Route("/view/{id}", name="@hello/view/id", requirements={"id"="\d+"})
+ */
+public function viewAction($id = 1)
+{
+    // ...
+}
 ```
 
 
@@ -125,14 +124,14 @@ code. use `defaults` in case a parameter was not specified by the user
 Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr.php`:
 
 ```php
-    /**
-     * @View("hello/view.razr.php")
-     */
-    public function viewAction($id = 1)
-    {
-        // ...
-        return array('id' => $id);
-    }
+/**
+ * @View("hello/view.razr.php")
+ */
+public function viewAction($id = 1)
+{
+    // ...
+    return array('id' => $id);
+}
 ```
 
 More about view rendering in the [View and Response](view-response.md) chapter.
@@ -151,10 +150,10 @@ The order of the keys will define the order in which parameters are being
 passed to the method. The parameter name in the method head can be anything.
 
   ```php
-  /**
-   * @Request({"id": "int", "title", "config": "array"})
-   */
-  public function saveAction($id, $title, $config) { ... }
+/**
+ * @Request({"id": "int", "title", "config": "array"})
+ */
+public function saveAction($id, $title, $config) { ... }
   ```
 
 ### @Access
@@ -169,10 +168,10 @@ result, views will also render in the admin layout and not in the default
 theme layout.
 
   ```php
-  /**
-  * @Access(admin=true)
-  */
-  class SettingsController { ...
+/**
+* @Access(admin=true)
+*/
+class SettingsController { ...
   ```
 
 Now, only users with the admin area access permission can access the controller
@@ -187,10 +186,10 @@ set a basic *minimimum* access level for your controller and limit certain
 actions (like administrative actions) to users with more specific permissions.
 
   ```php
-    /**
-    * @Access("hello: manage users")
-    */
-    public function saveAction() { ... }
+  /**
+  * @Access("hello: manage users")
+  */
+  public function saveAction() { ... }
   ```
 
 Of course, you can also use these restrictions even if the controller is no
@@ -198,10 +197,10 @@ admin area controller. You can also check for admin permissions on single contro
 actions.
 
   ```php
-    /**
-    * @Access("hello: edit article", admin=true)
-    */
-    public function editAction() { ... }
+  /**
+  * @Access("hello: edit article", admin=true)
+  */
+  public function editAction() { ... }
   ```
 
 ### @Token

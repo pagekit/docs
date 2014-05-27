@@ -1,5 +1,7 @@
 # Configuration
 
+<p class="uk-article-lead">Theme and extension configuration from a developer's perspective.</p>
+
 Both `theme.php` for a theme and `extension.php` for an extension are the bootstrap files for your custom code. Alongside the possibility to hook into system events and insert your own custom code, the file's main content is a configuration array with the following properties.
 
 ## General

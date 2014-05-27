@@ -1,5 +1,7 @@
 # Application
 
+<p class="uk-article-lead">Learn how to access and use the central `Application` instance.</p>
+
 All services you have available in Pagekit are set as dependency-injected
 properties at the `Application` instance. `$app['db']` for example will give you
 access to the database service.

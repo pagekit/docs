@@ -1,6 +1,6 @@
 # Widgets
 
-<p class="uk-article-lead">Widgets are components that render small chunks of content.</p> 
+<p class="uk-article-lead">Use Widgets to render small chunks of content at different positions of your site.</p> 
 
 To determine where a Widget's content will be rendered, the admin area has a *Widgets* section to publish widgets in specific positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 

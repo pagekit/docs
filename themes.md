@@ -1,5 +1,7 @@
 # Themes
 
+<p class="uk-article-lead">Create your own theme to control the look of your site.</p>
+
 Themes and extensions in Pagekit are very much the same. The biggest difference
 you will encounter will be in naming things `theme.php` instead of
 `extension.php` and a few basic configuration differences. Except for that, try

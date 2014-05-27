@@ -1,5 +1,7 @@
 # View and Response
 
+<p class="uk-article-lead">Render a view to the browser or send a custom response.</p>
+
 In most cases, the return value of a controller action will be a rendered view.
 Alternatively, you might want to return JSON data, redirect to a different page
 or return an error page. These tasks can be achieved with the View and Response

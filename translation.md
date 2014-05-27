@@ -1,6 +1,6 @@
 # Translation
 
-<p class="uk-article-lead">Pagekit includes capabilities for extensions and themes to display their messages in different languages.</p>
+<p class="uk-article-lead">Pagekit includes capabilities to display messages in different languages.</p>
 
 **Note** There is a difference between languages and locales, as there might be different versions of a certain language spoken in a particular region (for example `en_GB` vs. `en_US`).
 
@@ -80,15 +80,15 @@ An interval can represent a finite set of numbers: `{1,2,3,4}` and it can repres
 
 ## Create Language files
 
-To translate your extension, use the command line to which will extract all translateable string from your extension.
+To translate your own extension, use the command line tool which will extract all translateable strings.
 
 ```bash
 ./pagekit extension:translate hello
 ```
 
-This will create `/extension/hello/languages/messages.pot` which includes all translateable strings. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
+This will create `/extension/hello/languages/messages.pot` including all strings that have been found. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
 
-Create a folder for the locale you want to translate for (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). The advantage of tools like this is the automatic creation of the binary `*.mo` file.
+Create a folder for the locale you want to provide (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). An advantage of tools like this is the automatic creation of the binary `*.mo` file.
 
 ## Update language files
 

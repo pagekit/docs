@@ -1,9 +1,8 @@
 # Configuration File
 
-Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug, profiler and cache settings.
+<p class="uk-article-lead">Change settings in Pagekit's configuration file.</p>
 
-You can configure the settings in Pagekit *Settings > System* or edit them in this config file.
-
+Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug, profiler and cache settings. You can configure the settings in Pagekit *Settings > System* or edit them in this config file.
 
 ## Database
 

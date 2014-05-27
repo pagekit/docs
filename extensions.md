@@ -1,6 +1,6 @@
 # Extensions
 
-<p class="uk-article-lead">Add features of your own to Pagekit.</p>
+<p class="uk-article-lead">Create an extension to add features of your own to Pagekit.</p>
 
 Some of Pagekit's default functionality has been implemented using extensions (Pages, the Installer and even the Admin interface). Also, search for the *Hello Extension* in the marketplace as it is a collection of examples and best-practices for extension development. Just browse the `/extensions` directory for a bit.
 

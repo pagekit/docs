@@ -1,6 +1,6 @@
 # Introduction
 
-<p class="uk-article-lead">Get starting with development of extensions and themes for Pagekit.</p>
+<p class="uk-article-lead">Get started with development of extensions and themes for Pagekit.</p>
 
 To always have our latest code revision (not necessarily stable), checkout our master branch from [github](https://github.com/pagekit/pagekit). To do so, change to your web server's directory in the terminal and run the following commands:
 

@@ -1,6 +1,6 @@
 # Architecture and Events
 
-<p class="uk-article-lead">Learn about Pagekit's internal structure and how its component are connected.</p>
+<p class="uk-article-lead">Learn about Pagekit's internal structure and how its components are connected.</p>
 
 To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) doc. As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
 

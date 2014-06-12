@@ -19,7 +19,10 @@ Symfony components.
   6. [Users](ui-users.md)
   7. [Settings](ui-settings.md)
 
-3. Developer
+3. Guides
+  1. [How to create a theme](guide-theme.md)
+
+4. Developer
   1. [Introduction](introduction.md)
   2. [Themes](themes.md)
   3. [Extensions](extensions.md)
@@ -34,7 +37,7 @@ Symfony components.
   12. [Architecture and Events](architecture-events.md)
   13. [Translation](translation.md)
 
-4. Advanced
+5. Advanced
   1. [Option](api-option.md)
   2. [Database](database.md)
   3. Razr Templating

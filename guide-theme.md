@@ -27,7 +27,7 @@ Have a look at the generated `/themes/mytheme` folder. In this tutorial, we will
 
 ![Generated file structure](images/guide-theme-files.png)
 
-To begin with our theme, we just want to display a simple message. To do so, please open `themes/mytheme/templates/template.razr.php`, the content will look as follows.
+To begin with our theme, we just want to display a simple message. To do so, please open `themes/mytheme/templates/template.razr`, the content will look as follows.
 
 ```html
 <!DOCTYPE html>
@@ -61,7 +61,82 @@ Save the file and navigate to the Pagekit admin area in your browser to activate
 
 ## Set up the main layout
 
+We've managed to have our main template file display a message to the user. Our next task will be to replace this message with the content coming from Pagekit.
+
+To do so, simple replace the static message `<h1>Hello Pagekit.</h1>` with `@action('content')` inside your theme's `template.razr`.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        @action('head')
+    </head>
+    <body>
+        @action('content')
+    </body>
+</html>
+```
+
+Refresh in the browser and see some content appear in front of your eyes. If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something like the blog, a single blog post or a static page.
+
+We've already used the `@action` keyword twice and we will use it more often in the course of this guide. The basic idea here is that components in Pagekit (and any extension that is enabled) can register their content to specific actions. The `head` action for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
+
+Other `action` keyowrds include ... TODO: list all important actions (messages, ...?)
+
 ## Add CSS and JS
+
+Now that we have our basic markup, it's time to add some of our own styling. We'll also see how JavaScript files can be included comfortably.
+
+To add some basic styling, please create a `css/` folder inside your theme folder and add some CSS in `css/theme.css`.
+
+```CSS
+body {
+    background: #eee;
+    font-family: sans-serif;
+}
+```
+
+In `templates/template.razr`, add the following line right after `@action('head')`.
+
+```PHP
+@style('theme', 'theme://mytheme/css/theme.css')
+```
+
+Refresh your browser to make sure it picks up the style changes. As you can see, the `@style` directive generates the right `<link ...>` syntax. Note how we assign the name `'theme'` to the included stylesheet. This is used to reference the stylesheet lateron, as assets (= CSS and JavaScript files) can require other assets to be included in advance. Even if no other file will reference the stylesheet, we still havce to assign a name as the first parameter.
+
+To see the mentionen require functionality in action, we include jQuery on our page as well. Pagekit actually comes with a few scripts right from the start so that not every single theme and extension need to include their own version of commonly used libraries. Add `@script('jquery')` to `template.razr` so that the complete file looks as follows.
+
+```HTML
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        @action('head')
+        @style('theme', 'theme://mytheme/css/theme.css')
+        @script('jquery')
+    </head>
+    <body>
+        @action('content')
+    </body>
+</html>
+
+```
+
+The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the renedering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included once, even if several components require the same asset (which is a common case if you think about libraries like jQuery). To actually include your own script and set certain requirements, use the following syntax where the third parameter is a list of required assets.
+
+```
+@script('theme', 'theme://mytheme/js/theme.js', ['jquery', 'uikit', 'uikit-notify', 'uikit-sticky', 'uikit-sortable'])
+```
+
+For a full list of assets included in Pagekit's installation, check out the asset list in the documentation (TODO).
+
+## Add a settings screen 
+
+
+## Widget positions
+
+## Widget options
 
 ## Prepare for the market place
 

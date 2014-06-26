@@ -133,10 +133,93 @@ For a full list of assets included in Pagekit's installation, check out the asse
 
 ## Add a settings screen 
 
+If you want to keep your theme customizable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php`.
+
+```PHP
+'settings' => array(
+        'system'  => 'theme://mytheme/views/admin/settings.razr'
+    ),
+```
+
+Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
+
+Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
+
+**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
+
+
+```PHP
+<form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
+
+    <div class="uk-form-row">
+        <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
+        <div class="uk-form-controls">
+            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
+                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
+                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
+            </select>
+        </div>
+    </div>
+
+    <p>
+        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
+        <a class="uk-button" href="@url('@system/themes')">@trans('Close')</a>
+    </p>
+
+</form>
+```
+
+We can now access the settings value from within our theme. Add the following lines to your `template.razr`
+
+FIXME
+
 
 ## Widget positions
 
+So far, our theme looks alike on every single page. Everything we render is depending only on main the content of the current page - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
+
+All of this (and much more) can be done with widgets. Widgets are chunks of content that can be positioned inside your theme and configured to appear on certain pages and be hidden on others. When developing a theme, we do not care about what kind of content the Widget renders. The only thing we need to take care of is to offer positions in our theme where widgets can be rendered. 
+
+We start off by including an array of all widget positions our theme offers. The array includes the unique title of the position (usually lowercase) and the label we want to show to the user in the backend.
+
+In order to keep widget configurations reusable when changing themes, it is recommended to always include the following basic set of widget positions. You are not forced to do so, but it will help your users. Of course, you can add your own positions for special functionality your theme offers (like some special featured positions).
+
+Add the widget positions to your `theme.php`.
+
+```PHP
+'positions' => array(
+    'logo'       => 'Logo',
+    'logo-small' => 'Logo Small',
+    'navbar'     => 'Navbar',
+    'top'        => 'Top',
+    'sidebar-a'  => 'Sidebar A',
+    'sidebar-b'  => 'Sidebar B',
+    'footer'     => 'Footer',
+    'offcanvas'  => 'Offcanvas'
+),
+```
+
+In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. In general, there can always be more than one widget published in a single position. All widgets will be rendered.
+
+** Note ** The `@raw` directive makes sure the rendered widget is FIXME FIXME
+
+```
+@if ($position.exists('logo'))
+<div>
+    <a href="@url()" class="tm-brand">@raw( $position.render('logo', ['renderer' => 'blank']) )</a>
+</div>
+@endif
+```
+
+
 ## Widget options
+
+```PHP
+'settings' => array(
+        'system'  => 'theme://mytheme/views/admin/settings.razr',
+        'widgets' => 'theme://mytheme/views/admin/widgets/edit.razr'
+    ),
+```
 
 ## Prepare for the market place
 

@@ -14,17 +14,21 @@ To start, create an empty folder `/themes/mytheme`. Create the two files `theme.
 
 ![Generated file structure](images/guide-theme-files-minimal.png)
 
-When working a bit more with themes, you will add more and more files. Even though we won't need all of this in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
+When working with themes, you will add more and more files. Even though we won't need all of them in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
 
 ![Generated file structure](images/guide-theme-files.png)
 
-| File | Description       |
-|---------------|-------------|
-| `src/MythemeTheme.php` optional        | Needed when you want to add your own functionality using PHP         | 
-| `template/template.razr` required  | Main template file  |
-| `views/admin/settings.razr` optional  | View file for a settings screen in the backend|
-| `theme.json` required       | Theme metadata | 
-| `theme.php` required     | Theme settings | 
+| File                                  | Description       |
+|---------------------------------------|-------------|
+| `src/MythemeTheme.php` optional       | Needed when you want to add your own functionality using PHP | 
+| `template/template.razr` required     | Main template file  |
+| `views/admin/settings.razr` optional  | View file for a settings screen in the backend |
+| `theme.json` required                 | Theme metadata | 
+| `theme.php` required                  | Theme settings | 
+| `css` optional                        | CSS files |  
+| `images` optional                     | Image assets | 
+
+---
 
 Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
 
@@ -74,6 +78,8 @@ Save the file and navigate to the Pagekit admin area in your browser to activate
 **Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something like the blog, a single blog post or a static page.
 
 ## The main template file
+
+The starting point for your theme's rendering is the main template file `templates/template.razr`.
 
 As you've seen, the templating language of choice is Razr which is a subset of PHP. You can use PHP for templating, but Razr offers you a lot of shorthand syntax and quick access to many functions provided by Pagekit.
 
@@ -129,7 +135,7 @@ The directive `@script('jquery')` will add `jquery` to the list of required asse
 For a full list of assets included in Pagekit's installation, check out the asset list in the documentation (TODO).
 
 
-## Getting started with widgets
+## Getting started with Widgets
 
 So far, our theme looks alike on every single page. Everything we render is depending only on main the content of the current page - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
 
@@ -231,10 +237,13 @@ If you're looking for advanced functionality, here are some pointers to other se
  - Add options to change the styling of single widgets
  - Put your theme on the marketplace
 
-For questions and discussion on best practices, check ouot the Google+ community.
+For questions and discussion on best practices, check out the Google+ community.
 
 ---
 
+**FIXME** move the rest to differenct sections
+
+---
 ## Advanced: Widget options
 
 You sometimes want to have widgets appear in different styles and even give the user the option to have a widget appear inside a box, with a certain ighlight or justr the little "new" badge. What this boils down to is configuration options to assign on a per-widget basis. In most cases you just want to configure which CSS classes to apply on a widget's surrounding `div`container.

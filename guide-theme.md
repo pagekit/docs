@@ -6,66 +6,49 @@
 
 Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
-You can create the basic structure manually or use Pagekit's provided command line tool that creates the initial structure for you. In this tutorial we will be using the command line tool.
+There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the advanced theme docs). 
 
-Open the terminal and navigate to your Pagekit folder. To create a theme called `mytheme` , just run the following command.
+**Note**Check out the hello theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
 
-```bash
-php pagekit theme:generate mytheme
-```
+To start, create an empty folder `/themes/mytheme`. Create the two files `theme.json` and `theme.php`. With these to files, your theme won't do anything, but it will already be recognized as a valid theme and visible in Pagekit's backend.
 
-You will be prompted for some information needed to initialize the theme.
+![Generated file structure](images/guide-theme-files-minimal.png)
 
-| Input             | Example               | Description |
-|-------------------|-----------------------|--------------|
-| `Title`           | `My Theme`            | The human readable name of your theme 
-| `Author`          | `YOOtheme`            | Your name or your company's name
-| `Email`           | `demo@yootheme.com`   | Your email address
-| `PHP Namespace`   | `MyTheme`             | Identifier used to organize your code files. PHP namespaces usually follow a CamelCase syntax.
-
-Have a look at the generated `/themes/mytheme` folder. In this tutorial, we will look at theses files one by one, whenever we add a a feature, we will talk about the fields needed.
+When working a bit more with themes, you will add more and more files. Even though we won't need all of this in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
 
 ![Generated file structure](images/guide-theme-files.png)
 
-To begin with our theme, we just want to display a simple message. To do so, please open `themes/mytheme/templates/template.razr`, the content will look as follows.
+Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        @action('head')
-    </head>
-    <body>
+`theme.php` includes an array with all configuration for your theme. Let's start off with no configuration at all: an empty array.
 
-    </body>
-</html>
+```
+<?php return array();
 ```
 
-In the `<body>` section, insert your message so that the file looks something like this.
+`theme.json` contains meta data which is used by Pagekit's backend and the marketplace.
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        @action('head')
-    </head>
-    <body>
-        <h1>Hello Pagekit.</h1>
-    </body>
-</html>
+```JSON
+{
+    "name": "mytheme",
+    "version": "0.0.1",
+    "type": "theme",
+    "title": "My Theme",
+    "description": "",
+    "license": "",
+    "authors": [
+        {
+            "name": "YOOtheme",
+            "email": "demo@yootheme.com",
+            "homepage": "http://yootheme.com"
+        }
+    ]
+}
 ```
 
-Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable button*. Now have a look at the Pagekit installation, it should display the message you've inserted in the template file.
+`templates/template.razr` is the main file for the theme markup. Let's start off with this basic structure.
 
-## Set up the main layout
-
-We've managed to have our main template file display a message to the user. Our next task will be to replace this message with the content coming from Pagekit.
-
-To do so, simple replace the static message `<h1>Hello Pagekit.</h1>` with `@action('content')` inside your theme's `template.razr`.
-
-```html
+```HTML
 <!DOCTYPE html>
 <html>
     <head>
@@ -78,9 +61,15 @@ To do so, simple replace the static message `<h1>Hello Pagekit.</h1>` with `@act
 </html>
 ```
 
-Refresh the page in the browser and see some content appear in front of your eyes. If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something like the blog, a single blog post or a static page.
+Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable button*. Now have a look at the Pagekit installation, it should display some contant without any styling. 
 
-We've already used the `@action` directive twice and we will use it more often in the course of this guide. The basic idea here is that components in Pagekit (and any extension that is enabled) can register their content to specific actions. The `head` action for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
+**Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something like the blog, a single blog post or a static page.
+
+## The main template file
+
+As you've seen, the templating language of choice is Razr which is a subset of PHP. You can use PHP for templating, but Razr offers you a lot of shorthand syntax and quick access to many functions provided by Pagekit.
+
+We've already used the `@action` directive twice and we will use it more often in the course of this tutorial. The basic idea here is that components in Pagekit (and any extension that is enabled) can register their content to specific actions. The `head` action for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
 
 Other `action` keywords include ... TODO: list all important actions (messages, ...?)
 
@@ -131,48 +120,12 @@ The directive `@script('jquery')` will add `jquery` to the list of required asse
 
 For a full list of assets included in Pagekit's installation, check out the asset list in the documentation (TODO).
 
-## Add a settings screen 
 
-If you want to keep your theme customizable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php`.
+## Getting started with widgets
 
-```PHP
-'settings' => array(
-        'system'  => 'theme://mytheme/views/admin/settings.razr'
-    ),
-```
+## Widget renderer
 
-Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
-
-Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
-
-**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
-
-
-```PHP
-<form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
-
-    <div class="uk-form-row">
-        <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
-        <div class="uk-form-controls">
-            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
-                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
-                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
-            </select>
-        </div>
-    </div>
-
-    <p>
-        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
-        <a class="uk-button" href="@url('@system/themes')">@trans('Close')</a>
-    </p>
-
-</form>
-```
-
-We can now access the settings value from within our theme. Add the following lines to your `template.razr`
-
-FIXME
-
+blank
 
 ## Widget positions
 
@@ -232,9 +185,21 @@ The recommended widget positions to include in your theme are as follows.
 | `footer`      | Footer      | 
 | `offcanvas`   | Offcanvas   | 
 
+## Where to go from here
 
+Congratulations, you've created your first theme! We've introduced the basic file structure and talked about the most important configuration options. You know how to change the markup, include CSS and JS and how to add widget functionality. Now it's time to get creative and play around.
 
-## Widget options
+If you're looking for advanced functionality, here are some pointers to other sections of the documentation:
+
+ - Add a settings screen to access from the backend
+ - Add options to change the styling of single widgets
+ - Put your theme on the marketplace
+
+For questions and discussion on best practices, check ouot the Google+ community.
+
+---
+
+## Advanced: Widget options
 
 You sometimes want to have widgets appear in different styles and even give the user the option to have a widget appear inside a box, with a certain ighlight or justr the little "new" badge. What this boils down to is configuration options to assign on a per-widget basis. In most cases you just want to configure which CSS classes to apply on a widget's surrounding `div`container.
 
@@ -294,10 +259,50 @@ Now, we need to make sure to actually render the CSS classes in our markup. To d
 
 To test the custom widget options, switch to your browser and edit the widget you've added before (or create a new widget). Note the new *Theme* tab on the top. Switch to that tab to see your configuration form.
 
-## Widget renderer
 
-equal, thirds, etc ...
+## Advanced: Add a settings screen 
 
-## Prepare for the market place
+If you want to keep your theme customizable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php`.
+
+```PHP
+'settings' => array(
+        'system'  => 'theme://mytheme/views/admin/settings.razr'
+    ),
+```
+
+Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
+
+Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
+
+**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
+
+
+```PHP
+<form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
+
+    <div class="uk-form-row">
+        <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
+        <div class="uk-form-controls">
+            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
+                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
+                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
+            </select>
+        </div>
+    </div>
+
+    <p>
+        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
+        <a class="uk-button" href="@url('@system/themes')">@trans('Close')</a>
+    </p>
+
+</form>
+```
+
+We can now access the settings value from within our theme. Add the following lines to your `template.razr`
+
+FIXME
+
+
+## Advanced: Prepare for the market place
 
 - details and screenshot in theme.json

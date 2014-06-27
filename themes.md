@@ -18,12 +18,21 @@ cd path/to/pagekit
 ./pagekit theme:generate MY-THEME
 ```
 
+You will be prompted for some information needed to initialize the theme.
+
+| Input             | Example               | Description |
+|-------------------|-----------------------|--------------|
+| `Title`           | `My Theme`            | The human readable name of your theme 
+| `Author`          | `YOOtheme`            | Your name or your company's name
+| `Email`           | `demo@yootheme.com`   | Your email address
+| `PHP Namespace`   | `MyTheme`             | Identifier used to organize your code files. PHP namespaces usually follow a CamelCase syntax.
+
 This produces the following file structure inside the directory `/themes/MY-THEME`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
 
 | Folder / File | Description |
 |---------------|-------------|
 | `/templates` | The markup files are located in this folder |
-| `/templates/template.razr.php` | The main markup file |
+| `/templates/template.razr` | The main markup file |
 | `theme.json` | Holds the metadata for the system and the marketplace |
 | `theme.php` | Holds the themes configuration, setup and custom code |
 
@@ -68,7 +77,7 @@ return array();
 
 ## Templating
 
-Templating in Pagekit is powered by the [Razr Templating engine](https://github.com/pagekit/razr). `/templates/template.razr.php` is the main layout file.
+Templating in Pagekit is powered by the [Razr Templating engine](https://github.com/pagekit/razr). `/templates/template.razr` is the main layout file.
 Here's a minimal example:
 
 ```html
@@ -91,7 +100,7 @@ Now head to the browser, enable your theme from the backend and give it a go. Yo
 
 ## Adding CSS and JavaScript
 
-So far, our site looks pretty dull. To add some of your own CSS and JavaScript, add the following line in the `<head>` section of `/templates/template.razr.php`.
+So far, our site looks pretty dull. To add some of your own CSS and JavaScript, add the following line in the `<head>` section of `/templates/template.razr`.
 
 ```html
 @style('MY-THEME', 'theme://MY-THEME/assets/css/MY-THEME.css')
@@ -121,7 +130,7 @@ return array(
     ...
 ```
 
-Inside `/templates/template.razr.php` you will determine the actual rendering location.
+Inside `/templates/template.razr` you will determine the actual rendering location.
 
 ```html
 @if (app.positions.exists('footer'))
@@ -145,11 +154,11 @@ To use a custom renderer `footer`, you can pass it as a value for the `renderer`
 We will need to register the custom renderer to make it availabe in the theme. To do so, open the main class and register the renderer in the `boot`method.
 ```php
 $app->on('system.position.renderer', function($event) use ($app) {
-    $event->register('footer', 'theme://MY-THEME/views/renderer/position.footer.razr.php');
+    $event->register('footer', 'theme://MY-THEME/views/renderer/position.footer.razr');
 });
 ```
 
-Now we create a renderer `position.footer.razr.php` in `/views/renderer`.
+Now we create a renderer `position.footer.razr` in `/views/renderer`.
 In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@widgets` (or `$widgets` if you're writing the renderer in plain PHP).
 
 The renderer could look like this:

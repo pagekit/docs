@@ -36,7 +36,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 
 `theme.json` contains meta data which is used by Pagekit's backend and the marketplace.
 
-```JSON
+```js
 {
     "name": "mytheme",
     "version": "0.0.1",
@@ -56,7 +56,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 
 `templates/template.razr` is the main file for the theme markup. Let's start off with this basic structure.
 
-```HTML
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -87,7 +87,7 @@ Now that we have our basic markup, it's time to add some of our own styling. We'
 
 To add some basic styling, please create a `css/` folder inside your theme folder and add some CSS in `css/theme.css`.
 
-```CSS
+```css
 body {
     background: #eee;
     font-family: sans-serif;
@@ -96,7 +96,7 @@ body {
 
 In `templates/template.razr`, add the following line right after `@action('head')`.
 
-```PHP
+```
 @style('theme', 'theme://mytheme/css/theme.css')
 ```
 
@@ -104,7 +104,7 @@ Refresh your browser to make sure it picks up the style changes. As you can see,
 
 To see the mentionen require functionality in action, we include jQuery on our page as well. Pagekit actually comes with a few scripts right from the start so that not every single theme and extension need to include their own version of commonly used libraries. Add `@script('jquery')` to `template.razr` so that the complete file looks as follows.
 
-```HTML
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -185,7 +185,7 @@ In our template, we now need to add the actual rendering of widgets in those pos
 
 **Note** The `@raw` directive makes sure the rendered widget markup is not escaped.
 
-```PHP
+```php
 @if ($position.exists('logo'))
 <div>
     <a href="@url()" class="tm-brand">@raw( $position.render('logo', ['renderer' => 'blank']) )</a>
@@ -195,7 +195,7 @@ In our template, we now need to add the actual rendering of widgets in those pos
 
 We will also render the `navbar` position. Not how we do not take care of the actual rendering of a navigation structure. We just render the widgets published in this position. Those widgets can ba a navigation or any other piece of content.
 
-```PHP
+```php
 @if ($position.exists('navbar'))
 <div>
     <a href="@url()" class="tm-brand">@raw( $position.render('navbar', ['renderer' => 'blank']) )</a>

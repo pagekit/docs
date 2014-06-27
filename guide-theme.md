@@ -2,7 +2,7 @@
 
 <p class="uk-article-lead">Get started and create your own theme for Pagekit.</p>
 
-## Create file structure
+## File structure
 
 Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
@@ -17,6 +17,14 @@ To start, create an empty folder `/themes/mytheme`. Create the two files `theme.
 When working a bit more with themes, you will add more and more files. Even though we won't need all of this in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
 
 ![Generated file structure](images/guide-theme-files.png)
+
+| File | Description       |
+|---------------|-------------|
+| `src/MythemeTheme.php` optional        | Needed when you want to add your own functionality using PHP         | 
+| `template/template.razr` required  | Main template file  |
+| `views/admin/settings.razr` optional  | View file for a settings screen in the backend|
+| `theme.json` required       | Theme metadata | 
+| `theme.php` required     | Theme settings | 
 
 Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
 
@@ -123,15 +131,42 @@ For a full list of assets included in Pagekit's installation, check out the asse
 
 ## Getting started with widgets
 
-## Widget renderer
-
-blank
-
-## Widget positions
-
 So far, our theme looks alike on every single page. Everything we render is depending only on main the content of the current page - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
 
 All of this (and much more) can be done with widgets. Widgets are chunks of content that can be positioned inside your theme and configured to appear on certain pages and be hidden on others. When developing a theme, we do not care about what kind of content the Widget renders. The only thing we need to take care of is to offer positions in our theme where widgets can be rendered. 
+
+To add widget functionality to our theme, there are three steps we need to take.
+
+1. List all provided widget positions in our `theme.php` 
+2. Create a renderer that determines how multiple widgets in a single position are begin rendered. List all provided renders in our `theme.php`
+3. Render all published widgets in their assigned position in `templates/template.php`.
+
+
+## Widget renderer
+
+A single widget position can hold more than one widget. To determine how those widgets are rendered, Pagekit supports so called `renderers`. The renderer is specific to every widget position. This means that you could create one renderer that display all widgets with equal widths in columns next to each other. A second one could render all widgets stacked on top of each other. By giving the user the option to choose between those renderers on a per-widget basis, they can significantly customize the layout of their page.
+
+We'll start off by creating a single renderer that plainly renders all published widgets without any fancy markup. Let's call it `blank`. To make sure Pagekit knows about it, add the `renderer` option to our `theme.php`.
+
+```
+<?php 
+    return array(
+        'renderer' => array(
+            'blank'     => 'theme://mytheme/views/renderer/position.blank.razr')
+        );
+```
+
+Now, create the folder `/mytheme/views/renderer` and a file `/mytheme/views/renderer/position.blank.razr` with the following content.
+
+```
+@foreach ($widgets as $widget)
+    @raw( $provider.render($widget, $options) )
+@endforeach
+```
+
+We use Razr's `@foreach` directive to iterate over all widgets in the current position. Every widget is rendered by passing it to the `render` function of the view service provider which is available via `$provider`. The `@raw` directive outputs the generated markup without escaping special characters.
+
+## Widget positions
 
 We start off by including an array of all widget positions our theme offers. The array includes the unique title of the position (usually lowercase) and the label we want to show to the user in the backend.
 
@@ -146,7 +181,7 @@ Add the widget positions to your `theme.php`.
 ),
 ```
 
-In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. In general, there can always be more than one widget published in a single position. All widgets will be rendered.
+In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. Note how we set the `blank` renderer we've created before. 
 
 **Note** The `@raw` directive makes sure the rendered widget markup is not escaped.
 
@@ -179,7 +214,8 @@ The recommended widget positions to include in your theme are as follows.
 | `logo`        | Logo        | 
 | `logo-small`  | Logo Small  |
 | `navbar`      | Navbar      |
-| `top`         | Top         | 
+| `top-a`       | Top A       | 
+| `top-b`       | Top B       | 
 | `sidebar-a`   | Sidebar A   | 
 | `sidebar-b`   | Sidebar B   |
 | `footer`      | Footer      | 

@@ -6,11 +6,11 @@
 
 Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
-There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the advanced theme docs). 
+There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the [advanced theme docs](themes.md)). 
 
-**Note**Check out the hello theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
+**Note** Check out the `hello` theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
 
-To start, create an empty folder `/themes/mytheme`. Create the two files `theme.json` and `theme.php`. With these to files, your theme won't do anything, but it will already be recognized as a valid theme and visible in Pagekit's backend.
+To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's backend.
 
 ![Generated file structure](images/guide-theme-files-minimal.png)
 
@@ -32,7 +32,7 @@ When working with themes, you will add more and more files. Even though we won't
 
 Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
 
-`theme.php` includes an array with all configuration for your theme. Let's start off with no configuration at all: an empty array.
+`theme.php` includes a PHP array with all configuration for your theme. Let's start off with no configuration at all: an empty array.
 
 ```
 <?php return array();
@@ -58,7 +58,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 }
 ```
 
-`templates/template.razr` is the main file for the theme markup. Let's start off with this basic structure.
+`templates/template.razr` is the main file for the theme markup. Let's begin with some basic markup.
 
 ```html
 <!DOCTYPE html>
@@ -73,9 +73,9 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 </html>
 ```
 
-Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable button*. Now have a look at the Pagekit installation, it should display some contant without any styling. 
+Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable* button. Now have a look at the Pagekit installation, it should display some content without any styling. 
 
-**Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something like the blog, a single blog post or a static page.
+**Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something - like the blog, a single blog post or a static page.
 
 ## The main template file
 
@@ -85,7 +85,11 @@ As you've seen, the templating language of choice is Razr which is a subset of P
 
 We've already used the `@action` directive twice and we will use it more often in the course of this tutorial. The basic idea here is that components in Pagekit (and any extension that is enabled) can register their content to specific actions. The `head` action for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
 
-Other `action` keywords include ... TODO: list all important actions (messages, ...?)
+Your theme should render the following actions on every page.
+
+| `@action('head')` | Renders meta tags and assets, put this in the `<head>` section. |
+| `@action('content')` | Renders the content of the current page, put this somewhere in your `<body>` section. |
+| `@action('messages')` | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
 
 ## Add CSS and JS
 

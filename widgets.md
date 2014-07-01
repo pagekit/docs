@@ -189,3 +189,67 @@ To see your widget in action, add it to your admin dashboard:
 1. Open *Settings > Dashboard* in the admin area.
 2. Click *Add Widget* and choose the *Hello Widget*.
 3. Save and go to the admin dashboard to view the widget
+
+---
+
+**FIXME** move the rest to differenct sections
+
+## Advanced: Widget options
+
+You sometimes want to have widgets appear in different styles and even give the user the option to have a widget appear inside a box, with a certain ighlight or justr the little "new" badge. What this boils down to is configuration options to assign on a per-widget basis. In most cases you just want to configure which CSS classes to apply on a widget's surrounding `div`container.
+
+In order to do so, we chose a similar approach like we did with the global settings screen for the whole theme. Add the following path inside your `theme.php`.
+
+
+```PHP
+'settings' => array(
+        'system'  => 'theme://mytheme/views/admin/settings.razr',
+        'widgets' => 'theme://mytheme/views/admin/widgets/edit.razr'
+    ),
+```
+
+Create the according `views/admin/widgets/edit.razr` with a configuration form as follows. 
+
+**Note** Form elements are named `_theme[panel]`, and `_theme[alignment]` to fill the `_theme[]` array of configuration options. Pagekit handles the storing of those options for you.
+
+```HTML
+<div class="uk-form-horizontal">
+
+    <div class="uk-form-row">
+        <label for="form-theme-panel" class="uk-form-label">@trans('Panel Style')</label>
+        <div class="uk-form-controls">
+            <select id="form-theme-panel" class="uk-form-width-large" name="_theme[panel]">
+                @foreach ([
+                    ''                                    => trans('None'),
+                    'uk-panel-box'                        => trans('Box'),
+                    'uk-panel-box uk-panel-box-primary'   => trans('Box Primary')
+                ] as $value => $name)
+                <option value="@( $value )"@( $settings[$widget.id]['panel'] == $value ? ' selected' : '' )>@( $name )</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <div class="uk-form-row">
+        <span class="uk-form-label">@trans('Alignment')</span>
+        <div class="uk-form-controls uk-form-controls-text">
+            <label><input type="checkbox" name="_theme[alignment]" value="center-content" @( $settings[$widget.id]['alignment'] == 'center-content' ? 'checked' : '' )> @trans('Center the title and content.')</label>
+        </div>
+    </div>
+
+</div>
+```
+
+In this form, we offer two configuration options. First, a panel style to assign a certain styling to the widget's surrounding panel div. Secondly, an option to center content inside the widget.
+
+As always, the `@trans` directive is used for translateable strings. In the first `<select>` box, we iterate over all options we've included in a simple PHP array. Each option consists of the CSS classes we want to render and a human readable string we want to display in the select dropdown. 
+
+The current value of an option at a certain widget is available via the `$settings` array. For example `$settings[$widget.id]['panel']` will fetch the value for the `panel` option of the current widget.
+
+The second option is a simple checkbox that we render as selected or not depending on the current value of `$settings[$widget.id]['alignment']`.
+
+There is no need to include a submit button as the form content will be read automatically when saving the widget.
+
+Now, we need to make sure to actually render the CSS classes in our markup. To do so, **FIXME** ...
+
+To test the custom widget options, switch to your browser and edit the widget you've added before (or create a new widget). Note the new *Theme* tab on the top. Switch to that tab to see your configuration form.

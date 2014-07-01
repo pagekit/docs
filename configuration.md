@@ -136,7 +136,7 @@ The `permissions` property defines a list of permissions that can be assigned to
 ),
 ```
 
-## Settings screen
+## Settings screen (Version 1)
 
 It is easy to add a settings screen to your theme (or extension).
 
@@ -180,3 +180,46 @@ Your settings screen will be accessible from the extensions (or theme) overview.
 
 </form>
 ```
+
+
+## Add a settings screen (Version 2)
+
+If you want to keep your theme customizable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php`.
+
+```PHP
+'settings' => array(
+        'system'  => 'theme://mytheme/views/admin/settings.razr'
+    ),
+```
+
+Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
+
+Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
+
+**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
+
+
+```PHP
+<form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
+
+    <div class="uk-form-row">
+        <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
+        <div class="uk-form-controls">
+            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
+                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
+                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
+            </select>
+        </div>
+    </div>
+
+    <p>
+        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
+        <a class="uk-button" href="@url('@system/themes')">@trans('Close')</a>
+    </p>
+
+</form>
+```
+
+We can now access the settings value from within our theme. Add the following lines to your `template.razr`
+
+FIXME

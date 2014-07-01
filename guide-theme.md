@@ -6,15 +6,15 @@
 
 Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
-## Command line
+### Command line
 
 There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the [advanced theme docs](themes.md)). 
 
-## Download the hello theme
+### Download the hello theme
 
 Check out the `hello` theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
 
-## Create the files manually
+### Create the files manually
 
 To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's back end.
 
@@ -150,7 +150,9 @@ To require some provided JavaScript, let's include jQuery on our page. Pagekit a
 
 ```
 
-The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the rendering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included a single time, even if several components require the same asset (which is a common case if you think about libraries like jQuery). To actually include your own script and set certain requirements, use the following syntax where the third parameter is a list of required assets.
+The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the rendering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included a single time, even if several components require the same asset (which is a common case if you think about libraries like jQuery). 
+
+To actually include your own script and set certain requirements, use the following syntax where the third parameter is a list of required assets.
 
 ```
 @script('theme', 'theme://mytheme/js/theme.js', ['jquery', 'uikit', 'uikit-notify', 'uikit-sticky', 'uikit-sortable'])

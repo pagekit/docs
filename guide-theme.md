@@ -87,9 +87,11 @@ We've already used the `@action` directive twice and we will use it more often i
 
 Your theme should render the following actions on every page.
 
-| `@action('head')` | Renders meta tags and assets, put this in the `<head>` section. |
-| `@action('content')` | Renders the content of the current page, put this somewhere in your `<body>` section. |
-| `@action('messages')` | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
+| Action                  | Description       |
+|-------------------------|-------------|
+| `@action('head')`       | Renders meta tags and assets, put this in the `<head>` section. |
+| `@action('content')`    | Renders the content of the current page, put this somewhere in your `<body>` section. |
+| `@action('messages')`   | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
 
 ## Add CSS and JS
 

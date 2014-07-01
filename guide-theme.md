@@ -10,7 +10,7 @@ There are several ways to create the basic file structure. In the course of this
 
 **Note** Check out the `hello` theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
 
-To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's backend.
+To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's back end.
 
 ![Generated file structure](images/guide-theme-files-minimal.png)
 
@@ -22,7 +22,7 @@ When working with themes, you will add more and more files. Even though we won't
 |---------------------------------------|-------------|
 | `src/MythemeTheme.php` optional       | Needed when you want to add your own functionality using PHP | 
 | `template/template.razr` required     | Main template file  |
-| `views/admin/settings.razr` optional  | View file for a settings screen in the backend |
+| `views/admin/settings.razr` optional  | View file for a settings screen in the back end |
 | `theme.json` required                 | Theme metadata | 
 | `theme.php` required                  | Theme settings | 
 | `css` optional                        | CSS files |  
@@ -38,7 +38,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 <?php return array();
 ```
 
-`theme.json` contains meta data which is used by Pagekit's backend and the marketplace.
+`theme.json` contains meta data which is used by Pagekit's back end and the marketplace.
 
 ```js
 {
@@ -143,20 +143,20 @@ For a full list of assets included in Pagekit's installation, check out the asse
 
 ## Getting started with Widgets
 
-So far, our theme looks the same on every single page. Everything we render is depending only one the main content of the current page - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
+So far, our theme looks the same on every single page. The only thing that changes is the main content of the current view - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
 
-All of this (and much more) can be done with widgets. Widgets are chunks of content that can be positioned inside your theme and configured to appear on certain pages and be hidden on others. When developing a theme, we do not care about what kind of content the Widget renders. The only thing we need to take care of is to offer positions in our theme where widgets can be rendered. 
+All of this (and much more) can be done with widgets. Widgets are chunks of content that can be positioned inside a theme and configured to appear on certain pages and be hidden on others. When developing a theme, we do not care about what kind of content the widget renders. The only thing we need to do is to offer positions in our theme where widgets can be rendered.
 
 To add widget functionality to the theme, there are three steps we need to take.
 
-1. List all provided widget positions in our `theme.php` 
-2. Create a renderer that determines how multiple widgets in a single position are rendered. List all provided renderers in our `theme.php`
+1. List all provided widget positions in our `theme.php`.
+2. Create a renderer that determines how multiple widgets in a single position are rendered. List all provided renderers in our `theme.php`.
 3. Render all published widgets in their assigned position in `templates/template.razr`.
 
 
 ## Widget renderer
 
-A single widget position can hold more than one widget. To determine how those widgets are rendered, Pagekit supports so called `renderers`.  You could create one renderer that display all widgets with equal widths in columns next to each other. A second one could render all widgets stacked on top of each other. By giving the user the option to choose between those renderers for every widget position, they can significantly customize the layout of their page.
+A single widget position can hold more than one widget. To determine how those widgets are rendered, Pagekit supports so called `renderers`.  You could create one renderer that display all widgets with equal widths in columns next to each other. A second one could render all widgets stacked on top of each other. By giving the user the option to choose between those renderers for every widget position, they can significantly customize the layout of their page without changing code inside the theme.
 
 We'll start off by creating a single renderer that plainly renders all published widgets without any fancy markup. Let's call it `blank`. To make sure Pagekit knows about it, add the `renderer` option to our `theme.php`.
 
@@ -180,7 +180,7 @@ We use Razr's `@foreach` directive to iterate over all widgets in the current po
 
 ## Widget positions
 
-We need to tell Pagekit about the widget positions our theme offers. To do so, add an array of all widget positions to the `theme.php`. This array includes the unique title of the position (usually lowercase) and the label we want to show to the user in the backend.
+We need to tell Pagekit about the widget positions our theme offers. To do so, add an array of all widget positions to the `theme.php`. This array includes the unique title of the position (usually lowercase) and the label we want to show to the user in the back end.
 
 Add the widget positions to your `theme.php`.
 
@@ -238,5 +238,6 @@ If you're looking for advanced functionality, here are some pointers to other se
 - Add additional configuration to your theme. See [Configuration](configuration.md) for more information.
 - Add a settings page to your theme. See [Settings](settings.md) for more information.
 - Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.
+- A more developer centric view on building themes is available in the [Themes section](themes.md).
 
 For questions and discussion on best practices, check out the Google+ community.

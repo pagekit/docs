@@ -4,11 +4,17 @@
 
 ## Create the file structure
 
-Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
+Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files. 
+
+There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. 
 
 ### Command line
 
-There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the [advanced theme docs](themes.md)). Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
+If you like the command line, run a single command to create a skeleton theme. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial. More developer information is available in the [advanced theme docs](themes.md).
+
+```bash 
+php pagekit theme:generate mytheme
+```
 
 ### Create the files manually
 

@@ -136,55 +136,9 @@ The `permissions` property defines a list of permissions that can be assigned to
 ),
 ```
 
-## Settings screen (Version 1)
+## Add a settings screen
 
-It is easy to add a settings screen to your theme (or extension).
-
-Add to `theme.php`:
-
-```php
-'settings' => array(
-    'system'  => 'theme://alpha/views/admin/settings.razr'
-)
-```
-
-Create the according file holding a form with all your configuration options, i.e. `hello/views/admin/settings.razr`. This form has to be submitted to `@system/extensions/savesettings` (with a parameter specifying your theme name / extension name).
-
-You can create any form element as long as you keep to a certain naming convention. The form is supposed to send an array of options,
-therefore all input fields are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.
-
-**Note** Remember to include `@token()` inside your form for security purposes.
-
-Your settings screen will be accessible from the extensions (or theme) overview.
-
-```html
-<form class="uk-form uk-form-horizontal" action="@url.route('@system/extensions/savesettings', ['name' => 'hello'])" method="post">
-
-    <div class="uk-form-row">
-        <label for="form-hello-message" class="uk-form-label">@trans('Message')</label>
-        <div class="uk-form-controls">
-            <input id="form-hello-message" type="text" name="config[message]" value="@config['message']">
-        </div>
-    </div>
-
-  <div class="pk-options">
-        <button class="uk-button uk-button-primary" type="submit">@trans('Save')</button>
-        <a class="uk-button" href="@url.route('@system/system/index')">@trans('Close')</a>
-    </div>
-
-    <p>
-        @trans('This settings page is just for demonstration purposes.')
-    </p>
-
-    @token()
-
-</form>
-```
-
-
-## Add a settings screen (Version 2)
-
-If you want to keep your theme customizable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php`.
+If you want to keep your theme customizable and your extension configurable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
 
 ```PHP
 'settings' => array(
@@ -220,6 +174,10 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 </form>
 ```
 
-We can now access the settings value from within our theme. Add the following lines to your `template.razr`
 
-FIXME
+The configuration values are available in PHP.
+
+```php
+$theme = $app['theme.site']->getConfig();
+$show_copyright = $theme['show_copyright'];
+```

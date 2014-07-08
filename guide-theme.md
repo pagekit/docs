@@ -248,7 +248,7 @@ Congratulations, you've created your first theme! We've introduced the basic fil
 If you're looking for advanced functionality, here are some pointers to other sections of the documentation:
 
 - Add additional configuration to your theme. See [Configuration](configuration.md) for more information.
-- Add a settings page to your theme. See [Settings](settings.md) for more information.
+- Add a settings page to your theme. See [Configuration](configuration.md) for more information.
 - Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.
 - A more developer centric view on building themes is available in the [Themes section](themes.md).
 

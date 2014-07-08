@@ -252,4 +252,4 @@ If you're looking for advanced functionality, here are some pointers to other se
 - Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.
 - A more developer centric view on building themes is available in the [Themes section](themes.md).
 
-For questions and discussion on best practices, check out the Google+ community.
+For questions and discussion on best practices, check out the [Google+ community](https://plus.google.com/communities/104125443335488004107).

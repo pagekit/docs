@@ -8,11 +8,7 @@ Each theme in Pagekit is located in its own folder in the `/themes` directory. I
 
 ### Command line
 
-There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the [advanced theme docs](themes.md)). 
-
-### Download the hello theme
-
-Check out the `hello` theme we've prepared for you. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
+There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. If you like the command line, you can run a single command to create the structure (`php pagekit theme:generate mytheme`, more on that in the [advanced theme docs](themes.md)). Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial.
 
 ### Create the files manually
 

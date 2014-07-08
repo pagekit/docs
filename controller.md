@@ -96,7 +96,7 @@ method.
 /**
  * @Route("/greet", name="@hello/greet/world")
  * @Route("/greet/{name}", name="@hello/greet/name")
- * @View("hello/greet.razr.php")
+ * @View("hello/greet.razr")
  */
 public function greetAction($name = 'World')
 {
@@ -121,11 +121,11 @@ public function viewAction($id = 1)
 
 ### @View
 
-Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr.php`:
+Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr`:
 
 ```php
 /**
- * @View("hello/view.razr.php")
+ * @View("hello/view.razr")
  */
 public function viewAction($id = 1)
 {

@@ -57,7 +57,7 @@ Set views for a settings screen and for custom widget options. Provide an array 
 
 ```php
 'settings' => array(
-    'system'  => 'hello/admin/settings.razr.php'
+    'system'  => 'hello/admin/settings.razr'
 ),
 ```
 
@@ -144,11 +144,11 @@ Add to `theme.php`:
 
 ```php
 'settings' => array(
-    'system'  => 'theme://alpha/views/admin/settings.razr.php'
+    'system'  => 'theme://alpha/views/admin/settings.razr'
 )
 ```
 
-Create the according file holding a form with all your configuration options, i.e. `hello/views/admin/settings.razr.php`. This form has to be submitted to `@system/extensions/savesettings` (with a parameter specifying your theme name / extension name).
+Create the according file holding a form with all your configuration options, i.e. `hello/views/admin/settings.razr`. This form has to be submitted to `@system/extensions/savesettings` (with a parameter specifying your theme name / extension name).
 
 You can create any form element as long as you keep to a certain naming convention. The form is supposed to send an array of options,
 therefore all input fields are called `option[message]` with `message` being a name you want to give that option. The option will be stored in the database by the `savesettings` action and can be accessed from your extension (or theme) using `@config['message']`.

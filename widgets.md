@@ -59,7 +59,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
     /* Rendering the widget. Will usually render a view */
     public function render(WidgetInterface $widget, $options = array())
     {
-        return $this('view')->render('hello/widget.razr.php');
+        return $this('view')->render('hello/widget.razr');
     }
 
     /* Define a form for the Advanced section in the widget admin settings */

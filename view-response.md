@@ -14,11 +14,11 @@ The action method returns an array with data the template engine will use to
 render the view file.  Note how `head.title` is a special value used to render
 as the page's `<title>`.
 
-Render `<extensions>/hello/views/index.razr.php`:
+Render `<extensions>/hello/views/index.razr`:
 
 ```PHP
 /**
- * @View("hello/view.razr.php")
+ * @View("hello/view.razr")
  */
 public function viewAction($id=1)
 {
@@ -33,7 +33,7 @@ may come in handy when you dynamically determine which view to load.
 ```PHP
 public function anotherViewAction()
 {
-    $view = 'hello/view.razr.php';
+    $view = 'hello/view.razr';
     $data = array('head.title' => __('View article'), 'id' => 1);
     return $this('view')->render($view, $data);
 }
@@ -43,7 +43,7 @@ The according view file utilizes the [Razr templating language](https://github.c
 
 
 ```HTML
-<!-- extensions/hello/views/index.razr.php -->
+<!-- extensions/hello/views/index.razr -->
 
 <h1>You are viewing article number @id</h1>
 <p>
@@ -61,12 +61,12 @@ output but a complete HTML document. To disable this, you can set the
 
 | Method                       | Example                                      |
 |------------------------------|----------------------------------------------|
-| Using the annotation         | `@View("hello/index.razr.php", layout=false)`|
+| Using the annotation         | `@View("hello/index.razr", layout=false)`|
 | Using the `view` service     | `$this('view')->setLayout(false);`           |
 
-Or provide a different layout `$this('view')->setLayout('hello/theme.razr.php');`
+Or provide a different layout `$this('view')->setLayout('hello/theme.razr');`
 
-View file `<extensions>/hello/views/theme.razr.php`:
+View file `<extensions>/hello/views/theme.razr`:
 
 ```HTML
 <h1>This is the main theme</h1>

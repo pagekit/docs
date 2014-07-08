@@ -40,7 +40,7 @@ class HelloLink extends Link
 
     public function renderForm()
     {
-        return $this('view')->render('hello/admin/link.razr.php', array('route' => $this->getRoute()));
+        return $this('view')->render('hello/admin/link.razr', array('route' => $this->getRoute()));
     }
 }
 ```
@@ -53,7 +53,7 @@ sure that changes done by the user are stored. That is why we'll need some
 JavaScript as well.
 
 ```html
-<!-- views/admin/link.razr.php -->
+<!-- views/admin/link.razr -->
 
 <div class="uk-form-controls">
     <input class="uk-width-1-1" name="name" value="" type="text" placeholder="@trans('Hello World')">

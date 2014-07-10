@@ -6,7 +6,7 @@
 
 First, please check if your webserver meets the system requirements and if all needed PHP extensions are enabled.
 
-- Apache 2.2+
+- Apache 2.2+ or nginx
 - MySQL Server 5.1+
 - PHP Version 5.3.7+
 

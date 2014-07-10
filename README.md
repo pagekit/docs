@@ -7,8 +7,9 @@ Symfony components.
 1. Getting Started
   1. [Quickstart](quickstart.md)
   2. [Folder Structure](folder-structure.md)
-  3. [Configuration File](configuration-file.md)
-  4. [Troubleshooting](troubleshooting.md)
+  3. [Server configuration](serverconfig.md)
+  4. [Configuration File](configuration-file.md)
+  5. [Troubleshooting](troubleshooting.md)
 
 2. User Interface
   1. [Dashboard](ui-dashboard.md)

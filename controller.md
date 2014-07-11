@@ -77,7 +77,7 @@ the class and methods. Here is a quick overview, a detailed description for each
 | Annotation       | Description |
 |------------------|-------------|
 | `@Route`         | Route to mount an action or the whole controller.  |
-| `@View`          | The view file used for rendering.                  |
+| `@Response`      | Render a view file or return a JSON reponse. |
 | `@Request`       | Handle parameter passing from the http request to the method.  |
 | `@Access`        | Check for user permissions.                        |
 | `@Token`         | Protection against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery).            |
@@ -96,7 +96,7 @@ method.
 /**
  * @Route("/greet", name="@hello/greet/world")
  * @Route("/greet/{name}", name="@hello/greet/name")
- * @View("hello/greet.razr")
+ * @Response("hello/greet.razr")
  */
 public function greetAction($name = 'World')
 {
@@ -119,13 +119,13 @@ public function viewAction($id = 1)
 ```
 
 
-### @View
+### @Response
 
 Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr`:
 
 ```php
 /**
- * @View("hello/view.razr")
+ * @Response("hello/view.razr")
  */
 public function viewAction($id = 1)
 {

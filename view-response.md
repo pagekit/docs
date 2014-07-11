@@ -9,7 +9,7 @@ services.
 
 ## Render a view
 
-Use the `@View` annotation to determine which view file should be rendered.
+Use the `@Response` annotation to determine which view file should be rendered.
 The action method returns an array with data the template engine will use to
 render the view file.  Note how `head.title` is a special value used to render
 as the page's `<title>`.
@@ -18,7 +18,7 @@ Render `<extensions>/hello/views/index.razr`:
 
 ```PHP
 /**
- * @View("hello/view.razr")
+ * @Response("hello/view.razr")
  */
 public function viewAction($id=1)
 {
@@ -61,7 +61,7 @@ output but a complete HTML document. To disable this, you can set the
 
 | Method                       | Example                                      |
 |------------------------------|----------------------------------------------|
-| Using the annotation         | `@View("hello/index.razr", layout=false)`|
+| Using the annotation         | `@Response("hello/index.razr", layout=false)`|
 | Using the `view` service     | `$this('view')->setLayout(false);`           |
 
 Or provide a different layout `$this('view')->setLayout('hello/theme.razr');`

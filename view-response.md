@@ -140,7 +140,7 @@ public function redirectAction()
 
 ### Return JSON
 
-Returns a JSON representation of any object using the `@Response("json")` annotation.
+Return a JSON representation of any object using the `@Response("json")` annotation.
 
 ```php
 @Response("json")

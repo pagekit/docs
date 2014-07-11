@@ -140,7 +140,17 @@ public function redirectAction()
 
 ### Return JSON
 
-Returns a JSON representation of any object.
+Returns a JSON representation of any object using the `@Response("json")` annotation.
+
+```php
+@Response("json")
+public function jsonAction()
+{
+    return array('error' => true, 'message' => 'There is nothing here. Move along.');
+}
+```
+
+Of course, you can manually use the `response` service to achieve the same thing.
 
 ```PHP
 public function jsonAction()
@@ -150,6 +160,7 @@ public function jsonAction()
 }
 
 ```
+
 
 ### Custom response and error pages
 

@@ -85,16 +85,16 @@ Here's a minimal example:
 <html>
     <head>
         <meta charset="utf-8">
-        @action('head')
+        @section('head')
     </head>
     <body>
-        @action('messages')
-        @action('content')
+        @section('messages')
+        @section('content')
     </body>
 </html>
 ```
 
-Note how `@action(...)` calls an action that views and controllers can hook into to add their own output. `head` is for scripts, resources and everything that ends up in the `<head>` section, `messages` is for system messages and `content` is where the main output ends up. You will see later how you can register your own actions.
+Note how `@section(...)` calls an action that views and controllers can hook into to add their own output. `head` is for scripts, resources and everything that ends up in the `<head>` section, `messages` is for system messages and `content` is where the main output ends up. You will see later how you can register your own actions.
 
 Now head to the browser, enable your theme from the backend and give it a go. You should get a very plain output of your content. Now that you've seen the basics, let's go for something more fancy.
 

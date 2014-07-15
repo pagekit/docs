@@ -72,7 +72,7 @@ View file `<extensions>/hello/views/theme.razr`:
 <h1>This is the main theme</h1>
 
 <section>
-    @action('content')
+    @section('content')
 </section>
 ```
 

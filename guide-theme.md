@@ -81,10 +81,10 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 <html>
     <head>
         <meta charset="utf-8">
-        @action('head')
+        @section('head')
     </head>
     <body>
-        @action('content')
+        @section('content')
     </body>
 </html>
 ```
@@ -99,15 +99,15 @@ The starting point for your theme's rendering is the main template file `templat
 
 As you've seen, the templating language of choice is [Razr](https://github.com/pagekit/razr) which is a superset of PHP. You can use PHP for templating, but Razr offers you a lot of shorthand syntax and quick access to many functions provided by Pagekit.
 
-We've already used the `@action` directive twice and we will use it more often in the course of this tutorial. The basic idea here is that components in Pagekit (and any extension that is enabled) can register their content to specific actions. The `head` action for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
+We've already used the `@section` directive twice and we will use it more often in the course of this tutorial. The basic idea here is that components in Pagekit (and any extension that is enabled) can add their content to specific sections. The `head` section for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
 
 Your theme should render the following actions on every page.
 
 | Action                  | Description       |
 |-------------------------|-------------|
-| `@action('head')`       | Renders meta tags and assets, put this in the `<head>` section. |
-| `@action('content')`    | Renders the content of the current page, put this somewhere in your `<body>` section. |
-| `@action('messages')`   | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
+| `@section('head')`       | Renders meta tags and assets, put this in the `<head>` section. |
+| `@section('content')`    | Renders the content of the current page, put this somewhere in your `<body>` section. |
+| `@section('messages')`   | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
 
 ## Add CSS
 
@@ -122,7 +122,7 @@ body {
 }
 ```
 
-In `templates/template.razr`, add the following line right after `@action('head')`.
+In `templates/template.razr`, add the following line right after `@section('head')`.
 
 ```
 @style('theme', 'theme://mytheme/css/theme.css')
@@ -141,12 +141,12 @@ To require some provided JavaScript, let's include jQuery on our page. Pagekit a
 <html>
     <head>
         <meta charset="utf-8">
-        @action('head')
+        @section('head')
         @style('theme', 'theme://mytheme/css/theme.css')
         @script('jquery')
     </head>
     <body>
-        @action('content')
+        @section('content')
     </body>
 </html>
 
@@ -193,12 +193,12 @@ We'll start off by creating a single renderer that plainly renders all published
 Now, create the folder `/mytheme/views/renderer` and a file `/mytheme/views/renderer/position.blank.razr` with the following content.
 
 ```
-@foreach ($widgets as $widget)
-    @raw( $provider.render($widget, $options) )
+@foreach ($value as $widget)
+    @raw( $options.provider.render($widget, $options) )
 @endforeach
 ```
 
-We use Razr's `@foreach` directive to iterate over all widgets in the current position. Every widget is rendered by passing it to the `render` function of the view service provider which is available via `$provider`. The `@raw` directive outputs the generated markup without escaping special characters.
+A renderer is a view file that gets handed in all content in the `$value` variable. For widget positions, this is an array of widgets published in that position. We use Razr's `@foreach` directive to iterate over all these widgets. Every widget is rendered by passing it to the `render` function of the view service provider which is available via `$options.provider`. The `@raw` directive outputs the generated markup without escaping special characters.
 
 ## Widget positions
 

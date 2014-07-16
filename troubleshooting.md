@@ -10,7 +10,7 @@ First, please check if your webserver meets the system requirements and if all n
 - MySQL Server 5.1+
 - PHP Version 5.3.7+
 
-**PHP extensions**
+### PHP extensions
 
 - JSON extension
 - Session extension

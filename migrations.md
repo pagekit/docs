@@ -55,26 +55,21 @@ resulting version after the migrator has finished.
 
 ### Migration files
 
-Migration files are typically located in the `/migrations` folder of your
-extension and need to stick to certain conventions.
-
-A migration file is named using the date and a name of your chosing:
-`YYYY-MM-DD_some_meaningful_name.php` (for example `0000-00-00_init.php`).
+Migration files are typically located in the `/migrations` folder of your extension and need to stick to certain conventions. A migration file is named using the date and a name of your chosing: `YYYY-MM-DD_some_name.php` (for example `0000-00-00_init.php`).
 
 Inside the migration file, you create an array which has the keys `up` and `down` with a closure function for your code. By using `use ($app)`, you have access to all application services, for example the `db` service for database access.
 
 ```php
-
 <?php
 
 return [
 
     'up' => function() use ($app) {
-        // ...
+        // your code here ...
     },
 
     'down' => function() use ($app) {
-        // ...
+        // your code here ...
     }
 
 ];

@@ -6,12 +6,7 @@ To determine where a Widget's content will be rendered, the admin area has a *Wi
 
 ## Basic structure
 
-The central location of the widget's behaviour is defined in a class
-that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
-In the following example the class extends `ApplicationAware` in order to
-have `$this['view']` available for view rendering (and all other Application
-services actually). Don't be confused by this, a detailed explanation follows
-in the [Application](application.md) chapter.
+The central location of the widget's behaviour is defined in a class that must extend the `Pagekit\Widget\Model\Type`.
 
 **Note** Wrapping a string in a call of the double underscore function `__(...)` makes it translatable. More on that in the [translation chapter](translation.md).
 
@@ -22,11 +17,10 @@ in the [Application](application.md) chapter.
 
 namespace Pagekit\Hello;
 
-use Pagekit\Framework\ApplicationAware;
-use Pagekit\Widget\Model\TypeInterface;
+use Pagekit\Widget\Model\Type;
 use Pagekit\Widget\Model\WidgetInterface;
 
-class HelloWidget extends ApplicationAware implements TypeInterface
+class HelloWidget extends Type
 {
     /* unique identifier */
     public function getId()
@@ -40,8 +34,8 @@ class HelloWidget extends ApplicationAware implements TypeInterface
         return __('Hello Widget!');
     }
 
-    /* description displayed in admin area */
-    public function getDescription(WidgetInterface $widget = null))
+     /* description displayed in admin area */
+    public function getDescription(WidgetInterface $widget = null)
     {
         return __('Hello Demo Widget');
     }

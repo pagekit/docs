@@ -27,7 +27,7 @@ can access application properties by calling `$this` with the desired service
 name.
 
 ```
-$this('cache')
+$this['cache']
 ```
 
 ## Custom classes
@@ -55,5 +55,5 @@ and extension classes.
 
 
 ```
-$this('cache')
+$this['cache']
 ```

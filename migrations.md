@@ -42,8 +42,8 @@ conventions.
 ```php
 public function enable()
 {
-  if ($version = $this('migrator')->run('extension://hello/migrations', $this('option')->get('hello:version'))) {
-    $this('option')->set('hello:version', $version);
+  if ($version = $this['migrator']->run('extension://hello/migrations', $this['option']->get('hello:version'))) {
+    $this['option']->set('hello:version', $version);
   }
 }
 ```
@@ -94,7 +94,7 @@ application services, for example the `db` service for database access.
 ```php
 public function up()
 {
-    $util = $this('db')->getUtility();
+    $util = $this['db']->getUtility();
 
     if ($util->tableExists('@hello_greetings') === false) {
         $util->createTable('@hello_greetings', function($table) {
@@ -150,7 +150,7 @@ class HelloExtension extends Extension
 {
     public function uninstall()
     {
-        $util = $this('db')->getUtility();
+        $util = $this['db']->getUtility();
         $util->dropTable('@hello_greetings');
     }
 }

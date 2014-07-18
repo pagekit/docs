@@ -133,9 +133,9 @@ return [
 Inside `/templates/template.razr` you will determine the actual rendering location.
 
 ```html
-@if (app.positions.exists('footer'))
+@if (hasSection('footer'))
     <footer>
-         @app.positions.render('footer')
+         @section('footer')
     </footer>
 @endif
 ```

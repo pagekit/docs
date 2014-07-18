@@ -35,7 +35,7 @@ public function anotherViewAction()
 {
     $view = 'extension://hello/views/view.razr';
     $data = ['head.title' => __('View article'), 'id' => 1];
-    return $this('view')->render($view, $data);
+    return $this['view']->render($view, $data);
 }
 ```
 
@@ -62,9 +62,9 @@ output but a complete HTML document. To disable this, you can set the
 | Method                       | Example                                      |
 |------------------------------|----------------------------------------------|
 | Using the annotation         | `@Response("hello/index.razr", layout=false)`|
-| Using the `view` service     | `$this('view')->setLayout(false);`           |
+| Using the `view` service     | `$this['view']->setLayout(false);`           |
 
-Or provide a different layout `$this('view')->setLayout('hello/theme.razr');`
+Or provide a different layout `$this['view']->setLayout('hello/theme.razr');`
 
 View file `<extensions>/hello/views/theme.razr`:
 
@@ -124,7 +124,7 @@ to redirect from a controller action.
 ```php
 function redirectAction()
 {
-    return $this('response')->redirect('@hello/greet/name', ['name' => 'Someone']);
+    return $this['response']->redirect('@hello/greet/name', ['name' => 'Someone']);
 }
 ```
 
@@ -156,7 +156,7 @@ Of course, you can manually use the `response` service to achieve the same thing
 public function jsonAction()
 {
     $data = ['error' => true, 'message' => 'There is nothing here. Move along.'];
-    return $this('response')->json($data);
+    return $this['response']->json($data);
 }
 
 ```
@@ -170,7 +170,7 @@ can return any custom HTTP response.
 ```php
 function forbiddenAction()
 {
-    return $this('response')->create('Permission denied.', 401);
+    return $this['response']->create('Permission denied.', 401);
 }
 ```
 
@@ -183,6 +183,6 @@ a *Save as* dialog in most browsers.
 ```php
 public function downloadAction()
 {
-    return $this('response')->download('extensions/hello/extension.svg');
+    return $this['response']->download('extensions/hello/extension.svg');
 }
 ```

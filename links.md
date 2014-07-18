@@ -15,7 +15,7 @@ registered and how to ask for advanced options from the user.
 
 Extend `Pagekit\System\Link\Link` and implement the three methods `getRoute`, `getLabel` and `renderForm`.
 
-**Note** `$this(‘view')` is a shortcut to access the `view` service. A detailed explanation will follow in the
+**Note** `$this['view']` is a shortcut to access the `view` service. A detailed explanation will follow in the
 [Application](application.md) chapter.
 
 In your extension, create the file `/hello/src/HelloLink.php`:
@@ -40,7 +40,7 @@ class HelloLink extends Link
 
     public function renderForm()
     {
-        return $this('view')->render('extension://hello/views/admin/link.razr', ['route' => $this->getRoute()]);
+        return $this['view']->render('extension://hello/views/admin/link.razr', ['route' => $this->getRoute()]);
     }
 }
 ```

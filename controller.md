@@ -19,8 +19,8 @@ Your Controller is a class that needs to be linked from your `extension.php`
 (see [Configuration](configuration.md) for details). While a controller class does not necessarily have to extend
 `Pagekit\Framework\Controller\Controller`, it will usually still do so. By
 subclassing the base Controller class, you gain access to the Application
-instance and therefore to all services (e.g. `$this('db')` for the database
-service, `$this('view')` for the view service).
+instance and therefore to all services (e.g. `$this['db']` for the database
+service, `$this['view']` for the view service).
 
 
 ```php
@@ -210,6 +210,6 @@ actions.
 Using the URL service, you can generate URLs to your routes.
 
 ```php
-$this('url')->route('@hello/default/index')
-$this('url')->route('@hello/view/id', ['id' => 23])
+$this['url']->route('@hello/default/index')
+$this['url']->route('@hello/view/id', ['id' => 23])
 ```

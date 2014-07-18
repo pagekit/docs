@@ -79,7 +79,7 @@ layers sitting above which can modify the response object.
 
 The central component of communication between all parts of the system is
 the `EventDispatcher` which can be accessed via `$app['events']` (or
-`$this('events')` when using the ApplicationTrait). Every part can
+`$this['events']` when using the ApplicationTrait). Every part can
 listen to certain events and trigger events itself.
 
 To subscribe to events, a class must implement the `EventSubscriberInterface`
@@ -123,7 +123,7 @@ In the `boot` method of your extension (or theme), you need to register your
 listener so it can subscribe to events.
 
 ```php
-$this('events')->addSubscriber(new HelloListener());
+$this['events']->addSubscriber(new HelloListener());
 ```
 
 You can also use the Application's `on` shorthand to react to events and also

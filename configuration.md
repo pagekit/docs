@@ -53,7 +53,7 @@ Set views for a settings screen and for custom widget options. Provide an array 
 
 ```php
 'settings' => [
-    'system'  => 'hello/admin/settings.razr'
+    'system'  => 'extension://hello/views/admin/settings.razr'
 ],
 ```
 
@@ -93,7 +93,9 @@ Usable in `extension.php` only:
 
 The `controllers` property defines the paths to your controllers. You can use [glob](http://php.net/glob) syntax. Used for automatic route registration. Set a string with glob syntax or an array with multiple paths.
 
-    `'controllers' => 'src/Controller/*Controller.php'`
+```php
+'controllers' => 'src/Controller/*Controller.php'
+```
 
 ### Menu
 
@@ -138,8 +140,8 @@ If you want to keep your theme customizable and your extension configurable, you
 
 ```php
 'settings' => [
-        'system'  => 'theme://mytheme/views/admin/settings.razr'
-    ],
+    'system'  => 'theme://mytheme/views/admin/settings.razr'
+],
 ```
 
 Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.

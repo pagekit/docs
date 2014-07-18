@@ -36,7 +36,7 @@ You can manage your database schema using the database service utility (see the
 following examples).
 
 ```
-$util = $this('db')->getUtility();
+$util = $this['db']->getUtility();
 ```
 
 ## Check if tables exists

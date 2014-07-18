@@ -9,7 +9,7 @@ To determine where a Widget's content will be rendered, the admin area has a *Wi
 The central location of the widget's behaviour is defined in a class
 that must implement the interface `Pagekit\Widget\Model\TypeInterface`.
 In the following example the class extends `ApplicationAware` in order to
-have `$this(‘view')` available for view rendering (and all other Application
+have `$this['view']` available for view rendering (and all other Application
 services actually). Don't be confused by this, a detailed explanation follows
 in the [Application](application.md) chapter.
 
@@ -59,7 +59,7 @@ class HelloWidget extends ApplicationAware implements TypeInterface
     /* Rendering the widget. Will usually render a view */
     public function render(WidgetInterface $widget, $options = [])
     {
-        return $this('view')->render('extension://hello/views/widget.razr');
+        return $this['view']->render('extension://hello/views/widget.razr');
     }
 
     /* Define a form for the Advanced section in the widget admin settings */

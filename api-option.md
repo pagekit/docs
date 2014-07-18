@@ -15,7 +15,7 @@ Use `set($key, $value, $autoload=null)` to set an option.
 
 
 ```
-$this('option')->set('hello:message', 'Hello Universe!');
+$this['option']->set('hello:message', 'Hello Universe!');
 ```
 
 
@@ -26,6 +26,6 @@ option has not been set, the value passed to `$default` will be returned.
 
 
 ```
-$message = $this('option')->get('hello:message', 'Hello World!');
+$message = $this['option']->get('hello:message', 'Hello World!');
 
 ```

@@ -9,17 +9,17 @@ Database credentials are stored in `config.php`. Pagekit supports `mysql`and
 `sqlite`.
 
 ```
-'database' => array (
-    'connections' => array (
-      'mysql' => array (
+'database' => [
+    'connections' => [
+      'mysql' => [
         'host' => 'localhost',
         'user' => 'root',
         'password' => 'PASSWORD',
         'dbname' => 'DATABASE',
         'prefix' => 'PREFIX_',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
   ...
 ```
 
@@ -42,7 +42,7 @@ $util = $this('db')->getUtility();
 ## Check if tables exists
 
 ```
-if ($util->tablesExist(array('@table1', '@table2'))) {
+if ($util->tablesExist(['@table1', '@table2'])) {
   // tables exists
 }
 ```
@@ -55,12 +55,12 @@ instance.
 
 ```
 $util->createTable('@foobar_option', function($table) {
-    $table->addColumn('id', 'integer', array('unsigned' => true, 'length' => 10, 'autoincrement' => true));
-    $table->addColumn('name', 'string', array('length' => 64, 'default' => ''));
+    $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+    $table->addColumn('name', 'string', ['length' => 64, 'default' => '']);
     $table->addColumn('value', 'text');
-    $table->addColumn('autoload', 'boolean', array('default' => false));
-    $table->setPrimaryKey(array('id'));
-    $table->addUniqueIndex(array('name'), 'OPTION_NAME');
+    $table->addColumn('autoload', 'boolean', ['default' => false]);
+    $table->setPrimaryKey(['id']);
+    $table->addUniqueIndex(['name'], 'OPTION_NAME');
 });
 ```
 

@@ -1,6 +1,6 @@
 # Widgets
 
-<p class="uk-article-lead">Use Widgets to render small chunks of content at different positions of your site.</p> 
+<p class="uk-article-lead">Use Widgets to render small chunks of content at different positions of your site.</p>
 
 To determine where a Widget's content will be rendered, the admin area has a *Widgets* section to publish widgets in specific positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
@@ -17,7 +17,7 @@ in the [Application](application.md) chapter.
 
 `hello/src/HelloWidget.php`:
 
-```PHP
+```php
 <?php
 
 namespace Pagekit\Hello;
@@ -57,9 +57,9 @@ class HelloWidget extends ApplicationAware implements TypeInterface
     }
 
     /* Rendering the widget. Will usually render a view */
-    public function render(WidgetInterface $widget, $options = array())
+    public function render(WidgetInterface $widget, $options = [])
     {
-        return $this('view')->render('hello/widget.razr');
+        return $this('view')->render('extension://hello/views/widget.razr');
     }
 
     /* Define a form for the Advanced section in the widget admin settings */
@@ -108,7 +108,7 @@ Read and write single settings properties with:
 Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `extension.php` or
 `theme.php`.
 
-```PHP
+```php
 <?php
 
 namespace Pagekit\Hello;
@@ -161,7 +161,7 @@ exactly the same, the only difference being the way the widget is registered
 at the Application (and the configuration is stored in or in the `system_user`
 table, because dashboard widgets are specific for every user's dashboard).
 
-```PHP
+```php
 <?php
 
 namespace Pagekit\Hello;

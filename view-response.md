@@ -16,13 +16,13 @@ as the page's `<title>`.
 
 Render `<extensions>/hello/views/index.razr`:
 
-```PHP
+```php
 /**
  * @Response("hello/view.razr")
  */
 public function viewAction($id=1)
 {
-    return array('head.title' => __('View article'), 'id' => $id);
+    return ['head.title' => __('View article'), 'id' => $id];
 }
 ```
 
@@ -30,11 +30,11 @@ You can also manually access the View service to render a template file. This
 may come in handy when you dynamically determine which view to load.
 
 
-```PHP
+```php
 public function anotherViewAction()
 {
-    $view = 'hello/view.razr';
-    $data = array('head.title' => __('View article'), 'id' => 1);
+    $view = 'extension://hello/views/view.razr';
+    $data = ['head.title' => __('View article'), 'id' => 1];
     return $this('view')->render($view, $data);
 }
 ```
@@ -118,10 +118,10 @@ More about i18n (internationalization) in the [translation chapter](translation.
 
 ### Redirect
 
-Use `redirect($url, $parameters = array(), $status = 302, $headers = array())`
+Use `redirect($url, $parameters = [], $status = 302, $headers = [])`
 to redirect from a controller action.
 
-```PHP
+```php
 function redirectAction()
 {
     return $this('response')->redirect('@hello/greet/name', ['name' => 'Someone']);
@@ -131,7 +131,7 @@ function redirectAction()
 In case your controller extends `Pagekit\Framework\Controller\Controller`, you
 can directly access the `redirect` method.
 
-```PHP
+```php
 public function redirectAction()
 {
     return $this->redirect('@hello/greet/name', ['name' => 'Someone']);
@@ -146,16 +146,16 @@ Return a JSON representation of any object using the `@Response("json")` annotat
 @Response("json")
 public function jsonAction()
 {
-    return array('error' => true, 'message' => 'There is nothing here. Move along.');
+    return ['error' => true, 'message' => 'There is nothing here. Move along.'];
 }
 ```
 
 Of course, you can manually use the `response` service to achieve the same thing.
 
-```PHP
+```php
 public function jsonAction()
 {
-    $data = array('error' => true, 'message' => 'There is nothing here. Move along.');
+    $data = ['error' => true, 'message' => 'There is nothing here. Move along.'];
     return $this('response')->json($data);
 }
 
@@ -164,10 +164,10 @@ public function jsonAction()
 
 ### Custom response and error pages
 
-Using `create($content = '', $status = 200, $headers = array())` you
+Using `create($content = '', $status = 200, $headers = [])` you
 can return any custom HTTP response.
 
-```PHP
+```php
 function forbiddenAction()
 {
     return $this('response')->create('Permission denied.', 401);
@@ -176,11 +176,11 @@ function forbiddenAction()
 
 ### Download
 
-Using `download($file, $name = null, $headers = array())` you can link to a file
+Using `download($file, $name = null, $headers = [])` you can link to a file
 to be downloaded. Sets `Content-Disposition: attachment` to force
 a *Save as* dialog in most browsers.
 
-```PHP
+```php
 public function downloadAction()
 {
     return $this('response')->download('extensions/hello/extension.svg');

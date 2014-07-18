@@ -41,7 +41,7 @@ msgstr "Keine Datenbankverbindung."
 
 To get the localized version of a string, you can use the global function `__(...)` or `@trans(...)` when inside a view. Pagekit will automatically check the user's locale, check if there is a localized version of the string available or return the string ID instead. That is why instead of using keys like `"hello_save_label"`, we simply use `"Save"` to identify the message.
 
-```PHP
+```php
 $message = __("Save");
 ```
 
@@ -53,8 +53,8 @@ $message = __("Save");
 
 Suppose you have a name stored in `$name` and want to include it in a localized string. You can pass parameters to the translation functions to do simple string replacement.
 
-```PHP
-$messages = __("Hello %name%!", array("%name%" => $name));
+```php
+$messages = __("Hello %name%!", ["%name%" => $name]);
 ```
 
 
@@ -96,12 +96,12 @@ When you add, remove and change some strings in your extension and re-run `./pag
 
 1. Open the already localized file in poEdit, i.e. `/de_DE/messages.po`
 2. From the menu, choose *Catalog > Update from POT file*
-3. Select the newly generated `messages.pot`. 
+3. Select the newly generated `messages.pot`.
 4. In the next dialog, include translations for any new strings and save the file. `messages.mo` will automatically be saved as well.
 
 ## How a locale is determined
 
-When the Installer is run, the locale is determined automatically by checking what locales the user's browser accepts. When Pagekit has been set up, you can set the language in the admin area. 
+When the Installer is run, the locale is determined automatically by checking what locales the user's browser accepts. When Pagekit has been set up, you can set the language in the admin area.
 
 **Note** You can only select languages that are available for the system extension.
 
@@ -113,8 +113,8 @@ Indeed, when we called `./pagekit extension:translate hello` earlier, the result
 
 There might be the case when you do not want to share messages from the default domain. Just set your own domain and regenerate the `*.pot` files. You can do this for individual strings or set the parameter on all strings to keep your localization completely separate from the system.
 
-```PHP
-$msg = __("Hello Universe", array(), "hello");
+```php
+$msg = __("Hello Universe", [], "hello");
 ```
 
 

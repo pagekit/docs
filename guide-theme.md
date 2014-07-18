@@ -4,15 +4,15 @@
 
 ## Create the file structure
 
-Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files. 
+Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
-There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand. 
+There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand.
 
 ### Command line
 
 If you like the command line, run a single command to create a skeleton theme. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial. More developer information is available in the [advanced theme docs](themes.md).
 
-```bash 
+```bash
 php pagekit theme:generate mytheme
 ```
 
@@ -25,8 +25,8 @@ To get started, create an empty folder `/themes/mytheme`. Create three empty fil
 | File                         | Needed?  | Description        |
 |------------------------------|----------|--------------------|
 | `template/template.razr`     | required | Main template file |
-| `theme.json`                 | required | Theme metadata     | 
-| `theme.php`                  | required | Theme settings     | 
+| `theme.json`                 | required | Theme metadata     |
+| `theme.php`                  | required | Theme settings     |
 
 When working with themes, you will add more and more files. Even though we won't need all of them in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
 
@@ -34,11 +34,11 @@ When working with themes, you will add more and more files. Even though we won't
 
 | File                         | Needed?  | Description        |
 |------------------------------|----------|--------------------|
-| `src/MythemeTheme.php`       | optional | Needed when you want to add your own functionality using PHP | 
+| `src/MythemeTheme.php`       | optional | Needed when you want to add your own functionality using PHP |
 | `views/admin/settings.razr`  | optional | View file for a settings screen in the back end |
-| `css`                        | optional | CSS files          |  
-| `js`                         | optional | JavaScript files   |  
-| `images`                     | optional | Image assets       | 
+| `css`                        | optional | CSS files          |
+| `js`                         | optional | JavaScript files   |
+| `images`                     | optional | Image assets       |
 
 Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
 
@@ -47,7 +47,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 `theme.php` includes a PHP array with all configuration for your theme. Let's start off with no configuration at all: an empty array.
 
 ```
-<?php return array();
+<?php return [];
 ```
 
 ## theme.json
@@ -89,7 +89,7 @@ Let's have a look at the files we actually need in the beginning: `theme.php`, `
 </html>
 ```
 
-Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable* button. Now have a look at the Pagekit installation, it should display some content without any styling. 
+Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable* button. Now have a look at the Pagekit installation, it should display some content without any styling.
 
 **Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something - like the blog, a single blog post or a static page.
 
@@ -152,7 +152,7 @@ To require some provided JavaScript, let's include jQuery on our page. Pagekit a
 
 ```
 
-The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the rendering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included a single time, even if several components require the same asset (which is a common case if you think about libraries like jQuery). 
+The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the rendering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included a single time, even if several components require the same asset (which is a common case if you think about libraries like jQuery).
 
 To actually include your own script and set certain requirements, use the following syntax where the third parameter is a list of required assets.
 
@@ -183,11 +183,12 @@ A single widget position can hold more than one widget. To determine how those w
 We'll start off by creating a single renderer that plainly renders all published widgets without any fancy markup. Let's call it `blank`. To make sure Pagekit knows about it, add the `renderer` option to our `theme.php`.
 
 ```
-<?php 
-    return array(
-        'renderer' => array(
-            'blank'     => 'theme://mytheme/views/renderer/position.blank.razr')
-        );
+<?php
+    return [
+        'renderer' => [
+            'blank' => 'theme://mytheme/views/renderer/position.blank.razr'
+        ]
+    ];
 ```
 
 Now, create the folder `/mytheme/views/renderer` and a file `/mytheme/views/renderer/position.blank.razr` with the following content.
@@ -206,14 +207,14 @@ We need to tell Pagekit about the widget positions our theme offers. To do so, a
 
 Add the widget positions to your `theme.php`.
 
-```PHP
-'positions' => array(
-    'logo'       => 'Logo',
-    'navbar'     => 'Navbar'
-),
+```php
+'positions' => [
+    'logo'   => 'Logo',
+    'navbar' => 'Navbar'
+],
 ```
 
-In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. Note how we set the `blank` renderer we've created before. 
+In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. Note how we set the `blank` renderer we've created before.
 
 **Note** The `@raw` directive makes sure the rendered widget markup is not escaped.
 
@@ -225,21 +226,21 @@ In our template, we now need to add the actual rendering of widgets in those pos
 
 ## Create a widget
 
-To make sure our new widget position works, we go the the admin area of Pagekit and create a new widget in the logo position. Navigate to the *Widgets* area and hit *Add widget*. In the drop down, select the *Text* type. Type in any content you like. On the right ahnd side, you see a dropdown for widget positions. You should be able to see all positions defined by our theme. Select `logo` and make sure to set the *Status* to *Enabled*. Save the widget 
+To make sure our new widget position works, we go the the admin area of Pagekit and create a new widget in the logo position. Navigate to the *Widgets* area and hit *Add widget*. In the drop down, select the *Text* type. Type in any content you like. On the right ahnd side, you see a dropdown for widget positions. You should be able to see all positions defined by our theme. Select `logo` and make sure to set the *Status* to *Enabled*. Save the widget
 
 In this tutorial, we will only include th the `logo` position. But just like that, you can define your own positions. It is recommended to include the following basic set of widget positions. When your theme sticks to these, users can just enable a new theme and existing widget assignments will be picked up automatically.
 
 | Position name | Label       |
 |---------------|-------------|
-| `logo`        | Logo        | 
+| `logo`        | Logo        |
 | `logo-small`  | Logo Small  |
 | `navbar`      | Navbar      |
-| `top-a`       | Top A       | 
-| `top-b`       | Top B       | 
-| `sidebar-a`   | Sidebar A   | 
+| `top-a`       | Top A       |
+| `top-b`       | Top B       |
+| `sidebar-a`   | Sidebar A   |
 | `sidebar-b`   | Sidebar B   |
-| `footer`      | Footer      | 
-| `offcanvas`   | Offcanvas   | 
+| `footer`      | Footer      |
+| `offcanvas`   | Offcanvas   |
 
 ## Where to go from here
 

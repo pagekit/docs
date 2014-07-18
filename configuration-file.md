@@ -9,21 +9,18 @@ Pagekit's configuration is stored in `config.php` in the Pagekit root folder. He
 The database connection settings are stored in `database['connections']`. Here you can find the connection data  you have provided during the installation process:
 
 ```php
-'database' =>
-  array (
+'database' => [
     'default' => 'mysql',
-    'connections' =>
-    array (
-      'mysql' =>
-      array (
+    'connections' => [
+      'mysql' => [
         'host' => 'localhost',
         'user' => 'user',
         'password' => 'pass',
         'dbname' => 'pagekit',
         'prefix' => 'pk_',
-      ),
-    ),
-  ),
+      ],
+    ],
+  ],
 ```
 
 **Note** It is also possible to configure more than one database connection.
@@ -40,12 +37,11 @@ In the `app` section you can enable the debug output or disable the cache. This 
 | `nocache` | Disabling the cache can be useful in a development environment. Remember to enable it on the production server. |
 
 ```php
-'app' =>
-  array (
+'app' => [
     'key' => '66235f24939aa374932d09bd2805fdb93d064d6d',
     'debug' => '0',
     'nocache' => '0',
-  ),
+  ],
 ```
 
 ## Cache
@@ -60,13 +56,13 @@ In `cache` section the configured caching method is stored. Initially the cache 
 
 
 ```php
-'cache' => array (
-    'caches' => array (
-        'main' => array (
+'cache' => [
+    'caches' => [
+        'main' => [
             'storage' => 'auto'
-        )
-    )
-),
+        ]
+    ]
+],
 ```
 
 ## Profiler
@@ -79,8 +75,7 @@ When enabled, the profiler toolbar is located at the bottom of the page.
 | `enabled` | Enable or disable the profiler. |
 
 ```php
-'profiler' =>
-  array (
+'profiler' => [
     'enabled' => '0',
-  ),
+  ],
 ```

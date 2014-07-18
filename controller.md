@@ -77,10 +77,9 @@ the class and methods. Here is a quick overview, a detailed description for each
 | Annotation       | Description |
 |------------------|-------------|
 | `@Route`         | Route to mount an action or the whole controller.  |
-| `@Response`      | Render a view file or return a JSON reponse. |
 | `@Request`       | Handle parameter passing from the http request to the method.  |
+| `@Response`      | Render a view file or return a JSON reponse. |
 | `@Access`        | Check for user permissions.                        |
-| `@Token`         | Protection against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery).            |
 
 ### @Route
 
@@ -119,24 +118,6 @@ public function viewAction($id = 1)
 ```
 
 
-### @Response
-
-Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr`:
-
-```php
-/**
- * @Response("hello/view.razr")
- */
-public function viewAction($id = 1)
-{
-    // ...
-    return array('id' => $id);
-}
-```
-
-More about view rendering in the [View and Response](view-response.md) chapter.
-
-
 ### @Request
 
 You can specify the types of data passed via GET and POST request and match
@@ -149,12 +130,33 @@ array of integers. If not type is specified, `string` is assumed by default.
 The order of the keys will define the order in which parameters are being
 passed to the method. The parameter name in the method head can be anything.
 
-  ```php
+```php
 /**
- * @Request({"id": "int", "title", "config": "array"})
+ * @Request({"id": "int", "title", "config": "array"}, csrf=true)
  */
 public function saveAction($id, $title, $config) { ... }
-  ```
+```
+
+You can also check for a token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `csrf=true` to your request annotation and include the `@token` call in the view that submits a form to this method.
+
+
+### @Response
+
+Set the view file used for rendering. This is how you render `<extensions>/hello/views/index.razr`:
+
+```php
+/**
+ * @Response("extension://hello/views/index.razr")
+ */
+public function viewAction($id = 1)
+{
+    // ...
+    return ['id' => $id];
+}
+```
+
+More about view rendering in the [View and Response](view-response.md) chapter.
+
 
 ### @Access
 
@@ -203,16 +205,11 @@ actions.
   public function editAction() { ... }
   ```
 
-### @Token
-
-Check for Token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `@Token` to your action annotation and include the `@token()` call in the
-view that submits a form to this method.
-
 ## Generating URLs
 
 Using the URL service, you can generate URLs to your routes.
 
 ```php
 $this('url')->route('@hello/default/index')
-$this('url')->route('@hello/view/id', array('id' => 23))
+$this('url')->route('@hello/view/id', ['id' => 23])
 ```

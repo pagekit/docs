@@ -39,7 +39,7 @@ You can use the `migrator` service to
 automatically run any migration script needed, as long as you stick to certain
 conventions.
 
-```PHP
+```php
 public function enable()
 {
   if ($version = $this('migrator')->run('extension://hello/migrations', $this('option')->get('hello:version'))) {
@@ -65,7 +65,7 @@ Inside the migration file, you add a class for the migration event (for example
 `Init` for the very first schema creation) which implements `MigrationInterface`,
 meaning that you implement the methods `up()` and `down()`.
 
-```PHP
+```php
 <?php
 
 namespace Pagekit\Hello\Migration;
@@ -91,16 +91,16 @@ class Init extends ApplicationAware implements MigrationInterface
 By making your class extend `ApplicationAware`, you have access to all
 application services, for example the `db` service for database access.
 
-```PHP
+```php
 public function up()
 {
     $util = $this('db')->getUtility();
 
     if ($util->tableExists('@hello_greetings') === false) {
         $util->createTable('@hello_greetings', function($table) {
-            $table->addColumn('id', 'integer', array('unsigned' => true, 'length' => 10, 'autoincrement' => true));
-            $table->addColumn('name', 'string', array('length' => 255, 'default' => ''));
-            $table->setPrimaryKey(array('id'));
+            $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+            $table->addColumn('name', 'string', ['length' => 255, 'default' => '']);
+            $table->setPrimaryKey(['id']);
         });
     }
 }
@@ -119,7 +119,7 @@ When your extension gets disabled (either by the user or when installing an
 update), you can overwrite the `disable` method in
 your `Extension` subclass, just the way you did in the `enable` case.
 
-```PHP
+```php
 <?php
 namespace Pagekit\Hello;
 
@@ -144,7 +144,7 @@ decision.
 As you might have guessed, there is an `uninstall` method you can overwrite to
 hook into the uninstall action.
 
-```PHP
+```php
 
 class HelloExtension extends Extension
 {

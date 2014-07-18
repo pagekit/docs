@@ -22,7 +22,7 @@ You will be prompted for some information needed to initialize the theme.
 
 | Input             | Example               | Description |
 |-------------------|-----------------------|--------------|
-| `Title`           | `My Theme`            | The human readable name of your theme 
+| `Title`           | `My Theme`            | The human readable name of your theme
 | `Author`          | `YOOtheme`            | Your name or your company's name
 | `Email`           | `demo@yootheme.com`   | Your email address
 | `PHP Namespace`   | `MyTheme`             | Identifier used to organize your code files. PHP namespaces usually follow a CamelCase syntax.
@@ -72,7 +72,7 @@ This produces the following file structure inside the directory `/themes/MY-THEM
 <?php
 
 // config array
-return array();
+return [];
 ```
 
 ## Templating
@@ -109,7 +109,7 @@ So far, our site looks pretty dull. To add some of your own CSS and JavaScript, 
 
 **Note** Make sure to create `/themes/MY-THEME/assets/css/MY-THEME.css` and `/themes/MY-THEME/assets/js/theme.js`.
 
-The `@style` and `@script` calls link stylesheet and script files to the generated page according to an optional list of dependencies. All calls are resolved to include scripts and styles in the correct order and only once. 
+The `@style` and `@script` calls link stylesheet and script files to the generated page according to an optional list of dependencies. All calls are resolved to include scripts and styles in the correct order and only once.
 
 The mandatory first parameter is an identifier used to reference this script or stylesheet. Styles and scripts have separate namespaces, which is why `MY-THEME` can be used in both cases. The second parameter is mandatory and contains the file path. The third third parameter is optional and a list of dependencies to be included beforehand.
 
@@ -122,11 +122,11 @@ Positions are a concept of defining areas in your markup that are known to Pagek
 Define the position in your `theme.php`.
 
 ```php
-return array(
-    'positions' => array(
-        'footer'    => 'Footer',
+return [
+    'positions' => [
+        'footer' => 'Footer',
         ...
-    ),
+    ],
     ...
 ```
 

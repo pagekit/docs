@@ -79,7 +79,7 @@ layers sitting above which can modify the response object.
 
 The central component of communication between all parts of the system is
 the `EventDispatcher` which can be accessed via `$app['events']` (or
-`$this('events')` when extending ApplicationAware). Every part can
+`$this('events')` when using the ApplicationTrait). Every part can
 listen to certain events and trigger events itself.
 
 To subscribe to events, a class must implement the `EventSubscriberInterface`
@@ -87,15 +87,14 @@ and implement the static method `getSubscribedEvents`. This method will return
 an array with the subscribed elements as keys and the callback function as the
 according value.
 
-```PHP
+```php
 <?php
 
 namespace Pagekit\Hello\Event;
 
-use Pagekit\Framework\Event\EventSubscriberInterface;
-use Pagekit\Framework\ApplicationAware;
+use Pagekit\Framework\Event\EventSubscriber;
 
-class HelloListener extends ApplicationAware implements EventSubscriberInterface
+class HelloListener extends EventSubscriber
 {
     public function onBoot($event, $eventName, $dispatcher)
     {
@@ -109,12 +108,13 @@ class HelloListener extends ApplicationAware implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
+
             'hello.boot' => 'onBoot',
 
             // use any name and add a priority int if desired
-            'hello.boot' => array('anyName', 10)
-        );
+            'hello.boot' => ['anyName', 10]
+        ];
     }
 }
 ```
@@ -122,14 +122,14 @@ class HelloListener extends ApplicationAware implements EventSubscriberInterface
 In the `boot` method of your extension (or theme), you need to register your
 listener so it can subscribe to events.
 
-```PHP
+```php
 $this('events')->addSubscriber(new HelloListener());
 ```
 
 You can also use the Application's `on` shorthand to react to events and also
 just pass a closure.
 
-```PHP
+```php
 $app->on('hello.boot', function($event) use ($app){
     // do something
 });
@@ -137,7 +137,7 @@ $app->on('hello.boot', function($event) use ($app){
 
 Dispatch events with the following syntax.
 
-```PHP
+```php
 // dispatch event, optional second $event parameter
 $app['events']->dispatch('hello.boot');
 ```

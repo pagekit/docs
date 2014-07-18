@@ -22,9 +22,9 @@ If you have code besides custom views and configuration files, you will write yo
 Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ```php
-'autoload' => array(
+'autoload' => [
     'Pagekit\\Hello\\' => 'src'
-),
+],
 ```
 
 ### Resources
@@ -33,22 +33,18 @@ The `resources` property is an array with two keys.
 
 | Property  | Description |
 |-----------|-------------|
-| `export`    | Register the `view://` and `asset://` stream wrapper to point to your theme's (or extension's) `views` and `assets` directory. |
-| `overrides` | Possibility to overwrite `view://` and `asset://` properties, for example to allow for custom views of a system extension. |
+| `export`    | Register a stream wrapper to and point to a directory. |
+| `overrides` | Possibility to overwrite `extension://` or `theme://` properties, for example to allow for custom views of a system extension. |
 
 ```php
-'resources' => array(
-  'export' => array(
-    'view'  => 'views',
-    'asset' => 'assets'
-  ),
-  'overrides' => array(
+'resources' => [
+  'overrides' => [
     ...
-  )
-),
+  ]
+],
 ```
 
-**Note** You can now use `@url('asset://mytheme/images/foo.png')` to generate image paths in your views or `$app['url']->to('asset://mytheme/images/foo.png')` from your controllers and classes.
+**Note** You can use `@url('extension://hello/assets/images/foo.png')` to generate image paths in your views or `$app['url']->to('extension://hello/assets/images/foo.png')` from your controllers and classes.
 
 ### Settings
 
@@ -56,9 +52,9 @@ Set views for a settings screen and for custom widget options. Provide an array 
 
 
 ```php
-'settings' => array(
+'settings' => [
     'system'  => 'hello/admin/settings.razr'
-),
+],
 ```
 
 ### Custom properties
@@ -67,7 +63,7 @@ Feel free to add your own configuration properties. From your `Theme` instance (
 
 
 ```php
-'colours' => array('background' => '#ccc', 'text' => '#333');
+'colours' => ['background' => '#ccc', 'text' => '#333'];
 ```
 
 ## Theme
@@ -79,13 +75,13 @@ Usable in `theme.php` only:
 The `positions` property allows you to define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. See the chapter about [theming](themes.md)) for more information.
 
 ```php
-return array(
-    'positions' => array(
+return [
+    'positions' => [
         'logo'      => 'Logo',
         'sidebar'   => 'Sidebar',
         'footer'    => 'Footer',
         ...
-    ),
+    ],
     ...
 ```
 
@@ -112,14 +108,14 @@ The `menu` property is an array of menu items. Each element has a unique string 
 | `priority`  | Optional sort order, defaults to 0. |
 
 ```php
-'menu' => array(
-    'hello' => array(
+'menu' => [
+    'hello' => [
         'label'  => 'Hello',
-        'url'    => '@hello/hello/index',
+        'url'    => '@hello/hello',
         'active' => '/admin/hello*',
         'access' => 'hello: manage hellos'
-    )
-),
+    ]
+],
 ```
 
 ### Permissions
@@ -127,23 +123,23 @@ The `menu` property is an array of menu items. Each element has a unique string 
 The `permissions` property defines a list of permissions that can be assigned to user groups. The unique identifier should consist of the extension name followed by a brief identifying title of the permission (colons and spaces allowed). A description is optional and can be used to explain what this does. Check out *Users > Permissions* to see how this is displayed to the user.
 
 ```php
-'system: manage url aliases' => array(
+'system: manage url aliases' => [
     'title' => 'Manage url aliases'
-),
-'system: manage users' => array(
+],
+'system: manage users' => [
     'title' => 'Manage users',
     'description' => 'Warning: Give to trusted roles only; security implications.'
-),
+],
 ```
 
 ## Add a settings screen
 
 If you want to keep your theme customizable and your extension configurable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
 
-```PHP
-'settings' => array(
+```php
+'settings' => [
         'system'  => 'theme://mytheme/views/admin/settings.razr'
-    ),
+    ],
 ```
 
 Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
@@ -153,7 +149,7 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 **Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
 
 
-```PHP
+```php
 <form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
 
     <div class="uk-form-row">

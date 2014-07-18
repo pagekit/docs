@@ -40,7 +40,7 @@ class HelloLink extends Link
 
     public function renderForm()
     {
-        return $this('view')->render('hello/admin/link.razr', array('route' => $this->getRoute()));
+        return $this('view')->render('extension://hello/views/admin/link.razr', ['route' => $this->getRoute()]);
     }
 }
 ```

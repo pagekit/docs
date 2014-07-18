@@ -32,39 +32,12 @@ $this('cache')
 
 ## Custom classes
 
-To get access to the Application instance in one of your custom classes, extend
-the `ApplicationAware` trait. This will pull in a static `$app` reference and
+To get access to the Application instance in one of your custom classes, use
+the `Pagekit\Framework\ApplicationTrait`. This will pull in a static `$app` reference and
 make it accessible by calling the self-reference. As a matter of fact, this
 is exactly what happens for `Controller` and `Extension` in the background.
 
-```PHP
-namespace Pagekit\HelloExtension;
-
-use Pagekit\Framework\ApplicationAware;
-
-class MyClass extends ApplicationAware
-{
-  ...
-}
-```
-
-Now, you can access the Application instance exactly like you do in controllers
-and extension classes.
-
-
-```
-$this('cache')
-```
-
-
-The functionality of `Pagekit\Framework\ApplicationAware` is also available as a
-trait `Pagekit\Framework\ApplicationTrait`, so you are not limited to
-`extend`, as seen in the above example, but you can also insert the
-functionality provided with the `use` keyword.
-
-**Important** This breaks PHP 5.3 compatibility.
-
-```PHP
+```php
 namespace Pagekit\HelloExtension;
 
 use Pagekit\Framework\ApplicationTrait;
@@ -75,4 +48,12 @@ class MyClass
 
   ...
 }
+```
+
+Now, you can access the Application instance exactly like you do in controllers
+and extension classes.
+
+
+```
+$this('cache')
 ```

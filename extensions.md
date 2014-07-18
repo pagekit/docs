@@ -12,7 +12,7 @@ There are several kinds of extensions, yet they all follow the same basic patter
 pagekit extension:generate <extension_name>
 ```
 
-To get started, let's build a simple extension called *Hello*. 
+To get started, let's build a simple extension called *Hello*.
 
 **Note** You can download the complete *Hello extension* from the marketplace.
 
@@ -70,23 +70,22 @@ This produces the following file structure inside the directory `/extensions/hel
 
 ## Configuration
 
-`extension.php` contains PHP code for extension configuration. The default file that is created takes care of autoloading your controllers and other classes in your namespace. It also determines your main Extension instance (with `HelloExtension` being a subclass of `Pagekit\Framework\Extension`). It also registers the resource locator `view://` to be expanded into the absolute path of the `views` folder inside your extension.
+`extension.php` contains PHP code for extension configuration. The default file that is created takes care of autoloading your controllers and other classes in your namespace. It also determines your main Extension instance (with `HelloExtension` being a subclass of `Pagekit\Framework\Extension`).
 
 Learn more about configuration options in the [Configuration chapter](configuration.md).
 
 ```php
 <?php
 
-return array(
+return [
+
     'main' => 'Pagekit\\Hello\\HelloExtension',
-    'autoload' => array(
+
+	'autoload' => [
         'Pagekit\\Hello\\' => 'src'
-    ),
-    'resources' => array(
-        'export' => array(
-            'view' => 'views'
-        )
-    ),
+    ],
+
     'controllers' => 'src/Controller/*Controller.php'
-);
+
+];
 ```

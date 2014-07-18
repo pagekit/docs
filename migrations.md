@@ -58,56 +58,30 @@ resulting version after the migrator has finished.
 Migration files are typically located in the `/migrations` folder of your
 extension and need to stick to certain conventions.
 
-A migration file is named using the date and time plus a name of your chosing:
-`YYYY_MM_DD_HHMMSS_some_meaningful_name.php` (for example `2013_08_12_095713_init.php`).
+A migration file is named using the date and a name of your chosing:
+`YYYY-MM-DD_some_meaningful_name.php` (for example `0000-00-00_init.php`).
 
-Inside the migration file, you add a class for the migration event (for example
-`Init` for the very first schema creation) which implements `MigrationInterface`,
-meaning that you implement the methods `up()` and `down()`.
+Inside the migration file, you create an array which has the keys `up` and `down` with a closure function for your code. By using `use ($app)`, you have access to all application services, for example the `db` service for database access.
 
 ```php
+
 <?php
 
-namespace Pagekit\Hello\Migration;
+return [
 
-use Pagekit\Component\Migration\MigrationInterface;
-use Pagekit\Framework\ApplicationAware;
+    'up' => function() use ($app) {
+        // ...
+    },
 
-class Init extends ApplicationAware implements MigrationInterface
-{
-    public function up()
-    {
+    'down' => function() use ($app) {
         // ...
     }
 
-    public function down()
-    {
-        // ...
-    }
-}
+];
 
 ```
 
-By making your class extend `ApplicationAware`, you have access to all
-application services, for example the `db` service for database access.
-
-```php
-public function up()
-{
-    $util = $this['db']->getUtility();
-
-    if ($util->tableExists('@hello_greetings') === false) {
-        $util->createTable('@hello_greetings', function($table) {
-            $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
-            $table->addColumn('name', 'string', ['length' => 255, 'default' => '']);
-            $table->setPrimaryKey(['id']);
-        });
-    }
-}
-```
-
-In a lot of cases you will not need to specifically implement `down()`, unless
-you want to implement downgrades to an older version.
+In a lot of cases you will not need to specifically implement `down`, unless you want to implement downgrades to an older version.
 
 ## Disable hook
 

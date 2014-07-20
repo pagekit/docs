@@ -5,8 +5,9 @@
 To always have our latest code revision (not necessarily stable), checkout our master branch from [GitHub](https://github.com/pagekit/pagekit). To do so, change to your web server's directory in the terminal and run the following commands:
 
 ```shell
-git clone git@github.com:pagekit/pagekit.git
-composer install
+git clone git@github.com:pagekit/pagekit.git pagekit
+cd pagekit
+composer install --optimize-autoloader
 ```
 
 Now open `/install` in the browser to run the web-based installer.

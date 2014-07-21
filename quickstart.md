@@ -10,7 +10,7 @@ Make sure your server meets the following requirements.
 
 - Apache 2.2+ or nginx
 - MySQL Server 5.1+
-- PHP Version 5.4.0+
+- PHP Version 5.4+
 
 In addition, Pagekit needs certain PHP extensions to be enabled. Check out the detailed list in the [server requirements section](troubleshooting.md).
 

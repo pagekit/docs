@@ -111,7 +111,7 @@ So far, our site looks pretty dull. To add some of your own CSS and JavaScript, 
 
 The `@style` and `@script` calls link stylesheet and script files to the generated page according to an optional list of dependencies. All calls are resolved to include scripts and styles in the correct order and only once.
 
-The mandatory first parameter is an identifier used to reference this script or stylesheet. Styles and scripts have separate namespaces, which is why `MY-THEME` can be used in both cases. The second parameter is mandatory and contains the file path. The third third parameter is optional and a list of dependencies to be included beforehand.
+The mandatory first parameter is an identifier used to reference this script or stylesheet. Styles and scripts have separate namespaces, which is why `MY-THEME` can be used in both cases. The second parameter is mandatory and contains the file path. The third parameter is optional and a list of dependencies to be included beforehand.
 
 Note how the JavaScript in our example has two dependencies added as a list. These get resolved to be included before `/js/theme.js` is included. `jquery` and `uikit` are aliases that come pre-defined with Pagekit.
 

@@ -8,7 +8,7 @@
 
 Make sure your server meets the following requirements.
 
-- Apache 2.2+
+- Apache 2.2+ or nginx
 - MySQL Server 5.1+
 - PHP Version 5.4.0+
 

@@ -8,7 +8,7 @@ First, please check if your webserver meets the system requirements and if all n
 
 - Apache 2.2+ or nginx
 - MySQL Server 5.1+
-- PHP Version 5.3.7+
+- PHP Version 5.4+
 
 ### PHP extensions
 

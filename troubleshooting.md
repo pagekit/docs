@@ -7,7 +7,7 @@
 First, please check if your webserver meets the system requirements and if all needed PHP extensions are enabled.
 
 - Apache 2.2+ or nginx
-- MySQL Server 5.1+
+- MySQL Server 5.1+ or SQLite 3
 - PHP Version 5.4+
 
 ### PHP extensions
@@ -21,7 +21,7 @@ First, please check if your webserver meets the system requirements and if all n
 - mbstring extension
 - PCRE extension (version 8.0+)
 - ZIP extension
-- PDO extension with MySQL drivers
+- PDO extension with MySQL- or SQLite drivers
 
 ## Clear Cache
 

@@ -149,25 +149,23 @@ By default, a widget will be be rendered to the widget position without any addi
 To use a custom renderer `footer`, you can pass it as a value for the `renderer` parameter.
 
 ```html
-@app.position.render('footer', ['renderer' => 'footer'])
+@section('footer', ['renderer' => 'footer'])
 ```
-We will need to register the custom renderer to make it availabe in the theme. To do so, open the main class and register the renderer in the `boot`method.
+We will need to register the custom renderer to make it availabe in the theme. To do so, open the main class and register the renderer in the `boot` method.
 ```php
-$app->on('system.position.renderer', function($event) use ($app) {
-    $event->register('footer', 'theme://MY-THEME/views/renderer/position.footer.razr');
-});
+$app['sections']->addRenderer('footer', 'theme://MY-THEME/views/renderer/position.footer.razr');
 ```
 
 Now we create a renderer `position.footer.razr` in `/views/renderer`.
-In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@widgets` (or `$widgets` if you're writing the renderer in plain PHP).
+In this file you can use PHP code to process the data of the widget. You can access the widgets data with `@($value)` (or `$value` if you're writing the renderer in plain PHP).
 
 The renderer could look like this:
 
 ```html
-@foreach (widgets as widget)
+@foreach ($value as $widget)
 <div class="footerclass">
-    @(widget.showTitle ? "<h3>" ~ widget.title ~ "</h3>")
-    @provider.render(widget, options)
+    @($widget.showTitle ? "<h3>" . $widget.title . "</h3>")
+    @($widget.render($options)
 </div>
 @endforeach
 ```

@@ -68,6 +68,36 @@ This produces the following file structure inside the directory `/extensions/hel
 }
 ```
 
+## Composer
+
+If you want to require dependencies with composer, just add your composer settings to `extension.json` under the namespace `composer` like this:
+```json
+{
+    "name": "hello",
+    "version": "0.8.4",
+    "type": "extension",
+    "title": "Hello",
+    "description": "A blueprint to develop your own extensions.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pagekit",
+            "email": "info@pagekit.com",
+            "homepage": "http://pagekit.com"
+        }
+    ],
+    "composer": {
+        "require": {
+           "foo/bar": "1.0.*"
+        },
+        "minimum-stability": "dev"
+    }
+}
+```
+Now you can run the command `pagekit extension:composer <<YOUR EXTENSION NAME>>`.
+The command creates a `/vendor` directory inside your extension folder and handles the autoloading.
+It doesn't include dependencies witch are already loaded by pagekit. 
+
 ## Configuration
 
 `extension.php` contains PHP code for extension configuration. The default file that is created takes care of autoloading your controllers and other classes in your namespace. It also determines your main Extension instance (with `HelloExtension` being a subclass of `Pagekit\Framework\Extension`).

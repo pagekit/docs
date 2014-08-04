@@ -17,7 +17,7 @@ If you would like to improve or complete an existing translation, go to the [Pag
 
 For any translation steps in the Pagekit project you must first click the *Join team* button which you can find in every language folder on the right side to get access to the language team. We need to approve your contribution so that you are a member of the team and allowed to translate the project. 
 
-![Join team](guide-translation-join.png) 
+![Join team](images/guide-translation-join.png) 
 
 Choose the resource you want to contribute to by clicking it. A window opens which shows you all options. By clicking *Translate now* you will come to Transifex's editor which allows you to translate directly without down- and uploading any files.
 
@@ -25,7 +25,7 @@ Choose the resource you want to contribute to by clicking it. A window opens whi
 
 If your language is not listed you can add a new language to the project. Therefore go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and add a new language by clicking the button on the right side *Request language*. We will then get notified and will review and approve your added language. 
 
-![Request a language](guide-translation-request.png) 
+![Request a language](images/guide-translation-request.png) 
 
 After we approved your request you will then have two options:
 
@@ -38,4 +38,4 @@ In case you already created a .po language file you can upload your .po file eas
 
 A green bar in each column shows you the completeness of a translation.
 
-![Options](guide-translation-options.png)
+![Options](images/guide-translation-options.png)

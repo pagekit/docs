@@ -1,4 +1,4 @@
-# How to translate Pagekit
+# How to create a translation
 
 <p class="uk-article-lead">We work with Transifex. It‘s a simple and easy platform where you can share language files to work together on translations.</p>
 

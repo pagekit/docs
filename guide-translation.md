@@ -31,7 +31,7 @@ Following our approval, you will have two options:
 
 ### Start the translation in Transifex's editor
 
-If your requested language was approved, you can start to translate the extensions or *Resources* as they are called in Transiflex. Just click the resource you want to work on and press the button *Translate now*.
+If your requested language was approved, you can start to translate the extensions or *Resources* as they are called in Transifex. Just click the resource you want to work on and press the button *Translate now*.
 
 ### Upload a .po file
 In case you already created a .po language file, you can upload your it easily by clicking on the resource and then *Upload file*.

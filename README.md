@@ -22,6 +22,7 @@ Symfony components.
 
 3. Guides
   1. [How to create a theme](guide-theme.md)
+  2. [How to help translate](guide-translation.md)
 
 4. Developer
   1. [Introduction](introduction.md)

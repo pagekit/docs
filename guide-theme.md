@@ -1,4 +1,4 @@
-# How to create a theme
+# Create a theme
 
 <p class="uk-article-lead">Get started and create your own theme for Pagekit.</p>
 

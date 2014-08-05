@@ -21,8 +21,8 @@ Symfony components.
   7. [Settings](ui-settings.md)
 
 3. Guides
-  1. [How to create a theme](guide-theme.md)
-  2. [How to create a translation](guide-translation.md)
+  1. [Create a theme](guide-theme.md)
+  2. [Create a translation](guide-translation.md)
 
 4. Developer
   1. [Introduction](introduction.md)

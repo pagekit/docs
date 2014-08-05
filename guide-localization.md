@@ -1,4 +1,4 @@
-# How to create a translation
+# Create a localization
 
 <p class="uk-article-lead">We work with Transifex, a simple and easy platform where you can share language files to work together on translations.</p>
 

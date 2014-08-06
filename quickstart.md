@@ -28,6 +28,7 @@ Before you start with the installation process, ensure that the folders you've j
 | `/extensions`    | To install and update extensions.             |
 | `/storage`       | Stores binary files you upload to your site.  |
 | `/themes`        | To install and update themes.                 |
+| `/vendor`        | Third party libraries, managed by `composer`. |
 | `config.php`     | Installer will write to this file.            |
 
 The actual permission settings depend on the user that the webserver is running with and the owner of the folders. If your webserver has problems with the CHMOD *755*, you can also try *775* and lastly *777* in this order.

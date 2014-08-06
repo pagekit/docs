@@ -1,12 +1,12 @@
 # Create a localization
 
-<p class="uk-article-lead">We work with Transifex, a simple and easy platform where you can share language files to work together on translations.</p>
+<p class="uk-article-lead">We work with Transifex, a simple and easy platform where you can share language files and work together on localization.</p>
 
 Feel free to join the official [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex. After a fast [sign up](http://www.transifex.com/signup/) you can help correct existing translations or add your own language.
 
 ## Contribute to an existing translation
 
-If you would like to improve or complete an existing translation, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and choose the language you want to contribute to. You will then see all extentions as *Resources* that can be translated:
+If you would like to improve or complete an existing localization, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and choose the language you want to contribute to. You will then see all extentions as *Resources* that can be translated.
 
 | Extention    | Description |
 |--------------|-------------|
@@ -15,11 +15,11 @@ If you would like to improve or complete an existing translation, go to the [Pag
 | Page         | This is the translation for the Page extention |
 | System       | This is the translation for the System extention |
 
-To take part in the Pagekit project, you must first click the *Join team* button that you can find in every language folder. Once we approve your request, you will be able to access to the language team and start translating the project.
+To take part in the Pagekit project, you must first click the *Join team* button that you can find in every language folder. Once we've approved your request, you will be able to access the language team and can start to translate the project.
 
 ![Join team](images/guide-translation-join.png) 
 
-Choose the resource you want to contribute to by clicking on it, this will open an options screen. By clicking *Translate now* you will enter the Transifex's editor which allows you to translate on the fly without down- and uploading any files.
+Choose the resource you want to contribute to by clicking on it, this will open an options screen. By clicking *Translate now* you will enter Transifex's editor which allows you to translate on the fly without having to down- and upload the files.
 
 ## Request a language
 
@@ -34,8 +34,8 @@ Following our approval, you will have two options:
 If your requested language was approved, you can start to translate the extensions or *Resources* as they are called in Transifex. Just click the resource you want to work on and press the button *Translate now*.
 
 ### Upload a .po file
-In case you already created a .po language file, you can upload your it easily by clicking on the resource and then *Upload file*.
+In case you already created a .po language file, you can upload it easily by clicking on the resource and then *Upload file*.
 
-A green bar in each column shows you the progress of each translation.
+A green bar in each column shows you the progress of each localization.
 
 ![Options](images/guide-translation-options.png)

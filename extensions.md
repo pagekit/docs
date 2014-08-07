@@ -96,7 +96,7 @@ If you want to require dependencies with composer, just add your composer settin
 ```
 Now you can run the command `pagekit extension:composer <<YOUR EXTENSION NAME>>`.
 The command creates a `/vendor` directory inside your extension folder and handles the autoloading.
-It doesn't include dependencies witch are already loaded by pagekit. 
+It doesn't include dependencies which are already loaded by pagekit. 
 
 ## Configuration
 

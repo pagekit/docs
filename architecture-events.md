@@ -2,7 +2,7 @@
 
 <p class="uk-article-lead">Learn about Pagekit's internal structure and how its components are connected.</p>
 
-To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) doc. As a developer you will be interested in the `vendor` folder. In this folder you will find all the code, except from bootstrapping code, like:
+To get an overview of the files and folders in Pagekit see the [Folder Structure](folder-structure.md) doc. As a developer you will be interested in the `vendor` folder. In this folder you will find all code, except bootstrapping code, like:
 
 - JavaScript and CSS libraries, i.e. jQuery, UIKit etc.
 - third party PHP libraries Symfony, Doctrine etc.
@@ -14,7 +14,7 @@ To get an overview of the files and folders in Pagekit see the [Folder Structure
 
 In the center of Pagekit's architecture sits the application, an instance of
 `Pagekit\Framework\Application`. The application is the first instance to
-receive a request and return a response (more to that in the *request lifecycle*
+receive a request and return a response (more on that in the *request lifecycle*
 section). It holds a `Router` object which sits on top of the `HttpKernel`
 that takes care of the lowest level of request handling.
 
@@ -52,15 +52,15 @@ Bootstrapping happens in `/app/app.php` and consists of reading the default
 config `/app/config/app.php`, merging it with the user config `config.php` and
 passing the resulting configuration array to a fresh Application instance.
 
-Then, all service providers defined in the configuration are being registered
-at the application. A connection to the database is established and an array
-of extension to load later is generated (the actual loading happens in the second
+Then, all service providers defined in the configuration are registered
+at the application, a connection to the database is established, and an array
+of extensions to load later is generated (the actual loading happens in the second
 phase).
 
 If the `config` file is missing or the database connection reveals that Pagekit
 has not been installed yet, this is the place where the extensions to be loaded
-is limited to the *Installer* extension which will result in the installer to
-be displayed to the user at the end of phase two.
+is limited to the *Installer* extension which will result in the installer being
+displayed to the user at the end of phase two.
 
 ### 2. The request handling phase
 

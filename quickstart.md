@@ -18,30 +18,7 @@ In addition, Pagekit needs certain PHP extensions to be enabled. Check out the d
 
 First of all, extract the downloaded archive and copy the contained folders and files to your webserver directory.
 
-### 1. Set the permissions
-
-Before you start with the installation process, ensure that the folders you've just uploaded have the right permission settings. We recommend CHMOD *755*. Pagekit needs to be able to write to the following files and directories and each of their subdirectories:
-
-| File / Folder    | Description |
-|------------------|-------------|
-| `/app`           | Stores temporary, cache and log files.        |
-| `/extensions`    | To install and update extensions.             |
-| `/storage`       | Stores binary files you upload to your site.  |
-| `/themes`        | To install and update themes.                 |
-| `/vendor`        | Third party libraries, managed by `composer`. |
-| `config.php`     | Installer will write to this file.            |
-
-The actual permission settings depend on the user that the webserver is running with and the owner of the folders. If your webserver has problems with the CHMOD *755*, you can also try *775* and lastly *777* in this order.
-
-**Important** You should always avoid *777* permissions on your production webserver, since this will allow anyone who has access to the machine to edit the files.
-
-### 2. Create the database
-
-Next thing we need to do is create an empty database for Pagekit to work with using a tool like [phpMyAdmin](http://http://www.phpmyadmin.net/). If your hoster limits you to only one database which is already used by another application, you can still use it. Pagekit prefixes its tables to avoid conflicts.
-
-### 3. Run the installation
-
-Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver, e.g. `http://example.com/pagekit`. This will take you to the start screen of the installation.
+Open your browser and go to the Pagekit URL on your webserver, e.g. `http://example.com/pagekit`. This will take you to the start screen of the installation.
 
 #### Step 1 - Database information
 
@@ -54,6 +31,8 @@ In the first step of the installation process we give Pagekit some information t
 | `Password` | Enter the MySQL user's password.                        |
 | `Database` | Enter the database name.                                |
 | `Table Prefix` | You can change the prefix that is used for the database tables. The default prefix is `pk_`.  |
+
+**Note** Pagekit will try to create the database during installation. You can also do this yourself using a tool like [phpMyAdmin](http://http://www.phpmyadmin.net/). Feel free to use an existing database. Pagekit prefixes its tables to avoid conflicts.
 
 #### Step 2 - Create a User
 

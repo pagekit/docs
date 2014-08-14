@@ -16,9 +16,11 @@ In addition, Pagekit needs certain PHP extensions to be enabled. Check out the d
 
 ## Installation
 
-Extract the downloaded archive and copy the contents to the web root directory on your webserver, for example to a folder called `/pagekit`.
+Extract the downloaded archive and copy the contents to your webserver, either to web root directory or to a subfolder, for example called `/pagekit`.
 
-Open your browser and go to the Pagekit URL on your webserver, e.g. `http://example.com/pagekit` or `http://localhost/pagekit`. This will take you to the start screen of the web installer.
+Open your browser. If you have moved your files to the web root, navigate to your domain directly: `http://example.com`. If your files are located in a subfolder, navigate to that location, e.g. `http://example.com/pagekit`. 
+
+You should see the first screen of the web installer.
 
 #### Step 1 - Database information
 

@@ -4,7 +4,7 @@
 
 <a class="uk-button uk-button-large uk-button-primary" href="http://pagekit.com">Download Pagekit</a>
 
-## System requirements
+## Requirements
 
 Make sure your server meets the following requirements.
 

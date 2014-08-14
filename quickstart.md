@@ -41,7 +41,7 @@ Next thing we need to do is create an empty database for Pagekit to work with us
 
 ### 3. Run the installation
 
-Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver followed by `/installer`, e.g. `http://example.com/pagekit/installer`. This will take you to the start screen of the installation.
+Now we are ready to run the Pagekit installation process. Open your browser and go to the Pagekit URL on your webserver, e.g. `http://example.com/pagekit`. This will take you to the start screen of the installation.
 
 #### Step 1 - Database information
 

@@ -15,4 +15,4 @@ HTML/Markdown editor
 To edit your content you can use HTML and/or Markdown. Pagekit provides a clever editor with real-time preview. You write your content on the left and can immediately see the result on the right side.
 The editor includes a toolbar to improve your workflow by letting you easily insert links, lists, quotes and media. For example, by clicking on the image icon inside the toolbar, a placeholder area will be inserted into your content. Then you can just drag and drop your image into the area to upload it.
 
-Every object can be modified through a settings panel. Just hver the object,
+Every object can be modified through a settings panel. Just hover the object,

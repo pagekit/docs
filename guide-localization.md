@@ -6,14 +6,14 @@ Feel free to join the official [Pagekit project](http://www.transifex.com/organi
 
 ## Contribute to an existing translation
 
-If you would like to improve or complete an existing localization, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and choose the language you want to contribute to. You will then see all extentions as *Resources* that can be translated.
+If you would like to improve or complete an existing localization, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and choose the language you want to contribute to. You will then see all extensions as *Resources* that can be translated.
 
-| Extention    | Description |
+| Extension    | Description |
 |--------------|-------------|
-| Blog         | This is the translation for the Blog extention |
-| Installer    | This is the translation for the Installer extention |
-| Page         | This is the translation for the Page extention |
-| System       | This is the translation for the System extention |
+| Blog         | This is the translation for the Blog extension |
+| Installer    | This is the translation for the Installer extension |
+| Page         | This is the translation for the Page extension |
+| System       | This is the translation for the System extension |
 
 To take part in the Pagekit project, you must first click the *Join team* button that you can find in every language folder. Once we've approved your request, you will be able to access the language team and can start to translate the project.
 

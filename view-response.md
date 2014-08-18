@@ -79,7 +79,7 @@ View file `<extensions>/hello/views/theme.razr`:
 ## Templating
 
 The views are rendered using the [Razr templating engine](https://github.com/pagekit/razr)
-which offers output functionality and control structures. Pagekit exends the Razr language with a few features you can use in your
+which offers output functionality and control structures. Pagekit extends the Razr language with a few features you can use in your
 templates.
 
 ### Link to routes

@@ -46,14 +46,24 @@ The `resources` property is an array with two keys.
 
 **Note** You can use `@url('extension://hello/assets/images/foo.png')` to generate image paths in your views or `$app['url']->to('extension://hello/assets/images/foo.png')` from your controllers and classes.
 
-### Settings
+### Parameters
 
-Set views for a settings screen and for custom widget options. Provide an array with the keys `settings` and/or `widgets` to link to the according view files. Settings screens will be explained further down, widgets are explained in a [separate chapter](widgets.md).
+Parameters are a way for your extension or theme to store and retreive values for specific options you want to include. From your config file, you can set default values for those parameters and define view files to offer an interface in the backend to change those values. Pagekit handles `settings` parameters which are meant for all general settings. The second key `widgets` is used to define a view for custom theme options when configuring a widget in the backend. 
+
+Settings screens for `system` parameters will be explained further down, widgets are explained in a [separate chapter](widgets.md).
 
 
 ```php
-'settings' => [
-    'system'  => 'extension://hello/views/admin/settings.razr'
+'parameters' => [
+    'settings'  => [
+        'view' => 'extension://hello/views/admin/settings.razr',
+        'defaults' => [
+            // ...
+        ]
+    ],
+    'widgets' => [
+        'view' => '...'
+    ]
 ],
 ```
 
@@ -136,19 +146,21 @@ The `permissions` property defines a list of permissions that can be assigned to
 
 ## Add a settings screen
 
-If you want to keep your theme customizable and your extension configurable, you will want to offer some settings that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
+If you want to keep your theme customizable and your extension configurable, you will want to offer some parameters that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
 
 ```php
-'settings' => [
-    'system'  => 'theme://mytheme/views/admin/settings.razr'
+'parameters' => [
+    'settings'  => [
+        'view' => 'theme://mytheme/views/admin/settings.razr'
+    ]
 ],
 ```
 
-Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of settings for you. The form is supposed to send an array of config options, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
+Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of parameters for you. The form is supposed to send an array of parameter values, therefore all input fields are called `param[OPTION]`  with `OPTION` being a name you want to give that option.
 
 Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
 
-**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's form markup.
+**Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's [form markup](http://getuikit.com/docs/form.html).
 
 
 ```php
@@ -157,9 +169,9 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
     <div class="uk-form-row">
         <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
         <div class="uk-form-controls">
-            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
-                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
-                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
+            <select id="form-sidebar-a-width" class="uk-form-width-large" name="param[show_copyright]">
+                <option value="1"@( $param['show_copyright'] ? ' selected' : '')>Show</option>
+                <option value="0"@( !$param['show_copyright'] ? ' selected' : '')>Hide</option>
             </select>
         </div>
     </div>
@@ -176,6 +188,6 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 The configuration values are available in PHP.
 
 ```php
-$theme = $app['theme.site']->getConfig();
+$theme = $app['theme.site']->getParams();
 $show_copyright = $theme['show_copyright'];
 ```

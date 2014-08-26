@@ -185,9 +185,9 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 ```
 
 
-The configuration values are available in PHP.
+The configuration values are available in your theme class.
 
 ```php
-$theme = $app['theme.site']->getParams();
-$show_copyright = $theme['show_copyright'];
+$params    = $this->getParams();
+$copyright = $params['show_copyright'];
 ```

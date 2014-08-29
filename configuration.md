@@ -40,7 +40,7 @@ The `resources` property is an array with two keys.
 'resources' => [
   'overrides' => [
     // to overwrite the templates of the extension "sample_extension" with templates
-    // from the folder "<your_ext_or_app>/views/sample_extension_overwrites/":
+    // from the folder "<your_extension>/views/sample_extension_overwrites/":
     'extension://sample_extension/views' => 'views/sample_extension_overwrites',
   ]
 ],

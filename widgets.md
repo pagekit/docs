@@ -99,8 +99,8 @@ Read and write single settings properties with:
 
 ## Register the widget
 
-Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `src/PagekitExtension.php` or
-`src/PagekitTheme.php`.
+Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `src/HelloExtension.php` or
+`src/HelloTheme.php`.
 
 ```php
 <?php

@@ -65,7 +65,7 @@ class HelloWidget extends Type
 ```
 
 **Important** In order for this example to work make sure to create a view file
-`hello/views/widget.php` that could contain the following.
+`hello/views/widget.razr` that could contain the following.
 
 ```HTML
 Hello Widget!
@@ -99,8 +99,8 @@ Read and write single settings properties with:
 
 ## Register the widget
 
-Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `extension.php` or
-`theme.php`.
+Now that the basic widget behaviour has been defined, we need to register a widget instance. This is done in the `src/PagekitExtension.php` or
+`src/PagekitTheme.php`.
 
 ```php
 <?php

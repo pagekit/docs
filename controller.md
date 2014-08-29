@@ -78,7 +78,7 @@ the class and methods. Here is a quick overview, a detailed description for each
 |------------------|-------------|
 | `@Route`         | Route to mount an action or the whole controller.  |
 | `@Request`       | Handle parameter passing from the http request to the method.  |
-| `@Response`      | Render a view file or return a JSON reponse. |
+| `@Response`      | Render a view file or return a JSON response. |
 | `@Access`        | Check for user permissions.                        |
 
 ### @Route
@@ -184,7 +184,7 @@ single controller actions.
 Define permissions in the `extension.php` (or `theme.php`) and
 combine them however you want. Access restrictions from the controller level will
 be combined with access restrictions on the single actions. Therefore you can
-set a basic *minimimum* access level for your controller and limit certain
+set a basic *minimum* access level for your controller and limit certain
 actions (like administrative actions) to users with more specific permissions.
 
   ```php

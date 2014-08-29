@@ -109,7 +109,7 @@ When the Installer is run, the locale is determined automatically by checking wh
 
 The `__(...)`/`@trans` function and the `_c(...)`/`@transchoice` function have a third parameter to set a *domain*. The default domain is called `messages`, which is why we have been dealing with `messages.*` files so far. All extensions share their strings in this domain. That is why strings translated by the system extension can be used right away without the need to translate them again. This includes common terms like *Save*, *Error* or the name of a *month*.
 
-Indeed, when we called `./pagekit extension:translate hello` earlier, the resulting `messages.pot` did not include any of the system's messages, even if they occured in the hello extension.
+Indeed, when we called `./pagekit extension:translate hello` earlier, the resulting `messages.pot` did not include any of the system's messages, even if they occurred in the hello extension.
 
 There might be the case when you do not want to share messages from the default domain. Just set your own domain and regenerate the `*.pot` files. You can do this for individual strings or set the parameter on all strings to keep your localization completely separate from the system.
 

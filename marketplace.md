@@ -18,7 +18,7 @@ Log in on pagekit.com and navigate to the *Developer* section. Hit the
 
 | Field  | Description |
 |--------|-------------|
-| *Name*           | The extension name. Must match your local extension name. Unique across the markeplace. |
+| *Name*           | The extension name. Must match your local extension name. Unique across the marketplace. |
 | *Title*          | The extension title. |
 | *Package type*   | It can be an extension or theme. |
 

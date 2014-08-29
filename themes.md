@@ -151,7 +151,7 @@ To use a custom renderer `footer`, you can pass it as a value for the `renderer`
 ```html
 @section('footer', ['renderer' => 'footer'])
 ```
-We will need to register the custom renderer to make it availabe in the theme. To do so, open the main class and register the renderer in the `boot` method.
+We will need to register the custom renderer to make it available in the theme. To do so, open the main class and register the renderer in the `boot` method.
 ```php
 $app['sections']->addRenderer('footer', 'theme://MY-THEME/views/renderer/position.footer.razr');
 ```

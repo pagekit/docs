@@ -191,3 +191,12 @@ The configuration values are available in your theme class.
 $params    = $this->getParams();
 $copyright = $params['show_copyright'];
 ```
+
+Direct access in your template is possible via the `$theme` instance that is available in the renderer.
+
+```php
+@set( $params = $theme->getParams() )
+@if($params['show_copyright'])
+    Powered by Pagekit
+@endif
+```

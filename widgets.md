@@ -183,3 +183,23 @@ To see your widget in action, add it to your admin dashboard:
 1. Open *Settings > Dashboard* in the admin area.
 2. Click *Add Widget* and choose the *Hello Widget*.
 3. Save and go to the admin dashboard to view the widget
+
+## Access the Pagekit environment from Widgets
+
+You can hand in any values to your widget when rendering the widget view. If you want to check if a user is logged in, you can pass the user object for example.
+
+```php
+public function render(WidgetInterface $widget, $options = [])
+{
+    $user = $this['user'];
+    return $this['view']->render('extension://hello/views/widget.razr', compact('user'));
+}
+```
+
+```html
+@if($user.isAuthenticated())
+You are logged in.
+@else
+Not logged in.
+@endif
+``

@@ -158,7 +158,7 @@ If you want to keep your theme customizable and your extension configurable, you
 ],
 ```
 
-Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of parameters for you. The form is supposed to send an array of parameter values, therefore all input fields are called `param[OPTION]`  with `OPTION` being a name you want to give that option.
+Create a file at that exact location `/themes/mytheme/views/admin/settings.razr` and add the markup for a form you want to display. When naming the form elements in a certain pattern, Pagekit will automatically handle the storing and update of parameters for you. The form is supposed to send an array of parameter values, therefore all input fields are called `config[OPTION]`  with `OPTION` being a name you want to give that option.
 
 Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
 
@@ -171,9 +171,9 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
     <div class="uk-form-row">
         <label for="form-sidebar-a-width" class="uk-form-label">@trans('Show Copyright')</label>
         <div class="uk-form-controls">
-            <select id="form-sidebar-a-width" class="uk-form-width-large" name="param[show_copyright]">
-                <option value="1"@( $param['show_copyright'] ? ' selected' : '')>Show</option>
-                <option value="0"@( !$param['show_copyright'] ? ' selected' : '')>Hide</option>
+            <select id="form-sidebar-a-width" class="uk-form-width-large" name="config[show_copyright]">
+                <option value="1"@( $config['show_copyright'] ? ' selected' : '')>Show</option>
+                <option value="0"@( !$config['show_copyright'] ? ' selected' : '')>Hide</option>
             </select>
         </div>
     </div>
@@ -190,15 +190,13 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 The configuration values are available in your theme class.
 
 ```php
-$params    = $this->getParams();
-$copyright = $params['show_copyright'];
+$showCopyright = $this->getConfig('show_copyright');
 ```
 
 Direct access in your template is possible via the `$theme` instance that is available in the renderer.
 
 ```php
-@set( $params = $theme->getParams() )
-@if($params['show_copyright'])
+@if( $theme.getConfig('show_copyright') )
     Powered by Pagekit
 @endif
 ```

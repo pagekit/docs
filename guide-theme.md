@@ -242,6 +242,32 @@ In this tutorial, we will only include th the `logo` position. But just like tha
 | `footer`      | Footer      |
 | `offcanvas`   | Offcanvas   |
 
+## Overwrite system template
+
+When you want to go further in customizing Pagekit's look and feel, you might need to overwrite some of the default views. That way you can change the markup of extension like the blog or create a custom 404 page. Let's create a custom error page in the following example.
+
+The default view file that is used for the error page is located at `extension://system/theme/templates/error.razr`. Note how `extension:` will automatically expand to point to the `extensions` directory.
+
+To change this path, open your `theme.php` and add the following lines to the configuration array.
+
+```php
+// ...
+'resources' => [
+    'override' => [
+        'extension://system/theme/templates' => 'templates/system'
+    ]
+],
+// ...
+```
+
+In order for Pagekit to find the file, we are mirroring the path to the view file inside our theme. To do so, create the folder structure `templates/system` inside your theme and create your own `error.razr` inside that folder: `themes/mytheme/templates/system/error.razr`.
+
+```php
+Nope. This didn't work.
+```
+
+**Note** You will only see the custom error message when you have debug mode set to *Disabled*.
+
 ## Where to go from here
 
 Congratulations, you've created your first theme! We've introduced the basic file structure and talked about the most important configuration options. You know how to change the markup, include CSS and JS and how to add widget functionality. Now it's time to get creative and play around.

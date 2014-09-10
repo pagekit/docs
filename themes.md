@@ -15,7 +15,7 @@ our command line tool to create the skeleton file structure.
 
 ```bash
 cd path/to/pagekit
-./pagekit theme:generate MY-THEME
+./pagekit theme:generate mytheme
 ```
 
 You will be prompted for some information needed to initialize the theme.
@@ -27,7 +27,7 @@ You will be prompted for some information needed to initialize the theme.
 | `Email`           | `demo@yootheme.com`   | Your email address
 | `PHP Namespace`   | `MyTheme`             | Identifier used to organize your code files. PHP namespaces usually follow a CamelCase syntax.
 
-This produces the following file structure inside the directory `/themes/MY-THEME`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
+This produces the following file structure inside the directory `/themes/mytheme`. Note that this is the minimal setup for a theme, these 3 files are required for a valid theme.
 
 | Folder / File | Description |
 |---------------|-------------|
@@ -44,7 +44,7 @@ This produces the following file structure inside the directory `/themes/MY-THEM
 
 ```json
 {
-    "name": "MY-THEME",
+    "name": "mytheme",
     "version": "0.0.1",
     "type": "theme",
     "title": "MyTheme",
@@ -103,15 +103,15 @@ Now head to the browser, enable your theme from the backend and give it a go. Yo
 So far, our site looks pretty dull. To add some of your own CSS and JavaScript, add the following line in the `<head>` section of `/templates/template.razr`.
 
 ```html
-@style('MY-THEME', 'theme://MY-THEME/assets/css/MY-THEME.css')
-@script('MY-THEME', 'theme://MY-THEME/assets/js/theme.js', ['jquery', 'uikit'])
+@style('mytheme', 'theme://mytheme/assets/css/mytheme.css')
+@script('mytheme', 'theme://mytheme/assets/js/theme.js', ['jquery', 'uikit'])
 ```
 
-**Note** Make sure to create `/themes/MY-THEME/assets/css/MY-THEME.css` and `/themes/MY-THEME/assets/js/theme.js`.
+**Note** Make sure to create `/themes/mytheme/assets/css/mytheme.css` and `/themes/mytheme/assets/js/theme.js`.
 
 The `@style` and `@script` calls link stylesheet and script files to the generated page according to an optional list of dependencies. All calls are resolved to include scripts and styles in the correct order and only once.
 
-The mandatory first parameter is an identifier used to reference this script or stylesheet. Styles and scripts have separate namespaces, which is why `MY-THEME` can be used in both cases. The second parameter is mandatory and contains the file path. The third parameter is optional and a list of dependencies to be included beforehand.
+The mandatory first parameter is an identifier used to reference this script or stylesheet. Styles and scripts have separate namespaces, which is why `mytheme` can be used in both cases. The second parameter is mandatory and contains the file path. The third parameter is optional and a list of dependencies to be included beforehand.
 
 Note how the JavaScript in our example has two dependencies added as a list. These get resolved to be included before `/js/theme.js` is included. `jquery` and `uikit` are aliases that come pre-defined with Pagekit.
 
@@ -153,7 +153,7 @@ To use a custom renderer `footer`, you can pass it as a value for the `renderer`
 ```
 We will need to register the custom renderer to make it available in the theme. To do so, open the main class and register the renderer in the `boot` method.
 ```php
-$app['sections']->addRenderer('footer', 'theme://MY-THEME/views/renderer/position.footer.razr');
+$app['sections']->addRenderer('footer', 'theme://mytheme/views/renderer/position.footer.razr');
 ```
 
 Now we create a renderer `position.footer.razr` in `/views/renderer`.

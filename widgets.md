@@ -119,7 +119,7 @@ class HelloExtension extends Extension
         parent::boot($app);
 
         $app->on('system.widget', function(RegisterWidgetEvent $event) {
-            $event->register(new HelloWidget);
+            $event->register('Pagekit\Hello\HelloWidget');
         });
 
     }

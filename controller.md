@@ -117,6 +117,7 @@ public function viewAction($id = 1)
 }
 ```
 
+**Note** For detailed information and more example, have a look at [Symfony's own documentation](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html) on the `@Route` annotation.
 
 ### @Request
 

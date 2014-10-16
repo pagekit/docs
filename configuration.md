@@ -186,7 +186,6 @@ Make sure the form will be submitted to `@url('@system/themes/savesettings', ['n
 </form>
 ```
 
-
 The configuration values are available in your theme class.
 
 ```php
@@ -202,3 +201,17 @@ Direct access in your template is possible via the `$theme` instance that is ava
     Powered by Pagekit
 @endif
 ```
+
+You can access any theme's or extension's parameters from the Application instance.
+
+```php
+$app['extensions']->get('EXTENSION')->getParams();
+```
+
+Depending on the [context](application.md) (for example in `Extension` and `Theme` subclasses) the instance will instead be available via `$this`. 
+
+```php
+$this['extensions']->get('EXTENSION')->getParams();
+```
+
+**Note** Replace `EXTENSION` with your extension or theme name.

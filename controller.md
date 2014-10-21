@@ -140,6 +140,19 @@ public function saveAction($id, $title, $config) { ... }
 
 You can also check for a token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `csrf=true` to your request annotation and include the `@token` call in the view that submits a form to this method.
 
+Checkout `Pagekit\Component\Filter\FilterManager` for a complete list over available filters.
+
+Some filters have additional options, like `pregreplace`:
+```php
+/**
+ * @Request({"folders":"pregreplace[]"}, options={"folders" = {"pattern":"/[^a-z0-9_-]/i"}})
+ * @Response("json")
+ * @Method("DELETE")
+ */
+public function deleteFolders($folders)
+```
+
+
 
 ### @Response
 

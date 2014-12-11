@@ -48,7 +48,7 @@ If outdated data stored in the cache causes unexpected behavior, clearing the ca
 | Method | Description |
 |------|-------------|
 | From the browser       | Go to the *Settings* screen and click on the *Clear Cache* button. |
-| From the command line  | Open terminal and change to the Pagekit folder, then run `./pagekit clear-cache`. |
+| From the command line  | Open terminal and change to the Pagekit folder, then run `./pagekit clearcache`. |
 | From your file browser | To empty the cache folder manually, simply delete all files and subfolders located in `/app/cache`. |
 
 ## System Information

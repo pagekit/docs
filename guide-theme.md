@@ -40,7 +40,7 @@ When working with themes, you will add more and more files. Even though we won't
 | `js`                         | optional | JavaScript files   |
 | `images`                     | optional | Image assets       |
 
-Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
+Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.razr`.
 
 ## theme.php
 

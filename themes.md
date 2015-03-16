@@ -177,5 +177,4 @@ All widgets published in the footer position will now be rendered inside a `<div
 Now that you have a basic theme, you may want to:
 
 - Add additional configuration to your theme. See [Configuration](configuration.md) for more information.
-- Add a settings page to your theme. See [Settings](settings.md) for more information.
 - Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.

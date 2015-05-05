@@ -228,7 +228,7 @@ In our template, we now need to add the actual rendering of widgets in those pos
 
 To make sure our new widget position works, we go the the admin area of Pagekit and create a new widget in the logo position. Navigate to the *Widgets* area and hit *Add widget*. In the drop down, select the *Text* type. Type in any content you like. On the right hand side, you see a dropdown for widget positions. You should be able to see all positions defined by our theme. Select `logo` and make sure to set the *Status* to *Enabled*. Save the widget
 
-In this tutorial, we will only include th the `logo` position. But just like that, you can define your own positions. It is recommended to include the following basic set of widget positions. When your theme sticks to these, users can just enable a new theme and existing widget assignments will be picked up automatically.
+In this tutorial, we will only include the `logo` position. But just like that, you can define your own positions. It is recommended to include the following basic set of widget positions. When your theme sticks to these, users can just enable a new theme and existing widget assignments will be picked up automatically.
 
 | Position name | Label       |
 |---------------|-------------|

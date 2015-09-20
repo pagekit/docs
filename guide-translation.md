@@ -1,4 +1,4 @@
-# Create a localization
+# Translating Pagekit
 
 <p class="uk-article-lead">We work with Transifex, a simple and easy platform where you can share language files and work together on localization.</p>
 
@@ -17,15 +17,15 @@ If you would like to improve or complete an existing localization, go to the [Pa
 
 To take part in the Pagekit project, you must first click the *Join team* button that you can find in every language folder. Once we've approved your request, you will be able to access the language team and can start to translate the project.
 
-![Join team](images/guide-translation-join.png) 
+![Join team](images/guide-translation-join.png)
 
 Choose the resource you want to contribute to by clicking on it, this will open an options screen. By clicking *Translate now* you will enter Transifex's editor which allows you to translate on the fly without having to down- and upload the files.
 
 ## Request a language
 
-If your language is not listed, you can add a new language to the project. To do so, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and add a new language by clicking the button on the right side *Request language*. We will then get notified and can review and approve your added language. 
+If your language is not listed, you can add a new language to the project. To do so, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and add a new language by clicking the button on the right side *Request language*. We will then get notified and can review and approve your added language.
 
-![Request a language](images/guide-translation-request.png) 
+![Request a language](images/guide-translation-request.png)
 
 Following our approval, you will have two options:
 

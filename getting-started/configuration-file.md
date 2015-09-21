@@ -6,6 +6,21 @@ Pagekit's configuration is stored in `config.php` in the Pagekit root folder. He
 
 ## Database
 
+## System
+
+## Cache
+
+## Finder
+
+## Application
+
+## Debug
+
+
+
+
+## Database
+
 The database connection settings are stored in `database['connections']`. Here you can find the connection data  you have provided during the installation process:
 
 ```php

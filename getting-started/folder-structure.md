@@ -2,6 +2,18 @@
 
 <p class="uk-article-lead">The following table gives you an overview on the folder structure in Pagekit.</p>
 
+    - /app
+    - /packages
+    - /storage
+    - /tmp
+    - /tmp/cache
+    - /tmp/logs
+    - /tmp/packages
+    - /tmp/sessions
+    - /tmp/temp
+
+
+
 | Folder | Description |
 |--------|-------------|
 | `/app` | Contains the Pagekit configuration, cache and user sessions. |

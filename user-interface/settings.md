@@ -2,7 +2,7 @@
 
 Click on *Settings* in the main navigation to see all important settings in one place - split into *System settings* and *Extension settings*.
 
-![System settings overview](images/settings-overview.png)
+![System settings overview](assets/settings-overview.png)
 
 ## System
 

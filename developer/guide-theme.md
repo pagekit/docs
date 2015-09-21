@@ -20,7 +20,7 @@ php pagekit theme:generate mytheme
 
 To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's back end.
 
-![Generated file structure](images/guide-theme-files-minimal.png)
+![Generated file structure](assets/guide-theme-files-minimal.png)
 
 | File                         | Needed?  | Description        |
 |------------------------------|----------|--------------------|
@@ -30,7 +30,7 @@ To get started, create an empty folder `/themes/mytheme`. Create three empty fil
 
 When working with themes, you will add more and more files. Even though we won't need all of them in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
 
-![Generated file structure](images/guide-theme-files.png)
+![Generated file structure](assets/guide-theme-files.png)
 
 | File                         | Needed?  | Description        |
 |------------------------------|----------|--------------------|

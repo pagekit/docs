@@ -4,7 +4,7 @@ Widgets are a way to render small chunks of content in areas defined by the them
 
 In the *Widgets* overview you see widgets sorted by the position they are published in. Note that only positions are displayed that have a widget published on at least one page - your theme might provide more positions than you can see.
 
-![widgets overview](images/widgets-overview.png)
+![widgets overview](assets/widgets-overview.png)
 
 Use drag and drop to move an entry to another position or to change the rendering order inside a position which has several widgets. Toggle between enabled and published state by clicking the red or green circle on the *Status* column.
 
@@ -13,12 +13,12 @@ Pagekit comes with the pre-defined widget types *Login*, *Menu* and *Text*, exte
 When editing a widget, you will have the *Settings* tab selected by default. Its content depends on the type of the widget. For a text widget you will have a content editing area, for a menu widget options to select a menu and so on.
 Every widget type has a set of options available on the right side where you can enable or disable the widget and assign it to a widget position in your theme.
 
-![Edit a widget](images/widgets-edit.png)
+![Edit a widget](assets/widgets-edit.png)
 
 The *Assignment* tab allows you to choose which pages the widget will be rendered on. Alternatively you can use simple patterns to match URLs where you want to display the widget. You can insert one pattern per line. Use the "\*" character as a wildcard and exclude pages by prepending an exclamation mark to the path. Example paths: `blog` for the blog page, `blog/*` for blog entries or `!blog` if you want to exclude the blog.
 
-![Widget menu assignment](images/widgets-assignment.png)
+![Widget menu assignment](assets/widgets-assignment.png)
 
 The *Theme* tab includes configuration settings for the widget's appearance. You can choose a panel style (like a box around the widget's content), add a badge and center the widget's content. Note that these settings are specific to your activated theme.
 
-![Widget theme settings](images/widgets-theme.png)
+![Widget theme settings](assets/widgets-theme.png)

@@ -4,7 +4,7 @@
 
 ## Apache 2.2+
 
-With Apache, all necessary configuration comes with the included `.htaccess` file. 
+With Apache, all necessary configuration comes with the included `.htaccess` file.
 
 Make sure `mod_rewrite` is loaded for pretty URLs. If the module is not available, Pagekit will still work but fall back to a URL format of the form `http://example.com/index.php/page/welcome`.
 

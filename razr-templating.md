@@ -1,3 +1,0 @@
-# Razr Templating
-
-## Syntax

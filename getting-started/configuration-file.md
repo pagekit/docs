@@ -38,7 +38,7 @@ The database connection settings are stored in `database['connections']`. Here y
 
 ## Cache
 
-In `cache` section the caching method is stored. Initially the cache is set to `auto` and you can disable it entirely by setting the `nocache' option as `true`.
+In `cache` section the caching method is stored. Initially the cache is set to `auto` and you can disable it entirely by setting the `nocache` option as `true`.
 
 ```php
 'system/cache' => [
@@ -53,17 +53,21 @@ In `cache` section the caching method is stored. Initially the cache is set to `
 
 ## Finder
 
+In the Finder settings you can change the default `storage` path.
+
 ```php
 'system/finder' => [
-  'storage' => '/storage'                   // the site storage folder path
+  'storage' => '/storage'                   // the storage relative path
 ]
 ```
 
 ## Application
 
+In the Application settings you can enable the debug mode while developing to get debug output.
+
 ```php
 'application' => [
-  'debug' => false                          // enable debug mode while developing to get debug output
+  'debug' => false                          // the debug mode state
 ]
 ```
 

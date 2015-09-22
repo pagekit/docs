@@ -12,7 +12,7 @@ All hooks are loaded from a custom scripts file which can be defined inside the 
     }
 ```
 
-A custom scripts file has to return a Php array, containing the callbacks:
+A custom scripts file has to return a Php array, containing callbacks:
 
 ```php
 <?php

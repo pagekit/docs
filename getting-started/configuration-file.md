@@ -8,14 +8,11 @@ Pagekit's configuration is a file stored in the Pagekit root as `config.php` and
 'database' => [
   'default' => 'mysql',                     // default database connection
   'connections' => [                        // array of database connections
-    'mysql' => [                            // database driver name
+    'mysql' => [                            // database driver name, mysql or sqlite
       'host' => 'localhost',                // database server host name
       'user' => 'user',                     // database server user name
       'password' => 'pass',                 // database password
       'dbname' => 'pagekit',                // database name
-      'prefix' => 'pk_'                     // database prefix
-    ],
-    'sqlite' => [                           // database driver name
       'prefix' => 'pk_'                     // database prefix
     ]
   ]

@@ -1,6 +1,6 @@
 # Server configuration
 
-<p class="uk-article-lead">Pagekit will run on all common web servers. Here's how it works with the most popular ones.</p>
+<p class="uk-article-lead">Pagekit will run on all common web servers.</p>
 
 ## Apache 2.2+
 
@@ -11,13 +11,3 @@ Although Pagekit should run fine on Apache 2.2+ without additional configuration
 It is possible as well that your webserver does not allow the server's configuration to be overridden through an `.htaccess` file. In that case, contact your hosting provider and ask them to change the AllowOverride directive.
 
 Another common problem is that the `mod_rewrite` module is not enabled on your webserver, in which case you'll also have to turn to your hosting provider to have them enable this Apache module. If the module is not available, Pagekit will still work but fall back to a URL format of the form `http://example.com/index.php/page/welcome`.
-
-## nginx
-
-Another popular lightweight webserver is Nginx. Connect [PHP to Nginx](http://wiki.nginx.org/PHPFcgiExample) and add the following to your config file to support nice URLs.
-
-```nginx
-location / {
-  try_files $uri $uri/ /index.php?$args;
-}
-```

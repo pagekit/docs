@@ -2,281 +2,270 @@
 
 <p class="uk-article-lead">Get started and create your own theme for Pagekit.</p>
 
-## Create the file structure
+## Location of theme files
 
-Each theme in Pagekit is located in its own folder in the `/themes` directory. In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
+The example theme we will be building in this guide is the *Hello* theme. This
+tiny theme can be used as a starter theme. It's available via the Pagekit
+marketplace and contains all examples we describe here.
 
-There are several ways to create the basic file structure. In the course of this tutorial, we will create the needed files by hand.
+The *Hello* theme is located in `/packages/pagekit/theme-hello`. Every theme in
+Pagekit is a *Package* which is why they simply sit alongside other packages
+(i.e. extensions).
 
-### Command line
+Every package belongs to a specific vendor (for example `pagekit` for the
+*Hello* theme) and is therefore located in the according subdirectory. The
+vendor name is a unique representation of you as a developer or organization.
+In the simplest case, it just matches a github username.
 
-If you like the command line, run a single command to create a skeleton theme. Apart from the basic structure, that package also includes examples of the functionality we will explain in this tutorial. More developer information is available in the [advanced theme docs](themes.md).
+The directory name is up to you. The actual name of the theme is defined inside
+the theme files and not by the directory name. However, it makes sense to give a
+clear name to the folder and start with the prefix `theme-`. Remember that
+extensions will end up in the same directory, so a clear name will make it
+easy to tell that this is in fact a theme directory.
 
-```bash
-php pagekit theme:generate mytheme
-```
+## File structure
 
-### Create the files manually
+In order for Pagekit to recognize a directory as a valid theme, you have to
+follow a certain file structure, at least for a few required files.
 
-To get started, create an empty folder `/themes/mytheme`. Create three empty files `theme.json` and `theme.php` and `templates/template.razr`. This is the minimal set of files needed for a theme, though we still need to add some content before the theme will be available in Pagekit's back end.
+The required files are `composer.json`, `index.php` and `views/template.php`.
+Other files are optional and can be added as needed and named as you prefer it.
 
-![Generated file structure](assets/guide-theme-files-minimal.png)
+| File                         | Needed?  | Description             |
+|------------------------------|----------|-------------------------|
+| `composer.json`              | required | Package metadata        |
+| `index.php`                  | required | Theme module definition |
+| `views/template.php`         | required | Main template file      |
+| `css/theme.css`              | optional | Theme Stylesheet        |
+| `js/theme.js`                | optional | Theme JavaScript        |
 
-| File                         | Needed?  | Description        |
-|------------------------------|----------|--------------------|
-| `template/template.razr`     | required | Main template file |
-| `theme.json`                 | required | Theme metadata     |
-| `theme.php`                  | required | Theme settings     |
 
-When working with themes, you will add more and more files. Even though we won't need all of them in this tutorial, have a look at the following structure to understand what the structure for a more complex theme will look like.
+## composer.json
 
-![Generated file structure](assets/guide-theme-files.png)
+A theme is a regular Pagekit package. Each package needs a description in
+order to be recognized by Pagekit (and also if you decide to upload it to the
+marketplace later). This description is located in the `composer.json` and
+looks as follows.
 
-| File                         | Needed?  | Description        |
-|------------------------------|----------|--------------------|
-| `src/MythemeTheme.php`       | optional | Needed when you want to add your own functionality using PHP |
-| `views/admin/settings.razr`  | optional | View file for a settings screen in the back end |
-| `css`                        | optional | CSS files          |
-| `js`                         | optional | JavaScript files   |
-| `images`                     | optional | Image assets       |
-
-Let's have a look at the files we actually need in the beginning: `theme.php`, `theme.json` and `templates/template.php`.
-
-## theme.php
-
-`theme.php` includes a PHP array with all configuration for your theme. Let's start off with no configuration at all: an empty array.
-
-```
-<?php return [];
-```
-
-## theme.json
-
-`theme.json` contains meta data which is used by Pagekit's back end and the marketplace.
-
-```js
+```json
 {
-    "name": "mytheme",
-    "version": "0.0.1",
-    "type": "theme",
-    "title": "My Theme",
-    "description": "",
-    "license": "",
+    "name": "pagekit/hello-theme",
+    "type": "pagekit-theme",
+    "version": "0.9.0",
+    "title": "Hello",
+    "description": "A blueprint to develop your own themes.",
+    "license": "MIT",
     "authors": [
         {
-            "name": "YOOtheme",
-            "email": "demo@yootheme.com",
-            "homepage": "http://yootheme.com"
+            "name": "Pagekit",
+            "email": "info@pagekit.com",
+            "homepage": "http://pagekit.com"
         }
-    ]
+    ],
+    "extra": {
+        "image": "image.jpg"
+    }
 }
 ```
 
-## template.razr
+## index.php
 
-`templates/template.razr` is the main file for the theme markup. Let's begin with some basic markup.
+Internally, themes in Pagekit are handled as *Modules*. This opens up a lot of
+possibilities of what you can do with a theme. The main thing to understand in
+the beginning is that the definition of your theme happens in the `index.php`.
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        @section('head')
-    </head>
-    <body>
-        @section('content')
-    </body>
-</html>
-```
+Make sure this file returns a PHP array. By setting the right properties in
+this array, you tell Pagekit everything it needs to know about your theme.
 
-Save the file and navigate to the Pagekit admin area in your browser to activate the theme. To do so, go to the *Settings* screen and click on *Themes*. Amongst the installed themes you should see your theme. Click the *Enable* button. Now have a look at the Pagekit installation, it should display some content without any styling.
+Define the positions and menus of your theme, load additional scripts and much
+more. To get started, here is a simple example for your `index.php`.
+Explanations of the single properties follow below.
 
-**Note** If your page is blank, make sure you have some content in your Pagekit installation and that the page you're on actually links to something - like the blog, a single blog post or a static page.
-
-## Templating
-
-The starting point for your theme's rendering is the main template file `templates/template.razr`.
-
-As you've seen, the templating language of choice is [Razr](https://github.com/pagekit/razr) which is a superset of PHP. You can use PHP for templating, but Razr offers you a lot of shorthand syntax and quick access to many functions provided by Pagekit.
-
-We've already used the `@section` directive twice and we will use it more often in the course of this tutorial. The basic idea here is that components in Pagekit (and any extension that is enabled) can add their content to specific sections. The `head` section for example is reserved for all things related to resources loaded in the `head` section. Pagekit will also output meta and title tags here. `content` is reserved for the main content on the current page - as you might have guessed.
-
-Your theme should render the following actions on every page.
-
-| Action                  | Description       |
-|-------------------------|-------------|
-| `@section('head')`       | Renders meta tags and assets, put this in the `<head>` section. |
-| `@section('content')`    | Renders the content of the current page, put this somewhere in your `<body>` section. |
-| `@section('messages')`   | System and extension messages like error and success notifications. Good practice is to have these appear on top of your page. |
-
-## Add CSS
-
-Now that we have our basic markup, it's time to add some of our own styling. We'll also see how JavaScript files can be included comfortably.
-
-To add some basic styling, please create a `css/` folder inside your theme folder and add some CSS in `css/theme.css`.
-
-```css
-body {
-    background: #eee;
-    font-family: sans-serif;
-}
-```
-
-In `templates/template.razr`, add the following line right after `@section('head')`.
-
-```
-@style('theme', 'theme://mytheme/css/theme.css')
-```
-
-Refresh your browser to make sure it picks up the style changes. As you can see, the `@style` directive generates the right `<link ...>` syntax. Note how we assign the name `'theme'` to the included stylesheet. This is used to reference the stylesheet later on, as assets (= CSS and JavaScript files) can require other assets to be included in advance. Even if no other file will reference the stylesheet, we still have to assign a name as the first parameter.
-
-## Add JavaScript
-
-Just like CSS, JavaScript files are included by Pagekit's assets management. You can use the same `require` functionality as we've just seen with CSS.
-
-To require some provided JavaScript, let's include jQuery on our page. Pagekit actually comes with a few scripts right from the start: no need to include your own version of commonly used libraries. Add `@script('jquery')` to `template.razr` to make the complete file look as follows.
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        @section('head')
-        @style('theme', 'theme://mytheme/css/theme.css')
-        @script('jquery')
-    </head>
-    <body>
-        @section('content')
-    </body>
-</html>
-
-```
-
-The directive `@script('jquery')` will add `jquery` to the list of required assets. This list is filled before the rendering process begins. This allows Pagekit to resolve all requirements. Scripts are sorted in the order they are required and only included a single time, even if several components require the same asset (which is a common case if you think about libraries like jQuery).
-
-To actually include your own script and set certain requirements, use the following syntax where the third parameter is a list of required assets.
-
-```
-@script('theme', 'theme://mytheme/js/theme.js', ['jquery', 'uikit', 'uikit-notify', 'uikit-sticky', 'uikit-sortable'])
-```
-
-For a full list of assets included in Pagekit's installation, check out the asset list in the documentation (TODO).
-
-
-## Getting started with Widgets
-
-So far, our theme looks the same on every single page. The only thing that changes is the main content of the current view - a static page or a blog post. There are other areas we want to customize, sidebars we want to fill with content, a footer, a logo that should be changed and so on. We also need a place for our site navigation to appear.
-
-All of this (and much more) can be done with widgets. Widgets are chunks of content that can be positioned inside a theme and configured to appear on certain pages and be hidden on others. When developing a theme, we do not care about what kind of content the widget renders. The only thing we need to do is to offer positions in our theme where widgets can be rendered.
-
-To add widget functionality to the theme, there are three steps we need to take.
-
-1. List all provided widget positions in our `theme.php`.
-2. Create a renderer that determines how multiple widgets in a single position are rendered. List all provided renderers in our `theme.php`.
-3. Render all published widgets in their assigned position in `templates/template.razr`.
-
-
-## Widget renderer
-
-A single widget position can hold more than one widget. To determine how those widgets are rendered, Pagekit supports so called `renderers`.  You could create one renderer that display all widgets with equal widths in columns next to each other. A second one could render all widgets stacked on top of each other. By giving the user the option to choose between those renderers for every widget position, they can significantly customize the layout of their page without changing code inside the theme.
-
-We'll start off by creating a single renderer that plainly renders all published widgets without any fancy markup. Let's call it `blank`. To make sure Pagekit knows about it, add the `renderer` option to our `theme.php`.
-
-```
+```php
 <?php
-    return [
-        'renderer' => [
-            'blank' => 'theme://mytheme/views/renderer/position.blank.razr'
-        ]
-    ];
+
+return [
+
+
+    'name' => 'hello-theme',
+
+    'type' => 'theme',
+
+    /**
+     * Resource shorthands.
+     */
+    'resources' => [
+
+        'theme:' => '',
+        'views:' => 'views'
+
+    ],
+
+    /**
+     * Define menu positions.
+     */
+    'menus' => [
+
+        'main' => 'Main',
+
+    ],
+
+    /**
+     * Define widget positions.
+     */
+    'positions' => [
+
+        'sidebar' => 'Sidebar',
+
+    ],
+
+    /**
+     * Default theme configuration.
+     */
+    'config' => []
+
+];
+
 ```
 
-Now, create the folder `/mytheme/views/renderer` and a file `/mytheme/views/renderer/position.blank.razr` with the following content.
+`resources` allow you to register a shorthand to a path reference. This makes
+it easier when referencing files because you do not have to specify the full
+path. For example `views:template.php` will expand to
+`packages/vendor/theme/views/template.php`
 
+Your theme defines locations to render menus and widgets.
+The actual rendering happens in the `template.php`, as we will show below.
+However, your theme needs to register these positions before. This happens
+with the `menus` and `positions` property. These contain arrays of the position
+name and a label which displays in the backend.
+
+Other properties can be added for more advanced settings.
+
+| Property       | Required?  | Description                                    |
+|----------------|------------|------------------------------------------------|
+| `name`         | required   | Theme identifier                               |
+| `type`         | required   | Module type (needs to be `theme` for a theme)  |
+| `resources`    | optional   | Resource paths shorthands                      |
+| `menus`        | optional   | Define menu positions                          |
+| `positions`    | optional   | Define widget positions                        |
+| `settings`     | optional   | Route to theme settings screen                 |
+| `config`       | optional   | Default module config                          |
+| `events`       | optional   | Listen to events                               |
+| ...            | optional   | All properties from extensions can be used     |            
+
+## template.php
+
+`views/template.php` is the main file for the theme markup. It is a PHP file
+that has the following objects available for rendering:
+
+| Object         | Description                                                 |
+|----------------|-------------------------------------------------------------|
+| `$view`        | View renderer instance                                      |
+| `$params`      | Theme parameters                                            |
+| `$app`         | Application container instance                              |
+
+**Note** With PHP templating, the short notation `<?= $var ?>` prints the value
+of the the variable `$var`.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Always render head section from the system -->
+        <?= $view->render('head') ?>
+
+        <!-- Include theme css -->
+        <?php $view->style('theme', 'theme:css/theme.css') ?>
+
+        <!-- Include theme JS, require jQuery which will also be included -->
+        <?php $view->script('theme:js/theme.js', 'jquery') ?>
+    </head>
+    <body>
+
+        <!-- Render logo with site URL -->
+        <?php if ($logo = $params['logo']) : ?>
+        <a href="<?= $view->url()->get() ?>">
+            <img src="<?= $this->escape($logo) ?>" alt="">
+        </a>
+        <?php endif ?>
+
+        <!-- Render menu position -->
+        <?php if ($view->menu()->exists('main')) : ?>
+            <?= $view->menu('main') ?>
+        <?php endif ?>
+
+        <!-- Render widget position -->
+        <?php if ($view->position()->exists('sidebar')) : ?>
+            <?= $view->position('sidebar') ?>
+        <?php endif; ?>
+
+        <!-- Render system messages -->
+        <?= $view->render('messages') ?>
+
+        <!-- Render content -->
+        <?= $view->render('content') ?>
+
+        <!-- Insert code before the closing body tag  -->
+        <?= $view->render('footer') ?>
+
+    </body>
+</html>
 ```
-@foreach ($value as $widget)
-    @raw( $options.provider.render($widget, $options) )
-@endforeach
-```
 
-A renderer is a view file that gets handed in all content in the `$value` variable. For widget positions, this is an array of widgets published in that position. We use Razr's `@foreach` directive to iterate over all these widgets. Every widget is rendered by passing it to the `render` function of the view service provider which is available via `$options.provider`. The `@raw` directive outputs the generated markup without escaping special characters.
+## theme.css &amp; theme.js
 
-## Widget positions
+Because our template already includes these files, make sure to also create
+the two files `js/theme.js` and `css/theme.css`. You can leave them empty for
+now.
 
-We need to tell Pagekit about the widget positions our theme offers. To do so, add an array of all widget positions to the `theme.php`. This array includes the unique title of the position (usually lowercase) and the label we want to show to the user in the back end.
+## Activate theme
 
-Add the widget positions to your `theme.php`.
+With this basic file structure completed, you can now go to Pagekit backend.
+Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking
+the star icon next to it.
 
-```php
-'positions' => [
-    'logo'   => 'Logo',
-    'navbar' => 'Navbar'
-],
-```
+You should now be able to refresh the frontend and see the content without any
+styling. And this is where you come in. You have the basic setup up and running
+and can now start to change the markup and add your CSS and JS.
 
-In our template, we now need to add the actual rendering of widgets in those positions. For each positions, we check if a widget is published and then render it. Note how we set the `blank` renderer we've created before.
+## Add a settings screen
 
-**Note** The `@raw` directive makes sure the rendered widget markup is not escaped.
-
-```php
-@if ($position.exists('logo'))
-    @raw( $position.render('logo', ['renderer' => 'blank']) )
-@endif
-```
-
-## Create a widget
-
-To make sure our new widget position works, we go the the admin area of Pagekit and create a new widget in the logo position. Navigate to the *Widgets* area and hit *Add widget*. In the drop down, select the *Text* type. Type in any content you like. On the right hand side, you see a dropdown for widget positions. You should be able to see all positions defined by our theme. Select `logo` and make sure to set the *Status* to *Enabled*. Save the widget
-
-In this tutorial, we will only include th the `logo` position. But just like that, you can define your own positions. It is recommended to include the following basic set of widget positions. When your theme sticks to these, users can just enable a new theme and existing widget assignments will be picked up automatically.
-
-| Position name | Label       |
-|---------------|-------------|
-| `logo`        | Logo        |
-| `logo-small`  | Logo Small  |
-| `navbar`      | Navbar      |
-| `top-a`       | Top A       |
-| `top-b`       | Top B       |
-| `sidebar-a`   | Sidebar A   |
-| `sidebar-b`   | Sidebar B   |
-| `footer`      | Footer      |
-| `offcanvas`   | Offcanvas   |
+TODO
 
 ## Overwrite system template
 
-When you want to go further in customizing Pagekit's look and feel, you might need to overwrite some of the default views. That way you can change the markup of extension like the blog or create a custom 404 page. Let's create a custom error page in the following example.
+TODO
 
-The default view file that is used for the error page is located at `extension://system/theme/templates/error.razr`. Note how `extension:` will automatically expand to point to the `extensions` directory.
+## Custom widget renderer
 
-To change this path, open your `theme.php` and add the following lines to the configuration array.
+TODO
 
-```php
-// ...
-'resources' => [
-    'override' => [
-        'extension://system/theme/templates' => 'templates/system'
-    ]
-],
-// ...
-```
+## Add theme options to Site interface
 
-In order for Pagekit to find the file, we are mirroring the path to the view file inside our theme. To do so, create the folder structure `templates/system` inside your theme and create your own `error.razr` inside that folder: `themes/mytheme/templates/system/error.razr`.
+TODO
 
-```php
-Nope. This didn't work.
-```
+## Add theme options to Widget interface
 
-**Note** You will only see the custom error message when you have debug mode set to *Disabled*.
+TODO
+
+## Custom Error Pages
+
+TODO
 
 ## Where to go from here
 
-Congratulations, you've created your first theme! We've introduced the basic file structure and talked about the most important configuration options. You know how to change the markup, include CSS and JS and how to add widget functionality. Now it's time to get creative and play around.
+Congratulations, you've created your first theme! We've introduced the basic
+file structure and talked about the most important configuration options. You
+know how to change the markup, include CSS and JS and how to add widget
+functionality. Now it's time to get creative and play around.
 
-If you're looking for advanced functionality, here are some pointers to other sections of the documentation:
+If you're looking for advanced functionality, here are some pointers to other
+sections of the documentation:
 
-- Add additional configuration to your theme. See [Configuration](configuration.md) for more information.
-- Add a settings page to your theme. See [Configuration](configuration.md) for more information.
-- Upload your theme to the Pagekit marketplace so others can enjoy it. See [Marketplace](marketplace.md) for more information.
-- A more developer centric view on building themes is available in the [Themes section](themes.md).
-
-For questions and discussion on best practices, check out the [Google+ community](https://plus.google.com/communities/104125443335488004107).
+- TODO
+- TODO
+- TODO

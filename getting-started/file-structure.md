@@ -21,7 +21,7 @@
       packages                // packages temporal files
       sessions                // file based user sessions
       temp                    // general temporal files
-    /pagekit.db               // the database file only present if using SQLite
     /.htaccess                // the Apache configuration file. Make sure is always there if using Apache
-    /config.php               // the Pagekit configuration file
     /CHANGELOG.md             // the Pagekit changelog file
+    /config.php               // the Pagekit configuration file
+    /pagekit.db               // the database file only present if using SQLite

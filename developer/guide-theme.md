@@ -6,22 +6,8 @@
 
 The example theme we will be building in this guide is the *Hello* theme. This
 tiny theme can be used as a starter theme. It's available via the Pagekit
-marketplace and contains all examples we describe here.
-
-The *Hello* theme is located in `/packages/pagekit/theme-hello`. Every theme in
-Pagekit is a *Package* which is why they simply sit alongside other packages
-(i.e. extensions).
-
-Every package belongs to a specific vendor (for example `pagekit` for the
-*Hello* theme) and is therefore located in the according subdirectory. The
-vendor name is a unique representation of you as a developer or organization.
-In the simplest case, it just matches a github username.
-
-The directory name is up to you. The actual name of the theme is defined inside
-the theme files and not by the directory name. However, it makes sense to give a
-clear name to the folder and start with the prefix `theme-`. Remember that
-extensions will end up in the same directory, so a clear name will make it
-easy to tell that this is in fact a theme directory.
+marketplace and contains all examples we describe here. When installed, the
+*Hello* theme is located in `/packages/pagekit/theme-hello`.
 
 ## File structure
 
@@ -43,34 +29,22 @@ Other files are optional and can be added as needed and named as you prefer it.
 ## composer.json
 
 A theme is a regular Pagekit package. Each package needs a description in
-order to be recognized by Pagekit (and also if you decide to upload it to the
-marketplace later). This description is located in the `composer.json` and
-looks as follows.
+order to be recognized by Pagekit. This description is located in the
+`composer.json` and looks as follows. Detailed information is availabe in the
+[Packages](packages.md) chapter.
 
 ```json
 {
     "name": "pagekit/hello-theme",
     "type": "pagekit-theme",
     "version": "0.9.0",
-    "title": "Hello",
-    "description": "A blueprint to develop your own themes.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Pagekit",
-            "email": "info@pagekit.com",
-            "homepage": "http://pagekit.com"
-        }
-    ],
-    "extra": {
-        "image": "image.jpg"
-    }
+    "title": "Hello"
 }
 ```
 
 ## index.php
 
-Internally, themes in Pagekit are handled as *Modules*. This opens up a lot of
+Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of
 possibilities of what you can do with a theme. The main thing to understand in
 the beginning is that the definition of your theme happens in the `index.php`.
 
@@ -250,105 +224,6 @@ the star icon next to it.
 You should now be able to refresh the front-end and see the content without any
 styling. And this is where you come in. You have the basic setup up and running
 and can now start to change the markup and add your CSS and JS.
-
-## Render sub-view
-
-In some cases you want to split your template in several files. This can
-be useful if you either have a lot of markup or if you have conditional
-rendering.
-
-A classic example would be when you want to allow different versions of the menu
-to be rendered. In this case you should try to avoid nesting several `if`
-clauses and instead create additional files in your `views` folder.
-
-```php
-<?= $view->menu('main', 'menu-navbar.php') ?>
-```
-
-`menu-navbar.php` could look as follows:
-
-```php
-<ul class="uk-navbar-nav">
-
-    <?php foreach ($root->getChildren() as $node) : ?>
-    <li>
-
-    <!-- ... more markup ... -->
-
-    </li>
-    <?php endforeach ?>
-
-</ul>
-```
-
-The same works for widget positions.
-
-```php
-<?= $view->position('hero', 'position-grid.php') ?>
-```
-
-`position-grid.php` can look as follows:
-
-```php
-<?php foreach ($widgets as $widget) : ?>
-<div class="uk-width-1-<?= count($widgets) ?>">
-
-    <div>
-
-        <h3><?= $widget->title ?></h3>
-
-        <?= $widget->get('result') ?>
-
-    </div>
-
-</div>
-<?php endforeach ?>
-```
-
-## Add a settings screen
-
-TODO
-
-## Default Pagekit markup
-
-The Pagekit backend is built using the UIkit front-end framework. That is why
-the Pagekit core extensions such as static pages and the blog output markup
-with CSS classes from UIkit. You are, however, in no way forced to use UIkit
-to create your own themes.
-
-To style the Pagekit system output, you can just add the CSS for a few classes
-instead of including the UIkit CSS. The `theme.css` that comes with the Hello
-extension already comes with the classes you need to style.
-
-If you want to completely change the markup that Pagekit itself generate, you
-also have the possibility to overwrite system view files, to provide custom
-widget renderer and custom menu renderer.
-
-## Overwrite system views
-
-To overwrite system view files, you just need to put template files in the
-correct locations inside your theme folder.
-
-| File                         | Original view file                       | Description               |
-|------------------------------|------------------------------------------|---------------------------|
-| `views/system/site/page.php` | `/app/system/site/views/page.php`        | Default static page view  |
-| `views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view     |
-| `views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view      |
-
-To understand which variables you have available in these views, check out the
-markup in the original view file.
-
-## Add theme options to Site interface
-
-TODO
-
-## Add theme options to Widget interface
-
-TODO
-
-## Custom Error Pages
-
-TODO
 
 ## Where to go from here
 

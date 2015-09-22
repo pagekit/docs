@@ -251,6 +251,60 @@ You should now be able to refresh the front-end and see the content without any
 styling. And this is where you come in. You have the basic setup up and running
 and can now start to change the markup and add your CSS and JS.
 
+## Render sub-view
+
+In some cases you want to split your template in several files. This can
+be useful if you either have a lot of markup or if you have conditional
+rendering.
+
+A classic example would be when you want to allow different versions of the menu
+to be rendered. In this case you should try to avoid nesting several `if`
+clauses and instead create additional files in your `views` folder.
+
+```php
+<?= $view->menu('main', 'menu-navbar.php') ?>
+```
+
+`menu-navbar.php` could look as follows:
+
+```php
+<ul class="uk-navbar-nav">
+
+    <?php foreach ($root->getChildren() as $node) : ?>
+    <li>
+
+    <!-- ... more markup ... -->
+
+    </li>
+    <?php endforeach ?>
+
+</ul>
+```
+
+The same works for widget positions.
+
+```php
+<?= $view->position('hero', 'position-grid.php') ?>
+```
+
+`position-grid.php` can look as follows:
+
+```php
+<?php foreach ($widgets as $widget) : ?>
+<div class="uk-width-1-<?= count($widgets) ?>">
+
+    <div>
+
+        <h3><?= $widget->title ?></h3>
+
+        <?= $widget->get('result') ?>
+
+    </div>
+
+</div>
+<?php endforeach ?>
+```
+
 ## Add a settings screen
 
 TODO
@@ -266,13 +320,23 @@ To style the Pagekit system output, you can just add the CSS for a few classes
 instead of including the UIkit CSS. The `theme.css` that comes with the Hello
 extension already comes with the classes you need to style.
 
-## Overwrite system template
+If you want to completely change the markup that Pagekit itself generate, you
+also have the possibility to overwrite system view files, to provide custom
+widget renderer and custom menu renderer.
 
-TODO
+## Overwrite system views
 
-## Custom widget renderer
+To overwrite system view files, you just need to put template files in the
+correct locations inside your theme folder.
 
-TODO
+| File                         | Original view file                       | Description               |
+|------------------------------|------------------------------------------|---------------------------|
+| `views/system/site/page.php` | `/app/system/site/views/page.php`        | Default static page view  |
+| `views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view     |
+| `views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view      |
+
+To understand which variables you have available in these views, check out the
+markup in the original view file.
 
 ## Add theme options to Site interface
 

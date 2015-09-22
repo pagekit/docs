@@ -2,81 +2,42 @@
 
 <p class="uk-article-lead">Change settings in Pagekit's configuration file.</p>
 
-Pagekit's configuration is stored in `config.php` in the Pagekit root folder. Here you will find the database credentials, debug and cache settings. You can configure the settings in Pagekit *System > Settings* or edit them in this config file.
-
-## Database
-
-The database connection settings are stored in `database['connections']`. Here you can find the connection data you have provided during the installation process:
+Pagekit's configuration is a file stored in the Pagekit root as `config.php` and generated during the installation. The normal way of editing it would be through Pagekit *System > Settings* admin area, although there are situations where the manual editing is necessary. The following sections describe the most common settings.
 
 ```php
 'database' => [
   'default' => 'mysql',                     // default database connection
   'connections' => [                        // array of database connections
-    'mysql' => [                            // database connection name
+    'mysql' => [                            // database driver name
       'host' => 'localhost',                // database server host name
       'user' => 'user',                     // database server user name
       'password' => 'pass',                 // database password
       'dbname' => 'pagekit',                // database name
       'prefix' => 'pk_'                     // database prefix
     ],
-    'sqlite' => [                           // database connection name
+    'sqlite' => [                           // database driver name
       'prefix' => 'pk_'                     // database prefix
     ]
   ]
-]
-```
-
-**Note** As reflected above is possible to configure more than one database connection and set the default one in `database['default']`.
-
-## System
-
-```php
+],
 'system' => [
   'secret' => 'secret'                      // the secret string generated during installation
-]
-```
-
-## Cache
-
-In `cache` section the caching method is stored. Initially the cache is set to `auto` and you can disable it entirely by setting the `nocache` option as `true`.
-
-```php
+],
 'system/cache' => [
   'caches' => [
     'cache' => [
-      'storage' => 'auto'                   // The cache method to be used
+      'storage' => 'auto'                   // the cache method to be used, if enabled
     ]
   ],
-  'nocache' => false                        // the cache state. Remember to keep it enabled on production server
-]
-```
-
-## Finder
-
-In the Finder settings you can change the default `storage` path.
-
-```php
+  'nocache' => false                        // the cache state. You can disable it entirely by setting as 'true'
+],
 'system/finder' => [
-  'storage' => '/storage'                   // the storage relative path
-]
-```
-
-## Application
-
-In the Application settings you can enable the debug mode while developing to get debug output.
-
-```php
+  'storage' => '/storage'                   // the relative path to the images and videos folder
+],
 'application' => [
-  'debug' => false                          // the debug mode state
-]
-```
-
-## Debug
-
-Enabling the debug toolbar will give you valuable information while developing, the toolbar is located at the bottom of the page. It collects data about the requests that are made, monitors the memory usage, counts database queries and so on.
-
-```php
+  'debug' => false                          // the debug mode state, enable while developing to get debug output
+],
 'debug' => [
-  'enabled' => false                        // the debug toolbar state
+  'enabled' => false                        // the debug toolbar state, enable it to get information about requests, memory usage and others
 ]
 ```

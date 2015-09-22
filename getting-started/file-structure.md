@@ -1,6 +1,6 @@
 # File Structure
 
-<p class="uk-article-lead">The following table gives you an overview on the folder structure in Pagekit.</p>
+<p class="uk-article-lead">The following table gives you an overview on the file structure in Pagekit.</p>
 
     /app                      // main system files
       assets                  // system assets
@@ -21,7 +21,7 @@
       packages                // packages temporal files
       sessions                // file based user sessions
       temp                    // general temporal files
-    /.htaccess                // the Apache configuration file. Make sure is always there if using Apache
-    /CHANGELOG.md             // the Pagekit changelog file
-    /config.php               // the Pagekit configuration file
-    /pagekit.db               // the database file only present if using SQLite
+    .htaccess                // the Apache configuration file. Make sure is always there if using Apache
+    CHANGELOG.md             // the Pagekit changelog file
+    config.php               // the Pagekit configuration file
+    pagekit.db               // the database file only present if using SQLite

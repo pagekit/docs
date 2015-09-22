@@ -1,92 +1,125 @@
 # Translation
 
-<p class="uk-article-lead">Pagekit includes capabilities to display messages in different languages.</p>
+<p class="uk-article-lead">Pagekit includes capabilities to display messages in
+different languages. This allows the interface to be localized for any number.
+of languages.</p>
 
-**Note** There is a difference between languages and locales, as there might be different versions of a certain language spoken in a particular region (for example `en_GB` vs. `en_US`).
+**Note** There is a difference between languages and locales, as there might be
+different versions of a certain language spoken in a particular region (for
+example `en_GB` vs. `en_US`).
 
 ## Language files
 
 Pagekit's core extensions come with language files provided.
 
 ```
-/languages
+/app/system/languages
 
   /en_US
-    messages.po
-    messages.mo
+    messages.php
+    formats.json
+    languages.json
+    territories.json
 
   /de_DE
-    messages.po
-    messages.mo
+    messages.php
+    formats.json
+    languages.json
+    territories.json
 
   messages.pot
 ```
 
-| Folder / File  | Description |
-|----------------|-------------|
-| `/en_US` <br> `/de_DE`           | Each folder corresponds to a locale, its name is used to match the user's locale. |
-| `messages.po`                    | The localized version based on `messages.pot`. |
-| `messages.mo`                    | A binary version compiled from `messages.po`. Translation will work without this file, but it will probably be a tiny bit slower. |
-| `messages.pot`                   | This is the main file to include all translatable strings with their default translation (usually just the English version). This file is used as a base to create localized versions. |
+| Path                     | Description                                       |
+|--------------------------|---------------------------------------------------|
+| `messages.pot`           | This is the main file with all translatable strings. Used as a base to create localized versions. Regularly uploaded to Transifex by the Pagekit maintainers. |
+| `/en_US` <br> `/de_DE`   | Each folder corresponds to a locale               |
+| `xx_XX/formats.json`     | Localized Format strings                          |
+| `xx_XX/languages.json`   | Localized language names                          |
+| `xx_XX/territories.json` | Localized territory names                         |
 
-The translation is a simple mapping from the English version of the string to a localized version.
+Formats, languages and territories are defined by the
+[Unicode Common Locale Data Repository](http://cldr.unicode.org/).
 
+The translation is a simple mapping from the English version of the string to a
+localized version (`de_DE/messages.php`).
+
+```php
+"No database connection." => "Keine Datenbankverbindung."
 ```
-msgid "No database connection."
-msgstr "Keine Datenbankverbindung."
-```
-
 
 ## Usage
 
-To get the localized version of a string, you can use the global function `__(...)` or `@trans(...)` when inside a view. Pagekit will automatically check the user's locale, check if there is a localized version of the string available or return the string ID instead. That is why instead of using keys like `"hello_save_label"`, we simply use `"Save"` to identify the message.
+To get the localized version of a string, you can use the global function
+`__(...)` inside a PHP file. In a Vue template, use the trans filter on a
+string.
+
+Pagekit will automatically check the active locale and return a localized version
+of the string available.
+
+In PHP files:
 
 ```php
-$message = __("Save");
+echo __('Save');
 ```
 
-```HTML
-<a href="http://example.com">@trans("Visit website")</a>
+In Vue templates:
+
+```vue
+{{ 'Save' | trans }}
 ```
 
 ### Variables
 
-Suppose you have a name stored in `$name` and want to include it in a localized string. You can pass parameters to the translation functions to do simple string replacement.
+Suppose you have a name stored in `$name` and want to include it in a localized
+string. You can pass parameters to the translation functions to do simple string
+replacement.
 
 ```php
-$messages = __("Hello %name%!", ["%name%" => $name]);
+$message = __("Hello %name%!", ["%name%" => $name]);
 ```
 
+In Vue templates you can pass parameters to the `trans` filter.
 
-```HTML
-@trans("Hello %name%!", ["%name%" => name])
+```vue
+{{ 'Installing %title%' | trans {title:pkg.title} }}
 ```
 
 ### Pluralisation
 
-To choose from several messages depending on a number, you can use a syntax of specifying alternatives and determine certain numbers or even intervals. Use the `_c(...)` function (`@†ranschoice` in templates) that also supports replacement parameters.
+To choose from several messages depending on a number, you can use a syntax of
+specifying alternatives and determine certain numbers or even intervals. Use
+the `_c(...)` function that also supports replacement parameters.
 
-```HTML
-@transchoice("{0}No posts|{1}One name|]1,Inf] %names% names", names|length, ["%names%" => names|length])
+```php
+$message = _c('{0} No Item enabled.|{1} Item enabled.|]1,Inf[ Items enabled.', count($ids))
 ```
 
-To specify the number that matches, you can use the number in curly brackets `{0}`, labels to make it more readable `one:` `more:` or intervals `]1,Inf]`. These variants can also be mixed.
+To specify the number that matches, you can use the number in curly brackets
+`{0}`, labels to make it more readable `one:` `more:` or intervals `]1,Inf]`.
+These variants can also be mixed.
 
-```HTML
-@transchoice("{0}: No names|one: One name|more: %names% names", names|length, ["%names%" => names|length])
+In Vue temmplates you can use the `transChoice` filter.
+
+```vue
+{{ '{0} %count% Files|{1} %count% File|]1,Inf[ %count% Files' | transChoice count {count:count} }}
 ```
 
-An interval can represent a finite set of numbers: `{1,2,3,4}` and it can represent numbers between two numbers: `[1, +Inf]`, `]-1,2[`. The left delimiter can be `[` (inclusive) or `]` (exclusive). The right delimiter can be `[` (exclusive) or `]` (inclusive). Beside numbers, you can use `-Inf` and `+Inf` for the infinite.
+An interval can represent a finite set of numbers: `{1,2,3,4}` and it can
+represent numbers between two numbers: `[1, +Inf]`, `]-1,2[`. The left delimiter
+can be `[` (inclusive) or `]` (exclusive). The right delimiter can be
+`[` (exclusive) or `]` (inclusive). Beside numbers, you can use `-Inf` and
+`+Inf` for the infinite.
 
-## Create Language files
+## Create Language files for your extension
 
-To translate your own extension, use the command line tool which will extract all translateable strings.
+To translate your own extension, use the command line tool which will extract all translatable strings.
 
 ```bash
-./pagekit extension:translate hello
+./pagekit extension:translate pagekit/extension-hello
 ```
 
-This will create `/extension/hello/languages/messages.pot` including all strings that have been found. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
+This will create `/packages/pagekit/extensions-hello/languages/messages.pot` including all strings that have been found. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
 
 Create a folder for the locale you want to provide (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). An advantage of tools like this is the automatic creation of the binary `*.mo` file.
 

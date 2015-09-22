@@ -95,15 +95,15 @@ the `_c(...)` function that also supports replacement parameters.
 $message = _c('{0} No Item enabled.|{1} Item enabled.|]1,Inf[ Items enabled.', count($ids))
 ```
 
-To specify the number that matches, you can use the number in curly brackets
-`{0}`, labels to make it more readable `one:` `more:` or intervals `]1,Inf]`.
-These variants can also be mixed.
-
 In Vue temmplates you can use the `transChoice` filter.
 
 ```vue
 {{ '{0} %count% Files|{1} %count% File|]1,Inf[ %count% Files' | transChoice count {count:count} }}
 ```
+
+To specify the number that matches, you can use the number in curly brackets
+`{0}`, labels to make it more readable `one:` `more:` or intervals `]1,Inf]`.
+These variants can also be mixed.
 
 An interval can represent a finite set of numbers: `{1,2,3,4}` and it can
 represent numbers between two numbers: `[1, +Inf]`, `]-1,2[`. The left delimiter
@@ -111,46 +111,85 @@ can be `[` (inclusive) or `]` (exclusive). The right delimiter can be
 `[` (exclusive) or `]` (inclusive). Beside numbers, you can use `-Inf` and
 `+Inf` for the infinite.
 
-## Create Language files for your extension
+## Create language files for your extension
 
-To translate your own extension, use the command line tool which will extract all translatable strings.
+To translate your own extension, use the command line tool which will extract
+all translatable strings.
 
 ```bash
 ./pagekit extension:translate pagekit/extension-hello
 ```
 
-This will create `/packages/pagekit/extensions-hello/languages/messages.pot` including all strings that have been found. These have been collected by finding all calls to one of the translation functions `__()`, `_c()` or `@trans`, `@transchoice` in your views.
+This will create `/packages/pagekit/extensions-hello/languages/messages.pot`
+including all strings that have been found. These have been collected by finding
+all calls to one of the translation functions `__()`, `_c()` or the `trans` and
+`transchoice` filters in Vue components.
 
-Create a folder for the locale you want to provide (for example `/de_DE`). Copy the `messages.pot` to `/de_DE/messages.pot` and start filling out the `msgstr` property for each string. If you do not want to to this manually, you can use any of the available tools, a popular one is [poEdit](http://www.poedit.net/). An advantage of tools like this is the automatic creation of the binary `*.mo` file.
+However, the automatic detection of strings will *fail* whenever you determine
+the messages dynamically. Examples where the command will fail are:
 
-## Update language files
+```php
+<?php
 
-When you add, remove and change some strings in your extension and re-run `./pagekit extension:translate hello`, the `messages.pot` file will be regenerated. You now need to update your localized `*.po` and `*.mo` files. Of course this can be done manually. If you're using [poEdit](http://www.poedit.net/) though, there's a better method.
+// string cannot be detected: no string literal used
+echo __($message);
 
-1. Open the already localized file in poEdit, i.e. `/de_DE/messages.po`
-2. From the menu, choose *Catalog > Update from POT file*
-3. Select the newly generated `messages.pot`.
-4. In the next dialog, include translations for any new strings and save the file. `messages.mo` will automatically be saved as well.
+// string cannot be detected: Use format string instead
+echo __('Hello' + $name);
+```
+
+```vue
+// string literal without using translation filter
+UIkit.notify('Item deleted');
+```
+
+Sometimes, you cannot avoid these cases because you have to determine a string
+dynamically during run-time. The recommended solution for this issue is to
+locate a file `languages/messages.php` inside of your extension which contains
+all strings to be found by the translate command.
+
+```php
+<?php
+
+__('Message One');
+__('Message Two');
+_c('{0} %count% Files|one: File|more %count% File', 0);
+```
+
+With the created `messages.pot`, you can now create translations for your
+extension. You can either create translations manually with a tool like
+[poEdit](http://www.poedit.net/) or you also make use of Transifex.
+
+The finished translation files have to be located in the `languages` folder of
+your extension, i.e. in `languages/de_DE/`.
 
 ## How a locale is determined
 
-When the Installer is run, the locale is determined automatically by checking what locales the user's browser accepts. When Pagekit has been set up, you can set the language in the admin area.
+When the Installer is run, the locale is selected manually. This can later be
+changed in the Pagekit backend (*System / Localization*). You can set a
+different locale for front-end and back-end.
 
-**Note** You can only select languages that are available for the system extension.
+**Note** You can only select languages that are available for the system
+extension.
 
 ## Working with message domains
 
-The `__(...)`/`@trans` function and the `_c(...)`/`@transchoice` function have a third parameter to set a *domain*. The default domain is called `messages`, which is why we have been dealing with `messages.*` files so far. All extensions share their strings in this domain. That is why strings translated by the system extension can be used right away without the need to translate them again. This includes common terms like *Save*, *Error* or the name of a *month*.
+The `__(...)` / `_c(...)` functions and the `trans`/ `transChoice` filters have
+a third parameter to set a *domain*. The default domain is called `messages`,
+which is why we have been dealing with `messages.*` files so far. All extensions
+share their strings in this domain. That is why strings translated by the system
+extension can be used right away without the need to translate them again. This
+includes common terms like *Save*, *Error* or the name of a *month*.
 
-Indeed, when we called `./pagekit extension:translate hello` earlier, the resulting `messages.pot` did not include any of the system's messages, even if they occurred in the hello extension.
+Indeed, when we called `./pagekit extension:translate hello` earlier, the
+resulting `messages.pot` did not include any of the system's messages, even if
+they occurred in the hello extension.
 
-There might be the case when you do not want to share messages from the default domain. Just set your own domain and regenerate the `*.pot` files. You can do this for individual strings or set the parameter on all strings to keep your localization completely separate from the system.
+There might be the case when you do not want to share messages from the default
+domain. Just set your own domain and regenerate the `*.pot` files. You can do
+this for individual strings or set the parameter on all strings to keep your
+localization completely separate from the system.
 
 ```php
 $msg = __("Hello Universe", [], "hello");
-```
-
-
-```
-@trans("Hello Universe", [], "hello")
 ```

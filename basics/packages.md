@@ -52,10 +52,6 @@ For a theme, this file can look as follows.
 }
 ```
 
-The following properties are available.
-
-TODO
-
 ## Module definition: index.php
 
 Internally, most things in Pagekit are so called *Modules*. A module has a name, a type - and other optional properties. You define your Module in the `index.php` which is then loaded by Pagekit.
@@ -91,7 +87,7 @@ This minimal example is a valid module defintion, although it doesn't do anythin
 
 Use the `main` function be called when the module is loaded. The function receives the Pagekit Application Container instance as a parameter.
 
-```
+```php
 use Pagekit\Application;
 
 // ...
@@ -103,7 +99,7 @@ use Pagekit\Application;
 
 You can also load an extension class. The namespace has to be loaded in order for this to work (see `autoload` property).
 
-```
+```php
 'main' => 'MyNamespace\\MyExtension',
 ```
 
@@ -111,7 +107,7 @@ You can also load an extension class. The namespace has to be loaded in order fo
 
 Pass a list of namespaces and paths to be loaded by Pagekit. The contained classes will be available via autoloading (`use Pagekit\Hello\HelloExtension`).
 
-```
+```php
 'autoload' => [
 
     'Pagekit\\Hello\\' => 'src'
@@ -119,13 +115,44 @@ Pass a list of namespaces and paths to be loaded by Pagekit. The contained class
 ],
 ```
 
-### `nodes`
+### `nodes`: Register Nodes for the Site Tree
 
-TODO
+Nodes are similar to routes with the main difference that they can be dragged around in the Site Tree View and therefore dynamically result in a calculated route.
 
-### `routes`
+```php
+'nodes' => [
 
-TODO
+    'hello' => [
+
+        // The name of the node route
+        'name' => '@hello',
+
+        // Label to display in the backend
+        'label' => 'Hello',
+
+        // The controller for this node. Each controller action will be mounted
+        'controller' => 'Pagekit\\Hello\\Controller\\SiteController'
+    ]
+
+],
+```
+
+### `routes`: Mount controllers
+
+Use the `routes` property to mount controllers to a route.
+
+```php
+'routes' => [
+
+    '/hello' => [
+        'name' => '@hello/admin',
+        'controller' => [
+            'Pagekit\\Hello\\Controller\\HelloController'
+        ]
+    ]
+
+],
+```
 
 ### `menu`: Add menu items to the backend
 

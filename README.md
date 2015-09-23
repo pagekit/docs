@@ -4,7 +4,6 @@ Pagekit Documentation
 This is the documentation for Pagekit, a modular and lightweight CMS built with modern technologies.
 
 1. Getting Started
-
   1. [Requirements](getting-started/requirements.md)
   2. [Installation](getting-started/installation.md)
   3. [Updating](getting-started/updating.md)
@@ -23,32 +22,45 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   7. [Settings](user-interface/settings.md)
   8. [Adding Content](user-interface/adding-content.md)
 
-3. Developer
-  1. [Introduction](developer/introduction.md)
-  2. [Themes](developer/themes.md)
-  3. [Extensions](developer/extensions.md)
-  4. [Widgets](developer/widgets.md)
-  5. [Configuration](developer/configuration.md)
-  6. [Marketplace](developer/marketplace.md)
-  7. [The Application](developer/application.md)
-  8. [Controller](developer/controller.md)
-  9. [View and Response](developer/view-response.md)
-  10. [Links](developer/links.md)
-  11. [Migrations](developer/migrations.md)
-  12. [Architecture and Events](developer/architecture-events.md)
-  13. [Translation](developer/translation.md)
-  14. [Option](developer/api-option.md)
-  15. [Database](developer/database.md)
-  16. [Users &amp; Permissisons](developer/database.md)
-  17. [Create a theme](developer/guide-theme.md)
-  18. [Create a translation](developer/guide-translation.md)
+3. Developer Guides
+  1. [Create an Extension](developer/extension.md)
+  2. [Create a Theme](guides/theme.md)
+  3. [Translate Pagekit](guides/translation.md)
 
-4. Tools
+4. Developer Basics
+ 1. [Introduction](basics/developer-introduction.md)
+ 2. [Pagekit Packages &amp; Modules](basics/packages.md) F
+ 5. [Themes](basics/themes.md) F
+ 6. [Extensions](basics/extensions.md) F
+ 3. [Controller &amp; Routing](basics/controller.md) M
+ 4. [View and Response](basics/view-response.md) M
+ 5. [Working with static assets](basics/assets.md)
+ 7. [Widgets](basics/widgets.md) F
+ 8. [Links](basics/links.md) F
+ 9. [Site Tree Nodes](basics/nodes.md) F
+ 11. [Simple Data Storage](basics/module-config.md) F
+ 12. [Database](basics/database.md) M
+ 13. [Installation Hooks](basics/installation-hooks.md) M
+ 14. [Sessions]() M
+ 15. [Cache]() ?
+ 16. [Data Storage]() M
+ 17. [Translation](basics/translation.md) F    
+ 18. [Marketplace](basics/marketplace.md) M
+
+5. Advanced
+  1. [Request Lifecycle]()
+  2. [Modules]()
+  3. [Application Container]()
+  4. [Model-View-Controller]()
+  5. [Observer (Events)](developer/architecture-events.md)
+  6. [Data Reactive Interface Design]()
+
+6. Tools
   1. [Developer Toolbar](tools/developer-toolbar.md)
   2. [Command Line Tool](tools/command-line-tool.md)
-  2. [Webpack &amp; Grunt](tools/webpack-grunt.md)
+  3. [Webpack &amp; Gulp](tools/webpack-gulp.md)
 
-5. Troubleshooting
+7. Troubleshooting
   1. [System Information](troubleshooting/system-information.md)
   2. [Permissions](troubleshooting/permissions.md)
   2. [Not Found](troubleshooting/not-found.md)

@@ -4,7 +4,7 @@
 
 ## Request Errors
 
-If you are able to access your Pagekit installation but getting an error when trying to perform some task, is usually related to a Request error which Response should reveal us what is going on. In order to see the response you must check the browser console and make sure the [Debug](troubleshooting/debug.md) mode is on.
+If you are able to access your Pagekit installation but getting an error when trying to perform some task, is usually related to a Request error which Response should reveal us what is going on. In order to see the response you must check the browser console and make sure the [Debug Mode](troubleshooting/debug.md) is on.
 
 ## Pagekit Errors
 

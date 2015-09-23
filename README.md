@@ -26,6 +26,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   1. [Create an Extension](developer/extension.md)
   2. [Create a Theme](guides/theme.md)
   3. [Translate Pagekit](guides/translation.md)
+  4. [Marketplace](basics/marketplace.md)
 
 4. Developer Basics
  1. [Introduction](basics/developer-introduction.md)
@@ -45,7 +46,6 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
  15. [Cache]() ?
  16. [Data Storage]() M
  17. [Translation](basics/translation.md) F √
- 18. [Marketplace](basics/marketplace.md) M
 
 5. Advanced
   1. [Request Lifecycle]()
@@ -62,6 +62,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
 
 7. Troubleshooting
   1. [System Information](troubleshooting/system-information.md)
+  2. [Debug Mode](troubleshooting/debug.md)
   2. [Permissions](troubleshooting/permissions.md)
   2. [Not Found](troubleshooting/not-found.md)
   2. [Server Error](troubleshooting/server-error.md)

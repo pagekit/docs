@@ -1,4 +1,4 @@
-# Debug
+# Debug Mode
 
 <p class="uk-article-lead">There are situations when the issue source is not clear or requires extra steps to be shown.</p>
 

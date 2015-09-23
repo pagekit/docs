@@ -237,11 +237,32 @@ You can register strings to be used as shorter versions when working with paths.
 
 ### `menus`: Register menu positions for a theme
 
-TODO
+In your theme you can render menus from the Pagekit system in as many positions as you want. To make these positions known to Pagekit, you need to register them using the `menus` property.
+
+Each menu position is defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. `Main`).
+
+```php
+'menus' => [
+
+    'main' => 'Main',
+    'offcanvas' => 'Offcanvas'
+
+],
+```
 
 ### `positions`: Register widget positions for a theme
 
-TODO
+Widget positions allow users to publish Widgets in several locations of your theme markup. They appear in the Widget area of the Pagekit backend are selectable by the user when setting up a Widget.
+
+Each widget position is defined by an identifier (i.e. `sidebar`) and a label to be displayed to the user (i.e. `Sidebar`).
+
+```php
+'positions' => [
+
+    'sidebar' => 'Sidebar',
+
+],
+```
 
 ### `widgets`: Register Widgets
 

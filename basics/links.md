@@ -2,135 +2,48 @@
 
 <p class="uk-article-lead">Add your own link types with custom parameters to Pagekit.</p>
 
-Pagekit's concept of links allows for a reusable link picker (for
-example when linking from a menu item or when linking from the
-markdown editor). The user can choose a type of link and get further
-options depending on that choice. Linking to a page for example
-will present the user with a list of pages to choose from.
+Pagekit's concept of links allows for a reusable link picker (for example when linking from a menu item or when linking from the markdown editor). The user can choose a type of link and get further options depending on that choice. Linking to a page for example will present the user with a list of pages to choose from.
 
-In this section we will explain how custom link types can be
-registered and how to ask for advanced options from the user.
+In this section we will explain how custom link types can be registered and how to ask for advanced options from the user.
 
-## Basic structure
+## Register JS component
 
-Extend `Pagekit\System\Link\Link` and implement the three methods `getRoute`, `getLabel` and `renderForm`.
-
-**Note** `$this['view']` is a shortcut to access the `view` service. A detailed explanation will follow in the
-[Application](application.md) chapter.
-
-In your extension, create the file `/hello/src/HelloLink.php`:
+In the `events` property of your module's `index.php`, register a JavaScript file that will take care of rendering the Link interface. The second parameter is the parameter of dependencies, the tilde `~` makes sure your script is loaded before the `panel-link` script.
 
 ```php
-<?php
-
-namespace Pagekit\Hello;
-use Pagekit\System\Link\Link;
-
-class HelloLink extends Link
-{
-    public function getRoute()
-    {
-        return '@hello/greet/name';
-    }
-
-    public function getLabel()
-    {
-        return __('Hello World');
-    }
-
-    public function renderForm()
-    {
-        return $this['view']->render('extension://hello/views/admin/link.razr', ['route' => $this->getRoute()]);
-    }
+'view.scripts' => function ($event, $scripts) {
+    $scripts->register('link-blog', 'hello:/link-hello.js', '~panel-link');
 }
 ```
 
-## Render the custom form
+## JS component for link picker
 
-When creating a link, the user is presented with a dropdown menu. If the *Hello
-World* type is selected, we want to display custom controls. We also need to make
-sure that changes done by the user are stored. That is why we'll need some
-JavaScript as well.
+In the JavaScript file, you can now render the interface.
 
-```html
-<!-- views/admin/link.razr -->
-
-<div class="uk-form-controls">
-    <input class="uk-width-1-1" name="name" value="" type="text" placeholder="@trans('Hello World')">
-</div>
-
-<script>
-
-    require(['jquery', 'link'], function($, Link) {
-
-        Link.register('@route', function(link, form) {
-
-            var $name = $('[name="name"]', form)
-                .on('change', function() {
-                    link.set($name.serialize());
-                });
-
-            return {
-                show: function(params, url) {
-                    $name.val(params['name'] ? params['name'] : '').trigger('change');
-                }
-            }
-
-        });
-
-    });
-</script>
-```
-
-The HTML with the input text field is pretty straight-forward. The JavaScript is a bit
-more complex. As you can see, we register a link defined by our route (`@route`
-will be rendered to be `@hello/greet/name` by razr).
-
-What we basically do is to solve two tasks. One task is to react to changes in the text field and store the new value on our `link` object.
+**Note** This is most comfortable when makeing use of Vue components, storing them in a single `*.vue` file and bundling them using Webpack. A good example for this can be found in `blog/app/components/link-blog.vue`, the link picker from the Blog extension.
 
 ```js
-var $name = $('[name="name"]', form)
-    .on('change', function() {
-        link.set($name.serialize());
-    });
-```
+window.Links.components['link-hello'] = {
 
-The other task is to select the correct item in the dropdown menu when the form
-is displayed.
+    link: {
+        label: 'Blog'
+    },
 
-```js
-return {
-    show: function(params, url) {
-        $name.val(params['name'] ? params['name'] : '').trigger('change');
-    }
-}
-```
+    props: ['link'],
 
-## Register the link type
+    template: '<div>Your form markup here.</div>',
 
-To make sure Pagekit knows about the new link type, register `HelloLink`
-from the `boot` method of the Extension class (or Theme class) located in
-`extension.php` (or `theme.php`).
+    data: function () {
 
-```php
-<?php
+    },
 
-namespace Pagekit\Hello;
+    created: function () {
 
-use Pagekit\Extension\Extension;
-use Pagekit\Framework\Application;
-use Pagekit\System\Event\LinkEvent;
+    },
 
-class HelloExtension extends Extension
-{
+    ready: function() {
 
-    public function boot(Application $app)
-    {
-        parent::boot($app);
+    },
 
-        $app->on('system.link', function(LinkEvent $event) {
-            $event->register('Pagekit\Hello\HelloLink');
-        });
-    }
-}
+};
 ```

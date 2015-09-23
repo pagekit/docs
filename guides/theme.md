@@ -4,18 +4,13 @@
 
 ## Location of theme files
 
-The example theme we will be building in this guide is the *Hello* theme. This
-tiny theme can be used as a starter theme. It's available via the Pagekit
-marketplace and contains all examples we describe here. When installed, the
-*Hello* theme is located in `/packages/pagekit/theme-hello`.
+The example theme we will be building in this guide is the *Hello* theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the *Hello* theme is located in `/packages/pagekit/theme-hello`.
 
 ## File structure
 
-In order for Pagekit to recognize a directory as a valid theme, you have to
-follow a certain file structure, at least for a few required files.
+In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
 
-The required files are `composer.json`, `index.php` and `views/template.php`.
-Other files are optional and can be added as needed and named as you prefer it.
+The required files are `composer.json`, `index.php` and `views/template.php`. Other files are optional and can be added as needed and named as you prefer it.
 
 | File                         | Needed?  | Description             |
 |------------------------------|----------|-------------------------|
@@ -25,13 +20,9 @@ Other files are optional and can be added as needed and named as you prefer it.
 | `css/theme.css`              | optional | Theme Stylesheet        |
 | `js/theme.js`                | optional | Theme JavaScript        |
 
-
 ## composer.json
 
-A theme is a regular Pagekit package. Each package needs a description in
-order to be recognized by Pagekit. This description is located in the
-`composer.json` and looks as follows. Detailed information is availabe in the
-[Packages](packages.md) chapter.
+A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](packages.md) chapter.
 
 ```json
 {
@@ -44,16 +35,11 @@ order to be recognized by Pagekit. This description is located in the
 
 ## index.php
 
-Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of
-possibilities of what you can do with a theme. The main thing to understand in
-the beginning is that the definition of your theme happens in the `index.php`.
+Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of possibilities of what you can do with a theme. The main thing to understand in the beginning is that the definition of your theme happens in the `index.php`.
 
-Make sure this file returns a PHP array. By setting the right properties in
-this array, you tell Pagekit everything it needs to know about your theme.
+Make sure this file returns a PHP array. By setting the right properties in this array, you tell Pagekit everything it needs to know about your theme.
 
-Define the positions and menus of your theme, load additional scripts and much
-more. To get started, here is a simple example for your `index.php`.
-Explanations of the single properties follow below.
+Define the positions and menus of your theme, load additional scripts and much more. To get started, here is a simple example for your `index.php`. Explanations of the single properties follow below.
 
 ```php
 <?php
@@ -102,16 +88,9 @@ return [
 
 ```
 
-`resources` allow you to register a shorthand to a path reference. This makes
-it easier when referencing files because you do not have to specify the full
-path. For example `views:template.php` will expand to
-`packages/vendor/theme/views/template.php`
+`resources` allow you to register a shorthand to a path reference. This makes it easier when referencing files because you do not have to specify the full path. For example `views:template.php` will expand to `packages/vendor/theme/views/template.php`
 
-Your theme defines locations to render menus and widgets.
-The actual rendering happens in the `template.php`, as we will show below.
-However, your theme needs to register these positions before. This happens
-with the `menus` and `positions` property. These contain arrays of the position
-name and a label which displays in the backend.
+Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as we will show below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label which displays in the backend.
 
 Other properties can be added for more advanced settings.
 
@@ -129,8 +108,7 @@ Other properties can be added for more advanced settings.
 
 ## template.php
 
-`views/template.php` is the main file for the theme markup. It is a PHP file
-that has the following objects available for rendering:
+`views/template.php` is the main file for the theme markup. It is a PHP file that has the following objects available for rendering:
 
 | Object         | Description                                                 |
 |----------------|-------------------------------------------------------------|
@@ -138,8 +116,7 @@ that has the following objects available for rendering:
 | `$params`      | Theme parameters                                            |
 | `$app`         | Application container instance                              |
 
-**Note** With PHP templating, the short notation `<?= $var ?>` prints the value
-of the the variable `$var`.
+**Note** With PHP templating, the short notation `<?= $var ?>` prints the value of the the variable `$var`.
 
 ```html
 <!DOCTYPE html>
@@ -192,37 +169,26 @@ of the the variable `$var`.
 
 ## theme.css &amp; theme.js
 
-Because our template already includes these files, make sure to also create
-the two files `js/theme.js` and `css/theme.css`. You can leave them empty for
-now.
+Because our template already includes these files, make sure to also create the two files `js/theme.js` and `css/theme.css`. You can leave them empty for now.
 
 ```
 <?php $view->script('theme:js/theme.js') ?>
 <?php $view->style('theme', 'theme:css/theme.css') ?>
 ```
 
-To learn more about working with static files, read the
-[Assets](../basics/assets.md) section.
+To learn more about working with static files, read the [Assets](../basics/assets.md) section.
 
 ## Activate theme
 
-With this basic file structure completed, you can now go to Pagekit backend.
-Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking
-the star icon next to it.
+With this basic file structure completed, you can now go to Pagekit backend. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
 
-You should now be able to refresh the front-end and see the content without any
-styling. And this is where you come in. You have the basic setup up and running
-and can now start to change the markup and add your CSS and JS.
+You should now be able to refresh the front-end and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
 
 ## Where to go from here
 
-Congratulations, you've created your first theme! We've introduced the basic
-file structure and talked about the most important configuration options. You
-know how to change the markup, include CSS and JS and how to add widget
-functionality. Now it's time to get creative and play around.
+Congratulations, you've created your first theme! We've introduced the basic file structure and talked about the most important configuration options. You know how to change the markup, include CSS and JS and how to add widget functionality. Now it's time to get creative and play around.
 
-If you're looking for advanced functionality, here are some pointers to other
-sections of the documentation:
+If you're looking for advanced functionality, here are some pointers to other sections of the documentation:
 
 - TODO
 - TODO

@@ -1,8 +1,8 @@
 # Themes
 
-<p class="uk-article-lead">Create your own theme to control the look of your site.</p>
+<p class="uk-article-lead">Create a theme to change the look of your site.</p>
 
-To get started with creating your own theme, ckeck out the
+To get started with creating your own theme, read the
 [Theme Guide](guide-theme.md). Afterwards, this documents offers more
 information and advanced configuration possibilities.
 
@@ -71,10 +71,6 @@ The same works for widget positions.
 <?php endforeach ?>
 ```
 
-## Add a settings screen
-
-TODO
-
 ## Default Pagekit markup
 
 The Pagekit backend is built using the UIkit front-end framework. That is why
@@ -104,9 +100,83 @@ correct locations inside your theme folder.
 To understand which variables you have available in these views, check out the
 markup in the original view file.
 
+## Add a settings screen
+
+There are several ways to add settings interfaces for your theme. For a
+standalone settings screen, follow these steps:
+
+1. Create a View file for your settings screen.
+2. Create a new Controller with an action that renders the view file.
+3. Register controller and routes inside your `index.php`
+4. Optional: Set the `settings` property to the new settings screen route
+
+
 ## Add theme options to Site interface
 
-TODO
+Often you want to attach theme options to a specific Node in the Site tree.
+For example you want to allow the user to pick a Hero image which can be
+different per page. To do so, we can add a *Theme* tab to the Site interface.
+
+This is done via JavaScript, most comfortably when you make use of Vue
+components.
+
+Load your own JS when the Site Tree interface is currently active. In your
+`index.php`, you can do that when you listen to the right event:
+
+```
+'events' => [
+
+    'view.system/site/admin/settings' => function ($event, $view) use ($app) {
+        $view->script('site-theme', 'theme:js/site-theme.js', 'site-settings');
+        $view->data('$theme', $this);
+    },
+
+    // ...
+
+],
+```
+
+The `js/site-theme.js` contains a Vue component which renders the interface
+and takes care of the storing of theme settings.
+
+**Note**: Although it's possible to do all of this in a single JS file and have
+the markup be represented in a string, best practice is to actually create
+`*.vue` files with your Vue component. Examples can be found in the
+`app/components` folder of the default *One* theme.
+
+
+```js
+window.Site.components['site-theme'] = {
+
+    section: {
+            label: 'Theme',
+            icon: 'pk-icon-large-brush',
+            priority: 15
+    },
+
+    template: '<div>Your form markup here</div>',
+
+    data: function () {
+        return window.$theme;
+    },
+
+    events: {
+
+        save: function() {
+
+            var config = _.omit(this.config, ['positions', 'menus', 'widget']);
+
+            this.$http.post('admin/system/settings/config', {name: this.name, config: config}).error(function (data) {
+                this.$notify(data, 'danger');
+            });
+
+        }
+
+    }
+
+};
+```
+
 
 ## Add theme options to Widget interface
 

@@ -196,24 +196,13 @@ Because our template already includes these files, make sure to also create
 the two files `js/theme.js` and `css/theme.css`. You can leave them empty for
 now.
 
-To include a JavaScript file in your template, call the script helper from the
-view renderer. As an optional second parameter, you can require one or multiple
-scripts that need to be loaded before.
-
 ```
 <?php $view->script('theme:js/theme.js') ?>
-<?php $view->script('theme:js/theme.js', 'jquery') ?>
-<?php $view->script('theme:js/theme.js', ['jquery', 'uikit']) ?>
-```
-
-To include a CSS file in your template, call the style helper from the view
-renderer. You can require other stylesheets the same way as with scripts.
-
-```
 <?php $view->style('theme', 'theme:css/theme.css') ?>
-<?php $view->style('theme', 'theme:css/theme.css', 'uikit') ?>
-<?php $view->style('theme', 'theme:css/theme.css', ['uikit', 'somethingelse']) ?>
 ```
+
+To learn more about working with static files, read the
+[Assets](../basics/assets.md) section.
 
 ## Activate theme
 

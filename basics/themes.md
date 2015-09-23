@@ -100,22 +100,8 @@ correct locations inside your theme folder.
 To understand which variables you have available in these views, check out the
 markup in the original view file.
 
-## Add a settings screen
-
-There are several ways to add settings interfaces for your theme. For a
-standalone settings screen, follow these steps:
-
-1. Create a View file for your settings screen.
-2. Create a new Controller with an action that renders the view file.
-3. Register controller and routes inside your `index.php`
-4. Optional: Set the `settings` property to the new settings screen route
-
 
 ## Add theme options to Site interface
-
-Often you want to attach theme options to a specific Node in the Site tree.
-For example you want to allow the user to pick a Hero image which can be
-different per page. To do so, we can add a *Theme* tab to the Site interface.
 
 This is done via JavaScript, most comfortably when you make use of Vue
 components.
@@ -177,11 +163,84 @@ window.Site.components['site-theme'] = {
 };
 ```
 
+## Add Theme tab to Node configuration in Site Tree
+
+Often you want to attach theme options to a specific Node in the Site tree.
+For example you want to allow the user to pick a Hero image which can be
+different per page. To do so, we can add a *Theme* tab to the Site interface.
+
+```php
+'events' => [
+
+    // ...
+
+    'view.system/site/admin/edit' => function ($event, $view) {
+        $view->script('node-theme', 'theme:js/node-theme.js', 'site-edit');
+    },
+
+    // ...
+];    
+```
+
+Example for `js/node-theme.js`:
+
+```js
+window.Site.components['node-theme'] = {
+
+    section: {
+        label: 'Theme',
+        priority: 90
+    },
+
+    props: ['node'],
+
+    template: '<div>Your form markup here</div>'
+
+};
+```
+
+**Note:** Compare with full Vue components in `app/components` folder of the
+default *One* theme.
 
 ## Add theme options to Widget interface
 
-TODO
+Register a script to be loaded in Widget edit view.
 
-## Custom Error Pages
+```
+'view.system/widget/edit' => function ($event, $view) {
+    $view->script('widget-theme', 'theme:app/bundle/widget-theme.js', 'widget-edit');
+},
+```
 
-TODO
+Example for `widget-theme.js`:
+
+```js
+window.Widgets.components['widget-theme'] = {
+
+    section: {
+        label: 'Theme',
+        priority: 90
+    },
+
+    props: ['widget', 'config'],
+
+    template: '<div>Your form markup here</div>'
+
+};
+
+```
+
+**Note:** Compare with full Vue components in `app/components` folder of the
+default *One* theme.
+
+
+## Add a settings screen manually
+
+If the prepared ways of adding a settings screen do not satisfy your needs, you
+can also manually create a completely new interface. With the module definition
+in `index.php` you have full control and can something like the following:
+
+1. Create a View file for your settings screen.
+2. Create a new Controller with an action that renders the view file.
+3. Register controller and routes inside your `index.php`
+4. Optional: Set the `settings` property to the new settings screen route

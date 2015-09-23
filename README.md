@@ -25,9 +25,10 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
 3. Developer Guides
   1. [Create an Extension](developer/extension.md)
   2. [Create a Theme](guides/theme.md)
+  3. [Translate Pagekit](guides/translation.md)
 
 4. Developer Basics
- 1. [Introduction](basics/introduction.md)
+ 1. [Introduction](basics/developer-introduction.md)
  2. [Pagekit Packages](basics/packages.md)
  3. [Controller &amp; Routing](basics/controller.md)
  4. [View and Response](basics/view-response.md)

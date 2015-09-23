@@ -53,4 +53,3 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   2. [Permissions](troubleshooting/permissions.md)
   2. [Not Found](troubleshooting/not-found.md)
   2. [Server Error](troubleshooting/server-error.md)
-  2. [Internal Server Error](troubleshooting/internal-server-error.md)

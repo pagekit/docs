@@ -4,28 +4,28 @@ Let's introduce you to the the main editing tool you will see in all places: Pag
 
 ![Markdown editor](assets/markdown.png)
 
-To edit content, you can write HTML with some autocompletion aid or use the popular [markdown syntax](http://daringfireball.net/projects/markdown/syntax). You can even include HTML snippets in markdown. As you create your content on the left, you will see a real-time preview of the final output on the right. To define how the content is rendered, you can enable or disable markdown in the settings above the editor. The editor's toolbar supports you with common markdown elements and allows you to choose text styles, insert links, quotes, lists and media elements.
+To edit content, you can write HTML with some autocompletion aid or use the popular [markdown syntax](http://daringfireball.net/projects/markdown/syntax). You can even include HTML snippets in markdown. When if full screen mode as you create your content on the left, you will see a real-time preview of the final output on the right. To define how the content is rendered, you can enable or disable markdown in the settings above the editor. The editor's toolbar supports you with common markdown elements and allows you to choose text styles, insert links, quotes, lists and media elements.
 
-## Inserting images
+## Inserting Images
 
-To insert an image, just click the image icon and a placeholder area will appear in the content preview. Hover over the placeholder and click on the *Settings* button. A modal will appear where you can choose a picture or drag and drop the desired image file from your local file browser.
+To insert an image, just click the *image* icon and a modal will appear where you can choose a picture or drag and drop the desired image file from your local file browser. Once the image was chosen, click the update button and the image text will appear in the last known cursor position.
 
-### Step 1: Settings for a blank image
+![Adding an image](assets/markdown-image.png)
 
-![Adding and image, step 1](assets/markdown-image-1.png)
+**Note** You can always open the dialog again by placing the cursor on the content to be edited and clicking on the toolbar icon.
 
-### Step 2: Select an image from the storage
+## Inserting Videos
 
-![Adding and image, step 2](assets/markdown-image-2.png)
+The same way as with an image, inserting a video is as simple as clicking the *video* icon and fulfilling the modal form.
 
-### Step 3: Updated settings for your chosen image
-
-![Adding and image, step 3](assets/markdown-image-3.png)
-
-**Note** Adding videos or other binary files works just the same - and when you've inserted your files you can always go to the *Settings* dialog again.
+![Adding a video](assets/markdown-video.png)
 
 ## Inserting Links
 
-Links have a little pencil icon that you can click to call up the settings panel - either select the link's destination or manually enter a URL.
+To insert a link select the text you want to link and click on the *link* icon from the toolbar. You can also insert an link without selecting any text in which case the title will be used as the link text.
 
 ![Adding a link](assets/markdown-link.png)
+
+## Text Editing
+
+The rest of the toolbar icons are for the usual text editing. Just select the text to be edited and click on the desired icon to apply it style.

@@ -2,15 +2,25 @@
 
 Create and manage users, user roles and access levels to control how much access users have to your site.
 
-## Users
+## List
 
-In the *Users* tab, you can add, activate, block or delete certain users.
-
-A user's profile contains a *Username* (used to login, limited to alphanumeric characters, numbers, dot and underscore), a *Name* (used to display the user across the site) and the *Email*.
-
-The user's profile picture is displayed as a [Gravatar](https://gravatar.com/) depending on the given email address.
+In the *List* tab, you can search, add, activate, block or delete certain users using the toolbar buttons. When a new user is added or an existent edited, by clicking on its name, the user edit view is displayed showing the following fields.
 
 ![Users overview](assets/users.png)
+
+| Field | Description |
+| :---- | :---------- |
+| **Username** | The username that identifies the user (limited to alphanumeric characters, numbers, dot and underscore). |
+| **Name** | The name that will be displayed when referencing the user. |
+| **Email** | The email that will be used as main contact method. |
+| **Password** | The user password. Click on show to reveal it. |
+| **Status** | The user account status. |
+| **Roles** | The roles the user is part of. |
+| **Roles** | The roles the user is part of. |
+| **Last Login** | Displays the last time the user logged in the site. |
+| **Registered Since** | Displays the date the user has been registered in the site or his entry created. |
+
+The user's profile picture is displayed as a [Gravatar](https://gravatar.com/) depending on the given email address.
 
 ## Permissions
 

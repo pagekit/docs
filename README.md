@@ -14,15 +14,14 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
 
 2. User Interface
   1. [Dashboard](user-interface/dashboard.md)
-  1. [Markdown Editor](user-interface/markdown-editor.md)
-  1. [Widgets](user-interface/widgets.md)
   1. Site
     1. [Pages](user-interface/site-pages.md)
     1. [Widgets](user-interface/site-widgets.md)
     1. [Storage](user-interface/site-storage.md)
     1. [Settings](user-interface/site-settings.md)
   1. [Users](user-interface/users.md)
-  1. [Settings](user-interface/settings.md)
+  1. [System](user-interface/system.md)
+  1. [Markdown Editor](user-interface/markdown-editor.md)
   1. [Adding Content](user-interface/adding-content.md)
 
 3. Developer Guides

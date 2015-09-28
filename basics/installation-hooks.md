@@ -8,7 +8,7 @@ All hooks are loaded from a custom scripts file which can be defined inside the 
 
 ```json
     "extra": {
-        "scripts": "scripts.php"`
+        "scripts": "scripts.php"
     }
 ```
 

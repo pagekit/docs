@@ -19,6 +19,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
     1. [Widgets](user-interface/site-widgets.md)
     1. [Storage](user-interface/site-storage.md)
     1. [Settings](user-interface/site-settings.md)
+  1. [Blog](user-interface/blog.md)
   1. [Users](user-interface/users.md)
   1. [System](user-interface/system.md)
   1. [Markdown Editor](user-interface/markdown-editor.md)

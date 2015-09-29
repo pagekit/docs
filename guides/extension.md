@@ -82,29 +82,82 @@ return [
 
 ## Enable extension in backend
 
-TODO
+When you have created your files, you need to enable the extension in the backend. To do so, navigate to *System / Settings / Extensions* an click the status icon next to your extension. When your extension is disabled, the status icon is red. When your extension is enabled, it is green.
+
+Internally, Pagekit changes a setting in the database to enable your extension. In the database table `pk_system_config` you can find a config setting with the `name`: `system`. In here, the system settings are stored as a JSON representation. The list of active extensions is stored as a property.
+
+```
+{
+    // ...
+    extensions":["blog", "hello"],
+    // ...
+}
+```
 
 ## Add controller
 
-TODO
+Create a controller class `src/Controller/HelloController.php`.
+
+```
+<?php
+
+namespace Pagekit\Hello;
+
+class HelloController
+{
+    public function indexAction()
+    {
+        return "Hello";
+    }
+
+}
+```
+
+
+The controller class has to be part of the namespaces you set via the `autoload` property in the `index.php`.
+
+```
+// Autoload namespaces from given paths
+'autoload' => [
+
+    'Pagekit\\Hello\\' => 'src'
+
+],
+```
+
+To mount the controller, you can define your own routes in the `index.php`:
+
+```
+'routes' => [
+
+    '/hello' => [
+        'name' => '@hello',
+        'controller' => [
+            'Pagekit\\Hello\\Controller\\HelloController'
+        ]
+    ]
+
+],
+```
+
+You can read more about [Controllers and Routing](../basics/controller.md).
 
 ## Add menu item
 
-TODO
+Add menu items using the `menu` property in your extension's `index.php`.
 
-## Register submodules
+```
+'menu' => [
 
-TODO
+    'hello' => [
 
-## Add settings screen
+        'label' => 'Hello',
+        'icon' => 'hello:icon.svg',
+        'url' => '@hello/admin'
 
-TODO
+    ],
 
-## Do more:
+],
+```
 
-Link to:
-- Advanced extension section
-- Widgets
-- Links
-- Side tree nodes
-- Marketplace
+Read more about the `menu` property in the [Modules chapter](../basics/packages.md).

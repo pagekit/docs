@@ -23,8 +23,8 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   8. [Adding Content](user-interface/adding-content.md)
 
 3. Developer Guides
-  1. [Create an Extension](guides/extension.md)
-  2. [Create a Theme](guides/theme.md)
+  1. [Create an Extension](guides/extension.md) F √
+  2. [Create a Theme](guides/theme.md) F √
   3. [Translate Pagekit](guides/translation.md)
   4. [Marketplace](basics/marketplace.md)
 
@@ -32,11 +32,10 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
  1. [Introduction](basics/developer-introduction.md)
  2. [Pagekit Packages &amp; Modules](basics/packages.md) F √
  5. [Themes](basics/themes.md) F √
- 6. [Extensions](basics/extensions.md) F
  3. [Controller &amp; Routing](basics/controller.md) M
  4. [View and Response](basics/view-response.md) M
  5. [Working with static assets](basics/assets.md)
- 7. [Widgets](basics/widgets.md) F √ 
+ 7. [Widgets](basics/widgets.md) F √
  8. [Links](basics/links.md) F √
  9. [Site Tree Nodes](basics/nodes.md) F
  11. [Simple Data Storage](basics/module-config.md) F √

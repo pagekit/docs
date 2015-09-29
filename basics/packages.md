@@ -52,6 +52,7 @@ For a theme, this file can look as follows.
 }
 ```
 
+<a name="module"></a>
 ## Module definition: index.php
 
 Internally, most things in Pagekit are so called *Modules*. A module has a name, a type - and other optional properties. You define your Module in the `index.php` which is then loaded by Pagekit.
@@ -115,9 +116,12 @@ Pass a list of namespaces and paths to be loaded by Pagekit. The contained class
 ],
 ```
 
+<a name="nodes"></a>
 ### `nodes`: Register Nodes for the Site Tree
 
 Nodes are similar to routes with the main difference that they can be dragged around in the Site Tree View and therefore dynamically result in a calculated route.
+
+When you have added a Node, it will be available in the Site Tree. Click the *Add Page* button to see the Dropdown of all available Node types.
 
 ```php
 'nodes' => [
@@ -139,7 +143,7 @@ Nodes are similar to routes with the main difference that they can be dragged ar
 
 ### `routes`: Mount controllers
 
-Use the `routes` property to mount controllers to a route.
+Use the `routes` property to mount controllers to a route. Learn more about [Controllers and Routing](controller.md).
 
 ```php
 'routes' => [
@@ -154,7 +158,10 @@ Use the `routes` property to mount controllers to a route.
 ],
 ```
 
+<a name="menu"></a>
 ### `menu`: Add menu items to the backend
+
+You can add menu items to the backend main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not. The actual checking for user permissions has to be done on the [Controller](controller.md) level.
 
 ```php
 'menu' => [
@@ -236,7 +243,7 @@ You can make use of this to [store any data](basics/module-config.md) that doesn
 
 ### `events`: Listen to events from Pagekit or other modules
 
-Events are triggered at several points in the Pagekit core and potentially by other extensions. An event always has a unqiue name that identifies it. You can register callback functions to any event.
+Events are triggered at several points in the Pagekit core and potentially by other extensions. An event always has a unique name that identifies it. You can register callback functions to any event.
 
 For more information on the Event system, check out the [Events section](../developer/architecture-events.md)
 
@@ -252,7 +259,9 @@ For more information on the Event system, check out the [Events section](../deve
 
 ### `resources`: Register resource shorthands
 
-You can register strings to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`. This works whenever you pass the string to a Pagekit call (i.e. when generating the url for a file path). Internally, Pagekit uses PHP stream wrappers.
+You can register strings to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`.
+
+This works whenever you pass the string to a Pagekit call (i.e. when generating the url for a file path). Internally, Pagekit uses PHP stream wrappers.
 
 ```php
 'resources' => [
@@ -293,7 +302,7 @@ Each widget position is defined by an identifier (i.e. `sidebar`) and a label to
 
 ### `widgets`: Register Widgets
 
-A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. For more details head to the [Widgets section](widgets.md).
+A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](widgets.md).
 
 ```php
 'widgets' => [

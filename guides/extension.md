@@ -142,22 +142,16 @@ To mount the controller, you can define your own routes in the `index.php`:
 
 You can read more about [Controllers and Routing](../basics/controller.md).
 
-## Add menu item
+## What you can do with your extension
 
-Add menu items using the `menu` property in your extension's `index.php`.
+With your basic extension up and running, it's time to explore what you can do with it. There are plentiful ways to extend the Pagekit system.
 
-```
-'menu' => [
+The important thing to understand is the central module definition in your extension's `index.php`. To hook into the several concepts of Pagekit you probably just have to set the right property in the configuration array. A full list can be found in the [Module section](../basics/packages.md#module).
 
-    'hello' => [
+Here are a few ideas to get you started:
 
-        'label' => 'Hello',
-        'icon' => 'hello:icon.svg',
-        'url' => '@hello/admin'
-
-    ],
-
-],
-```
-
-Read more about the `menu` property in the [Modules chapter](../basics/packages.md).
+- [Add a menu item](../basics/packages.md#menu) to the back-end's main navigation.
+- [Add a node](../basics/packages.md#nodes) to the Site Tree.
+- [Create a Widget](../basics/widgets.md) for the front-end or back-end
+- [Define a link type](../basics/links.md) for Pagekit's Link picker
+- [Store simple data](../basics/module-config.md) using the module config

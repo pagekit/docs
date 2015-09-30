@@ -2,31 +2,59 @@
 
 <p class="uk-article-lead">Get started with development of extensions and themes for Pagekit.</p>
 
-To always have our latest code revision (not necessarily stable), checkout our master branch from [GitHub](https://github.com/pagekit/pagekit). To do so, change to your web server's directory in the terminal and run the following commands:
+Before you dive into the basics of developing a [Theme](../guides/theme.de) or an [Extension](../guides/extension.md), here are a few useful things to know when working with Pagekit as a developer.
 
-```shell
-git clone git@github.com:pagekit/pagekit.git pagekit
-cd pagekit
-composer install --optimize-autoloader
+## Use the most recent codebase
+
+To always have our latest code revision (not necessarily stable), you can install Pagekit from source instead of using the provided packages (grab the `develop` branch from [GitHub](https://github.com/pagekit/pagekit)).
+
+Make sure you have the following tools installed: [Composer](https://getcomposer.org/doc/00-intro.md#installation-nix), [npm](https://www.npmjs.com/), [Bower](http://bower.io/), [Webpack](http://webpack.github.io/), [Gulp](http://gulpjs.com/).
+
+Clone the repository.
+
+```
+git clone --branch develop git://github.com/pagekit/pagekit.git
 ```
 
-Now open `/install` in the browser to run the web-based installer.
+Navigate to the cloned directory and install PHP dependencies.
+
+```
+composer install
+```
+
+Install Node dependencies and build the front-end components:
+
+```
+npm install
+```
+
+To watch for local LESS asset changes, run `gulp watch`.
+
+To watch for JS module changes, run `webpack --watch`.
+
+When the installer has finished, point your browser to the Pagekit URL on your web server and follow the installer.
+
+## Stay up to date
+
+If you've set up Pagekit from source, run these commands to get new commits and to rebuild everything you need.
+
+```
+git pull
+composer update
+npm install
+bower update
+gulp
+webpack
+```
+
 
 ## Command line
 
-A great tool you can - and should - consult for a lot of tasks is the Pagekit command line tool. To see a complete overview of all available commands, navigate to the Pagekit folder and run `./pagekit list`.
+A great tool you can - and should - consult for a lot of tasks is the Pagekit command line tool. To see a complete overview of all available commands, navigate to the Pagekit folder and run `./pagekit`. This works if you are inside an installed version of Pagekit and if the `php` command is available on your system.
 
-```shell
-cd path/to/pagekit/
-./pagekit list
+```sh
+./pagekit
 ```
-
-The most notable commands in day-to-day use are probably:
-
-| Command    | Description |
-|------------------|-------------|
-| `clearcache`     | Use this to empty the cache.  |
-| `extension:generate <name>` <br> `theme:generate <name>`| Use this to generate the basic file structure when creating a new extension or theme.  |
 
 ## System settings
 
@@ -35,5 +63,5 @@ When navigating to *Settings > System* in the admin interface, you have a few se
 | Setting               | Description |
 |-----------------------|-------------|
 | *Debug mode*        | Turn on debug mode and exceptions are displayed in all their glory. Very handy when working on that new extension of yours. Remember to turn this off for production environments.  |
-| *Profiler toolbar*  | Display a toolbar at the bottom of the screen that helps you monitor memory usage, query count, system events, requests, headers, routes and session attributes.  |
+| *Debug toolbar*  | Display a toolbar at the bottom of the screen that helps you monitor memory usage, query count, system events, requests, headers, routes and session attributes.  |
 | *Disable cache*     | You might want to turn off the cache during development to avoid the frequent "clearcache". Remember to enable the cache for production.  |

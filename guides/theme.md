@@ -22,7 +22,7 @@ The required files are `composer.json`, `index.php` and `views/template.php`. Ot
 
 ## composer.json
 
-A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](packages.md) chapter.
+A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](../basics/packages.md) chapter.
 
 ```json
 {
@@ -35,7 +35,7 @@ A theme is a regular Pagekit package. Each package needs a description in order 
 
 ## index.php
 
-Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of possibilities of what you can do with a theme. The main thing to understand in the beginning is that the definition of your theme happens in the `index.php`.
+Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of possibilities of what you can do with a theme, because modules allow you to access all of Pagekit's functionality. The main thing to understand in the beginning is that the definition of your theme happens in the `index.php`.
 
 Make sure this file returns a PHP array. By setting the right properties in this array, you tell Pagekit everything it needs to know about your theme.
 

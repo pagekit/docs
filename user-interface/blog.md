@@ -22,6 +22,10 @@ When adding or editing a post the following fields are available.
 | Enable Markdown | Toggles the content areas Markdown. |
 | Enable Comments | Toggles the post comments. |
 
+### Edit Post
+
+[Editor](editor.md)
+
 ## Comments
 
 The **Comments** tab holds the comments manager for all the Blog posts.

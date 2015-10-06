@@ -20,4 +20,4 @@ Although it is optional, we strongly recommend enabling the following PHP extens
 
 The administration interface of Pagekit is compatible with Internet Explorer 10 and later. Chrome, Firefox, Opera, and Safari have an automatic update system, therefore we only support the latest versions for those browsers.
 
-The browser support for the frontend is dependent on the theme your site is currently using.
+The browser support for the frontend dependens on the theme your site is currently using.

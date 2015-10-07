@@ -4,8 +4,8 @@ Pagekit Documentation
 This is the documentation for Pagekit, a modular and lightweight CMS built with modern technologies.
 
 1. Getting Started
-  1. [Requirements](getting-started/requirements.md)
-  2. [Installation](getting-started/installation.md)
+  1. [Requirements](getting-started/requirements.md) √
+  2. [Installation](getting-started/installation.md) √
   3. [Updating](getting-started/updating.md)
   4. [Configuration File](getting-started/configuration-file.md)
   5. [File Structure](getting-started/file-structure.md)

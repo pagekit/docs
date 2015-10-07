@@ -29,25 +29,25 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   4. [Marketplace](basics/marketplace.md)
 
 4. Developer Basics
- 1. [Introduction](basics/developer-introduction.md)
- 2. [Pagekit Packages &amp; Modules](basics/packages.md) F √
- 5. [Themes](basics/themes.md) F √
- 3. [Controller &amp; Routing](basics/controller.md) M
- 4. [View and Response](basics/view-response.md) M
- 5. [Working with static assets](basics/assets.md)
- 7. [Widgets](basics/widgets.md) F √
- 8. [Links](basics/links.md) F √
- 9. [Site Tree Nodes](basics/nodes.md) F
- 11. [Simple Data Storage](basics/module-config.md) F √
- 12. [Database](basics/database.md) M
- 13. [Installation Hooks](basics/installation-hooks.md) M
- 14. [Sessions]() M
- 15. [Cache]() ?
- 16. [Data Storage]() M
- 17. [Translation](basics/translation.md) F √
+ 1. [Introduction](developer-basics/developer-introduction.md)
+ 2. [Pagekit Packages &amp; Modules](developer-basics/packages.md) F √
+ 5. [Themes](developer-basics/themes.md) F √
+ 3. [Controller &amp; Routing](developer-basics/controller.md) M
+ 4. [View and Response](developer-basics/view-response.md) M
+ 5. [Working with static assets](developer-basics/assets.md)
+ 7. [Widgets](developer-basics/widgets.md) F √
+ 8. [Links](developer-basics/links.md) F √
+ 9. [Site Tree Nodes](developer-basics/nodes.md) F ?
+ 11. [Simple Data Storage](developer-basics/module-config.md) F √
+ 12. [Database](developer-basics/database.md) M
+ 13. [Installation Hooks](developer-basics/installation-hooks.md) M
+ 14. [Sessions](developer-basics/sessions.md) M ?
+ 15. [Cache](developer-basics/cache.md) ?
+ 16. [Data Storage](developer-basics/data-storage.md) M ?
+ 17. [Translation](developer-basics/translation.md) F √
 
 5. Advanced
-  1. [Request Lifecycle]()
+  1. [Request Lifecycle]() 
   2. [Modules]()
   3. [Application Container]()
   4. [Model-View-Controller]()

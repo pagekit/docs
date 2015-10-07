@@ -180,7 +180,7 @@ To learn more about working with static files, read the [Assets](../basics/asset
 
 ## Activate theme
 
-With this basic file structure completed, you can now go to Pagekit backend. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
+With this basic file structure completed, you can now go to Pagekit's administration panel. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
 
 You should now be able to refresh the front-end and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
 

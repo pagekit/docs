@@ -1,12 +1,12 @@
-# Extensions
+# Create an Extension
 
 <p class="uk-article-lead">Create an extension to add features of your own to Pagekit.</p>
 
-The *Hello Extension* in the marketplace as it is a collection of examples and best-practices for extension development. The examples in this guide can all be found in the Hello Extension.
+The *Hello Extension* in the marketplace is a collection of examples and best-practices for extension development. The examples in this guide can all be found in the Hello Extension.
 
 ## Basic structure
 
-No matter what what want to do with an extension, it always starts with the same simple structure. To get started, let's build a simple extension called *Hello*. It will be located inside `/packages/pagekit/extension-hello`.
+No matter what you want to do with an extension, it always starts with the same simple structure. To get started, let's build a simple extension called *Hello*. It will be located inside `/packages/pagekit/hello`. *pagekit* is the vendor prefix and *hello* the name of your extension.
 
 **Note** You can install the complete *Hello extension* from the marketplace.
 
@@ -23,7 +23,7 @@ To add any functionality to Pagekit, you create a custom module which in the sim
 
 ## Package definition: composer.json
 
-The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](marketplace.md), but is also important for how the extension is listed in the backend.
+The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](../user-interface/marketplace.md), but is also important for how the extension is listed in the administration panel.
 
 ```json
 {

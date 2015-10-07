@@ -23,7 +23,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   8. [Finder](user-interface/finder.md)
 
 3. Developer Guides
-  1. [Create an Extension](guides/extension.md) F √
+  1. [Create an Extension](guides/create-an-extension.md) F
   2. [Create a Theme](guides/theme.md) F √
   3. [Translate Pagekit](guides/translation.md)
   4. [Marketplace](basics/marketplace.md)

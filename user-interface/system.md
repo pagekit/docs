@@ -16,7 +16,7 @@ The System is a core extensions holding the main Pagekit system. On its view are
 | Field | Description |
 | :---- | :---------- |
 | **Site Locale** | The default frontend language and date format. |
-| **Admin Locale** | The default backend language and date format. |
+| **Admin Locale** | The default administration panel language and date format. |
 
 ### Cache
 

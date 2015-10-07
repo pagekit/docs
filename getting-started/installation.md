@@ -40,4 +40,4 @@ After entering your site's title, you need to create your user account for Pagek
 | `Password` | Enter the User password. |
 | `Email`    | Enter the User email.    |
 
-Once the installation was successful you'll be redirected to the login screen. You can log in to Pagekit's control panel with the account we created. Optionally you can access the login screen by appending `/admin` to the site URL.
+Once the installation was successful you'll be redirected to the login screen. You can log in to Pagekit's administration panel with the account we created. Optionally you can access the login screen by appending `/admin` to the site URL.

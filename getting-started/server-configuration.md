@@ -1,12 +1,12 @@
 # Server configuration
 
-<p class="uk-article-lead">Pagekit will run on all common web servers.</p>
+<p class="uk-article-lead">Pagekit has been tested and known to work on the following webservers.</p>
 
 ## Apache 2.2+
 
 Although Pagekit should run fine on Apache 2.2+ without additional configuration, during installation you may receive a warning message. If you do, you should verify that the `.htaccess` file is present in the root of your Pagekit folder.
 
-**Note** The `.htaccess` file is the Apache configuration file and is a hidden file on Unix-based systems; as such it may not have been unpacked. If it is not present, copy it from the Pagekit packager.
+**Note** The `.htaccess` file is the Apache configuration file and is a hidden file on Unix-based systems; as such it may not have been unpacked. If it is not present, copy it from the Pagekit package.
 
 It is possible as well that your webserver does not allow the server's configuration to be overridden through an `.htaccess` file. In that case, contact your hosting provider and ask them to change the AllowOverride directive.
 

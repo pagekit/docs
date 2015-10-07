@@ -6,11 +6,11 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
 1. Getting Started
   1. [Requirements](getting-started/requirements.md) √
   2. [Installation](getting-started/installation.md) √
-  3. [Updating](getting-started/updating.md)
-  4. [Configuration File](getting-started/configuration-file.md)
-  5. [File Structure](getting-started/file-structure.md)
-  6. [Server Configuration](getting-started/server-configuration.md)
-  7. [Getting Help](getting-started/getting-help.md)
+  3. [Updating](getting-started/updating.md) √
+  4. [Configuration File](getting-started/configuration-file.md) √
+  5. [File Structure](getting-started/file-structure.md) √
+  6. [Server Configuration](getting-started/server-configuration.md) √
+  7. [Getting Help](getting-started/getting-help.md) √
 
 2. User Interface
   1. [Dashboard](user-interface/dashboard.md)

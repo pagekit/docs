@@ -8,7 +8,7 @@ Gitter.im is a great chat tool tightly coupled with GitHub so you will need to c
 
 ## Github Issues
 
-If you find a bug, have a general question, or even if you want to contribute to the project, you can use the [Pagekit GitHub Issues tracker](https://github.com/pagekit/pagekit/issues).
+If you find a bug, or even if you want to contribute to the project, you can use the [Pagekit GitHub Issues tracker](https://github.com/pagekit/pagekit/issues).
 
 ## Twitter
 
@@ -20,4 +20,4 @@ Our [Google+ community](https://plus.google.com/communities/10412544333548800410
 
 ## Pagekit Blog
 
-You can join in a discussion on any of the topics we post about on the [Pagekit Blog](http://pagekit.com/blog), via the comments. We will post all major news and information to our blog, as well as useful posts about development in general.
+You can join in a discussion on any of the topics we post about on the [Pagekit Blog](http://pagekit.com/blog), via the comments. We will post all major news and information on our blog, as well as useful posts about development in general.

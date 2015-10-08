@@ -31,7 +31,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
 4. Developer Basics
  1. [Introduction](developer-basics/developer-introduction.md)
  2. [Packages &amp; Modules](developer-basics/packages-modules.md) F √ ✅
- 5. [Themes](developer-basics/themes.md) F √
+ 5. [Themes](developer-basics/themes.md) F √ ✅
  3. [Controller &amp; Routing](developer-basics/controller.md) M
  4. [View and Response](developer-basics/view-response.md) M
  5. [Working with static assets](developer-basics/assets.md)

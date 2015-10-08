@@ -222,3 +222,5 @@ If you're looking for advanced functionality, here are some pointers to other se
 - TODO
 - TODO
 - TODO
+
+You can find a more in-depth read in the [Developer](../developer-basics/themes.md) section.

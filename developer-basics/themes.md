@@ -2,7 +2,7 @@
 
 <p class="uk-article-lead">Create a theme to change the look of your site.</p>
 
-To get started with creating your own theme, read the [Theme Guide](guide-theme.md). Afterwards, this documents offers more information and advanced configuration possibilities.
+To get started with creating your own theme, read the [Theme Guide](../guides/create-a-theme.md). Afterwards, this document offers more information and advanced configuration possibilities.
 
 ## Doing more with themes
 
@@ -66,7 +66,7 @@ The Pagekit admin panel is built using the UIkit frontend framework. That is why
 
 To style the Pagekit system output, you can just add the CSS for a few classes instead of including the UIkit CSS. The `theme.css` that comes with the Hello extension already comes with the classes you need to style.
 
-If you want to completely change the markup that Pagekit itself generate, you also have the possibility to overwrite system view files, to provide custom widget renderer and custom menu renderer.
+If you want to completely change the markup that Pagekit itself generates, you also have the possibility to overwrite system view files, to provide custom widget renderer and custom menu renderer.
 
 ## Overwrite system views
 
@@ -109,9 +109,9 @@ The `js/site-theme.js` contains a Vue component which renders the interface and 
 window.Site.components['site-theme'] = {
 
     section: {
-            label: 'Theme',
-            icon: 'pk-icon-large-brush',
-            priority: 15
+        label: 'Theme',
+        icon: 'pk-icon-large-brush',
+        priority: 15
     },
 
     template: '<div>Your form markup here</div>',
@@ -173,6 +173,7 @@ window.Site.components['node-theme'] = {
 
 **Note:** Compare with full Vue components in `app/components` folder of the default *One* theme.
 
+
 ## Add theme options to Widget interface
 
 Register a script to be loaded in Widget edit view.
@@ -206,7 +207,7 @@ window.Widgets.components['widget-theme'] = {
 
 ## Add a settings screen manually
 
-If the prepared ways of adding a settings screen do not satisfy your needs, you can also manually create a completely new interface. With the module definition in `index.php` you have full control and can something like the following:
+If the prepared ways of adding a settings screen do not satisfy your needs, you can also manually create a completely new interface. With the module definition in `index.php` you have full control and can do something like the following:
 
 1. Create a View file for your settings screen.
 2. Create a new Controller with an action that renders the view file.

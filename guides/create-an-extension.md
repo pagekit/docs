@@ -23,7 +23,7 @@ To add any functionality to Pagekit, you create a custom module which in the sim
 
 ## Package definition: composer.json
 
-The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](../user-interface/marketplace.md), but is also important for how the extension is listed in the administration panel.
+The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](../user-interface/marketplace.md), but it's also important for how the extension is listed in the administration panel.
 
 ```json
 {
@@ -34,7 +34,7 @@ The `composer.json` contains all information on your extension package. This is 
 }
 ```
 
-The `composer.json` acts both as a description of your Extension package but also as a description for Composer. Composer is used in the background when Pagekit installs Packages. Find more details in the [Packages section](../basics/packages.md).
+The `composer.json` acts both as a description of your Extension package and for Composer. Composer is used in the background when Pagekit installs Packages. Find more details in the [Packages section](../developer-basics/packages.md).
 
 ## Module definition: index.php
 
@@ -80,9 +80,9 @@ return [
 ];
 ```
 
-## Enable extension in backend
+## Enable extension in administration panel
 
-When you have created your files, you need to enable the extension in the backend. To do so, navigate to *System / Settings / Extensions* an click the status icon next to your extension. When your extension is disabled, the status icon is red. When your extension is enabled, it is green.
+When you have created your files, you need to enable the extension in the administration panel. To do so, navigate to *System / Settings / Extensions* and click the status icon next to your extension. When your extension is disabled, the status icon is red. When your extension is enabled, it is green.
 
 Internally, Pagekit changes a setting in the database to enable your extension. In the database table `pk_system_config` you can find a config setting with the `name`: `system`. In here, the system settings are stored as a JSON representation. The list of active extensions is stored as a property.
 
@@ -94,7 +94,7 @@ Internally, Pagekit changes a setting in the database to enable your extension. 
 }
 ```
 
-## Add controller
+## Add a controller
 
 Create a controller class `src/Controller/HelloController.php`.
 
@@ -140,18 +140,18 @@ To mount the controller, you can define your own routes in the `index.php`:
 ],
 ```
 
-You can read more about [Controllers and Routing](../basics/controller.md).
+You can read more about [Controllers and Routing](../developer-basics/controller.md).
 
 ## What you can do with your extension
 
 With your basic extension up and running, it's time to explore what you can do with it. There are plentiful ways to extend the Pagekit system.
 
-The important thing to understand is the central module definition in your extension's `index.php`. To hook into the several concepts of Pagekit you probably just have to set the right property in the configuration array. A full list can be found in the [Module section](../basics/packages.md#module).
+The important thing to understand is the central module definition in your extension's `index.php`. To hook into Pagekit's workflow you probably just have to set the right property in the array configuration.
 
 Here are a few ideas to get you started:
 
-- [Add a menu item](../basics/packages.md#menu) to the back-end's main navigation.
-- [Add a node](../basics/packages.md#nodes) to the Site Tree.
-- [Create a Widget](../basics/widgets.md) for the front-end or back-end
-- [Define a link type](../basics/links.md) for Pagekit's Link picker
-- [Store simple data](../basics/module-config.md) using the module config
+- [Add a menu item](../developer-basics/packages.md#menu) to the back-end's main navigation.
+- [Add a node](../developer-basics/packages.md#nodes) to the Site Tree.
+- [Create a Widget](../developer-basics/widgets.md) for the front-end or back-end
+- [Define a link type](../developer-basics/links.md) for Pagekit's Link picker
+- [Store simple data](../developer-basics/module-config.md) using the module config

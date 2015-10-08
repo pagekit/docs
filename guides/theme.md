@@ -176,7 +176,7 @@ Because our template already includes these files, make sure to also create the 
 <?php $view->style('theme', 'theme:css/theme.css') ?>
 ```
 
-To learn more about working with static files, read the [Assets](../basics/assets.md) section.
+To learn more about working with static files, read the [Assets](../developer-basics/assets.md) section.
 
 ## Activate theme
 

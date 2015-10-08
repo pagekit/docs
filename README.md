@@ -60,8 +60,8 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   3. [Webpack &amp; Gulp](tools/webpack-gulp.md)
 
 7. Troubleshooting
-  1. [System Information](troubleshooting/system-information.md)
-  2. [Debug Mode](troubleshooting/debug.md)
-  2. [Permissions](troubleshooting/permissions.md)
+  1. [System Information](troubleshooting/system-information.md) ✅
+  2. [Debug Mode](troubleshooting/debug-mode.md) ✅
+  2. [Permissions](troubleshooting/permissions.md) ✅
   2. [Not Found](troubleshooting/not-found.md)
-  2. [Server Error](troubleshooting/server-error.md)
+  2. [Server Error](troubleshooting/server-error.md) ✅

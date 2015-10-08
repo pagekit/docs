@@ -35,7 +35,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
  3. [Controller &amp; Routing](developer-basics/controller.md) M
  4. [View and Response](developer-basics/view-response.md) M
  5. [Working with static assets](developer-basics/assets.md)
- 7. [Widgets](developer-basics/widgets.md) F √
+ 7. [Widgets](developer-basics/widgets.md) F √ ✅
  8. [Links](developer-basics/links.md) F √
  9. [Site Tree Nodes](developer-basics/site-tree-nodes.md) F ?
  11. [Simple Data Storage](developer-basics/module-config.md) F √
@@ -45,6 +45,7 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
  15. [Cache](developer-basics/cache.md) ?
  16. [Data Storage](developer-basics/data-storage.md) M ?
  17. [Translation](developer-basics/translation.md) F √
+ 18. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
 
 5. Advanced
   1. [Request Lifecycle]() 

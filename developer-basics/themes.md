@@ -62,7 +62,7 @@ The same works for widget positions.
 
 ## Default Pagekit markup
 
-The Pagekit admin panel is built using the UIkit front-end framework. That is why the Pagekit core extensions such as static pages and the blog output markup with CSS classes from UIkit. You are, however, in no way forced to use UIkit to create your own themes.
+The Pagekit admin panel is built using the UIkit frontend framework. That is why the Pagekit core extensions such as static pages and the blog output markup with CSS classes from UIkit. You are, however, in no way forced to use UIkit to create your own themes.
 
 To style the Pagekit system output, you can just add the CSS for a few classes instead of including the UIkit CSS. The `theme.css` that comes with the Hello extension already comes with the classes you need to style.
 

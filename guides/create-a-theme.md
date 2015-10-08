@@ -4,7 +4,7 @@
 
 ## Location of theme files
 
-The example theme we will be building in this guide is the *Hello* theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the *Hello* theme is located in `/packages/pagekit/hello-theme`.
+The example theme we will be building in this guide is the *Hello* theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the *Hello* theme is located in `/packages/pagekit/theme-hello`.
 
 ## File structure
 
@@ -26,7 +26,7 @@ A theme is a regular Pagekit package. Each package needs a description in order 
 
 ```json
 {
-    "name": "pagekit/hello-theme",
+    "name": "pagekit/theme-hello",
     "type": "pagekit-theme",
     "version": "0.9.0",
     "title": "Hello"
@@ -47,7 +47,7 @@ Define the positions and menus of your theme, load additional scripts and much m
 return [
 
 
-    'name' => 'hello-theme',
+    'name' => 'theme-hello',
 
     'type' => 'theme',
 
@@ -105,6 +105,35 @@ Other properties can be added for more advanced settings.
 | `config`       | optional   | Default module config                          |
 | `events`       | optional   | Listen to events                               |
 | ...            | optional   | All properties from extensions can be used     |            
+
+### `menus`: Register menu positions for a theme
+
+In your theme you can render menus from the Pagekit system in as many positions as you want. To make these positions known to Pagekit, you need to register them using the `menus` property.
+
+Each menu position is defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. `Main`).
+
+```php
+'menus' => [
+
+    'main' => 'Main',
+    'offcanvas' => 'Offcanvas'
+
+],
+```
+
+### `positions`: Register widget positions for a theme
+
+Widget positions allow users to publish Widgets in several locations of your theme markup. They appear in the Widget area of the Pagekit admin panel are selectable by the user when setting up a Widget.
+
+Each widget position is defined by an identifier (i.e. `sidebar`) and a label to be displayed to the user (i.e. `Sidebar`).
+
+```php
+'positions' => [
+
+    'sidebar' => 'Sidebar',
+
+],
+```
 
 ## template.php
 
@@ -182,7 +211,7 @@ To learn more about working with static files, read the [Assets](../developer-ba
 
 With this basic file structure completed, you can now go to Pagekit's admin panel. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
 
-You should now be able to refresh the front-end and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
+You should now be able to refresh the frontend and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
 
 ## Where to go from here
 

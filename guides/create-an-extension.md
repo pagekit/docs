@@ -150,8 +150,8 @@ The important thing to understand is the central module definition in your exten
 
 Here are a few ideas to get you started:
 
-- [Add a menu item](../developer-basics/packages.md#menu) to the back-end's main navigation.
+- [Add a menu item](../developer-basics/packages.md#menu) to the administration panel's main navigation.
 - [Add a node](../developer-basics/packages.md#nodes) to the Site Tree.
-- [Create a Widget](../developer-basics/widgets.md) for the front-end or back-end
+- [Create a Widget](../developer-basics/widgets.md) for the frontend or administration panel dashboard
 - [Define a link type](../developer-basics/links.md) for Pagekit's Link picker
 - [Store simple data](../developer-basics/module-config.md) using the module config

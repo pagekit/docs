@@ -22,7 +22,7 @@ Navigate to the cloned directory and install PHP dependencies.
 composer install
 ```
 
-Install Node dependencies and build the front-end components:
+Install Node dependencies and build the frontend components:
 
 ```
 npm install

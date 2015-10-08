@@ -72,7 +72,7 @@ return [
 ];
 ```
 
-This example requires an additional JS component located at `hello:js/widget.js` and a php view file `hello:views/widgets/helloview.php` which is used to render the widget in the front-end.
+This example requires an additional JS component located at `hello:js/widget.js` and a php view file `hello:views/widgets/helloview.php` which is used to render the widget in the frontend.
 
 `js/widget.js`:
 

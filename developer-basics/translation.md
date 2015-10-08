@@ -135,7 +135,7 @@ The finished translation files have to be located in the `languages` folder of y
 
 ## How a locale is determined
 
-When the Installer is run, the locale is selected manually. This can later be changed in the Pagekit admin panel (*System / Localization*). You can set a different locale for front-end and back-end.
+When the Installer is run, the locale is selected manually. This can later be changed in the Pagekit admin panel (*System / Localization*). You can set a different locale for frontend and administration panel.
 
 **Note** You can only select languages that are available for the system extension.
 

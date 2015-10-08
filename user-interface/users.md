@@ -28,7 +28,7 @@ In the *Permissions* tab you can see an overview of user roles and the actions t
 
 The permissions are grouped by their according extensions and can be assigned or revoked by toggling the checkboxes. Changes are stored automatically.
 
-**Note** You will have to give the *Access admin area* permission to all roles who should perform any action in the administration panel, even if it is limited to editing pages. Else they won't be able to reach the pages' administration panel.
+**Note** You will have to give the *Access admin area* permission to all roles who should perform any action in the admin panel, even if it is limited to editing pages. Else they won't be able to reach the pages' admin panel.
 
 ## Roles
 

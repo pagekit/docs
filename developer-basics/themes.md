@@ -8,7 +8,7 @@ To get started with creating your own theme, read the [Theme Guide](guide-theme.
 
 Themes and extensions in Pagekit are very much the same. Try not to think in terms of developing a theme vs. developing an extension but rather understand that you have access to Pagekit's framework all the time.
 
-Most importantly, the module definition in your theme's `index.php` can contain all properties, no matter if you have a theme or an extension. If you want to add a Settings screen to the backend, register additional tabs to the Site Tree or the Widget management interface, all of that works exactly the same.
+Most importantly, the module definition in your theme's `index.php` can contain all properties, no matter if you have a theme or an extension. If you want to add a Settings screen to the admin panel, register additional tabs to the Site Tree or the Widget management interface, all of that works exactly the same.
 
 ## Render sub-view
 
@@ -62,7 +62,7 @@ The same works for widget positions.
 
 ## Default Pagekit markup
 
-The Pagekit backend is built using the UIkit front-end framework. That is why the Pagekit core extensions such as static pages and the blog output markup with CSS classes from UIkit. You are, however, in no way forced to use UIkit to create your own themes.
+The Pagekit admin panel is built using the UIkit front-end framework. That is why the Pagekit core extensions such as static pages and the blog output markup with CSS classes from UIkit. You are, however, in no way forced to use UIkit to create your own themes.
 
 To style the Pagekit system output, you can just add the CSS for a few classes instead of including the UIkit CSS. The `theme.css` that comes with the Hello extension already comes with the classes you need to style.
 

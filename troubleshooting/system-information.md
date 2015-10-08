@@ -4,7 +4,7 @@
 
 A lot of times when an error occurs, you will have to retrieve more information about the system environment Pagekit runs on.
 
-Pagekit offers this information in the administration panel, just go to *System > Info*.
+Pagekit offers this information in the admin panel, just go to *System > Info*.
 
 | Menu | Description |
 |------|-------------|

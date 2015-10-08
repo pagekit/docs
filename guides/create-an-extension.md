@@ -23,7 +23,7 @@ To add any functionality to Pagekit, you create a custom module which in the sim
 
 ## Package definition: composer.json
 
-The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](../user-interface/marketplace.md), but it's also important for how the extension is listed in the administration panel.
+The `composer.json` contains all information on your extension package. This is needed when distributing the extension via the [marketplace](../user-interface/marketplace.md), but it's also important for how the extension is listed in the admin panel.
 
 ```json
 {
@@ -80,9 +80,9 @@ return [
 ];
 ```
 
-## Enable extension in administration panel
+## Enable extension in admin panel
 
-When you have created your files, you need to enable the extension in the administration panel. To do so, navigate to *System / Settings / Extensions* and click the status icon next to your extension. When your extension is disabled, the status icon is red. When your extension is enabled, it is green.
+When you have created your files, you need to enable the extension in the admin panel. To do so, navigate to *System / Settings / Extensions* and click the status icon next to your extension. When your extension is disabled, the status icon is red. When your extension is enabled, it is green.
 
 Internally, Pagekit changes a setting in the database to enable your extension. In the database table `pk_system_config` you can find a config setting with the `name`: `system`. In here, the system settings are stored as a JSON representation. The list of active extensions is stored as a property.
 

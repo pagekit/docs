@@ -50,7 +50,7 @@ The `resources` property is an array with two keys.
 
 ### Parameters
 
-Parameters are a way for your extension or theme to store and retreive values for specific options you want to include. From your config file, you can set default values for those parameters and define view files to offer an interface in the backend to change those values. Pagekit handles `settings` parameters which are meant for all general settings. The second key `widgets` is used to define a view for custom theme options when configuring a widget in the backend. 
+Parameters are a way for your extension or theme to store and retreive values for specific options you want to include. From your config file, you can set default values for those parameters and define view files to offer an interface in the admin panel to change those values. Pagekit handles `settings` parameters which are meant for all general settings. The second key `widgets` is used to define a view for custom theme options when configuring a widget in the admin panel. 
 
 Settings screens for `system` parameters will be explained further down, widgets are explained in a [separate chapter](widgets.md).
 
@@ -148,7 +148,7 @@ The `permissions` property defines a list of permissions that can be assigned to
 
 ## Add a settings screen
 
-If you want to keep your theme customizable and your extension configurable, you will want to offer some parameters that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the backend. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
+If you want to keep your theme customizable and your extension configurable, you will want to offer some parameters that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the admin panel. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
 
 ```php
 'parameters' => [

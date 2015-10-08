@@ -173,9 +173,9 @@ More about view rendering in the [View and Response](view-response.md) chapter.
 
 You can specify certain user permissions required to access a specific method or the whole controller.
 
-Controllers should always be specific for the frontend or the backend. So
-far we have seen controllers for the frontend. A backend controller
-will only be accessible for users with the admin area access permission. Also, all
+Controllers should always be specific for the frontend or the admin panel. So
+far we have seen controllers for the frontend. A administration controller
+will only be accessible for users with the `admin area access permission. Also, all
 routes for that controller will have a leading `admin/` in the URL. As a
 result, views will also render in the admin layout and not in the default
 theme layout.

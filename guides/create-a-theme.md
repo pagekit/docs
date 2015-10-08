@@ -4,7 +4,7 @@
 
 ## Location of theme files
 
-The example theme we will be building in this guide is the *Hello* theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the *Hello* theme is located in `/packages/pagekit/theme-hello`.
+The example theme we will be building in this guide is the *Hello* theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the *Hello* theme is located in `/packages/pagekit/hello-theme`.
 
 ## File structure
 
@@ -20,9 +20,9 @@ The required files are `composer.json`, `index.php` and `views/template.php`. Ot
 | `css/theme.css`              | optional | Theme Stylesheet        |
 | `js/theme.js`                | optional | Theme JavaScript        |
 
-## composer.json
+## Package definition: composer.json
 
-A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](../basics/packages.md) chapter.
+A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](../developer-basics/packages.md) chapter.
 
 ```json
 {
@@ -33,7 +33,7 @@ A theme is a regular Pagekit package. Each package needs a description in order 
 }
 ```
 
-## index.php
+## Module definition: index.php
 
 Internally, Themes in Pagekit are handled as *Modules*. This opens up a lot of possibilities of what you can do with a theme, because modules allow you to access all of Pagekit's functionality. The main thing to understand in the beginning is that the definition of your theme happens in the `index.php`.
 
@@ -90,7 +90,7 @@ return [
 
 `resources` allow you to register a shorthand to a path reference. This makes it easier when referencing files because you do not have to specify the full path. For example `views:template.php` will expand to `packages/vendor/theme/views/template.php`
 
-Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as we will show below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label which displays in the backend.
+Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as we will show below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label which displays in the admin panel.
 
 Other properties can be added for more advanced settings.
 
@@ -180,7 +180,7 @@ To learn more about working with static files, read the [Assets](../developer-ba
 
 ## Activate theme
 
-With this basic file structure completed, you can now go to Pagekit's administration panel. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
+With this basic file structure completed, you can now go to Pagekit's admin panel. Navigate to *Sytem &raquo Themes* and Enable your new theme by clicking the star icon next to it.
 
 You should now be able to refresh the front-end and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
 

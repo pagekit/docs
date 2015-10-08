@@ -131,7 +131,7 @@ When you have added a Node, it will be available in the Site Tree. Click the *Ad
         // The name of the node route
         'name' => '@hello',
 
-        // Label to display in the backend
+        // Label to display in the admin panel
         'label' => 'Hello',
 
         // The controller for this node. Each controller action will be mounted
@@ -159,9 +159,9 @@ Use the `routes` property to mount controllers to a route. Learn more about [Con
 ```
 
 <a name="menu"></a>
-### `menu`: Add menu items to the backend
+### `menu`: Add menu items to the admin panel
 
-You can add menu items to the backend main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not. The actual checking for user permissions has to be done on the [Controller](controller.md) level.
+You can add menu items to the admin panel's main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not. The actual checking for user permissions has to be done on the [Controller](controller.md) level.
 
 ```php
 'menu' => [
@@ -288,7 +288,7 @@ Each menu position is defined by an identifier (i.e. `main`) and a label to be d
 
 ### `positions`: Register widget positions for a theme
 
-Widget positions allow users to publish Widgets in several locations of your theme markup. They appear in the Widget area of the Pagekit backend are selectable by the user when setting up a Widget.
+Widget positions allow users to publish Widgets in several locations of your theme markup. They appear in the Widget area of the Pagekit admin panel are selectable by the user when setting up a Widget.
 
 Each widget position is defined by an identifier (i.e. `sidebar`) and a label to be displayed to the user (i.e. `Sidebar`).
 

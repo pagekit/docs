@@ -12,7 +12,7 @@ Through the browser navigate to your domain and folder where the Pagekit content
 
 ### Step 1 - Language
 
-In the first step of the setup process we have to choose the main language for the site. It will be the default language used on the backend and frontend. Both can be changed at any time later.
+In the first step of the setup process we have to choose the main language for the site. It will be the default language used on the admin panel and frontend. Both can be changed at any time later.
 
 ### Step 2 - Database
 
@@ -40,4 +40,4 @@ After entering your site's title, you need to create your user account for Pagek
 | `Password` | Enter the User password. |
 | `Email`    | Enter the User email.    |
 
-Once the installation was successful you'll be redirected to the login screen. You can log in to Pagekit's administration panel with the account we created. Optionally you can access the login screen by appending `/admin` to the site URL.
+Once the installation was successful you'll be redirected to the login screen. You can log in to Pagekit's admin panel with the account we created. Optionally you can access the login screen by appending `/admin` to the site URL.

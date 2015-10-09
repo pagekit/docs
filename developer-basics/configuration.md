@@ -1,24 +1,19 @@
 # Configuration
-
 <p class="uk-article-lead">Theme and extension configuration from a developer's perspective.</p>
 
 Both `theme.php` for a theme and `extension.php` for an extension are the bootstrap files for your custom code. Alongside the possibility to hook into system events and insert your own custom code, the file's main content is a configuration array with the following properties.
 
 ## General
-
 Usable in `theme.php` and `extension.php`:
 
 ### Main
-
-If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or
-    `Extension`).
+If you have code besides custom views and configuration files, you will write your own subclass of `Pagekit\Framework\Theme` (or `Pagekit\Framework\Extension`). With the `main` property you point to that class inside your namespace. If you don't set the property, Pagekit will internally create an instance of the base class `Theme` (or     `Extension`).
 
 ```php
 'main' => Pagekit\\Hello\\HelloExtension
 ```
 
 ### Autoload
-
 Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.org/psr/psr-4/).
 
 ```php
@@ -28,13 +23,12 @@ Autoload all classes from the given namespace using [PSR-4](http://www.php-fig.o
 ```
 
 ### Resources
-
 The `resources` property is an array with two keys.
 
-| Property  | Description |
-|-----------|-------------|
-| `export`    | Register a stream wrapper to and point to a directory. |
-| `overrides` | Possibility to overwrite `extension://` or `theme://` properties, for example to allow for custom views of a system extension. |
+Property    | Description
+----------- | ------------------------------------------------------------------------------------------------------------------------------
+`export`    | Register a stream wrapper to and point to a directory.
+`overrides` | Possibility to overwrite `extension://` or `theme://` properties, for example to allow for custom views of a system extension.
 
 ```php
 'resources' => [
@@ -49,11 +43,9 @@ The `resources` property is an array with two keys.
 **Note** You can use `@url('extension://hello/assets/images/foo.png')` to generate image paths in your views or `$app['url']->to('extension://hello/assets/images/foo.png')` from your controllers and classes.
 
 ### Parameters
-
-Parameters are a way for your extension or theme to store and retreive values for specific options you want to include. From your config file, you can set default values for those parameters and define view files to offer an interface in the admin panel to change those values. Pagekit handles `settings` parameters which are meant for all general settings. The second key `widgets` is used to define a view for custom theme options when configuring a widget in the admin panel. 
+Parameters are a way for your extension or theme to store and retreive values for specific options you want to include. From your config file, you can set default values for those parameters and define view files to offer an interface in the admin panel to change those values. Pagekit handles `settings` parameters which are meant for all general settings. The second key `widgets` is used to define a view for custom theme options when configuring a widget in the admin panel.
 
 Settings screens for `system` parameters will be explained further down, widgets are explained in a [separate chapter](widgets.md).
-
 
 ```php
 'parameters' => [
@@ -70,20 +62,16 @@ Settings screens for `system` parameters will be explained further down, widgets
 ```
 
 ### Custom properties
-
 Feel free to add your own configuration properties. From your `Theme` instance (or `Extension`), you will have have access to the configuration array via `$this->config`. Also, you can use `$this->getConfig('colours.background')` to access nested config arrays via dot notation.
-
 
 ```php
 'colours' => ['background' => '#ccc', 'text' => '#333'];
 ```
 
 ## Theme
-
 Usable in `theme.php` only:
 
 ### Positions
-
 The `positions` property allows you to define positions that you can publish widgets in. Note that this only defines the position. Your theme views have to take care of the rendering. See the chapter about [theming](themes.md)) for more information.
 
 ```php
@@ -98,11 +86,9 @@ return [
 ```
 
 ## Extension
-
 Usable in `extension.php` only:
 
 ### Controllers
-
 The `controllers` property defines the paths to your controllers. You can use [glob](http://php.net/glob) syntax. Used for automatic route registration. Set a string with glob syntax or an array with multiple paths.
 
 ```php
@@ -110,16 +96,15 @@ The `controllers` property defines the paths to your controllers. You can use [g
 ```
 
 ### Menu
-
 The `menu` property is an array of menu items. Each element has a unique string identifier that should consist of the extension name or/and a telling title in case you have several menu items, i.e. `hello` or `hello: settings`. Each menu item is identified by an array with the following properties.
 
-| Property  | Description |
-|-----------|-------------|
-| `label`     | The menu item label. |
-| `parent`    | Identifier of parent menu item. |
-| `access`    | List permissions needed for an item to be visible to a user. Attention: Implement access control inside your controller, visibility of a menu item does not take care of that. |
-| `active`    | Use [glob](http://php.net/glob) syntax to match to current URL and determine, if a menu item is considered *active*. |
-| `priority`  | Optional sort order, defaults to 0. |
+Property   | Description
+---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+`label`    | The menu item label.
+`parent`   | Identifier of parent menu item.
+`access`   | List permissions needed for an item to be visible to a user. Attention: Implement access control inside your controller, visibility of a menu item does not take care of that.
+`active`   | Use [glob](http://php.net/glob) syntax to match to current URL and determine, if a menu item is considered *active*.
+`priority` | Optional sort order, defaults to 0.
 
 ```php
 'menu' => [
@@ -133,8 +118,7 @@ The `menu` property is an array of menu items. Each element has a unique string 
 ```
 
 ### Permissions
-
-The `permissions` property defines a list of permissions that can be assigned to user groups. The unique identifier should consist of the extension name followed by a brief identifying title of the permission (colons and spaces allowed). A description is optional and can be used to explain what this does. Check out *Users > Permissions* to see how this is displayed to the user.
+The `permissions` property defines a list of permissions that can be assigned to user groups. The unique identifier should consist of the extension name followed by a brief identifying title of the permission (colons and spaces allowed). A description is optional and can be used to explain what this does. Check out _Users > Permissions_ to see how this is displayed to the user.
 
 ```php
 'system: manage url aliases' => [
@@ -147,7 +131,6 @@ The `permissions` property defines a list of permissions that can be assigned to
 ```
 
 ## Add a settings screen
-
 If you want to keep your theme customizable and your extension configurable, you will want to offer some parameters that can easily be changed without modifying any code. To do so, you can simply point to a template file that will be linked from the admin panel. Add the following parameter to the `theme.php` or `extension.php` (and point to your extension folder in that case).
 
 ```php
@@ -163,7 +146,6 @@ Create a file at that exact location `/themes/mytheme/views/admin/settings.razr`
 Make sure the form will be submitted to `@url('@system/themes/savesettings', ['name' => 'mytheme'])` as a `POST` request just like in the following example.
 
 **Note** As Pagekit comes pre-provided with UIkit, it is best to use UIkit's [form markup](http://getuikit.com/docs/form.html).
-
 
 ```php
 <form class="uk-form uk-form-horizontal" action="@url('@system/themes/savesettings', ['name' => 'mytheme'])" method="post">
@@ -208,7 +190,7 @@ You can access any theme's or extension's parameters from the Application instan
 $app['extensions']->get('EXTENSION')->getParams();
 ```
 
-Depending on the [context](application.md) (for example in `Extension` and `Theme` subclasses) the instance will instead be available via `$this`. 
+Depending on the [context](application.md) (for example in `Extension` and `Theme` subclasses) the instance will instead be available via `$this`.
 
 ```php
 $this['extensions']->get('EXTENSION')->getParams();

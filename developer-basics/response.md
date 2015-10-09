@@ -1,9 +1,6 @@
 # Response
-
-### Redirect
-
-Use `redirect($url, $parameters = [], $status = 302, $headers = [])`
-to redirect from a controller action.
+## Redirect
+Use `redirect($url, $parameters = [], $status = 302, $headers = [])` to redirect from a controller action.
 
 ```php
 function redirectAction()
@@ -12,8 +9,7 @@ function redirectAction()
 }
 ```
 
-In case your controller extends `Pagekit\Framework\Controller\Controller`, you
-can directly access the `redirect` method.
+In case your controller extends `Pagekit\Framework\Controller\Controller`, you can directly access the `redirect` method.
 
 ```php
 public function redirectAction()
@@ -22,8 +18,7 @@ public function redirectAction()
 }
 ```
 
-### Return JSON
-
+## Return JSON
 Return a JSON representation of any object using the `@Response("json")` annotation.
 
 ```php
@@ -42,14 +37,10 @@ public function jsonAction()
     $data = ['error' => true, 'message' => 'There is nothing here. Move along.'];
     return $this['response']->json($data);
 }
-
 ```
 
-
-### Custom response and error pages
-
-Using `create($content = '', $status = 200, $headers = [])` you
-can return any custom HTTP response.
+## Custom response and error pages
+Using `create($content = '', $status = 200, $headers = [])` you can return any custom HTTP response.
 
 ```php
 function forbiddenAction()
@@ -58,11 +49,8 @@ function forbiddenAction()
 }
 ```
 
-### Download
-
-Using `download($file, $name = null, $headers = [])` you can link to a file
-to be downloaded. Sets `Content-Disposition: attachment` to force
-a *Save as* dialog in most browsers.
+## Download
+Using `download($file, $name = null, $headers = [])` you can link to a file to be downloaded. Sets `Content-Disposition: attachment` to force a _Save as_ dialog in most browsers.
 
 ```php
 public function downloadAction()

@@ -1,9 +1,7 @@
 # Module config
-
 <p class="uk-article-lead">Pagekit offers a simple way to store your modules configuration.</p>
 
 ## Default module config
-
 A default config for your module is defined in your module's `index.php`. This can be any PHP array structure and also be nested.
 
 ```php
@@ -20,7 +18,6 @@ A default config for your module is defined in your module's `index.php`. This c
 ```
 
 ## Read module config
-
 To read the config of a module, you can access the `config` property of the module instance. This config is the result of both the default config stored inside the `index.php` and changes that are stored in the database.
 
 ```php
@@ -33,7 +30,6 @@ $config = $module->config;
 ```
 
 ## Write module config
-
 To store changes for a module config, use the `config()` service.
 
 ```php

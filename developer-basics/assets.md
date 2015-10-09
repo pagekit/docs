@@ -1,9 +1,7 @@
 # Working with Assets
-
 <p class="uk-article-lead">Assets are the static files needed in your project, including CSS, JS and image files.
 
 ## Register resource shorthands
-
 In your module's `index.php`, you can register a string to reference a path.
 
 The path is interpreted relative to the location of the `index.php`. This means that if you want to have `theme:` reference the theme folder, the path is just the empty string. To reference the `views` folder inside the theme, the path is `'views'`.
@@ -25,7 +23,6 @@ The path is interpreted relative to the location of the `index.php`. This means 
 ```
 
 ## Generate URL to static assets
-
 When you have registered resource paths, you can now use the `theme:` shorthand when referencing paths.
 
 ```php
@@ -33,7 +30,6 @@ When you have registered resource paths, you can now use the `theme:` shorthand 
 ```
 
 ## Include CSS in view file
-
 To include a CSS file in your view, call the style helper from the view renderer. You can require other stylesheets with the second parameter.
 
 ```
@@ -49,7 +45,6 @@ This will not directly output the required line in HTML. Instead, it will add th
 ```
 
 ## Include JS in view file
-
 To include a JavaScript file in your template, call the script helper from the view renderer. As an optional second parameter, you can require one or multiple scripts that need to be loaded before.
 
 ```

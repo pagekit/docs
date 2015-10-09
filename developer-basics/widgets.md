@@ -1,13 +1,10 @@
 # Widgets
-
 <p class="uk-article-lead">Use Widgets to render small chunks of content at different positions of your site.</p>
 
-To determine where a Widget's content will be rendered, the admin panel has a *Widgets* section to publish widgets in specific positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
-
+To determine where a Widget's content will be rendered, the admin panel has a _Widgets_ section to publish widgets in specific positions that are defined by the theme. Extensions and themes can both come with widgets, with no difference in development.
 
 ## Define widget positions in your theme
-
-You can define any number of widget positions in your theme`s `index.php`.
+You can define any number of widget positions in your theme`s`index.php`.
 
 ```php
 'positions' => [
@@ -18,9 +15,7 @@ You can define any number of widget positions in your theme`s `index.php`.
 ],
 ```
 
-
 ## Render Widgets in your theme
-
 To render everything published inside a Widget position, you can use the View renderer instance available from your theme's `views/template.php`:
 
 ```php
@@ -29,9 +24,7 @@ To render everything published inside a Widget position, you can use the View re
 <?php endif; ?>
 ```
 
-
 ## Register new Widget type
-
 To register a new Widget type you can make use of the `widgets` property in your `index.php`.
 
 ```php
@@ -42,9 +35,7 @@ To register a new Widget type you can make use of the `widgets` property in your
 ],
 ```
 
-
 ## Define new Widget type
-
 Internally, a Widget in Pagekit is a module. It is therefore defined by a module definition: A PHP array with a certain set of properties.
 
 `widgets/hellowidget.php`:
@@ -68,7 +59,7 @@ return [
 
     'render' => function ($widget) use ($app) {
 
-	    // ...
+        // ...
 
         return $app->view('hello:views/widget.php');
     }
@@ -80,7 +71,7 @@ This example requires an additional JS component located at `hello:js/widget.js`
 
 `js/widget.js`:
 
-```
+````
 window.Widgets.components['system-login:settings'] = {
 
     section: {
@@ -97,6 +88,6 @@ window.Widgets.components['system-login:settings'] = {
 
 ```php
 <p>Hello Widget output.</p>
-```
+````
 
 **Note** A good example of a full Widget is located at `app/system/modules/user/widgets/login.php` in the Pagekit core.

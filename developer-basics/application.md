@@ -1,5 +1,5 @@
 # Application
-<p class="uk-article-lead">The Application functions as Pagekit's dependency container. The application makes Pagekit's functionality and services configurable, extendable, interchangeable and accessible throughout the [modules](modules.md).</p>
+<p class="uk-article-lead">The *Application* functions as Pagekit's dependency container. The application makes Pagekit's functionality and services configurable, extendable, interchangeable and accessible throughout the [modules](modules.md).</p>
 
 All services you have available in Pagekit are set as dependency-injected properties on the `Application` instance. `$app['db']` for example will give you access to the database service.
 

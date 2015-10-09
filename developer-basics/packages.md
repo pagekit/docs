@@ -63,8 +63,6 @@ Pagekit offers Installation Hooks through a custom script file. This file needs 
 A custom scripts file has to return a PHP array, containing callbacks:
 
 ```php
-<?php
-
 return [
 
     'install' => function ($app) {},
@@ -77,7 +75,6 @@ return [
         '0.9.0' => function ($app) {}
 
     ]
-
 ];
 ```
 

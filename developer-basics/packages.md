@@ -72,33 +72,13 @@ A custom scripts file has to return a PHP array, containing callbacks:
 
 return [
 
-    /*
-     * The install hook is executed after a package was *installed*.
-     */
     'install' => function ($app) {},
-
-    /*
-     * The enable hook is executed after a package was *enabled*.
-     */
-    'enable' => function ($app) {},
-
-    /*
-     * A disable hook is executed after a package was *disabled*.
-     *
-     * Pagekit will not modify the tables you have created, even when your extension
-     * gets *disabled* or *uninstalled* in the admin panel. You will have to take
-     * care of needed database changes yourself.
-     */
     'uninstall' => function ($app) {},
-
-    /*
-     * On enabling a package Pagekit checks if there are update hooks newer than the current version available.
-     * If so they are executed sequentially.
-     */
+    'enable' => function ($app) {},
+    'disable' => function ($app) {},
     'updates' => [
 
         '0.5.0' => function ($app) {},
-
         '0.9.0' => function ($app) {}
 
     ]
@@ -107,3 +87,24 @@ return [
 
 ```
 
+### Install
+
+The install hook is executed after a package was *installed*.
+
+### Uninstall
+
+The uninstall hook is executed before a package was *uninstalled*.
+
+Pagekit will not modify the tables you have created, even when your extension
+gets *disabled* or *uninstalled* in the admin panel. You will have to take
+care of needed database changes yourself.
+
+### Enable
+The enable hook is executed after a package was *enabled*.
+
+### Disable
+The disable hook is executed before a package was *disabled*.
+
+### Updates
+Upon enabling a package Pagekit checks if there are update hooks newer than the current version available.
+If so they are executed sequentially.

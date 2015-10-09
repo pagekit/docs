@@ -4,7 +4,7 @@
 ## Controller
 The most common way in Pagekit for creating routes is to define a _Controller_. A _Controller_ is responsible for handling requests, setting routes and rendering views.
 
-### Registering a Controller
+### Register a Controller
 You can register a _Controller_ inside your [module configuration](modules.md). Use the `routes` property to mount controllers to a route.
 
 ```php
@@ -83,7 +83,7 @@ public function greetAction($name = 'World')
 }
 ```
 
-Parameters can be specified to fulfill certain requirements (for example limit the value to numbers). You can name a route so that you can reference from your code. Use Php argument defaults at the function definition to make a parameter optional.
+Parameters can be specified to fulfill certain requirements (for example limit the value to numbers). You can name a route so that you can reference from your code. Use PHP argument defaults at the method definition to make a parameter optional.
 
 Routes can be bound to certain Http-methods (e.g. `GET` or `POST`). This is especially useful for RESTful API's.
 
@@ -100,7 +100,7 @@ public function viewAction($id = 0)
 **Note** For detailed information and more example, have a look at [Symfony's own documentation](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html) on the `@Route` annotation.
 
 #### @Request
-You can specify the types of data passed via GET and POST request and match them to parameters passed to the annotated method.
+You can specify the types of data passed via a request and match them to parameters passed to the annotated method.
 
 The array maps _name_ to _type_. _name_ is the key inside the request data. _type_ can be `int`, `string`, `array` and advanced types like `int[]` for an array of integers. If not type is specified, `string` is assumed by default.
 

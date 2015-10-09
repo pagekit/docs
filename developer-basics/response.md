@@ -1,56 +1,104 @@
 # Response
-## Redirect
-Use `redirect($url, $parameters = [], $status = 302, $headers = [])` to redirect from a controller action.
+The response represents the server's HTTP response to the client. There are a couple of different `Response` types, listed below, each with an example on how to build the response from the controller action:
+
+## String
+To return a simple `String Response`, use the `response` service:
 
 ```php
-function redirectAction()
+public function indexAction()
 {
-    return $this['response']->redirect('@hello/greet/name', ['name' => 'Someone']);
+    return $this['response']->create('My content');
 }
 ```
 
-In case your controller extends `Pagekit\Framework\Controller\Controller`, you can directly access the `redirect` method.
+## Themed
+To return a `Themed Response`, simply return a `String` from the controller:
 
 ```php
-public function redirectAction()
+public function indexAction()
 {
-    return $this->redirect('@hello/greet/name', ['name' => 'Someone']);
+    return 'My content';
 }
 ```
 
-## Return JSON
-Return a JSON representation of any object using the `@Response("json")` annotation.
+## Rendered View
+Pagekit can render the view and return the response. Simply return an array, with a key `$view` set to an array containing a _title_ and a _name_.
+
+All other parameters in the array, will be available in the view. Learn more about [Views and Templating](views-templating.md).
 
 ```php
-@Response("json")
+public function indexAction($name = '')
+{
+    return [
+        '$view' => [
+            'title' => 'Hello World',
+            'name' => 'hello:views/index.php',
+        ],
+        'name' => $name
+    ];
+}
+```
+
+If you don't want this to render a `Themed Response`, set a key `'layout' => false` in the `$view` array.
+
+## JSON
+There are two ways to return a `JSON Response` from the controller:
+
+If the action either returns an array or an object that implements \JsonSerializable. A `JsonResponse` will automatically be generated.
+
+```php
 public function jsonAction()
 {
     return ['error' => true, 'message' => 'There is nothing here. Move along.'];
 }
 ```
 
-Of course, you can manually use the `response` service to achieve the same thing.
+Of course, the `response` service can be used to achieve the same thing.
 
 ```php
 public function jsonAction()
+{    
+    return $this['response']->json(['error' => true, 'message' => 'There is nothing here. Move along.']);
+}
+```
+
+## Redirect
+Use a Redirect Response to redirect the user.
+
+```php
+public function redirectAction()
 {
-    $data = ['error' => true, 'message' => 'There is nothing here. Move along.'];
-    return $this['response']->json($data);
+    return $this['response']->redirect('@hello/greet/name', ['name' => 'Someone']);
 }
 ```
 
 ## Custom response and error pages
-Using `create($content = '', $status = 200, $headers = [])` you can return any custom HTTP response.
+Using `create` you can return any custom HTTP response.
 
 ```php
-function forbiddenAction()
+public function forbiddenAction()
 {
     return $this['response']->create('Permission denied.', 401);
 }
 ```
 
+## Stream
+The `Streamed Response` allows to stream the content back to the client. It takes an callback function as its first argument. Within that callback, a call to `flush` will be directly emitted to the client.
+
+```php
+public function streamAction()
+{
+    return $this['response']->stream(function() {
+        echo 'Hello World';
+        flush();
+        echo 'Hello Pagekit';
+        flush();
+    });
+}
+```
+
 ## Download
-Using `download($file, $name = null, $headers = [])` you can link to a file to be downloaded. Sets `Content-Disposition: attachment` to force a _Save as_ dialog in most browsers.
+The `Download Response` lets you send a file to the client. It sets `Content-Disposition: attachment` to force a _Save as_ dialog in most browsers.
 
 ```php
 public function downloadAction()

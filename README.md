@@ -29,36 +29,17 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   4. [Marketplace](basics/marketplace.md)
 
 4. Developer Basics
- 1. [Introduction](developer-basics/developer-introduction.md)
- 2. [Packages &amp; Modules](developer-basics/packages-modules.md) F √ ✅
- 5. [Themes](developer-basics/themes.md) F √ ✅
- 3. [Controller &amp; Routing](developer-basics/controller.md) M
- 4. [View and Response](developer-basics/view-response.md) M
- 5. [Working with static assets](developer-basics/assets.md)
- 7. [Widgets](developer-basics/widgets.md) F √ ✅
- 8. [Links](developer-basics/links.md) F √ ✅
- 9. [Site Tree Nodes](developer-basics/site-tree-nodes.md) F ?
- 11. [Simple Data Storage](developer-basics/module-config.md) F √ ✅
- 12. [Database](developer-basics/database.md) M
- 13. [Installation Hooks](developer-basics/installation-hooks.md) M
- 14. [Sessions](developer-basics/sessions.md) M ?
- 15. [Cache](developer-basics/cache.md) ?
- 16. [Data Storage](developer-basics/data-storage.md) M ?
- 17. [Translation](developer-basics/translation.md) F √
- 18. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
-
-5. Advanced
-  1. [Request Lifecycle]() 
-  2. [Modules]()
-  3. [Application Container]()
-  4. [Model-View-Controller]()
-  5. [Observer (Events)](developer/architecture-events.md)
-  6. [Data Reactive Interface Design](developer/data-reactive-ui.md)
-
-6. Tools
-  1. [Developer Toolbar](tools/developer-toolbar.md)
-  2. [Command Line Tool](tools/command-line-tool.md)
-  3. [Webpack &amp; Gulp](tools/webpack-gulp.md)
+  1. [Packages](developer-basics/packages.md)
+  2. [Modules](developer-basics/modules.md)
+  3. [Routing](developer-basics/routing.md)
+  4. [Response](developer-basics/response.md)
+  5. [Views &amp; Templating](developer-basics/views-templating.md)
+  6. [Themes](developer-basics/themes.md) F √ ✅
+  7. [Assets](developer-basics/assets.md)
+  8. [Widgets](developer-basics/widgets.md) F √ ✅
+  9. [Database](developer-basics/database.md) M
+  10. [Translation](developer-basics/translation.md) F √ ✅
+  11. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
 
 7. Troubleshooting
   1. [System Information](troubleshooting/system-information.md) ✅

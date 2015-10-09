@@ -1,6 +1,6 @@
 # Translation
 
-<p class="uk-article-lead">Pagekit includes capabilities to display messages in different languages. This allows the interface to be localized for any number. of languages.</p>
+<p class="uk-article-lead">Pagekit includes capabilities to display messages in different languages. This allows the interface to be localized for any number of languages.</p>
 
 **Note** There is a difference between languages and locales, as there might be different versions of a certain language spoken in a particular region (for example `en_GB` vs. `en_US`).
 

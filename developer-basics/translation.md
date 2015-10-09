@@ -128,7 +128,7 @@ With the created `messages.pot`, you can now create translations for your extens
 The finished translation files have to be located in the `languages` folder of your extension, i.e. in `languages/de_DE/`.
 
 ## How a locale is determined
-When the Installer is run, the locale is selected manually. This can later be changed in the Pagekit admin panel (_System / Localization_). You can set a different locale for frontend and administration panel.
+When the Installer is run, the locale is selected manually. This can later be changed in the Pagekit admin panel (_System / Localization_). You can set a different locale for frontend and admin panel.
 
 **Note** You can only select languages that are available for the system extension.
 

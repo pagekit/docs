@@ -1,19 +1,16 @@
 # Modules
+<p class="uk-article-lead">Pagekit uses *Modules* to set up the application code. The module definition is used to provide bootstrapping, routing and other configuration options. Here you can listen for events, add custom classes and your own controllers.</p>
 
-<a name="module"></a>
-## Module definition: index.php
+## Definition: index.php
+In order to load and configure a module, Pagekit has a ModuleManager. It will look for an `index.php` file in the root of the module's directory and expect it to return a PHP array. Think of this array as the bootstrap for the modules code.
 
-Internally, Pagekit is made up of so called *Modules*. A module has a name, a type - and other optional properties. You define your Module in the `index.php` which is then loaded by Pagekit.
-
-Think of the `index.php` as the starting point for any custom code. It contains your package's main module definition. Here you can add more modules, custom classes and your own controllers. All of this happens in this central file.
-
-Make sure this file returns a PHP array. By setting the right properties in this array, you tell Pagekit everything it needs to know about your module.
+By setting the right properties in this array, you tell Pagekit everything it needs to know about your module.
 
 ```php
 <?php
 
 /*
- * Return a php array which is the module definition
+ * Return a php array which is the module definition.
  */
 return [
 
@@ -26,15 +23,12 @@ return [
 ];
 ```
 
-This minimal example is a valid module defintion, although it doesn't do anything except being loaded by Pagekit. A module is only loaded if the package it comes in has been enabled in the administration panel.
+This minimal example is a valid module definition, although it doesn't do anything except being loaded by Pagekit. A module is only loaded if the package it comes in has been enabled in the admin panel.
 
 **Note:** If you start exploring Pagekit's internal structure, you will see the same module structure in many places, it's a central concept of the Pagekit architecture.
 
-## Module properties
-
-### `main`: Execute custom code
-
-Use the `main` function be called when the module is loaded. The function receives the Pagekit Application Container instance as a parameter.
+### `main`: Bootstrap code
+The `main` function gets called when the module is loaded. The function receives the Pagekit Application Container instance as a parameter.
 
 ```php
 use Pagekit\Application;
@@ -43,33 +37,118 @@ use Pagekit\Application;
 
 'main' => function (Application $app) {
     // bootstrap code
-},
+}
 ```
 
-You can also load an extension class. The namespace has to be loaded in order for this to work (see `autoload` property).
+You can also load an module class. Its namespace has to be loaded in order for this to work (see `autoload` property). Also the class needs to implement the `Pagekit\Module\ModuleInterface`.
 
 ```php
 'main' => 'MyNamespace\\MyExtension',
 ```
 
 ### `autoload`: Register custom namespaces
-
-Pass a list of namespaces and paths to be loaded by Pagekit. The contained classes will be available via autoloading (`use Pagekit\Hello\HelloExtension`).
+Pass a list of namespaces and paths to be auto loaded by Pagekit. The contained classes will be available via autoloading (`use Pagekit\Hello\HelloExtension`). The path is relative to the module's path.
 
 ```php
 'autoload' => [
 
     'Pagekit\\Hello\\' => 'src'
 
+]
+```
+
+### `routes`: Mount controllers
+Use the `routes` property to mount controllers to a route. Learn more about [Routing and Controllers](routing.md).
+
+```php
+'routes' => [
+
+    '/hello' => [
+        'name' => '@hello/admin',
+        'controller' => [
+            'Pagekit\\Hello\\Controller\\HelloController'
+        ]
+    ]
+
+]
+```
+
+### `permissions`: Define permissions
+Your module can define permissions. These will be managed in the Pagekit User & Permissions area. You can protect your routes with these permissions or prevent users from performing unauthorized actions.
+
+```php
+'permissions' => [
+
+    'hello: manage settings' => [
+        'title' => 'Manage settings'
+    ]
+
+]
+```
+
+### `resources`: Register resource shorthands
+You can register prefixes to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`.
+
+This works whenever the Pagekit filesystem is used (i.e. when generating the url for a file path or rendering a view from a controller).
+
+```php
+'resources' => [
+
+    'views:' => 'views'
+
 ],
 ```
 
-<a name="nodes"></a>
-### `nodes`: Register Nodes for the Site Tree
+### `events`: Listen to events from Pagekit or other modules
+Events are triggered at several points in the Pagekit core and potentially by other modules. An event always has a unique name that identifies it. You can register callback functions to any event.
 
+For more information on the Event system, check out the [Events section](../developer-basics/architecture-events.md)
+
+```php
+'events' => [
+
+    'view.scripts' => function ($event, $scripts) {
+        $scripts->register('hello-settings', 'hello:app/bundle/settings.js', '~extensions');
+    }
+
+]
+```
+
+### `config`: Default module configuration
+These are the module's default configuration values.
+
+```php
+'config' => [
+    'default' => 'World'
+],
+```
+
+#### Read config
+To read the config of a module, you can access the `config` property of the module instance. This config is the result of both the default config stored inside the `index.php` and changes that are stored in the database.
+
+```php
+$config = $app->module('hello')->config;
+```
+
+#### Write config
+To store changes for a module config, use the `config()` service. These changes will automatically propagate to the database.
+
+```php
+// Complete config
+$app->config()->set('hello', $config);
+
+// Single Value
+$app->config('hello')->set('message', 'Custom message');
+```
+
+**Note**. If you directly read the config from the module, it will still have the old value. After the next request, Pagekit will have merged the changes and made them available as the `config` property of the `$module` instance.
+
+### `nodes`: Register Nodes for the Site Tree
 Nodes are similar to routes with the main difference that they can be dragged around in the Site Tree View and therefore dynamically result in a calculated route.
 
-When you have added a Node, it will be available in the Site Tree. Click the *Add Page* button to see the Dropdown of all available Node types.
+When you have added a Node, it will be available in the Site Tree. Click the _Add Page_ button to see the Dropdown of all available Node types.
+
+For more information on nodes, check out the [Routing section](../developer-basics/routing.md
 
 ```php
 'nodes' => [
@@ -86,30 +165,11 @@ When you have added a Node, it will be available in the Site Tree. Click the *Ad
         'controller' => 'Pagekit\\Hello\\Controller\\SiteController'
     ]
 
-],
+]
 ```
 
-### `routes`: Mount controllers
-
-Use the `routes` property to mount controllers to a route. Learn more about [Controllers and Routing](controller.md).
-
-```php
-'routes' => [
-
-    '/hello' => [
-        'name' => '@hello/admin',
-        'controller' => [
-            'Pagekit\\Hello\\Controller\\HelloController'
-        ]
-    ]
-
-],
-```
-
-<a name="menu"></a>
 ### `menu`: Add menu items to the admin panel
-
-You can add menu items to the admin panel's main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not. The actual checking for user permissions has to be done on the [Controller](controller.md) level.
+You can add menu items to the admin panel's main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not.
 
 ```php
 'menu' => [
@@ -148,79 +208,14 @@ You can add menu items to the admin panel's main navigation. These can link to a
     ],
 ```
 
-### `permissions`: Define permissions
-
-Your module can define permissions. These will show up in the Pagekit User &amp; Permissions area. You can check for these permission strings in [Controllers](controller.md).
-
-```php
-'permissions' => [
-
-    'hello: manage settings' => [
-        'title' => 'Manage settings'
-    ],
-
-],
-```
-
 ### `settings`: Link to a settings screen
-
-Link to a route that renders your settings screen. Setting this property makes Pagekit render a *Settings* button next to your theme or extension in the administration panel listing.
+Link to a route that renders your settings screen. Setting this property makes Pagekit render a _Settings_ button next to your theme or extension in the admin panel listing.
 
 ```php
 'settings' => '@hello/admin/settings',
 ```
 
-### `config`: Default module configuration
-
-If your theme or extension comes with settings that you want the user to configure, you should define the default configuration values in your module configuration.
-
-```php
-'config' => [
-    'default' => 'World'
-],
-```
-
-On runtime, Pagekit will merge the default config and the config options that are currently stored in the database. The merged result will be available as a property of your module.
-
-```php
-$module = App::module('hello');
-$config = $module->config;
-```
-
-You can make use of this to [store any data](basics/module-config.md) that doesn't require its own database structure.
-
-### `events`: Listen to events from Pagekit or other modules
-
-Events are triggered at several points in the Pagekit core and potentially by other extensions. An event always has a unique name that identifies it. You can register callback functions to any event.
-
-For more information on the Event system, check out the [Events section](../developer-basics/architecture-events.md)
-
-```php
-'events' => [
-
-    'view.scripts' => function ($event, $scripts) {
-        $scripts->register('hello-settings', 'hello:app/bundle/settings.js', '~extensions');
-    }
-
-]
-```
-
-### `resources`: Register resource shorthands
-
-You can register strings to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`.
-
-This works whenever the Pagekit filesystem is used (i.e. when generating the url for a file path).
-
-```php
-'resources' => [
-
-    'views:' => 'views'
-
-],
-```
-
 ### `widgets`: Register Widgets
-
 A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](widgets.md).
 
 ```php

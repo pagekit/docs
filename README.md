@@ -26,17 +26,18 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   4. [Marketplace](basics/marketplace.md)
 
 - Developer Basics
-  1. [Packages](developer-basics/packages.md)
-  2. [Modules](developer-basics/modules.md)
-  3. [Routing](developer-basics/routing.md)
-  4. [Response](developer-basics/response.md)
-  5. [Views & Templating](developer-basics/views-templating.md)
-  6. [Themes](developer-basics/themes.md) F √ ✅
-  7. [Assets](developer-basics/assets.md)
-  8. [Widgets](developer-basics/widgets.md) F √ ✅
-  9. [Database](developer-basics/database.md) M
-  10. [Translation](developer-basics/translation.md) F √ ✅
-  11. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
+  1. [Application](developer-basics/application.md)
+  2. [Packages](developer-basics/packages.md)
+  3. [Modules](developer-basics/modules.md)
+  4. [Routing](developer-basics/routing.md)
+  5. [Response](developer-basics/response.md)
+  6. [Views & Templating](developer-basics/views-templating.md)
+  7. [Themes](developer-basics/themes.md) F √ ✅
+  8. [Assets](developer-basics/assets.md)
+  9. [Widgets](developer-basics/widgets.md) F √ ✅
+  10. [Database](developer-basics/database.md) M
+  11. [Translation](developer-basics/translation.md) F √ ✅
+  12. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
 
 - Troubleshooting
   1. [System Information](troubleshooting/system-information.md) ✅

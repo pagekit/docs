@@ -1,42 +1,26 @@
 # Application
-<p class="uk-article-lead">Learn how to access and use the central `Application` instance.</p>
+<p class="uk-article-lead">The Application functions as Pagekit's dependency container. The application makes Pagekit's functionality and services configurable, extendable, interchangeable and accessible throughout the [modules](modules.md).</p>
 
-All services you have available in Pagekit are set as dependency-injected properties at the `Application` instance. `$app['db']` for example will give you access to the database service.
+All services you have available in Pagekit are set as dependency-injected properties on the `Application` instance. `$app['db']` for example will give you access to the database service.
 
-To access the `Application` instance, there are several ways, depending on the context you are in at the moment.
-
-## Configuration context
-When your extension (or theme) is loaded, Pagekit loads the `extension.php` (or `theme.php`). Here, you can simply access the `Application` instance `$app`. Accessing the cache service would look as follows.
-
-```
-$app['cache']
-```
-
-## Controller and extension context
-When inside a controller or your extension code (to be exact, any class that extends `Pagekit\Framework\Controller` or `Pagekit\Framework\Extension`), you can access application properties by calling `$this` with the desired service name.
-
-```
-$this['cache']
-```
-
-## Custom classes
-To get access to the Application instance in one of your custom classes, use the `Pagekit\Framework\ApplicationTrait`. This will pull in a static `$app` reference and make it accessible by calling the self-reference. As a matter of fact, this is exactly what happens for `Controller` and `Extension` in the background.
+## Accessing a Service
+To access the `Application` instance, there are mainly two ways. Depending on the context you are in at the moment, you have either access to a `$app` variable or through a static call to the `Pagekit\Application` class.
 
 ```php
-namespace Pagekit\HelloExtension;
+// Getter
+$app['cache']
 
-use Pagekit\Framework\ApplicationTrait;
-
-class MyClass
-{
-  use ApplicationTrait;
-
-  ...
-}
+use Pagekit\Application as App;
+App::cache();
 ```
 
-Now, you can access the Application instance exactly like you do in controllers and extension classes.
+As you can see, the container implements `\ArrayAccess` as well as a magic `__call` method to access the container's services.
 
-```
-$this['cache']
+## Defining a Service
+Adding a service to the application can easily be achieved by setting an array key on the container to be a closure. This will not be evaluated until accessed for the first time.
+
+```php
+$app['cache'] = function () {
+    return new Cache();
+};
 ```

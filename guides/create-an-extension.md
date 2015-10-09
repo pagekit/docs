@@ -139,8 +139,8 @@ With your basic extension up and running, it's time to explore what you can do w
 The important thing to understand is the central module definition in your extension's `index.php`. To hook into Pagekit's workflow you probably just have to set the right property in the array configuration.
 
 Here are a few ideas to get you started:
-- [Add a menu item](../developer-basics/packages.md#menu) to the administration panel's main navigation.
+- [Add a menu item](../developer-basics/packages.md#menu) to the admin panel's main navigation.
 - [Add a node](../developer-basics/packages.md#nodes) to the Site Tree.
-- [Create a Widget](../developer-basics/widgets.md) for the frontend or administration panel dashboard
+- [Create a Widget](../developer-basics/widgets.md) for the frontend or admin panel dashboard
 - [Define a link type](../developer-basics/links.md) for Pagekit's Link picker
 - [Store simple data](../developer-basics/module-config.md) using the module config

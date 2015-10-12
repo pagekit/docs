@@ -28,11 +28,11 @@ Field           | Description
 ### Step 3 - Site setup
 After entering your site's title, you need to create your user account for Pagekit now. This user will have admin access and will be able to log in to Pagekit's control panel, once the installation is finished.
 
-Field      | Description
----------- | ------------------------
-`Name`     | The site Name.
-`User`     | Enter the User username.
-`Password` | Enter the User password.
-`Email`    | Enter the User email.
+Field        | Description
+------------ | ------------------------
+`Site Title` | The site title.
+`Username`   | Enter the admin username.
+`Password`   | Enter the admin password.
+`Email`      | Enter the admin email.
 
 Once the installation was successful you'll be redirected to the login screen. You can log in to Pagekit's admin panel with the account we created. Optionally you can access the login screen by appending `/admin` to the site URL.

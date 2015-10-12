@@ -6,20 +6,14 @@ All packages reside in the `/packages` directory, sorted in subdirectories accor
 
 Every package belongs to a specific vendor (for example `pagekit` for all official packages, including the _Blog_ extension and the _One_ theme).
 
-The vendor name is a unique representation of a developer or organization. In the simplest case, it just matches a github username.
-
-The package name will also define the name of the directory it gets stored in.
-
-Although not mandatory, it is a good convention to prefix a package name by its type. For example `theme-hello` for the _Hello_ theme and `extension-hello` for the _Hello_ extension.
+The vendor name is a unique representation of a developer or organization. In the simplest case, it just matches a GitHub username. The package name will also define the name of the directory it gets stored in.
 
 ## Package content
 A package contains at least two files.
 1. The `composer.json` contains the metadata for your package and therefore acts as the package definition.
 2. The `index.php` is a so called [Module definition](modules.md) and adds actual functionality to Pagekit.
 
-The rest of the package content depends on the package's `type`. A `pagekit-theme` will contain other files than a `pagekit-extension`.
-
-To learn more about the actual content of a package, check out the [Theme Guide](../developer-guides/themes.md) or the [Extension Guide](../developer-guides/extensions.md).
+The rest of the package content depends on the package's `type`. To learn more about the actual content of a package, check out the [Theme Guide](../developer-guides/themes.md) or the [Extension Guide](../developer-guides/extensions.md).
 
 ## Package definition: composer.json
 A package is defined by its `composer.json`. This file includes the package name, potential dependencies to be installed by [Composer](https://getcomposer.org) and other information that displays in the Pagekit marketplace.

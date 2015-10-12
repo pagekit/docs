@@ -1,13 +1,13 @@
 # Pagekit Documentation
 This is the documentation for Pagekit, a modular and lightweight CMS built with modern technologies.
 - Getting Started
-  1. [Requirements](getting-started/requirements.md) ✅
-  2. [Installation](getting-started/installation.md) ✅
-  3. [Updating](getting-started/updating.md) ✅
-  4. [Configuration File](getting-started/configuration-file.md) ✅
-  5. [File Structure](getting-started/file-structure.md) ✅
-  6. [Server Configuration](getting-started/server-configuration.md) ✅
-  7. [Getting Help](getting-started/getting-help.md) ✅
+  1. [Requirements](getting-started/requirements.md)
+  2. [Installation](getting-started/installation.md)
+  3. [Updating](getting-started/updating.md)
+  4. [Configuration File](getting-started/configuration-file.md)
+  5. [File Structure](getting-started/file-structure.md)
+  6. [Server Configuration](getting-started/server-configuration.md)
+  7. [Getting Help](getting-started/getting-help.md)
 
 - User Interface
   1. [Dashboard](user-interface/dashboard.md)
@@ -19,29 +19,27 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   7. [Editor](user-interface/editor.md)
   8. [Finder](user-interface/finder.md)
 
-- Developer Guides
-  1. [Create an Extension](guides/create-an-extension.md) F √ ✅
-  2. [Create a Theme](guides/create-a-theme.md) F √ ✅
-  3. [Translate Pagekit](guides/translation.md)
-  4. [Marketplace](basics/marketplace.md)
-
 - Developer Basics
   1. [Application](developer-basics/application.md)
   2. [Packages](developer-basics/packages.md)
   3. [Modules](developer-basics/modules.md)
   4. [Routing](developer-basics/routing.md)
   5. [Response](developer-basics/response.md)
-  6. [Views & Templating](developer-basics/views-templating.md)
-  7. [Themes](developer-basics/themes.md) F √ ✅
-  8. [Assets](developer-basics/assets.md)
-  9. [Widgets](developer-basics/widgets.md) F √ ✅
-  10. [Database](developer-basics/database.md) M
-  11. [Translation](developer-basics/translation.md) F √ ✅
-  12. [Dashboard Widgets](developer-basics/dashboard-widgets.md) F √ ✅
+  6. [Views & Templating](developer-basics/views-templating.md) TODO
+  7. [Database](developer-basics/database.md) TODO
+  8. [Translation](developer-basics/translation.md)
+
+- Developer Guides
+  1. [Extensions](guides/extensions.md)
+  2. [Themes](guides/themes.md)
+  3. [Widgets](developer-basics/widgets.md)
+  4. [Dashboard Widgets](developer-basics/dashboard-widgets.md)
+  5. [Translate Pagekit](guides/translation.md)
+  6. [Marketplace](basics/marketplace.md)
 
 - Troubleshooting
-  1. [System Information](troubleshooting/system-information.md) ✅
-  2. [Debug Mode](troubleshooting/debug-mode.md) ✅
-  3. [Permissions](troubleshooting/permissions.md) ✅
-  4. [Not Found](troubleshooting/not-found.md) ✅
-  5. [Server Error](troubleshooting/server-error.md) ✅
+  1. [System Information](troubleshooting/system-information.md)
+  2. [Debug Mode](troubleshooting/debug-mode.md)
+  3. [Permissions](troubleshooting/permissions.md)
+  4. [Not Found](troubleshooting/not-found.md)
+  5. [Server Error](troubleshooting/server-error.md)

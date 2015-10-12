@@ -19,7 +19,7 @@ A package contains at least two files.
 
 The rest of the package content depends on the package's `type`. A `pagekit-theme` will contain other files than a `pagekit-extension`.
 
-To learn more about the actual content of a package, check out the [Theme Guide](../guides/create-a-theme.md) or the [Extension Guide](../guides/create-an-extension.md).
+To learn more about the actual content of a package, check out the [Theme Guide](../developer-guides/themes.md) or the [Extension Guide](../developer-guides/extensions.md).
 
 ## Package definition: composer.json
 A package is defined by its `composer.json`. This file includes the package name, potential dependencies to be installed by [Composer](https://getcomposer.org) and other information that displays in the Pagekit marketplace.

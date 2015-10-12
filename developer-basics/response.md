@@ -1,5 +1,5 @@
 # Response
-The response represents the server's HTTP response to the client. There are a couple of different `Response` types, listed below, each with an example on how to build the response from the controller action:
+<p class="uk-article-lead">The response represents the server's HTTP response to the client. There are a couple of different `Response` types, listed below, each with an example on how to build the response from the controller action:</p>
 
 ## String
 To return a simple `String Response`, use the `response` service:

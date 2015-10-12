@@ -30,12 +30,12 @@ This is the documentation for Pagekit, a modular and lightweight CMS built with 
   8. [Translation](developer-basics/translation.md)
 
 - Developer Guides
-  1. [Extensions](guides/extensions.md)
-  2. [Themes](guides/themes.md)
-  3. [Widgets](developer-basics/widgets.md)
-  4. [Dashboard Widgets](developer-basics/dashboard-widgets.md)
-  5. [Translate Pagekit](guides/translation.md)
-  6. [Marketplace](basics/marketplace.md)
+  1. [Extensions](developer-guides/extensions.md)
+  2. [Themes](developer-guides/themes.md)
+  3. [Widgets](developer-guides/widgets.md)
+  4. [Dashboard Widgets](developer-guides/dashboard-widgets.md)
+  5. [Translate Pagekit](developer-guides/translation.md)
+  6. [Marketplace](developer-guides/marketplace.md)
 
 - Troubleshooting
   1. [System Information](troubleshooting/system-information.md)

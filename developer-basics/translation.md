@@ -77,7 +77,7 @@ To choose from several messages depending on a number, you can use a syntax of s
 $message = _c('{0} No Item enabled.|{1} Item enabled.|]1,Inf[ Items enabled.', count($ids))
 ```
 
-In Vue temmplates you can use the `transChoice` filter.
+In Vue templates you can use the `transChoice` filter.
 
 ```vue
 {{ '{0} %count% Files|{1} %count% File|]1,Inf[ %count% Files' | transChoice count {count:count} }}

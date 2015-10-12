@@ -11,20 +11,10 @@ public function indexAction()
 }
 ```
 
-## Themed
-To return a `Themed Response`, simply return a `String` from the controller:
-
-```php
-public function indexAction()
-{
-    return 'My content';
-}
-```
-
 ## Rendered View
-Pagekit can render the view and return the response. Simply return an array, with a key `$view` set to an array containing a _title_ and a _name_.
+Pagekit can render the view and return the response for you. Simply return an array, with a key `$view` set to an array containing a _title_ and a view _name_.
 
-All other parameters in the array, will be available in the view. Learn more about [Views and Templating](views-templating.md).
+All other parameters in the array, will be accessible in the view. Learn more about [Views and Templating](views-templating.md).
 
 ```php
 public function indexAction($name = '')
@@ -39,7 +29,17 @@ public function indexAction($name = '')
 }
 ```
 
-If you don't want this to render a `Themed Response`, set a key `'layout' => false` in the `$view` array.
+If you don't want this to render a `Themed Response` as explained below, set a key `'layout' => false` in the `$view` array.
+
+## Themed
+A `Themed Response` embeds the controller's result within a surrounding layout, usually defined by the theme. Simply return a `String` or a  from the controller.
+
+```php
+public function indexAction()
+{
+    return 'My content';
+}
+```
 
 ## JSON
 There are two ways to return a `JSON Response` from the controller:

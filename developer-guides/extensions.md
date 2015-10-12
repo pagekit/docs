@@ -138,6 +138,80 @@ With your basic extension up and running, it's time to explore what you can do w
 
 The important thing to understand is the central module definition in your extension's `index.php`. To hook into Pagekit's workflow you probably just have to set the right property in the array configuration.
 
+## Links
+Pagekit's concept of links allows for a reusable link picker (for example when linking from a menu item or when linking from the markdown editor). The user can choose a type of link and get further options depending on that choice. Linking to a page for example will present the user with a list of pages to choose from.
+
+In this section we will explain how custom link types can be registered and how to ask for advanced options from the user.
+
+## Register JS component
+In the `events` property of your module's `index.php`, register a JavaScript file that will take care of rendering the Link interface. The second parameter is the parameter of dependencies, the tilde `~` makes sure your script is only loaded then the `panel-link` script is included.
+
+```php
+'view.scripts' => function ($event, $scripts) {
+    $scripts->register('link-blog', 'hello:/link-hello.js', '~panel-link');
+}
+```
+
+## JS component for link picker
+In the JavaScript file, you can now render the interface.
+
+**Note** This is most comfortable when making use of Vue components, storing them in a single `*.vue` file and bundling them using Webpack. A good example for this can be found in `blog/app/components/link-blog.vue`, the link picker from the Blog extension.
+
+```js
+window.Links.components['link-hello'] = {
+
+    link: {
+        label: 'Hello'
+    },
+
+    props: ['link'],
+
+    template: '<div>Your form markup here.</div>',
+
+    ready: function() {
+        this.link = '@hello';
+    },
+
+};
+```
+
+The Vue component needs to set the 'link' property. This is probably dynamic, depending on the parameters the internal route is made up of.
+
+# Site Tree
+<p class="uk-article-lead">Pagekit's Site Tree can be extended by definining your own Node type.</p>
+
+When inside the Site tree, you can add new elements with the _Add Page_ button. A dropdown will appear that shows all available Node types. Once you have created a node, it can be dragged around the Tree of your Site. A node can be seen as a dynamic route, as the actual URL of the node depends on the location of the node inside the Site Tree.
+
+## Register node
+To register a new node, use the `nodes` property inside your module's `index.php`:
+
+```php
+'nodes' => [
+
+    'hello' => [
+
+        // The name of the node route
+        'name' => '@hello',
+
+        // Label to display in the backend
+        'label' => 'Hello',
+
+        // The controller for this node. Each controller action will be mounted
+        'controller' => 'Pagekit\\Hello\\Controller\\SiteController'
+    ]
+
+],
+```
+
+## Add configuration tab to node edit screen
+When you have added a node or are editing an existing node, Pagekit displays a screen with option for that particular node.
+
+The options include things that come from the Pagekit core (i.e. access management), each located in a single tab. You can register a tab with custom options that you want the suer to configure.
+
+```
+TODO
+```
+
 Here are a few ideas to get you started:
 - [Add a menu item](../developer-basics/packages.md#menu) to the admin panel's main navigation.
 - [Add a node](../developer-basics/packages.md#nodes) to the Site Tree.

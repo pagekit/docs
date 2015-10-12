@@ -61,13 +61,13 @@ return [
 
         // ...
 
-        return $app->view('hello:views/widget.php');
+        return $app->view('hello/widget.php');
     }
 
 ];
 ```
 
-This example requires an additional JS component located at `hello:js/widget.js` and a php view file `hello:views/widgets/helloview.php` which is used to render the widget in the frontend.
+This example requires an additional JS component located at `hello:js/widget.js` and a php view file `hello/widgets/helloview.php` which is used to render the widget in the frontend.
 
 `js/widget.js`:
 

@@ -1,24 +1,10 @@
-# Create a theme
-<p class="uk-article-lead">Create a theme to change the look of your site.</p>
+# Themes
+<p class="uk-article-lead">A theme changes the look of your site. In its simplest form a theme generates the surrounding html markup for your extensions' content output.</p>
 
-## Location of theme files
-The example theme we will be building in this guide is the _Hello_ theme. This tiny theme can be used as a starter theme. It's available via the Pagekit marketplace and contains all examples we describe here. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
-
-## File structure
-In order for Pagekit to recognize a directory as a valid theme, you have to follow a certain file structure, at least for a few required files.
-
-The required files are `composer.json`, `index.php` and `views/template.php`. Other files are optional and can be added as needed and named as you prefer it.
-
-File                 | Needed?  | Description
--------------------- | -------- | -----------------------
-`composer.json`      | required | Package metadata
-`index.php`          | required | Theme module definition
-`views/template.php` | required | Main template file
-`css/theme.css`      | optional | Theme Stylesheet
-`js/theme.js`        | optional | Theme JavaScript
+_Note_ The examples in this guide are taken from the _Hello_ theme. It's available via the Pagekit marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
 
 ## Package definition: composer.json
-A theme is a regular Pagekit package. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is availabe in the [Packages](../developer-basics/packages.md) chapter.
+A theme is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is available in the [Packages](../developer-basics/packages.md) chapter.
 
 ```json
 {
@@ -30,31 +16,18 @@ A theme is a regular Pagekit package. Each package needs a description in order 
 ```
 
 ## Module definition: index.php
-Internally, Themes in Pagekit are handled as _Modules_. This opens up a lot of possibilities of what you can do with a theme, because modules allow you to access all of Pagekit's functionality. The main thing to understand in the beginning is that the definition of your theme happens in the `index.php`.
+A theme in itself is simply a [Module](../developer-basics/modules.md) of the type `theme`. So you may want to read up on modules first. This opens up a lot of possibilities to what a theme can do.
 
-Make sure this file returns a PHP array. By setting the right properties in this array, you tell Pagekit everything it needs to know about your theme.
-
-Define the positions and menus of your theme, load additional scripts and much more. To get started, here is a simple example for your `index.php`. Explanations of the single properties follow below.
+Define the positions and menus of your theme, load additional scripts and much more. To get started, here is a shortened example of the `index.php`. Explanations of the theme specific properties follow below.
 
 ```php
 <?php
 
 return [
 
-
     'name' => 'theme-hello',
 
     'type' => 'theme',
-
-    /**
-     * Resource shorthands.
-     */
-    'resources' => [
-
-        'theme:' => '',
-        'views:' => 'views'
-
-    ],
 
     /**
      * Define menu positions.
@@ -72,33 +45,12 @@ return [
 
         'sidebar' => 'Sidebar',
 
-    ],
-
-    /**
-     * Default theme configuration.
-     */
-    'config' => []
+    ]
 
 ];
 ```
 
-`resources` allow you to register a shorthand to a path reference. This makes it easier when referencing files because you do not have to specify the full path. For example `views:template.php` will expand to `packages/vendor/theme/views/template.php`
-
 Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as we will show below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label which displays in the admin panel.
-
-Other properties can be added for more advanced settings.
-
-Property    | Required? | Description
------------ | --------- | ---------------------------------------------
-`name`      | required  | Theme identifier
-`type`      | required  | Module type (needs to be `theme` for a theme)
-`resources` | optional  | Resource paths shorthands
-`menus`     | optional  | Define menu positions
-`positions` | optional  | Define widget positions
-`settings`  | optional  | Route to theme settings screen
-`config`    | optional  | Default module config
-`events`    | optional  | Listen to events
-...         | optional  | All properties from extensions can be used
 
 ### `menus`: Register menu positions for a theme
 In your theme you can render menus from the Pagekit system in as many positions as you want. To make these positions known to Pagekit, you need to register them using the `menus` property.
@@ -127,8 +79,8 @@ Each widget position is defined by an identifier (i.e. `sidebar`) and a label to
 ],
 ```
 
-## template.php
-`views/template.php` is the main file for the theme markup. It is a PHP file that has the following objects available for rendering:
+## The layout file
+Next to the other mandatory module files, a theme brings its own `views/template.php` file. It is the main file for the theme markup. It is a PHP file that has the following objects available for rendering:
 
 Object    | Description
 --------- | ------------------------------
@@ -187,44 +139,19 @@ Object    | Description
 </html>
 ```
 
-## theme.css &amp; theme.js
-Because our template already includes these files, make sure to also create the two files `js/theme.js` and `css/theme.css`. You can leave them empty for now.
-
-```
-<?php $view->script('theme:js/theme.js') ?>
-<?php $view->style('theme', 'theme:css/theme.css') ?>
-```
-
-To learn more about working with static files, read the [Assets](../developer-basics/assets.md) section.
-
-## Activate theme
-With this basic file structure completed, you can now go to Pagekit's admin panel. Navigate to _Sytem &raquo Themes_ and Enable your new theme by clicking the star icon next to it.
-
-You should now be able to refresh the frontend and see the content without any styling. And this is where you come in. You have the basic setup up and running and can now start to change the markup and add your CSS and JS.
-
-## Where to go from here
-Congratulations, you've created your first theme! We've introduced the basic file structure and talked about the most important configuration options. You know how to change the markup, include CSS and JS and how to add widget functionality. Now it's time to get creative and play around.
-
-If you're looking for advanced functionality, here are some pointers to other sections of the documentation:
-- TODO
-- TODO
-- TODO
-
 ## Doing more with themes
 Themes and extensions in Pagekit are very much the same. Try not to think in terms of developing a theme vs. developing an extension but rather understand that you have access to Pagekit's framework all the time.
 
 Most importantly, the module definition in your theme's `index.php` can contain all properties, no matter if you have a theme or an extension. If you want to add a Settings screen to the admin panel, register additional tabs to the Site Tree or the Widget management interface, all of that works exactly the same.
 
-## Render sub-view
-In some cases you want to split your template in several files. This can be useful if you either have a lot of markup or if you have conditional rendering.
-
-A classic example would be when you want to allow different versions of the menu to be rendered. In this case you should try to avoid nesting several `if` clauses and instead create additional files in your `views` folder.
+## Menu and Position Renderer
+You might want to use custom menu or position renderer. Below you'll find two examples on how to use them.
 
 ```php
 <?= $view->menu('main', 'menu-navbar.php') ?>
 ```
 
-`menu-navbar.php` could look as follows:
+In this case the `main` menu will be rendererd with the `menu-navbar.php` layout file:
 
 ```php
 <ul class="uk-navbar-nav">
@@ -246,7 +173,7 @@ The same works for widget positions.
 <?= $view->position('hero', 'position-grid.php') ?>
 ```
 
-`position-grid.php` can look as follows:
+Here, the widget position `hero` will be rendered with the `position-grid.php` layout file:
 
 ```php
 <?php foreach ($widgets as $widget) : ?>
@@ -300,7 +227,7 @@ Load your own JS when the Site Tree interface is currently active. In your `inde
 ],
 ```
 
-The `js/site-theme.js` contains a Vue component which renders the interface and takes care of the storing of theme settings.
+The `js/site-theme.js` contains a Vue component which renders the interface and takes care of storing of the theme settings.
 
 **Note**: Although it's possible to do all of this in a single JS file and have the markup be represented in a string, best practice is to actually create `*.vue` files with your Vue component. Examples can be found in the `app/components` folder of the default _One_ theme.
 

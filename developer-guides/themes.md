@@ -16,18 +16,15 @@ A theme is a regular Pagekit [package](../developer-basics/packages.md) of the t
 ```
 
 ## Module definition: index.php
-A theme in itself is simply a [Module](../developer-basics/modules.md) of the type `theme`. So you may want to read up on modules first. This opens up a lot of possibilities to what a theme can do.
+A theme in itself is simply a [Module](../developer-basics/modules.md). So you may want to read up on modules first. This opens up a lot of possibilities to what a theme can do.
 
 Define the positions and menus of your theme, load additional scripts and much more. To get started, here is a shortened example of the `index.php`. Explanations of the theme specific properties follow below.
 
 ```php
-<?php
 
 return [
 
     'name' => 'theme-hello',
-
-    'type' => 'theme',
 
     /**
      * Define menu positions.

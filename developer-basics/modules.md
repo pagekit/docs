@@ -17,9 +17,6 @@ return [
     // Required: Unique module name
     'name' => 'hello',
 
-    // Required: type (i.e. theme, extension)
-    'type' => 'extension'
-
 ];
 ```
 
@@ -87,7 +84,7 @@ Your module can define permissions. These will be managed in the Pagekit User & 
 ```
 
 ### `resources`: Register resource shorthands
-You can register prefixes to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`.
+You can register prefixes to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`. Pagekit registers a few paths for extensions and themes by default already.
 
 This works whenever the Pagekit filesystem is used (i.e. when generating the url for a file path or rendering a view from a controller).
 
@@ -224,4 +221,10 @@ A Widget is also a module. With the `widgets` property you can register all widg
     'widgets/form.php'
 
 ],
+```
+
+## Module config
+
+```
+TODO
 ```

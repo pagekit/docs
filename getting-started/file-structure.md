@@ -9,21 +9,21 @@
   modules                 // core modules files. Each module has its own subfolder
   system                  // core System extension files
   vendor                  // external libraries that are used by Pagekit
-/packages                 // core and 3rd party extensions
+/packages                 // Pagekit packages and 3rd party packages
   composer                // packager related files
-  pagekit                 // Pagekit extensions
-    blog                  // core Blog extension
+  pagekit                 // Pagekit default packages
+    blog                  // default Blog extension
     theme-one             // the default theme distributed with Pagekit
 /storage                  // site media files. You can change this location in System > Settings
 /tmp                      // temporary files
   cache                   // cache files
   logs                    // log files
-  packages                // packages temporal files
+  packages                // temporary package files
   sessions                // file based user sessions
-  temp                    // general temporal files
-.htaccess                 // the Apache configuration file. Make sure is always there if using Apache
-CHANGELOG.md              // the Pagekit changelog file
-config.php                // the Pagekit configuration file generated during the installation
+  temp                    // general temporary files
+.htaccess                 // the Apache configuration file. Make sure it exists if using Apache
+CHANGELOG.md              // changelog file
+config.php                // configuration file generated during the installation
 pagekit                   // the CLI entry point
-pagekit.db                // the database file only present if using SQLite
+pagekit.db                // the database file (only present if using SQLite)
 ```

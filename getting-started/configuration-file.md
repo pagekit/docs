@@ -1,7 +1,7 @@
 # Configuration File
 <p class="uk-article-lead">Change settings in Pagekit's configuration file.</p>
 
-Pagekit stores parts of its configuration in a file located at the root level - `/config.php`. It is auto generated during the installation. The normal way of editing it would be through Pagekit _System > Settings_ admin area, although there are situations where the manual editing is necessary. The following sections describe the most common settings.
+Pagekit stores parts of its configuration in a `/config.php` file located on the root level. It is auto generated during the installation. The normal way of editing it would be through Pagekit _System > Settings_ admin area, although there are situations where the manual editing is necessary. The following sections describe the most common settings.
 
 ```php
 'database' => [
@@ -34,6 +34,6 @@ Pagekit stores parts of its configuration in a file located at the root level - 
   'debug' => false                          // the debug mode state - enable while developing to get debug output
 ],
 'debug' => [
-  'enabled' => false                        // the debug toolbar state - enable it to get information, among others, about requests, memory usage
+  'enabled' => false                        // the debug toolbar state - enable it to get information, about requests, memory usage etc
 ]
 ```

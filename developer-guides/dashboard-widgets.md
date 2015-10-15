@@ -3,7 +3,7 @@
 
 ## Create a Dashboard Widget
 A Dashboard Widget is created as a Vue component. You should therefore make sure to read the section on [Data Reactive Interface Design](developer/data-reactive-ui.md) and setup [Webpack](../tools/webpack-gulp.md) before continuing with the following steps.
-1. Create a Vue component for your Widget, save it under your extension: `app/components/widget-hello.js`
+1. Create a Vue component for your Widget, save it under your extension: `app/components/widget-hello.vue`
 
 ```vue
 <template>

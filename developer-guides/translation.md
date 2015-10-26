@@ -8,7 +8,7 @@ If you would like to improve or complete an existing localization, go to [Pageki
 
 To take part in the Pagekit project, you must first click the _Join team_ button in the language folder. Once we've approved your request, you will be able to access the language team and can start to translate the project. Thanks!
 
-![Join team](../assets/guide-translation-join.png)
+![Join team](assets/guide-translation-join.png)
 
 Choose the resource you want to contribute to by clicking on it, this will open an options screen. By clicking _Translate now_ you will enter the Transifex editor which allows you to translate on the fly without having to down- and upload the files.
 
@@ -27,4 +27,4 @@ In case you already created a .po language file, you can upload it easily by cli
 
 A green bar in each column shows you the progress of each localization.
 
-![Options](../assets/guide-translation-options.png)
+![Options](assets/guide-translation-options.png)

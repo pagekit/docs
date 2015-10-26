@@ -19,6 +19,14 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   7. [Editor](user-interface/editor.md)
   8. [Finder](user-interface/finder.md)
 
+- Developer Guides
+  1. [Extensions](developer-guides/extensions.md)
+  2. [Themes](developer-guides/themes.md)
+  3. [Widgets](developer-guides/widgets.md)
+  4. [Dashboard Widgets](developer-guides/dashboard-widgets.md)
+  5. [Translate Pagekit](developer-guides/translation.md)
+  6. [Marketplace](developer-guides/marketplace.md)
+
 - Developer Basics
   1. [Application](developer-basics/application.md)
   2. [Packages](developer-basics/packages.md)
@@ -28,14 +36,6 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   6. [Views & Templating](developer-basics/views-templating.md) TODO
   7. [Database](developer-basics/database.md) TODO
   8. [Translation](developer-basics/translation.md)
-
-- Developer Guides
-  1. [Extensions](developer-guides/extensions.md)
-  2. [Themes](developer-guides/themes.md)
-  3. [Widgets](developer-guides/widgets.md)
-  4. [Dashboard Widgets](developer-guides/dashboard-widgets.md)
-  5. [Translate Pagekit](developer-guides/translation.md)
-  6. [Marketplace](developer-guides/marketplace.md)
 
 - Troubleshooting
   1. [System Information](troubleshooting/system-information.md)

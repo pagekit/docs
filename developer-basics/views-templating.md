@@ -2,7 +2,7 @@
 <p class="uk-article-lead">While the controller is handling the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently Pagekit supports a PHP engine only.</p>
 
 ## Render a view
-There are two ways of rendering a view. The most common would be to return a [Rendered View](response.md) from your controller action.
+There are two ways of rendering a view. The most common would be to return a [Rendered View](developer-basics/response.md) from your controller action.
 
 You can also manually access the View service to render a template file. This may come in handy when you dynamically determine which view to load.
 

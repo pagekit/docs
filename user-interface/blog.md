@@ -21,7 +21,7 @@ Enable Markdown | Toggles the content areas Markdown.
 Enable Comments | Toggles the post comments.
 
 ### Edit Post
-[Editor](editor.md)
+[Editor](user-interface/editor.md)
 
 ## Comments
 The **Comments** tab holds the comments manager for all the Blog posts.

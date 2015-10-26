@@ -14,7 +14,7 @@ public function indexAction()
 ## Rendered View
 Pagekit can render the view and return the response for you. Simply return an array, with a key `$view` set to an array containing a _title_ and a view _name_.
 
-All other parameters in the array, will be accessible in the view. Learn more about [Views and Templating](views-templating.md).
+All other parameters in the array, will be accessible in the view. Learn more about [Views and Templating](developer-basics/views-templating.md).
 
 ```php
 public function indexAction($name = '')

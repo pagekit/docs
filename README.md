@@ -1,7 +1,5 @@
 # Pagekit Documentation
-
 This is the documentation for [Pagekit](https://pagekit.com), a modular open source CMS built with modern technologies.
-
 - Getting Started
   1. [Requirements](getting-started/requirements.md)
   2. [Installation](getting-started/installation.md)

@@ -5,7 +5,7 @@
 The most common way in Pagekit for creating routes is to define a _Controller_. A _Controller_ is responsible for handling requests, setting routes and rendering views.
 
 ### Register a Controller
-You can register a _Controller_ inside your [module configuration](modules.md). Use the `routes` property to mount controllers to a route.
+You can register a _Controller_ inside your [module configuration](developer-basics/modules.md). Use the `routes` property to mount controllers to a route.
 
 ```php
 'routes' => [

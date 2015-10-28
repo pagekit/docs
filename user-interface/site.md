@@ -74,7 +74,7 @@ The _Visibility_ tab allows you to choose which pages the widget will be rendere
 
 ## Storage
 
-The Storage tab shows the [Finder](user-interface/finder.md) which allows to manage your file storage and upload files.
+The Storage tab shows the [Finder](finder.md) which allows to manage your file storage and upload files.
 
 ## Settings
 

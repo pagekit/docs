@@ -14,7 +14,7 @@ Field           | Description
 :-------------- | :-----------------------------------------------------------------------------------------------------------------------------------
 Title           | The post title.
 Slug            | The post slug. Used in the post URL (SEO friendly).
-Content         | Markdown or HTML content using the [Pagekit editor](user-interface/editor.md).
+Content         | Markdown or HTML content using the [Pagekit editor](editor.md).
 Excerpt         | The excerpt can contain a preview of the post.
 Image           | The post associated image.
 Status          | The post status.
@@ -26,7 +26,7 @@ Enable Comments | Toggles the post comments.
 
 ### Edit Post
 
-For more information on how to edit blog posts, read more about the [Pagekit Editor](user-interface/editor.md).
+For more information on how to edit blog posts, read more about the [Pagekit Editor](editor.md).
 
 ## Comments
 The **Comments** tab holds the comments manager for all the Blog posts.

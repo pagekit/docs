@@ -8,7 +8,7 @@ The System area holds all the tools related to the Site's system administration.
 Field         | Description
 :------------ | :----------------------------------------------------------------------------
 **Storage**   | Defines the upload folder for media files.
-**Developer** | Allows enabling the [debug mode and debug toolbar](troubleshooting/debug.md).
+**Developer** | Allows enabling the [debug mode and debug toolbar](../troubleshooting/debug-mode.md).
 
 ### Localization
 

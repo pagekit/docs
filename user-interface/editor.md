@@ -1,14 +1,14 @@
 # The Editor
 
-Let's introduce you to the the main editing tool you will see in all places: Pagekit's powerful markdown editor.
+<p class="uk-article-lead">This section introduces the main editing tool you will see in many places: Pagekit's powerful editor.</p>
 
 ![Markdown editor](assets/editor.png)
 
-To edit content, you can write HTML with some autocompletion aid or use the popular [markdown syntax](http://daringfireball.net/projects/markdown/syntax). You can even include HTML snippets in markdown. In the top right corner you see an arrow icon to enter *full screen mode*. If you are on a large enough screen, you will see a side by side view of your content source on the left and the rendered preview on the right. On smaller devices, this will be displayed in two separate tabs.
+Content in the editor can be written in HTML or using the popular [Markdown syntax](http://daringfireball.net/projects/markdown/syntax). You can also include HTML snippets in Markdown. To define which content type the editor should support (with its toolbar and auto-completion), you can enable or disable Markdown with the *Markdown* checkbox below the editor.
 
-To define how the content is rendered, you can enable or disable markdown with the *Markdown* checkbox below the editor.
+Above the content area, you see a toolbar for the most frequent formatting tasks. Choose text styles, insert links, quotes, lists and media elements. Depending on the current editor mode, the toolbar will automatically insert HTML or Markdown snippets.
 
-Above the content field you see a toolbar for the most frequent formatting tasks. Choose text styles, insert links, quotes, lists and media elements. Depending on the current editor mode, the toolbar will automatically insert HTML or Markdown snippets.
+In the top right corner you see an arrow icon to enter *full screen mode*. If you are on a large enough screen, you will see a side by side view of your content source on the left and the rendered preview on the right. On smaller devices, this will be displayed in two separate tabs.
 
 ## Insert Images
 To insert an image, just click the _image_ icon and a modal will appear where you can choose a picture from the Storage. When the Storage dialog is open, you can also drag and drop the desired image file from your local file browser. Once the image was chosen, click the update button and the image text will appear at the current cursor position.

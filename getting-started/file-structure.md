@@ -1,5 +1,15 @@
 # File Structure
-<p class="uk-article-lead">The following table gives you an overview on the file structure in Pagekit.</p>
+<p class="uk-article-lead">When you get started using Pagekit, it is important that you know your way around the file structure. As Pagekit has a very clear separation of core code and third party files, this shouldn't be a big deal.</p>
+
+## Explanation video
+
+The following video goes through the structure and explains everything you need to know.
+
+<iframe class="uk-responsive-width" width="1280" height="720" src="https://www.youtube.com/embed/xfCBW1kynmo" frameborder="0" allowfullscreen></iframe>
+
+## Compact overview
+
+For a brief overview, have a look at the following listing.
 
 ```
 /app                      // main system files
@@ -27,3 +37,9 @@ config.php                // configuration file generated during the installatio
 pagekit                   // the CLI entry point
 pagekit.db                // the database file (only present if using SQLite)
 ```
+
+## Places to explore
+
+While it always takes some getting used to a new project's structure, you will quickly find your way around the important parts. The essential thing to know is that themes and extensions that you develop always sit in the `/packages` directory, inside a subfolder with your vendor name.
+
+Additionally, it is a good idea to have a look at the official packages located in `/packages/pagekit` - for inspiration and a deeper understanding of the Pagekit concepts. Also, check out the modules in `/app/modules` and `/app/system/modules` to see examples of what can be done with the module pattern.

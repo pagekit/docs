@@ -102,7 +102,7 @@ Object    | Description
         <?php $view->style('theme', 'theme:css/theme.css') ?>
 
         <!-- Include theme JS, require jQuery which will also be included -->
-        <?php $view->script('theme:js/theme.js', 'jquery') ?>
+        <?php $view->script('theme', 'theme:js/theme.js', 'jquery') ?>
     </head>
     <body>
 

@@ -27,7 +27,11 @@ In the **Content** tab you can edit the page main content, such as the article b
 ### Type Link
 Links are the most flexible type as they can create a menu entry linking to any internal or external URL.
 
+![Link Picker](assets/site-link-1.png)
+
 In the **Settings** tab the URL field allows inputting manually the value or use the assistant by clicking the _select_ button. The URL assistant allows choosing the extension and view which you are willing to link to. The link type field allows choosing if the link should be a normal link, an alias of another link or a redirect.
+
+![Link settings](assets/site-link-2.png)
 
 **Note** Changing the link type could affect your site SEO, leave it to default _link_ if you are not sure what it is about.
 

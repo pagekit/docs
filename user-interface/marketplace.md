@@ -1,6 +1,6 @@
 # Marketplace
 
-The Marketplace allows getting Pagekit and 3rd party packages with 1-click installation.
+The Marketplace allows browsing official and third party packages with easy installation.
 
 ## Browse available packages
 
@@ -12,4 +12,4 @@ In the top of the Marketplace interface, you have two tabs available: extensions
 
 To install an extension or theme, click on the icon the main listing. In the appearing modal dialog, click the *Install* button in the top right corner.
 
-![image](assets/marketplace-install.png)
+![Install a package](assets/marketplace-install.png)

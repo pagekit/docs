@@ -2,9 +2,21 @@
 Create and manage users, user roles and access levels to control how much access users have to your site.
 
 ## List
-In the _List_ tab, you can search, add, activate, block or delete certain users using the toolbar buttons. When a new user is added or an existent edited, by clicking on its name, the user edit view is displayed showing the following fields.
+In the _List_ tab, you have an overview of all your registered user.
 
 ![Users overview](assets/users.png)
+
+In the user listing, you have a few quick actions available. You can quickly toggle user status from enabled to disabled by clicking the colored circle icon in the *Status* column. The colors represent the user status as follows.
+
+Color | User Status
+------|------
+Green | User is enabled and can log in. If an enabled user cannot log in, make sure they are assigned to a *Role* that is allowed to access the admin area
+Red   | User is disabled and cannot log in, no matter what role they belong to
+Blue  | This is a new user account
+
+## Edit user
+
+To edit a user, click on the user name in the user listing.
 
 Field                | Description
 :------------------- | :-------------------------------------------------------------------------------------------------------
@@ -18,29 +30,24 @@ Field                | Description
 **Last Login**       | Displays the last time the user logged in the site.
 **Registered Since** | Displays the date the user has been registered in the site or his entry created.
 
+## User avatar
+
 The user's profile picture is displayed as a [Gravatar](https://gravatar.com/) depending on the given email address.
 
 ## Permissions
 In the _Permissions_ tab you can see an overview of user roles and the actions they are allowed to perform.
 
-The permissions are grouped by their according extensions and can be assigned or revoked by toggling the checkboxes. Changes are stored automatically.
+The permissions are grouped by their according extensions and can be assigned or revoked by toggling the checkboxes. Changes are stored immediately.
 
-**Note** You will have to give the _Access admin area_ permission to all roles who should perform any action in the admin panel, even if it is limited to editing pages. Else they won't be able to reach the pages' admin panel.
+**Note** You will have to give the _Access admin area_ permission to all roles who should perform any action in the admin panel, even if it is limited to editing pages. If you don't,  they won't be able to reach the pages' admin panel.
 
 ## Roles
 In the _Roles_ tab, you can create and manage user roles, a way of organizing users into groups with the same permissions and access levels.
 
-Pagekit comes with a few pre-defined roles, you can also add new ones, if the defaults are not enough for your use-case. The default roles are:
+Pagekit comes with a few pre-defined roles. If you need more for your use-case, just add new roles however you like. The default roles are:
 
 User / Group  | Description
 ------------- | -------------------------------------------------
 Anonymous     | Any random visitor to your site.
 Authenticated | A user with an account who is logged in.
 Administrator | A user with the privilege to perform all actions.
-
-## Access levels
-In the _Access levels_ tab, you can configure the visibility of certain parts of your site.
-
-The idea behind this is to set an access level on your content (or menu item etc.) and assign user roles to certain access level. Think of access levels as "Students" and "Teachers" that you've created. That way you can assign content to these groups even when user roles change (new students etc).
-
-By default, you can assign public, registered or special access levels to different parts (menu items, pages etc.) of your website. If the default ones are not enough, you can create and configure your own access levels.

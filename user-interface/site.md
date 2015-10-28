@@ -1,68 +1,84 @@
 # Site
-<p class="uk-article-lead">This is the place where you manage the site's menus and pages, structured in a tree view for easy managing.</p>
+<p class="uk-article-lead">The Site Tree allows you to manage your site's content and structure, all in a single drag-and-drop interface. This is also the area where you manage all of your Widgets.</p>
 
 ## Menus
-You can see an overview of all menus on the left and their pending pages on the right. Hover a single entry to see an _edit_ and _remove_ button for that menu. New menus can be created by clicking on the _Add Menu_ button.
+You can see an overview of all menus on the left and their assigned pages on the right. Hover a single entry to see an _edit_ and _remove_ button for that menu. New menus can be created by clicking on the _Add Menu_ button. You can use these for actual Menus you render on the site. However, you can also use these to just group content from your site for easier management in the admin area.
 
 ![Menu overview](assets/site.png)
 
 Each menu linked pages are displayed on the right. Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view, both accessible below the menus list.
 
+## Render a menu on your site
+
+When you hover over a menu and lick the *Edit* icon, a modal dialog will appear. Besides renaming the menu, you can also assign it to any number of menu positions that are defined by your theme. In the following screenshot, the Menu will be rendered both in the main menu position of the site and in the mobile off-canvas position.
+
+![Menu positions](assets/site-menu-edit.png)
+
 ## Pages
-Menu pages can be managed on the right list. They can be sorted quickly via drag-and drop or disabled/enabled by clicking on the green or red circle in the status column. When one or more pages are selected through the checkboxes a toolbar will appear allowing to to perform additional batch tasks as changing the state, moving the pages to another menu or deleting them.
+Menu pages can be managed on the right side of the interface. This is a tree view which means that it shows the hierarchichal structure of your page. It can be sorted via drag-and drop. You can enable/disable single items by clicking on the green or red circle in the status column. This will make them appear/disappear in the rendered menu but also make the links unavailable if anyone accesses a URL manually.
 
-To create a new page click on the _Add Page_ top right button and choose the type of page you are willing to create. Pagekit comes with a few pre-defined ones - any extension can add new types to that list.
+In front of every item you see a checkbox. Select one or multiple pages to show a toolbar which offers several quick tasks. Move pages, delete them or change the enabled status for multiple items at once.
 
-### Type Pages
-Pages are basically the equivalent to a static webpage. They live outside the blog context, meaning that they aren't thought of as being published at one specific date. Typically you would use pages for content that rarely changes, like an _About Us_, _Contact_ page or anything that doesn't feel like an article living in a certain category.
+To create a new page click on the _Add Page_ top right button and choose the type of page you want to create. Pagekit comes with a few pre-defined ones - any extension can add new types to that list. You can also edit existing pages by clicking on their title in the Site Tree. This will lead you to an edit screen which will look different, depending on the type of the item you clicked on.
+
+### Type: Pages
+
+Pages are basically the equivalent to a static webpage. Typically you would use pages for content like an _About Us_ or _Contact_ page. For editorial content however, you would rather make use of blog posts.
 
 ![Pages overview](assets/site-pages.png)
 
-In the **Content** tab you can edit the page main content, such as the article body, title and slug. Additionally you can set the Menu title which will be displayed in the frontend Menu list, the page status, access and linked menu. The **Settings** tab will display an overview of the page basic settings. Finally, the **Theme** tab holds the theme specific options.
+In the **Content** tab you can edit the page main content, such as the article body, title and slug. Additionally you can set the Menu title which will be displayed in the frontend Menu as well as the page status and access limitations for certain user roles. The **Settings** tab will display an overview of the page basic settings. Finally, the **Theme** tab holds the theme specific options.
 
 **Note** A slug is a computer friendly version of the title so that it can be included in the absolute URL to the page. If you do not like the generated slug, simply click on it to choose your own.
 
 ![Edit a page](assets/site-page-edit.png)
 
-### Type Link
+### Type: Link
 Links are the most flexible type as they can create a menu entry linking to any internal or external URL.
 
 ![Link Picker](assets/site-link-1.png)
 
-In the **Settings** tab the URL field allows inputting manually the value or use the assistant by clicking the _select_ button. The URL assistant allows choosing the extension and view which you are willing to link to. The link type field allows choosing if the link should be a normal link, an alias of another link or a redirect.
+In the **Settings** tab the you can manually fill the URL field. You can also use the link picker by clicking the _select_ button. It allows choosing the extension and view which you want to link to. You can set the link type to be a normal link, an alias of another link or a redirect.
 
 ![Link settings](assets/site-link-2.png)
 
-**Note** Changing the link type could affect your site SEO, leave it to default _link_ if you are not sure what it is about.
+**Note** If you are unsure, leave the default type _Link_.
 
-As in page type the tabs **Settings** and **Theme** offers an overview of basic settings and theme specific ones respectively.
+Like with a static page, the tabs **Settings** and **Theme** offer both system and theme specific settings.
 
 ## Widgets
-Widgets are a way to render small chunks of content in areas defined by the theme you are using. A widget's content is either static (like some custom HTML, a logo or a copyright message) or dynamic (like a slideshow generated by one of your installed extensions).
+Widgets are a way to render small chunks of content in areas defined by the activated theme. A widget's content can be static (like custom HTML, MArkdown or plaintext) or dynamic (like a slideshow generated by one of your installed extensions).
 
 ![widgets overview](assets/site-widgets.png)
 
-In the _Site > Widgets_ overview the widgets are sorted by the position they are published in, you can Drag & Drop them to change the rendering order inside a position which has several widgets. Toggle between enabled and published state by clicking the red or green circle on the _Status_ column. When one or more widgets are selected a toolbar will be revealed allowing to change it state, duplicate it, move it to another position or delete it. It's also possible to filter the currently displayed widgets by clicking on the search icon and inputing the filter criteria.
+In the _Site > Widgets_ overview the widgets are sorted by the position they are published in. You can Drag & Drop them to change the rendering order inside a position with multiple widgets. Toggle between enabled and published state by clicking the red or green circle in the _Status_ column.
+
+When one or more widgets are selected, a toolbar appears. Here you can change the status of mutliple widgets, as well as duplicate, delete or move them to another position. You can also filter the displayed Widgets with the search field at the top of the screen. This may come on handy when working with a large number of Widgets.
 
 **Note** Be careful when deleting the Widgets as there is no trash to recover them once deleted.
 
 Pagekit comes with the pre-defined widget types _Menu_, _Text_ and _Login_, extensions can add widget types of their own.
 
 ### Editing
-To edit a widget click on its name, the _Settings_ tab will be selected by default in the edit view. The content of the tab will depend on the widget type. For example for a text widget you will have a content editing area, for a menu widget options to select a menu and so on. Every widget type has a set of options available on the right side where you can enable or disable the widget, assign it to a widget position in your theme and restrict its access.
+Click on a Widget title to go to its Edit screen. By default, the _Settings_ tab will be selected. The content of this tab will depend on the widget type. A text widget you will have an editor, a menu widget shows options to select a menu and so on. Every widget type has a set of options available on the right side where you can enable or disable the widget, assign it to a widget position in your theme and restrict its access.
 
 ![Edit a widget](assets/site-widget-edit.png)
 
-The _Theme_ tab includes configuration settings for the widget's appearance. You can choose a panel style (like a box around the widget's content) or add a badge and center the widget's content. Note that these settings are specific to your activated theme.
+The _Theme_ tab offers settings for the widget's appearance. You can choose a panel style (like a box around the widget's content) or add a badge and center the widget's content. Note that these settings are specific to your activated theme. The following screenshot shows what the default theme will offer here.
 
 ![Widget theme settings](assets/site-widget-theme.png)
 
-The _Visibility_ tab allows you to choose which pages the widget will be rendered on.
+The _Visibility_ tab allows you to choose which pages the widget will be rendered on. If no pages are selected, it will be rendered on every page.
 
 ![Widget menu assignment](assets/site-widget-assignment.png)
 
+## Storage
+
+The Storage tab shows the [Finder](user-interface/finder.md) which allows to manage your file storage and upload files.
+
 ## Settings
-Under _Site > Settings > General_ you can fill in main information about your site.
+
+_Site > Settings > General_ allows to set general information about your site.
 
 Field        | Description
 :----------- | :----------------------------------------------------------------
@@ -71,18 +87,18 @@ Field        | Description
 **Favicon**  | The image that will be used as the browser favicon.
 **App Icon** | The icon that will be used when creating an site shortcut in iOS.
 
-_Site > Settings > Code_ allows setting a code in the header and/or footer of your site, useful for tracking codes and meta tags.
+_Site > Settings > Theme_ displays settings from the currently selected theme. The _Theme_ tab might not be visible at all if the active theme doesn't offer or require any settings by the user.
+
+_Site > Settings > Code_ allows setting a code in the header and/or footer of your site. This is useful for tracking codes and manual meta tags.
 
 Field      | Description
 :--------- | :-------------------------------------------------------------
 **Header** | The code you would like to be displayed in the header section.
 **Footer** | The code you would like to be displayed in the footer section.
 
-_Site > Settings > Maintenance_ allows putting your site into a maintenance mode and display a related message.
+_Site > Settings > Maintenance_ allows putting your site into maintenance mode and display a related message. As an administrator you will still be able to browser your site. Visitors will only see the maintenance message.
 
 Field       | Description
 :---------- | :-----------------------------------------------------------------------------------------------
 **Offline** | If enabled the site will enter the maintenance mode and display the text from the message field.
 **Message** | The message to be displayed when in maintenance mode.
-
-**Note** The _Site > Settings > Theme_ displays the currently selected theme settings. Please refer to the theme documentation for more details about.

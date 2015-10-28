@@ -2,7 +2,7 @@
 <p class="uk-article-lead">The response represents the server's HTTP response to the client. There are a couple of different `Response` types, listed below, each with an example on how to build the response from the controller action:</p>
 
 ## String
-To return a simple `String Response`, use the `response` service:
+To return a simple String Response, use the `response` service:
 
 ```php
 public function indexAction()
@@ -29,10 +29,10 @@ public function indexAction($name = '')
 }
 ```
 
-If you don't want this to render a `Themed Response` as explained below, set a key `'layout' => false` in the `$view` array.
+If you don't want this to render a themed Response as explained below, set `'layout' => false` in the `$view` array.
 
 ## Themed
-A `Themed Response` embeds the controller's result within a surrounding layout, usually defined by the theme. Simply return a `String` or a  from the controller.
+A themed Response embeds the controller's result within a surrounding layout, usually defined by the theme. Simply return a string from the controller.
 
 ```php
 public function indexAction()
@@ -42,9 +42,9 @@ public function indexAction()
 ```
 
 ## JSON
-There are two ways to return a `JSON Response` from the controller:
+There are two ways to return a JSON Response from the controller:
 
-If the action either returns an array or an object that implements \JsonSerializable. A `JsonResponse` will automatically be generated.
+If the action either returns an array or an object that implements `\JsonSerializable`. A `JsonResponse` will automatically be generated.
 
 ```php
 public function jsonAction()
@@ -83,7 +83,7 @@ public function forbiddenAction()
 ```
 
 ## Stream
-The `Streamed Response` allows to stream the content back to the client. It takes an callback function as its first argument. Within that callback, a call to `flush` will be directly emitted to the client.
+The Streamed Response allows to stream the content back to the client. It takes an callback function as its first argument. Within that callback, a call to `flush` will be directly emitted to the client.
 
 ```php
 public function streamAction()
@@ -98,7 +98,7 @@ public function streamAction()
 ```
 
 ## Download
-The `Download Response` lets you send a file to the client. It sets `Content-Disposition: attachment` to force a _Save as_ dialog in most browsers.
+The Download Response lets you send a file to the client. It sets `Content-Disposition: attachment` to force a _Save as_ dialog in most browsers.
 
 ```php
 public function downloadAction()

@@ -1,7 +1,7 @@
 # Create an Extension
 <p class="uk-article-lead">An extension adds features and functionality to Pagekit. It can be a tiny plugin or a full blown application.</p>
 
-_Note_ The examples in this guide are taken from the _Hello_ extension. It's available via the Pagekit marketplace. When installed, the _Hello_ extension is located in `/packages/pagekit/extension-hello`.
+**Note** The examples in this guide are taken from the _Hello_ extension. It's available via the Pagekit marketplace. When installed, the _Hello_ extension is located in `/packages/pagekit/extension-hello`.
 
 ## Package definition: composer.json
 An extension is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-extension`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is available in the [Packages](../developer-basics/packages.md) chapter.
@@ -146,6 +146,7 @@ TODO
 ```
 
 Here are a few ideas to get you started:
+
 - [Add a menu item](../developer-basics/modules.md#menu) to the admin panel's main navigation.
 - [Add a node](../developer-basics/modules.md#nodes) to the Site Tree.
 - [Create a Widget](../developer-guides/widgets.md) for the frontend or admin panel dashboard

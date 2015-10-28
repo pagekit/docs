@@ -1,7 +1,7 @@
 # Themes
 <p class="uk-article-lead">A theme changes the look of your site. In its simplest form a theme generates the surrounding html markup for your extensions' content output.</p>
 
-_Note_ The examples in this guide are taken from the _Hello_ theme. It's available via the Pagekit marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
+**Note** The examples in this guide are taken from the _Hello_ theme. It's available via the Pagekit marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
 
 ## Package definition: composer.json
 A theme is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is available in the [Packages](../developer-basics/packages.md) chapter.
@@ -293,7 +293,7 @@ window.Site.components['node-theme'] = {
 };
 ```
 
-**Note:** Compare with full Vue components in `app/components` folder of the default _One_ theme.
+**Note** Compare with full Vue components in `app/components` folder of the default _One_ theme.
 
 ## Add theme options to Widget interface
 Register a script to be loaded in Widget edit view.
@@ -321,7 +321,7 @@ window.Widgets.components['widget-theme'] = {
 };
 ```
 
-**Note:** Compare with full Vue components in `app/components` folder of the default _One_ theme.
+**Note** Compare with full Vue components in `app/components` folder of the default _One_ theme.
 
 ## Add a settings screen manually
 If the prepared ways of adding a settings screen do not satisfy your needs, you can also manually create a completely new interface. With the module definition in `index.php` you have full control and can do something like the following:

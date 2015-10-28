@@ -24,7 +24,7 @@ This minimal example is a valid module definition, although it doesn't do anythi
 
 **Note:** If you start exploring Pagekit's internal structure, you will see the same module structure in many places, it's a central concept of the Pagekit architecture.
 
-### `main`: Bootstrap code
+### **main**: Bootstrap code
 The `main` function gets called when the module is loaded. The function receives the Pagekit Application Container instance as a parameter.
 
 ```php
@@ -43,7 +43,7 @@ You can also load an module class. Its namespace has to be loaded in order for t
 'main' => 'MyNamespace\\MyExtension',
 ```
 
-### `autoload`: Register custom namespaces
+### **autoload**: Register custom namespaces
 Pass a list of namespaces and paths to be auto loaded by Pagekit. The contained classes will be available via autoloading (`use Pagekit\Hello\HelloExtension`). The path is relative to the module's path.
 
 ```php
@@ -54,7 +54,7 @@ Pass a list of namespaces and paths to be auto loaded by Pagekit. The contained 
 ]
 ```
 
-### `routes`: Mount controllers
+### **routes**: Mount controllers
 Use the `routes` property to mount controllers to a route. Learn more about [Routing and Controllers](eveloper-basics/routing.md).
 
 ```php
@@ -70,7 +70,7 @@ Use the `routes` property to mount controllers to a route. Learn more about [Rou
 ]
 ```
 
-### `permissions`: Define permissions
+### **permissions**: Define permissions
 Your module can define permissions. These will be managed in the Pagekit User & Permissions area. You can protect your routes with these permissions or prevent users from performing unauthorized actions.
 
 ```php
@@ -83,7 +83,7 @@ Your module can define permissions. These will be managed in the Pagekit User & 
 ]
 ```
 
-### `resources`: Register resource shorthands
+### **resources**: Register resource shorthands
 You can register prefixes to be used as shorter versions when working with paths. For example use `views:admin/settings.php` to reference `packages/VENDOR/PACKAGE/views/admin/settings.php`. Pagekit registers a few paths for extensions and themes by default already.
 
 This works whenever the Pagekit filesystem is used (i.e. when generating the url for a file path or rendering a view from a controller).
@@ -96,7 +96,7 @@ This works whenever the Pagekit filesystem is used (i.e. when generating the url
 ],
 ```
 
-### `events`: Listen to events from Pagekit or other modules
+### **events**: Listen to events from Pagekit or other modules
 Events are triggered at several points in the Pagekit core and potentially by other modules. An event always has a unique name that identifies it. You can register callback functions to any event.
 
 For more information on the Event system, check out the [Events section](../developer-basics/architecture-events.md)
@@ -111,7 +111,7 @@ For more information on the Event system, check out the [Events section](../deve
 ]
 ```
 
-### `config`: Default module configuration
+### **config**: Default module configuration
 These are the module's default configuration values.
 
 ```php
@@ -140,7 +140,7 @@ $app->config('hello')->set('message', 'Custom message');
 
 **Note**. If you directly read the config from the module, it will still have the old value. After the next request, Pagekit will have merged the changes and made them available as the `config` property of the `$module` instance.
 
-### `nodes`: Register Nodes for the Site Tree
+### **nodes**: Register Nodes for the Site Tree
 Nodes are similar to routes with the main difference that they can be dragged around in the Site Tree View and therefore dynamically result in a calculated route.
 
 When you have added a Node, it will be available in the Site Tree. Click the _Add Page_ button to see the Dropdown of all available Node types.
@@ -165,7 +165,7 @@ For more information on nodes, check out the [Routing section](../developer-basi
 ]
 ```
 
-### `menu`: Add menu items to the admin panel
+### **menu**: Add menu items to the admin panel
 You can add menu items to the admin panel's main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not.
 
 ```php
@@ -205,14 +205,14 @@ You can add menu items to the admin panel's main navigation. These can link to a
     ],
 ```
 
-### `settings`: Link to a settings screen
+### **settings**: Link to a settings screen
 Link to a route that renders your settings screen. Setting this property makes Pagekit render a _Settings_ button next to your theme or extension in the admin panel listing.
 
 ```php
 'settings' => '@hello/admin/settings',
 ```
 
-### `widgets`: Register Widgets
+### **widgets**: Register Widgets
 A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](developer-guides/widgets.md).
 
 ```php

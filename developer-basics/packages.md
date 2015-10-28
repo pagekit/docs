@@ -1,5 +1,5 @@
 # Packages
-<p class="uk-article-lead">A Package is Pagekit's concept for extending its functionality. Packages come in two different `types` `Extensions` and `Themes`.</p>
+<p class="uk-article-lead">A Package is Pagekit's concept for extending its functionality. Packages come in two different types: Extensions and Themes.</p>
 
 ## Package location
 All packages reside in the `/packages` directory, sorted in subdirectories according to their vendor.

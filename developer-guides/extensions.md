@@ -57,7 +57,7 @@ Create a controller class `src/Controller/HelloController.php`.
 ```
 <?php
 
-namespace Pagekit\Hello;
+namespace Pagekit\Hello\Controller;
 
 class HelloController
 {

@@ -55,7 +55,7 @@ Pass a list of namespaces and paths to be auto loaded by Pagekit. The contained 
 ```
 
 ### **routes**: Mount controllers
-Use the `routes` property to mount controllers to a route. Learn more about [Routing and Controllers](eveloper-basics/routing.md).
+Use the `routes` property to mount controllers to a route. Learn more about [Routing and Controllers](routing.md).
 
 ```php
 'routes' => [
@@ -213,7 +213,7 @@ Link to a route that renders your settings screen. Setting this property makes P
 ```
 
 ### **widgets**: Register Widgets
-A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](developer-guides/widgets.md).
+A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](../developer-guides/widgets.md).
 
 ```php
 'widgets' => [

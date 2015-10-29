@@ -2,7 +2,7 @@
 <p class="uk-article-lead">Use Dashboard Widgets to render small chunks of content at the admin panel's dashboard.</p>
 
 ## Create a Dashboard Widget
-A Dashboard Widget is created as a Vue component. You should therefore make sure to read the section on [Data Reactive Interface Design](developer/data-reactive-ui.md) and setup [Webpack](../tools/webpack-gulp.md) before continuing with the following steps.
+A Dashboard Widget is created as a [Vue](http://vuejs.org) component.
 1. Create a Vue component for your Widget, save it under your extension: `app/components/widget-hello.vue`
 
 ```vue

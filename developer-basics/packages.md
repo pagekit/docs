@@ -11,7 +11,7 @@ The vendor name is a unique representation of a developer or organization. In th
 ## Package content
 A package contains at least two files.
 1. The `composer.json` contains the metadata for your package and therefore acts as the package definition.
-2. The `index.php` is a so called [Module definition](developer-basics/modules.md) and adds actual functionality to Pagekit.
+2. The `index.php` is a so called [Module definition](modules.md) and adds actual functionality to Pagekit.
 
 The rest of the package content depends on the package's `type`. To learn more about the actual content of a package, check out the [Theme Guide](../developer-guides/themes.md) or the [Extension Guide](../developer-guides/extensions.md).
 

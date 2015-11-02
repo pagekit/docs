@@ -26,7 +26,6 @@ Field                | Description
 **Password**         | The user password. Click on show to reveal it.
 **Status**           | The user account status.
 **Roles**            | The roles the user is part of.
-**Roles**            | The roles the user is part of.
 **Last Login**       | Displays the last time the user logged in the site.
 **Registered Since** | Displays the date the user has been registered in the site or his entry created.
 

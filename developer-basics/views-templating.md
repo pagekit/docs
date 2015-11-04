@@ -1,8 +1,44 @@
 # Views and Templating
 <p class="uk-article-lead">While the controller is handling the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently Pagekit supports a PHP engine only.</p>
 
-## Render a view
-There are two ways of rendering a view. The most common would be to return a [Rendered View](response.md#rendered-view) from your controller action.
+## Rendered view response
+
+The most common way to render a view from is to return an array from your controller action. Use the `'$view'` property to pass parameters to your view renderer.
+
+```php
+public function indexAction($name = '')
+{
+    return [
+        '$view' => [
+
+            // Rendered in the site's <title>
+            'title' => 'Hello World',
+
+            // view file that is rendered
+            'name' => 'hello:views/index.php',
+        ],
+
+        // pass parameters to view file
+        'name' => $name
+    ];
+}
+```
+
+The rendered view file could look like this:
+
+```php
+<!-- extensions/hello/views/index.php -->
+
+<h1>Hello <?= $name ?></h1>
+<p>
+   ...
+</p>
+```
+
+
+This view is wrapped in the main layout by default. If you do not want that, you can change `'layout' => false` in the $view array.
+
+## Render a view manually
 
 You can also manually access the View service to render a template file. This may come in handy when you dynamically determine which view to load.
 
@@ -10,9 +46,13 @@ You can also manually access the View service to render a template file. This ma
 
 use Pagekit\Application as App;
 
-public function anotherViewAction()
-{
-    return App::render('extension://hello/views/view.php', ['id' => 1]);
+class MyController {
+
+    public function anotherViewAction()
+    {
+        return App::render('extension://hello/views/view.php', ['id' => 1]);
+    }
+
 }
 ```
 

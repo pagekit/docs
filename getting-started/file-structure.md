@@ -5,7 +5,7 @@
 
 The following video goes through the structure and explains everything you need to know.
 
-<iframe class="uk-responsive-width" width="1280" height="720" src="https://www.youtube.com/embed/xfCBW1kynmo" frameborder="0" allowfullscreen></iframe>
+<iframe class="uk-responsive-width" width="1280" height="720" src="https://www.youtube.com/embed/-cH53Hq7F4o" frameborder="0" allowfullscreen></iframe>
 
 ## Compact overview
 

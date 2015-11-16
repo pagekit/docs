@@ -33,6 +33,7 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   3. [Modules](developer-basics/modules.md)
   4. [Routing](developer-basics/routing.md)
   5. [Response](developer-basics/response.md)
+  5. [Users & Permissions](developer-basics/users-permissions.md)
   6. [Views & Templating](developer-basics/views-templating.md) TODO
   7. [Database](developer-basics/database.md) TODO
   8. [Translation](developer-basics/translation.md)

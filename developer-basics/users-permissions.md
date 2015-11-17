@@ -26,12 +26,12 @@ Note that your administrator account can also not see this content, unless you e
 
 To add a permission to the system area, which can then be assigned to a role, use the `permissions` keyword in the `index.php` of an extension.
 
-Use speaking permission names. The convention is to start with the name of the extension and then have a short phrase describing the permission, all lowercase. The `title` is the string displayed in the browser. The `__()` call makes sure this string is translatable.
+Use speaking permission names. The convention is to start with the name of the extension and then have a short phrase describing the permission, all lowercase. The `title` is the string displayed in the browser. The `_()` call makes sure this string is translatable.
 
 ```php
 'permissions' => [
     'hello: manage settings' => [
-        'title' => __('Manage settings')
+        'title' => _('Manage settings')
     ],
 ],
 ```

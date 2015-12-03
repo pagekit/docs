@@ -20,7 +20,7 @@ A Dashboard Widget is created as a [Vue](http://vuejs.org) component.
 
     </form>
 
-    <div v-if="!editing">
+    <div v-else>
 
         <h3 v-if="widget.title">{{ widget.title }}</h3>
 

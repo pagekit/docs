@@ -15,7 +15,7 @@ When you hover over a menu and lick the *Edit* icon, a modal dialog will appear.
 ![Menu positions](assets/site-menu-edit.png)
 
 ## Pages
-Menu pages can be managed on the right side of the interface. This is a tree view which means that it shows the hierarchichal structure of your page. It can be sorted via drag-and drop. You can enable/disable single items by clicking on the green or red circle in the status column. This will make them appear/disappear in the rendered menu but also make the links unavailable if anyone accesses a URL manually.
+Menu pages can be managed on the right side of the interface. This is a tree view which means that it shows the hierarchical structure of your page. It can be sorted via drag-and drop. You can enable/disable single items by clicking on the green or red circle in the status column. This will make them appear/disappear in the rendered menu but also make the links unavailable if anyone accesses a URL manually.
 
 In front of every item you see a checkbox. Select one or multiple pages to show a toolbar which offers several quick tasks. Move pages, delete them or change the enabled status for multiple items at once.
 
@@ -53,7 +53,7 @@ Widgets are a way to render small chunks of content in areas defined by the acti
 
 In the _Site > Widgets_ overview the widgets are sorted by the position they are published in. You can Drag & Drop them to change the rendering order inside a position with multiple widgets. Toggle between enabled and published state by clicking the red or green circle in the _Status_ column.
 
-When one or more widgets are selected, a toolbar appears. Here you can change the status of mutliple widgets, as well as duplicate, delete or move them to another position. You can also filter the displayed Widgets with the search field at the top of the screen. This may come on handy when working with a large number of Widgets.
+When one or more widgets are selected, a toolbar appears. Here you can change the status of multiple widgets, as well as duplicate, delete or move them to another position. You can also filter the displayed Widgets with the search field at the top of the screen. This may come on handy when working with a large number of Widgets.
 
 **Note** Be careful when deleting the Widgets as there is no trash to recover them once deleted.
 

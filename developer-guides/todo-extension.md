@@ -9,7 +9,7 @@
 <li><a href="#step-1-extending-pagekit-using-modules">Extending Pagekit using Modules</a></li>
 <li><a href="#step-2-routing-and-controller">Routing and Controller</a></li>
 <li><a href="#step-3-view-rendering-and-module-config">View rendering and module config</a></li>
-<li><a href="#step-4-using-vuejs-in-a-pagekit-extension">Using Vue.js in a Pagekit extension</a></li>
+<li><a href="#step-4-using-vue-js-in-a-pagekit-extension">Using Vue.js in a Pagekit extension</a></li>
 <li><a href="#the-completed-example">The completed example</a></li>
 </ol>
 

@@ -6,11 +6,11 @@
 ## Content
 
 <ol>
-<li><a href="#step-1">Extending Pagekit using Modules</a></li>
-<li><a href="#step-2">Routing and Controller</a></li>
-<li><a href="#step-3">View rendering and module config</a></li>
-<li><a href="#step-4">Using Vue.js in a Pagekit extension</a></li>
-<li><a href="#complete">The completed example</a></li>
+<li><a href="#step-1-extending-pagekit-using-modules">Extending Pagekit using Modules</a></li>
+<li><a href="#step-2-routing-and-controller">Routing and Controller</a></li>
+<li><a href="#step-3-view-rendering-and-module-config">View rendering and module config</a></li>
+<li><a href="#step-4-using-vuejs-in-a-pagekit-extension">Using Vue.js in a Pagekit extension</a></li>
+<li><a href="#the-completed-example">The completed example</a></li>
 </ol>
 
 If you prefer video instead of text, check out the [Youtube playlist with all screencasts](https://www.youtube.com/playlist?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) included in this guide.
@@ -19,7 +19,7 @@ If you prefer video instead of text, check out the [Youtube playlist with all sc
 
 ---
 
-## <span id="step-1">Step 1: Extending Pagekit using Modules</span>
+## Step 1: Extending Pagekit using Modules
 
 <p class="uk-article-lead">As a developer, you can easily extend what Pagekit already offers. Whether you want a custom theme or an extension for additional functionality, both are built following the same approach. In this first step we will introduce what a *package* and what a *module* is - both central concepts of Pagekit.</p>
 
@@ -96,7 +96,7 @@ This minimal example shows how small a fully functional module can be. It has ac
 
 ---
 
-## <span id="step-2">Step 2: Routing and Controller</span>
+## Step 2: Routing and Controller
 
 <p class="uk-article-lead">With the basic structure of an extension set up, a common task is to register your own controllers and add menu items to the admin area. For that, we will look at some additional properties that you can add to the module definition in your `index.php`.</p>
 
@@ -193,7 +193,7 @@ Refresh the Pagekit backend and you will see a new menu item which links to the 
 
 ---
 
-## <span id="step-3">Step 3: View rendering and module config</span>
+## Step 3: View rendering and module config
 
 <p class="uk-article-lead">In the past steps, we have looked at the basics of modules and routing. However, our first controller only returned simple strings. In this step, let us look at actual view rendering.</p>
 
@@ -273,7 +273,7 @@ App::config('todo')->set('entries', $entries);
 
 ---
 
-## <span id="step-4">Step 4: Using Vue.js in a Pagekit extension</span>
+## Step 4: Using Vue.js in a Pagekit extension
 
 <p class="uk-article-lead">When building your own screens for the admin area, you can use any library you are used to. But as Pagekit comes with Vue.js included, it makes sense to look into it and see if it's the right choice for you as well. In this step, we will be introducing the basic concepts of working with Vue.js inside Pagekit.</p>
 

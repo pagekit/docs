@@ -20,12 +20,13 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   8. [Finder](user-interface/finder.md)
 
 - Developer Guides
-  1. [Extensions](developer-guides/extensions.md)
-  2. [Themes](developer-guides/themes.md)
-  3. [Widgets](developer-guides/widgets.md)
-  4. [Dashboard Widgets](developer-guides/dashboard-widgets.md)
-  5. [Translate Pagekit](developer-guides/translation.md)
-  6. [Marketplace](developer-guides/marketplace.md)
+  1. [How to: Example Extension](developer-guides/todo-extension.md)
+  2. [Extensions](developer-guides/extensions.md)
+  3. [Themes](developer-guides/themes.md)
+  4. [Widgets](developer-guides/widgets.md)
+  5. [Dashboard Widgets](developer-guides/dashboard-widgets.md)
+  6. [Translate Pagekit](developer-guides/translation.md)
+  7. [Marketplace](developer-guides/marketplace.md)
 
 - Developer Basics
   1. [Application](developer-basics/application.md)

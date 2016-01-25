@@ -20,7 +20,7 @@ To edit a user, click on the user name in the user listing.
 
 Field                | Description
 :------------------- | :-------------------------------------------------------------------------------------------------------
-**Username**         | The username that identifies the user (limited to alphanumeric characters, numbers, dot and underscore).
+**Username**         | The username that identifies the user (limited to alphanumeric characters, numbers, dot, hyphen and underscore).
 **Name**             | The name that will be displayed when referencing the user.
 **Email**            | The email that will be used as main contact method.
 **Password**         | The user password. Click on show to reveal it.

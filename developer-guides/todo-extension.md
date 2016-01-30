@@ -211,7 +211,7 @@ public function indexAction()
             'title' => 'TODO management',
             'name' => 'todo:views/admin/index.php'
         ],
-        'message' => 'Hello how's it going?'
+        'message' => 'Hello how`s it going?'
     ];
 }
 ```

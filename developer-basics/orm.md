@@ -73,7 +73,13 @@ class Topic implements \JsonSerializable
 
 ## Relations
 
+The application data you represent in your database model has certain relations amongst its instances. A blog post has a number of comments related to it and it belongs to exactly one User instance. The Pagekit ORM offers mechanisms to define these relations and also to query them in a programmatic manner.
+
 ### Belongs-to relation
+
+The basic annotation that is used across the different relation types it the `@BelongsTo` annotation above a model property. In the following example (taken from the `Post` model of the Blog) we specify a `$user` property, which is defined to point to the instance of the Pagekit `User` model.
+
+The `keyFrom` parameter specify which source property is used to point to the user id. Note how we also need to define the according `user_id` property in order for the relationship to be resolved by a query.
 
 Example:
 
@@ -87,9 +93,102 @@ public $user_id;
 public $user;
 ```
 
-### Has-many relation
+### One-to-many relation
 
-TODO
+In this relationship, a single model instance has references to an arbitrary
+amount of instances of another model. A classic example for this is a `Post`
+which has any number of `Comment` instances that belong to it. On the inverse
+side, a comment belongs exactly one `Post`.
+
+Example from the blog package, in `Pagekit\Blog\Model\Post`.
+
+```
+/**
+ * @HasMany(targetEntity="Comment", keyFrom="id", keyTo="post_id")
+ */
+public $comments;
+```
+
+Define the inverse of the relation in `Pagekit\Blog\Model\Comment`:
+
+```
+/** @Column(type="integer") */
+public $post_id;
+
+/** @BelongsTo(targetEntity="Post", keyFrom="post_id") */
+public $post;
+```
+
+To query the Model, you can use the ORM class.
+
+```
+use Pagekit\Blog\Post;
+
+// ...
+
+// fetch posts without related comments
+$posts = Post::findAll();
+var_dump($posts);
+```
+
+Output:
+
+```
+array (size=6)
+  1 =>
+    object(Pagekit\Blog\Model\Post)[4513]
+      public 'id' => int 1
+      public 'title' => string 'Hello Pagekit' (length=13)
+      public 'comments' => null
+      // ...
+
+  2 =>
+    object(Pagekit\Blog\Model\Post)[3893]
+      public 'id' => int 2
+      public 'title' => string 'Hello World' (length=11)
+      public 'comments' => null
+      // ...
+
+  // ...
+```
+
+```
+use Pagekit\Blog\Post;
+
+// ...
+
+// fetch posts including related comments
+$posts = Post::query()->related('comments')->get();
+var_dump($posts);
+```
+
+Output:
+
+```
+array (size=6)
+
+  1 =>
+    object(Pagekit\Blog\Model\Post)[4512]
+      public 'id' => int 1
+      public 'title' => string 'Hello Pagekit' (length=13)
+      public 'comments' =>
+        array (size=0)
+          empty
+      // ...
+
+  2 =>
+    object(Pagekit\Blog\Model\Post)[3433]
+      public 'id' => int 2
+      public 'title' => string 'Hello World' (length=11)
+      public 'comments' =>
+        array (size=1)
+          6 =>
+            object(Pagekit\Blog\Model\Comment)[4509]
+              ...
+      // ...
+
+  // ...
+```
 
 ### Has-one relation
 
@@ -99,30 +198,35 @@ TODO
 
 TODO
 
-### Many-to-many relation
-
-TODO
-
 ## ORM Queries
 
-
-Fetch a `Topic` instance with a given id.
-
-```
-Topic::find(23)
-```
-
-With the above query, relations will not be expanded to have more optimal queries.
+Fetch a model instance with a given id.
 
 ```
-$topic->user == null;
+$post = Post::find(23)
 ```
 
-If you want to fetch the associated `User` object as well, you need to build a query which fetches the related objects.
+Fetch all instances of a model.
 
 ```
+$posts = Post::findAll();
+```
+
+With the above queries, relations will not be expanded to include related instances. In above example, the `Post` instance will not have its `$comments` property initialized.
+
+```
+$post->comments == null;
+```
+
+If you want to fetch the associated `Comment` instances as well, you need to build a query which fetches the related objects.
+
+```
+// fetch single
 $id = 23;
-Topic::query()->related('user')->where('id = ?', [$id])->first();
+$post = Post::query()->related('comments')->where('id = ?', [$id])->first();
+
+// fetch all
+$posts = Post::query()->related('comments')->get();
 ```
 
 Note how the `find(23)` has been replaced with `->where('id = ?', [$id])->first()`. This is because `find()` is a method defined on the Model. In the second example however, we have an instance of `Pagekit\Database\ORM\QueryBuilder`.

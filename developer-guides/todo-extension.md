@@ -254,7 +254,7 @@ From the controller, we can access this configuration as a property of the modul
 `src/Controller/TodoController.php`:
 
 ```
-use Pagekit\Application
+use Pagekit\Application as App;
 
 // ...
 
@@ -328,7 +328,7 @@ $(function(){
         el: '#todo',
 
         data: {
-            entries: window.$data.config.entries,
+            entries: window.$data.entries,
         },
 
         methods: {
@@ -393,7 +393,7 @@ This is how a simple view might look like.
         <li v-for="entry in entries">
             {{ entry.message }}
 
-            <button @click="click: toggle(entry)">{{ entry.done ? 'Undo' : 'Do' }}</button>
+            <button @click="toggle(entry)">{{ entry.done ? 'Undo' : 'Do' }}</button>
         </li>
     </ul>
 

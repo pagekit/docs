@@ -26,7 +26,6 @@ if ($util->tableExists('@forum_topics') === false) {
 }
 ```
 
-
 ### Define a Model class
 
 Example:
@@ -190,13 +189,161 @@ array (size=6)
   // ...
 ```
 
-### Has-one relation
+### One-to-one relation
 
 TODO
 
 ### Many-to-many relation
 
-TODO
+Sometimes, two models are in a relation where there are potentiall *many instances* on both sides of the relation. An example would be a relation between tags and posts: One post can have several tags assigned to it. At the same time, one tag can be assigned to multiple posts.
+
+A different example that is listed below, is the scenario of favorites topics in a discussion forum. A user can have multiple favorite topics. One topic can be favorited by multiple users.
+
+To implement the many-to-many relation, you need an additional database table. Each entry in that table represents a connection from a `Topic` instance to a `ForumUser` instance and vice versa. In database modelling, this is called a [junction table](https://en.wikipedia.org/wiki/Associative_entity).
+
+Example tables (i.e. in `scripts.php`):
+
+```
+$util = $app['db']->getUtility();
+
+// forum user table
+if ($util->tableExists('@forum_users') === false) {
+    $util->createTable('@forum_users', function ($table) {
+        $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+        $table->addColumn('name', 'string', ['length' => 255, 'default' => '']);
+        $table->setPrimaryKey(['id']);
+    });
+}
+
+// topics table
+if ($util->tableExists('@forum_topics') === false) {
+    $util->createTable('@forum_topics', function ($table) {
+        $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+        $table->addColumn('title', 'string', ['length' => 255, 'default' => '']);
+        $table->addColumn('content', 'text');
+        $table->setPrimaryKey(['id']);
+    });
+}
+
+// junction table
+if ($util->tableExists('@forum_favorites') === false) {
+    $util->createTable('@forum_favorites', function ($table) {
+        $table->addColumn('id', 'integer', ['unsigned' => true, 'length' => 10, 'autoincrement' => true]);
+        $table->addColumn('user_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
+        $table->addColumn('topic_id', 'integer', ['unsigned' => true, 'length' => 10, 'default' => 0]);
+        $table->setPrimaryKey(['id']);
+    });
+}
+```
+
+The relation itself is then defined in each Model class where you want to be able to query it. If you only want to list the favorite posts for a specific user, but you do not lists all user who have favorited a given post, you would only define the relation in one model. In the following example however, the `@ManyToMany` annotation is located in both model classes.
+
+The `@ManyToMany` annotation takes the following parameters.
+
+- `targetEntity`: The target model class
+- `tableThrough`  Name of the junction table
+- `keyThroughFrom` Name of the foreign key in "from" direction
+- `keyThroughTo` Name of the foreign key in "to" direction
+- `orderBy` (optional) Order by statement
+
+Example annotation:
+
+```
+ /**
+     * @ManyToMany(targetEntity="ForumUser", tableThrough="@forum_favorites", keyThroughFrom="topic_id", keyThroughTo="forum_user_id")
+     */
+    public $users;
+```
+
+Example model `Topic`:
+
+```
+<?php
+
+namespace Pagekit\Forum\Model;
+
+use Pagekit\Database\ORM\ModelTrait;
+
+/**
+ * @Entity(tableClass="@forum_topics")
+ */
+class Topic implements \JsonSerializable
+{
+
+    use ModelTrait;
+
+    /** @Column(type="integer") @Id */
+    public $id;
+
+    /** @Column */
+    public $title = '';
+
+    /** @Column(type="text") */
+    public $content = '';
+
+    /**
+     * @ManyToMany(targetEntity="ForumUser", tableThrough="@forum_favorites", keyThroughFrom="topic_id", keyThroughTo="forum_user_id")
+     */
+    public $users;
+
+}
+```
+
+Example model `ForumUser`:
+
+```
+<?php
+
+namespace Pagekit\Forum\Model;
+
+use Pagekit\Database\ORM\ModelTrait;
+
+/**
+ * @Entity(tableClass="@forum_user")
+ */
+class ForumUser implements \JsonSerializable
+{
+
+    use ModelTrait;
+
+    /** @Column(type="integer") @Id */
+    public $id;
+
+    /** @Column */
+    public $name = '';
+
+    /**
+     * @ManyToMany(targetEntity="Topic", tableThrough="@forum_favorites", keyThroughFrom="forum_user_id", keyThroughTo="topic_id")
+     */
+    public $topics;
+
+}
+```
+
+
+Example queries:
+
+```
+// resolve many-to-many relation in query
+
+// fetch favorite ropics for given user
+$user_id = 1;
+$user = ForumUser::query()->where('id = ?', [$user_id])->related('topics')->first();
+
+foreach ($user->topics as $topic) {
+    //
+}
+
+// fetch users that have favorited a given topic
+$topic_id = 1;
+$topic = Topic::query()->where('id = ?', [$topic_id])->related('users')->first();
+
+foreach ($topic->users as $user) {
+    // ...
+}
+```
+
+
 
 ## ORM Queries
 

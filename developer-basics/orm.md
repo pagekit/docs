@@ -5,7 +5,7 @@
 
 ### Create tables
 
-Run the following, i.e. in the `install` hook of your extension's script.php.
+Run the following, i.e. in the `install` hook of your extension's `scripts.php`. For more general information on creating tables, have a look at the [database chapter](database.md).
 
 Example:
 
@@ -68,6 +68,17 @@ class Topic
 }
 
 ```
+
+A few things to note:
+
+A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritence. The main difference is that a class can use multiple traits while it could only inherit from one single class.
+
+The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
+
+
+When defining a property in a class, you can bind that variable to a table column, by putting the `/** @Column(type="string") */` annotation right above the property definition. You can use any types supported by [Doctrine DBAL](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html).
+
+The class you reference in your model class also has to exist in the database.
 
 
 ## Relations
@@ -473,6 +484,8 @@ $post = Post::query()->related('comments')->where('id = ?', [$id])->first();
 ```
 
 Note how the `find(23)` has been replaced with `->where('id = ?', [$id])->first()`. This is because `find()` is a method defined on the Model. In the second example however, we have an instance of `Pagekit\Database\ORM\QueryBuilder`.
+
+For more details on ORM queries and the regular queries, check out the documentation on [database queries](database.md#queries)
 
 ## Create new model instance
 

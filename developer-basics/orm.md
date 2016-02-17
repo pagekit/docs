@@ -69,6 +69,7 @@ class Topic
 
 ```
 
+
 ## Relations
 
 The application data you represent in your database model has certain relations amongst its instances. A blog post has a number of comments related to it and it belongs to exactly one User instance. The Pagekit ORM offers mechanisms to define these relations and also to query them in a programmatic manner.
@@ -472,3 +473,39 @@ $post = Post::query()->related('comments')->where('id = ?', [$id])->first();
 ```
 
 Note how the `find(23)` has been replaced with `->where('id = ?', [$id])->first()`. This is because `find()` is a method defined on the Model. In the second example however, we have an instance of `Pagekit\Database\ORM\QueryBuilder`.
+
+## Create new model instance
+
+You can create and save a new model by calling the `save()` method on a fresh model instance.
+
+```php
+$user = new ForumUser();
+$user->name = "bruce";
+$user->save();
+```
+
+Alternatively you can call the `create()` method on the model class directly and provide an array of existing data to initialize the instance. Call `save()` afterwards to store the instance to the database.
+
+```php
+$user = ForumUser::create(["name" => "peter"]);
+$user->save();
+```
+
+## Modify existing instance
+
+Fetch an existing instance, perform any changes on the object and then call the `save()` method to store changes to the database.
+
+```php
+$user = ForumUser::find(2);
+$user->name = "david";
+$user->save();
+```
+
+## Delete existing instance
+
+Fetch an existing model instance and call the `delete()` method to remove this instance from the database.
+
+```php
+$user = ForumUser::find(2);
+$user->delete();
+```

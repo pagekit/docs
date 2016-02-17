@@ -1,5 +1,6 @@
 # Pagekit Documentation
 This is the documentation for [Pagekit](https://pagekit.com), a modular open source CMS built with modern technologies.
+
 - Getting Started
   1. [Requirements](getting-started/requirements.md)
   2. [Installation](getting-started/installation.md)
@@ -35,8 +36,9 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   4. [Routing](developer-basics/routing.md)
   5. [Response](developer-basics/response.md)
   5. [Users & Permissions](developer-basics/users-permissions.md)
-  6. [Views & Templating](developer-basics/views-templating.md) TODO
-  7. [Database](developer-basics/database.md) TODO
+  6. [Views & Templating](developer-basics/views-templating.md)
+  7. [Database](developer-basics/database.md)
+  7. [ORM](developer-basics/orm.md)
   8. [Translation](developer-basics/translation.md)
 
 - Troubleshooting

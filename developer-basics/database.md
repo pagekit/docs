@@ -51,6 +51,10 @@ $util->createTable('@foobar_option', function($table) {
 });
 ```
 
+The `$table` object is an instance of `\Doctrine\DBAL\Schema\Table`. You can find its [class reference](http://www.doctrine-project.org/api/dbal/2.5/class-Doctrine.DBAL.Schema.Table.html) in the official Doctrine documentation.
+
+When creating a column using `addColumn`, you might want to look at the available [data types](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html) and the availabe [column options](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/schema-representation.html#portable-options) from the Doctrine documentation as well.
+
 Creating a table is commonly done in the `install` hook of the `scripts.php` inside your extension. Read more about [Migrations](#migrations) in the next section.
 
 ## Migrations
@@ -84,6 +88,33 @@ Within the `scripts.php`, you can hook into different events of the extension li
         },
     ],
     ```
+
+### Alter an existing table
+
+To alter an existing table, use the existing tools of the underlying Doctrine DBAL. To add columns to an existing table, you can include the following snippets in one of the `updates` version hooks of your extension's `scripts.php`.
+
+```
+use Doctrine\DBAL\Schema\Comparator;
+
+// ...
+
+$util    = App::db()->getUtility();
+$manager = $util->getSchemaManager();
+
+if ($util->tableExists('@my_table')) {
+
+    $tableOld = $util->getTable('@my_table');
+    $table = clone $tableOld;
+
+    $table->addColumn('title', 'string', ['length' => 255]);
+
+    $comparator = new Comparator;
+    $manager->alterTable($comparator->diffTable($tableOld, $table));
+}
+
+```
+
+The `$table` object is an instance of `\Doctrine\DBAL\Schema\Table`. You can find its [class reference](http://www.doctrine-project.org/api/dbal/2.5/class-Doctrine.DBAL.Schema.Table.html) in the official Doctrine documentation.
 
 ## Queries
 

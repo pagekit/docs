@@ -9,7 +9,7 @@ Run the following, i.e. in the `install` hook of your extension's script.php.
 
 Example:
 
-```
+```php
 $util = $app['db']->getUtility();
 
 if ($util->tableExists('@forum_topics') === false) {
@@ -40,7 +40,7 @@ use Pagekit\Database\ORM\ModelTrait;
 /**
  * @Entity(tableClass="@forum_topics")
  */
-class Topic implements \JsonSerializable
+class Topic
 {
 
     use ModelTrait;
@@ -53,7 +53,6 @@ class Topic implements \JsonSerializable
 
     /** @Column(type="datetime") */
     public $date;
-
 
     /** @Column(type="text") */
     public $content = '';
@@ -69,6 +68,7 @@ class Topic implements \JsonSerializable
 }
 
 ```
+
 
 ## Relations
 
@@ -191,13 +191,109 @@ array (size=6)
 
 ### One-to-one relation
 
-TODO
+A very simple relationship is the one-to-one relation. A `ForumUser` might have exactly one `Avatar` assigned to it. While you you simply include all information about the avatar inside the `ForumUser` model, it sometimes makes sense to split these in separate models.
+
+To implement the one-to-one relation, you can use the `@BelongsTo` annotation in each model class.
+
+`/** @BelongsTo(targetEntity="Avatar", keyFrom="avatar_id", keyTo="id") */`
+
+- `targetEntity`: The target model class
+- `keyFrom`: foreign key in this table pointing to the related model
+- `keyTo`: primary key in the related model
+
+Example model `ForumUser`:
+
+```php
+<?php
+
+namespace Pagekit\Forum\Model;
+
+use Pagekit\Database\ORM\ModelTrait;
+
+/**
+ * @Entity(tableClass="@forum_user")
+ */
+class ForumUser
+{
+
+    use ModelTrait;
+
+    /** @Column(type="integer") @Id */
+    public $id;
+
+    /** @Column */
+    public $name = '';
+
+    /** @Column(type="integer") */
+    public $avatar_id;
+
+    /** @BelongsTo(targetEntity="Avatar", keyFrom="avatar_id", keyTo="id") */
+    public $avatar;
+
+}
+```
+
+Example model `Avatar`:
+
+```php
+<?php
+
+namespace Pagekit\Forum\Model;
+
+use Pagekit\Database\ORM\ModelTrait;
+
+/**
+ * @Entity(tableClass="@forum_avatars")
+ */
+class Avatar
+{
+
+    use ModelTrait;
+
+    /** @Column(type="integer") @Id */
+    public $id;
+
+    /** @Column(type="string") */
+    public $path;
+
+    /** @Column(type="integer") */
+    public $user_id;
+
+    /** @BelongsTo(targetEntity="ForumUser", keyFrom="user_id", keyTo="id") */
+    public $user;
+
+}
+```
+
+To make sure the related model is included in a query result, fetch the `QueryBuilder` instance from the model class and explicitely list the relation property in the `related()` method.
+
+```php
+<?php
+
+use Pagekit\Forum\Model\ForumUser;
+use Pagekit\Forum\Model\Avatar;
+
+// ...
+
+// get all users including their related $avatar object
+$users = ForumUser::query()->related('avatar')->get();
+foreach ($users as $user) {
+    var_dump($user->avatar->path);
+}
+
+// get all avatars including their related $user object
+$avatars = Avatar::query()->related('user')->get();
+foreach ($avatars as $avatar) {
+    var_dump($avatar->user);
+}
+```
+
 
 ### Many-to-many relation
 
-Sometimes, two models are in a relation where there are potentiall *many instances* on both sides of the relation. An example would be a relation between tags and posts: One post can have several tags assigned to it. At the same time, one tag can be assigned to multiple posts.
+Sometimes, two models are in a relation where there are potentially *many instances* on both sides of the relation. An example would be a relation between tags and posts: One post can have several tags assigned to it. At the same time, one tag can be assigned to multiple posts.
 
-A different example that is listed below, is the scenario of favorites topics in a discussion forum. A user can have multiple favorite topics. One topic can be favorited by multiple users.
+A different example that is listed below, is the scenario of favorite topics in a discussion forum. A user can have multiple favorite topics. One topic can be favorited by multiple users.
 
 To implement the many-to-many relation, you need an additional database table. Each entry in that table represents a connection from a `Topic` instance to a `ForumUser` instance and vice versa. In database modelling, this is called a [junction table](https://en.wikipedia.org/wiki/Associative_entity).
 
@@ -248,16 +344,16 @@ The `@ManyToMany` annotation takes the following parameters.
 
 Example annotation:
 
-```
- /**
-     * @ManyToMany(targetEntity="ForumUser", tableThrough="@forum_favorites", keyThroughFrom="topic_id", keyThroughTo="forum_user_id")
-     */
-    public $users;
+```php
+/**
+ * @ManyToMany(targetEntity="ForumUser", tableThrough="@forum_favorites", keyThroughFrom="topic_id", keyThroughTo="forum_user_id")
+ */
+public $users;
 ```
 
 Example model `Topic`:
 
-```
+```php
 <?php
 
 namespace Pagekit\Forum\Model;
@@ -267,7 +363,7 @@ use Pagekit\Database\ORM\ModelTrait;
 /**
  * @Entity(tableClass="@forum_topics")
  */
-class Topic implements \JsonSerializable
+class Topic
 {
 
     use ModelTrait;
@@ -291,7 +387,7 @@ class Topic implements \JsonSerializable
 
 Example model `ForumUser`:
 
-```
+```php
 <?php
 
 namespace Pagekit\Forum\Model;
@@ -301,7 +397,7 @@ use Pagekit\Database\ORM\ModelTrait;
 /**
  * @Entity(tableClass="@forum_user")
  */
-class ForumUser implements \JsonSerializable
+class ForumUser
 {
 
     use ModelTrait;
@@ -320,10 +416,9 @@ class ForumUser implements \JsonSerializable
 }
 ```
 
-
 Example queries:
 
-```
+```php
 // resolve many-to-many relation in query
 
 // fetch favorite ropics for given user
@@ -343,8 +438,6 @@ foreach ($topic->users as $user) {
 }
 ```
 
-
-
 ## ORM Queries
 
 Fetch a model instance with a given id.
@@ -362,18 +455,57 @@ $posts = Post::findAll();
 With the above queries, relations will not be expanded to include related instances. In above example, the `Post` instance will not have its `$comments` property initialized.
 
 ```
+// related objects are not fetched by default
 $post->comments == null;
 ```
 
-If you want to fetch the associated `Comment` instances as well, you need to build a query which fetches the related objects.
+The reason for this is performance. By default, the required subqueries are not performed, which saves execution time. So if you need the related objects, you can use the `related()` method on the `QueryBuilder` to explicitely state which relations to resolve in this query.
+
+So, to fetch a `Post` instance and include the associated `Comment` instances, you need to build a query which fetches the related objects.
 
 ```
-// fetch single
+// fetch all, including related objects
+$posts = Post::query()->related('comments')->get();
+
+// fetch single instance, include related objects
 $id = 23;
 $post = Post::query()->related('comments')->where('id = ?', [$id])->first();
-
-// fetch all
-$posts = Post::query()->related('comments')->get();
 ```
 
 Note how the `find(23)` has been replaced with `->where('id = ?', [$id])->first()`. This is because `find()` is a method defined on the Model. In the second example however, we have an instance of `Pagekit\Database\ORM\QueryBuilder`.
+
+## Create new model instance
+
+You can create and save a new model by calling the `save()` method on a fresh model instance.
+
+```php
+$user = new ForumUser();
+$user->name = "bruce";
+$user->save();
+```
+
+Alternatively you can call the `create()` method on the model class directly and provide an array of existing data to initialize the instance. Call `save()` afterwards to store the instance to the database.
+
+```php
+$user = ForumUser::create(["name" => "peter"]);
+$user->save();
+```
+
+## Modify existing instance
+
+Fetch an existing instance, perform any changes on the object and then call the `save()` method to store changes to the database.
+
+```php
+$user = ForumUser::find(2);
+$user->name = "david";
+$user->save();
+```
+
+## Delete existing instance
+
+Fetch an existing model instance and call the `delete()` method to remove this instance from the database.
+
+```php
+$user = ForumUser::find(2);
+$user->delete();
+```

@@ -1,5 +1,9 @@
 # Database
-Instead of using PDO, you can and should use the database service provided by Pagekit.
+
+<p class="uk-article-lead">This chapter talks about the basics of configuring the database connection, creating tables, running database scripts from the extensions and manually building database queries.</p>
+
+**Note** To map your application data to database tables in a comfortable way, the recommended way is the [Pagekit Object-relational mapper (ORM)](orm.md) which is described in its own chapter.
+
 
 ## Configuration
 Database credentials are stored in `config.php`. Pagekit supports `mysql`and `sqlite`.
@@ -118,16 +122,9 @@ The `$table` object is an instance of `\Doctrine\DBAL\Schema\Table`. You can fin
 
 ## Queries
 
-### 1. Raw queries
+There are several ways of accessing the database. Pagekit offers an abstracting on the underlying MySQL or SQLite, so there is no need to use PDO or similar mechanisms.
 
-The plainest way to query the database is by sending raw queries to the database. This is basically just a wrapper around PDO.
-
-```
-$result = Application::db()->executeQuery('select * from @blog_post')->fetchAll();
-$result = Application::db()->executeQuery('select * from @blog_post WHERE id = :id', ['id' => 1])->fetchAll();
-```
-
-### 2. Query builder
+### 1. Query builder
 
 The [QueryBuilder](https://github.com/pagekit/pagekit/blob/develop/app/modules/database/src/Query/QueryBuilder.php) allows for a more comfortable way of creating queries.
 
@@ -220,9 +217,9 @@ $count = $query
 - `leftJoin($table, $condition = null)`: leftJoin($table, $condition = null)
 - `rightJoin($table, $condition = null)`: Creates and adds a "right join" to the query.
 
-### 3. ORM Queries
+### 2. ORM Queries
 
-When you have set up ORM in your extension ([read more below](#ORM)), you can create very readable queries using your model class.
+When you have set up [ORM](orm.md) in your extension, you can create very readable queries using your model class.
 
 Example:
 
@@ -257,6 +254,15 @@ $comments = Comment::query()->related(['post' => function ($query) {
 }])->get();
 ```
 
+### 3. Raw queries
+
+The plainest way to query the database is by sending raw queries to the database. This is basically just a wrapper around PDO.
+
+```
+$result = Application::db()->executeQuery('select * from @blog_post')->fetchAll();
+$result = Application::db()->executeQuery('select * from @blog_post WHERE id = :id', ['id' => 1])->fetchAll();
+```
+
 ## Insert
 
 Inserting data in the database can be done using the database connection instance that you can fetch via `Application::db()` (remember to `use Pagekit\Application;` at the top of your file).
@@ -277,49 +283,7 @@ Application::db()->insert('@system_page', [
 When using [ORM](#ORM), you just need to create a new model instance and call the `save()` method.
 
 
+
 ## ORM
 
-With the Object-relational mapping (ORM) in Pagekit, you can bind a Model class to a database table. While this takes a few more lines to setup than the QueryBuilder, the ORM takes a lot of manual work out of your hands.
-
-Define a model class. An example from the Pagekit core is the [Widget model](https://github.com/pagekit/pagekit/blob/develop/app/system/modules/widget/src/Model/Widget.php).
-
-```
-<?php
-
-namespace Pagekit\Widget\Model;
-
-use Pagekit\Database\ORM\ModelTrait;
-use Pagekit\System\Model\DataModelTrait;
-use Pagekit\User\Model\AccessModelTrait;
-
-/**
- * @Entity(tableClass="@system_widget")
- */
-class Widget implements \JsonSerializable
-{
-    use AccessModelTrait, DataModelTrait, ModelTrait;
-
-    /** @Column(type="integer") @Id */
-    public $id;
-
-    /** @Column */
-    public $title = '';
-
-    /** @Column(type="string") */
-    public $type;
-
-    /** @Column(type="integer") */
-    public $status = 1;
-
-    /** @Column(type="simple_array") */
-    public $nodes = [];
-}
-```
-
-A few things to note:
-
-- The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
-- The `ModelTrait` is required for model classes. You do not need the other two traits used in the Widget example.
-- When defining a property in a class, you can bind that variable to a table column, by putting the `/** @Column(type="string") */` annotation right above the property definition.
-- How a model is used is described above in the [ORM queries](#orm-queries)
-- The class you reference in your model class also has to exist in the database. The best way to do this is via [Migrations](#migrations) in a filed called `scripts.php`.
+With the Object-relational mapping (ORM) in Pagekit, you can bind a Model class to a database table. While this takes a few more lines to setup than the QueryBuilder, the ORM takes a lot of manual work out of your hands. Using ORM is the recommended way of managing how you store and retrieve your application data to and from the database. Read more about the [Pagekit ORM](orm.md).

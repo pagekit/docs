@@ -40,6 +40,7 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   7. [Database](developer-basics/database.md)
   7. [ORM](developer-basics/orm.md)
   8. [Translation](developer-basics/translation.md)
+  9. [Events](developer-basics/events.md)
 
 - Troubleshooting
   1. [System Information](troubleshooting/system-information.md)

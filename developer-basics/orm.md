@@ -75,6 +75,20 @@ A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. I
 
 The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
 
+Annotations will only work if you start the multiline comment with two asterisks, not just with one.
+
+```
+// will NOT work:
+/* @Column */
+
+// will work:
+/** @Column */
+
+// will work:
+/**
+ * @Column
+ */
+```
 
 When defining a property in a class, you can bind that variable to a table column, by putting the `/** @Column(type="string") */` annotation right above the property definition. You can use any types supported by [Doctrine DBAL](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html).
 

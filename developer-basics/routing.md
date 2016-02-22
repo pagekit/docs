@@ -67,6 +67,21 @@ Annotation | Description
 `@Request` | Handle parameter passing from the http request to the method.
 `@Access`  | Check for user permissions.
 
+**Note** Annotations will only work if you start the multiline comment with two asterisks, not just with one.
+
+```
+// will NOT work:
+/* @Route("/hello") */
+
+// will work:
+/** @Route("/hello") */
+
+// will work:
+/**
+ * @Route("/hello")
+ */
+```
+
 #### @Route
 Define the route the controller (or controller action) will be mounted at. Can be annotated to class and method definitions.
 

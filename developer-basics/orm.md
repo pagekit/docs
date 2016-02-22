@@ -71,7 +71,7 @@ class Topic
 
 A few things to note:
 
-A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritence. The main difference is that a class can use multiple traits while it could only inherit from one single class.
+A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritance. The main difference is that a class can use multiple traits while it could only inherit from one single class.
 
 The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
 
@@ -202,7 +202,7 @@ array (size=6)
 
 ### One-to-one relation
 
-A very simple relationship is the one-to-one relation. A `ForumUser` might have exactly one `Avatar` assigned to it. While you you simply include all information about the avatar inside the `ForumUser` model, it sometimes makes sense to split these in separate models.
+A very simple relationship is the one-to-one relation. A `ForumUser` might have exactly one `Avatar` assigned to it. While you simply include all information about the avatar inside the `ForumUser` model, it sometimes makes sense to split these in separate models.
 
 To implement the one-to-one relation, you can use the `@BelongsTo` annotation in each model class.
 
@@ -276,7 +276,7 @@ class Avatar
 }
 ```
 
-To make sure the related model is included in a query result, fetch the `QueryBuilder` instance from the model class and explicitely list the relation property in the `related()` method.
+To make sure the related model is included in a query result, fetch the `QueryBuilder` instance from the model class and explicitly list the relation property in the `related()` method.
 
 ```php
 <?php
@@ -470,7 +470,7 @@ With the above queries, relations will not be expanded to include related instan
 $post->comments == null;
 ```
 
-The reason for this is performance. By default, the required subqueries are not performed, which saves execution time. So if you need the related objects, you can use the `related()` method on the `QueryBuilder` to explicitely state which relations to resolve in this query.
+The reason for this is performance. By default, the required subqueries are not performed, which saves execution time. So if you need the related objects, you can use the `related()` method on the `QueryBuilder` to explicitly state which relations to resolve in this query.
 
 So, to fetch a `Post` instance and include the associated `Comment` instances, you need to build a query which fetches the related objects.
 

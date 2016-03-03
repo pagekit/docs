@@ -5,7 +5,7 @@
 Make sure your server meets the following requirements.
 - Apache 2.2+ or nginx
 - MySQL Server 5.1+ or SQLite 3
-- PHP Version 5.4+
+- PHP Version 5.5.9+
 
 ## PHP extensions
 In addition, Pagekit needs the following PHP extensions to be enabled: [JSON](http://php.net/manual/book.json.php), [Session](http://php.net/manual/book.session.php), [ctype](http://php.net/manual/book.ctype.php), [Tokenizer](http://php.net/manual/book.tokenizer.php), [SimpleXML](http://php.net/manual/book.simplexml.php), [DOM](http://php.net/manual/book.dom.php), [mbstring](http://php.net/manual/book.mbstring.php), [PCRE](http://php.net/manual/book.pcre.php) 8.0+, [ZIP](http://php.net/manual/book.zip.php) and [PDO](http://php.net/manual/book.pdo.php) with [MySQL](http://php.net/manual/ref.pdo-mysql) or [SQLite](http://php.net/manual/ref.pdo-sqlite) drivers.

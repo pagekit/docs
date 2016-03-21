@@ -10,7 +10,7 @@ Each menu linked pages are displayed on the right. Pages without a menu are list
 
 ## Render a menu on your site
 
-When you hover over a menu and lick the *Edit* icon, a modal dialog will appear. Besides renaming the menu, you can also assign it to any number of menu positions that are defined by your theme. In the following screenshot, the Menu will be rendered both in the main menu position of the site and in the mobile off-canvas position.
+When you hover over a menu and click the *Edit* icon, a modal dialog will appear. Besides renaming the menu, you can also assign it to any number of menu positions that are defined by your theme. In the following screenshot, the Menu will be rendered both in the main menu position of the site and in the mobile off-canvas position.
 
 ![Menu positions](assets/site-menu-edit.png)
 

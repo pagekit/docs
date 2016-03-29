@@ -1,25 +1,41 @@
 # Site
-<p class="uk-article-lead">The Site Tree allows you to manage your site's content and structure, all in a single drag-and-drop interface. This is also the area where you manage all of your Widgets.</p>
 
-## Menus
-You can see an overview of all menus on the left and their assigned pages on the right. Hover a single entry to see an _edit_ and _remove_ button for that menu. New menus can be created by clicking on the _Add Menu_ button. You can use these for actual Menus you render on the site. However, you can also use these to just group content from your site for easier management in the admin area.
+<p class="uk-article-lead">This area is the heart of your website. Here you can manage pages and menus in a tree view, create and edit widgets, organize all your uploaded media and modify general settings of the site.</p>
+
+<ul class="uk-list uk-list-space">
+    <li><a href="#pages-and-menus">Pages and menus</a></li>
+    <li><a href="#render-menus">Render menus</a></li>
+    <li><a href="#pages">Pages</a></li>
+    <li><a href="#widgets">Widgets</a></li>
+    <li><a href="#storage">Storage</a></li>
+    <li><a href="#settings">Settings</a></li>
+</ul>
+
+## Pages and menus
+Manage your site's content in the site tree. You can see an overview of all pages in the right and their associated menus in the left column. When hovering a single entry, an _Edit_ and a _Remove_ button will appear for that menu. To create a new menu, hit the _Add Menu_ button. You don't have to create a menu only to navigate through your site. You might also want to use it to group content from your site for easier management in the admin area.
 
 ![Menu overview](assets/site.png)
 
-Each menu linked pages are displayed on the right. Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view, both accessible below the menus list.
+Each menu item and its assigned page is displayed inside the right column. Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view. Both are accessible below the list of menus.
 
-## Render a menu on your site
+## Render menus
 
-When you hover over a menu and click the *Edit* icon, a modal dialog will appear. Besides renaming the menu, you can also assign it to any number of menu positions that are defined by your theme. In the following screenshot, the Menu will be rendered both in the main menu position of the site and in the mobile off-canvas position.
+When you hover over a menu and click the *Edit* icon, a modal dialog will appear. You can rename the menu and assign it to all menu positions defined by your theme. The screenshot below shows a menu that is rendered both in the Main menu position of the site and in the Offcanvas position.
 
 ![Menu positions](assets/site-menu-edit.png)
 
 ## Pages
-Menu pages can be managed on the right side of the interface. This is a tree view which means that it shows the hierarchical structure of your page. It can be sorted via drag-and drop. You can enable/disable single items by clicking on the green or red circle in the status column. This will make them appear/disappear in the rendered menu but also make the links unavailable if anyone accesses a URL manually.
+Pages can be managed in the tree view on the right hand side of the interface. It shows the hierarchic structure of your page and can be sorted via drag and drop.
 
-In front of every item you see a checkbox. Select one or multiple pages to show a toolbar which offers several quick tasks. Move pages, delete them or change the enabled status for multiple items at once.
+To create a new page, hit the _Add Page_ button in the top right hand corner and select the type of page you would like to create. Pagekit comes with a few pre-defined types – any extension can add new types to that list. You can also edit existing pages by clicking on their title in the site tree. This will lead you to an edit screen, which looks different depending on the type of the item you're creating.
 
-To create a new page click on the _Add Page_ top right button and choose the type of page you want to create. Pagekit comes with a few pre-defined ones - any extension can add new types to that list. You can also edit existing pages by clicking on their title in the Site Tree. This will lead you to an edit screen which will look different, depending on the type of the item you clicked on.
+When hovering a page, a home icon will appear. Click it to assign the item to the frontpage.
+
+To enable and disable a single item, hit the green or red circle in the status column. This will make it appear or disappear in the rendered menu and make the link unavailable for anyone trying to access the page's URL manually.
+
+The item's type is also displayed in the tree view. Drag an item to the right to make it a submenu. That way you automatically create a hierarchy that generates the item's URL.
+
+Next to each item there’s a checkbox. Enabling the checkbox of one or more items will display a toolbar that offers a number of quick tasks, like moving or deleting a page and enabling or disabling multiple items at once.
 
 ### Type: Pages
 
@@ -27,7 +43,7 @@ Pages are basically the equivalent to a static webpage. Typically you would use 
 
 ![Pages overview](assets/site-pages.png)
 
-In the **Content** tab you can edit the page main content, such as the article body, title and slug. Additionally you can set the Menu title which will be displayed in the frontend Menu as well as the page status and access limitations for certain user roles. The **Settings** tab will display an overview of the page basic settings. Finally, the **Theme** tab holds the theme specific options.
+In the **Content** tab you can edit the page main content, such as the article body, title and slug. Additionally you can set the menu title, which will be displayed in the frontend menu as well as the page status and access limitations for certain user roles. The **Settings** tab will display an overview of the page's basic settings. Finally, the **Theme** tab holds the theme specific options.
 
 **Note** A slug is a computer friendly version of the title so that it can be included in the absolute URL to the page. If you do not like the generated slug, simply click on it to choose your own.
 

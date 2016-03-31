@@ -2,7 +2,7 @@
 
 <p class="uk-article-lead">This area is the heart of your website. Here you can manage pages and menus in a tree view, create and edit widgets, organize all your uploaded media and modify general settings of the site.</p>
 
-<ul class="uk-list uk-list-space">
+<ul class="uk-list">
     <li><a href="#pages-and-menus">Pages and menus</a></li>
     <li><a href="#render-menus">Render menus</a></li>
     <li><a href="#pages">Pages</a></li>

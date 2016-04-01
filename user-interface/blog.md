@@ -59,4 +59,4 @@ Here you can define a number of global settings for the comment function.
 Field                 | Description
 :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Comments              | Determine whether users need to provide an e-mail address in order to comment and set a period of time after which it is no longer possible to comment a post.
-Appearance            | enable [Gravatar](http://gravatar.com), change the order of comments and allow nesting of comments by a maximum number that you set.
+Appearance            | Enable [Gravatar](http://gravatar.com), change the order of comments and allow nesting of comments by a maximum number that you set.

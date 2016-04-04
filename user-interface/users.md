@@ -1,5 +1,6 @@
 # Users
-Create and manage users, user roles and access levels to control how much access users have to your site.
+
+<p class="uk-article-lead">Create and manage users, user roles and access levels to control how much access users have to your site.</p>
 
 <ul class="uk-list">
     <li><a href="#list">List</a></li>
@@ -67,7 +68,7 @@ This section holds a number of global user settings.
 User / Group  | Description
 ------------- | -------------------------------------------------
 Registration     | Allow users to create their own account. Available settings are **Disabled**, **Enabled** and **Enabled, but approbal is required**.
-Verification | Checking this option will require users to provide their e-mail address in order in register.
+Verification | Checking this option will require users to provide their e-mail address in order in register. An e-mail with a verification link will be sent to anyone registering with your site, if this option is enabled.
 Login Redirect | Enter a URL or select a pick a link that users will be redirected to after logging in successfully.
 
 ## Registration and Login

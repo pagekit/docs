@@ -71,7 +71,7 @@ This example requires an additional JS component located at `hello:js/widget.js`
 
 `js/widget.js`:
 
-````
+```javascript
 window.Widgets.components['system-login:settings'] = {
 
     section: {
@@ -83,11 +83,12 @@ window.Widgets.components['system-login:settings'] = {
     props: ['widget', 'config', 'form']
 
 };
+```
 
 `views/widget.php`:
 
 ```php
 <p>Hello Widget output.</p>
-````
+```
 
 **Note** A good example of a full Widget is located at `app/system/modules/user/widgets/login.php` in the Pagekit core.

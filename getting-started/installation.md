@@ -35,4 +35,4 @@ Field        | Description
 `Password`   | Enter the admin password.
 `Email`      | Enter the admin email.
 
-Once the installation is successful you are redirected to the login screen. You can log in to Pagekit's admin panel with the account you created. If you want to login to the admin area in the future, you can always reachthe login screen by appending `/admin` to your site's URL.
+Once the installation is successful you are redirected to the login screen. You can log in to Pagekit's admin panel with the account you created. If you want to login to the admin area in the future, you can always reach the login screen by appending `/admin` to your site's URL.

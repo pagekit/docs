@@ -53,7 +53,7 @@ A Dashboard Widget is created as a [Vue](http://vuejs.org) component.
 </script>
 ```
 
-1. Add the Vue component to you extension's `webpack.config.js`:
+1. Add the Vue component to your extension's `webpack.config.js`:
 
 ```
 entry: {

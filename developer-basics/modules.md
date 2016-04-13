@@ -145,7 +145,7 @@ Nodes are similar to routes with the main difference that they can be dragged ar
 
 When you have added a Node, it will be available in the Site Tree. Click the _Add Page_ button to see the Dropdown of all available Node types.
 
-For more information on nodes, check out the [Routing section](../developer-basics/routing.md
+For more information on nodes, check out the [Routing section](../developer-basics/routing.md).
 
 ```php
 'nodes' => [

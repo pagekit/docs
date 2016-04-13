@@ -2,13 +2,14 @@
 This is the documentation for [Pagekit](https://pagekit.com), a modular open source CMS built with modern technologies.
 
 - Getting Started
-  1. [Requirements](getting-started/requirements.md)
-  2. [Installation](getting-started/installation.md)
-  3. [Updating](getting-started/updating.md)
-  4. [Configuration File](getting-started/configuration-file.md)
-  5. [File Structure](getting-started/file-structure.md)
-  6. [Server Configuration](getting-started/server-configuration.md)
-  7. [Getting Help](getting-started/getting-help.md)
+  1. [Introduction](getting-started/introduction.md)
+  2. [Requirements](getting-started/requirements.md)
+  3. [Installation](getting-started/installation.md)
+  4. [Updating](getting-started/updating.md)
+  5. [Configuration File](getting-started/configuration-file.md)
+  6. [File Structure](getting-started/file-structure.md)
+  7. [Server Configuration](getting-started/server-configuration.md)
+  8. [Getting Help](getting-started/getting-help.md)
 
 - User Interface
   1. [Dashboard](user-interface/dashboard.md)

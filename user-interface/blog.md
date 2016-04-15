@@ -10,11 +10,15 @@
 
 ## Posts
 
+![Blog Posts](assets/blog-posts.png)
+
 The _Posts_ section provides an overview of all your articles, which form the content of your website. You can create new articles or edit existing ones. Posts can be sorted by title, number of comments or their publish date by clicking on the corresponding table heading in the overview. The active sorting parameter is highlighted with an arrow icon.
 
 Next to each post there’s a checkbox. Enabling the checkbox of one or more items will display a toolbar that allows you to copy, delete, publish or unpublish the posts.
 
 To create a new post, hit the *Add Post* button in the top right hand corner; to edit an existing post, click on its title in the overview. The [Pagekit Editor](editor.md) will open and the following fields will be available.
+
+![Blog Edit Post](assets/blog-edit-post.png)
 
 Field           | Description
 :-------------- | :-----------------------------------------------------------------------------------------------------------------------------------
@@ -60,3 +64,5 @@ Field                 | Description
 :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Comments              | Determine whether users need to provide an e-mail address in order to comment and set a period of time after which it is no longer possible to comment a post.
 Appearance            | Enable [Gravatar](http://gravatar.com), change the order of comments and allow nesting of comments by a maximum number that you set.
+
+![Blog Comments](assets/blog-comments.png)

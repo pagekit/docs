@@ -1,6 +1,6 @@
 # Dashboard
 
-<p class="uk-article-lead">The Dashboard is the first thing you see when entering the Pagekit admin panel. It is the control center of your Pagekit website and gives you access to all administration sections.</p>
+<p class="uk-article-lead">The Dashboard is the first thing you see when entering the Pagekit admin panel. It provides an overview of your Pagekit website and gives you access to all administration sections.</p>
 
 All information you find on the Dashboard, e.g. statistics on your site's activity, comes from widgets configured for the whole project. In Pagekit you only have to set up the Dashboard once and it will be available for all users of the site. Keep that in mind in case there’s certain information you do not wish to share with all users, e.g. your Analytics.
 

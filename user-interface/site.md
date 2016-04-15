@@ -41,13 +41,11 @@ Next to each item there’s a checkbox. Enabling the checkbox of one or more ite
 
 Pages are basically the equivalent to a static webpage. Typically, you would use pages for content like an _About Us_ or _Contact_ page. For editorial content, however, you would rather use blog posts.
 
-![Pages overview](assets/site-pages.png)
+![Edit a page](assets/site-page-edit.png)
 
 In the **Content** tab you can edit the page's main content, such as the article body, title and slug. Additionally, you can enter the page's title, which will be displayed in the frontend menu, enable or disable the page and restrict access to certain user roles. The **Theme** tab holds the theme options that are specific to the theme your site is using. Finally, in the **Meta** tab you can enter a title and description text for search engines, accessibility and sharing on social media.
 
 **Note** A slug is a computer friendly version of the title, so that it can be included in the absolute URL of the page. If you do not like the generated slug, simply enter your own.
-
-![Edit a page](assets/site-page-edit.png)
 
 ### Type: Link
 Links are the most flexible type, since they can create a menu entry linking to any internal or external URL.

@@ -26,6 +26,24 @@ Install Node dependencies and build the front-end components:
 npm install
 ```
 
+Install Front-end frameworks:
+
+```
+bower install
+```
+
+Compile Less files:
+
+```
+gulp
+```
+
+Bundle Javascript:
+
+```
+webpack
+```
+
 To watch for local LESS asset changes, run `gulp watch`.
 
 To watch for JS module changes, run `webpack --watch`.

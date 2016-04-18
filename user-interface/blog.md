@@ -37,6 +37,8 @@ Enable Comments | Allows users to engage in discussion about your post. You can 
 ## Comments
 The _Blog_ extension includes a sophisticated comment function that you can manage and curate in the _Comments_ section of the blog administration. It provides a list of the comments to all posts in your site.
 
+![Blog Comments](assets/blog-comments.png)
+
 If you click on the **Status** parameter in the table heading, you can sort comments by whether they are **Pending**, **Approved** or marked as **Spam**.
 
 Each item displays the author and – if provided – their email address above the comment's content. Clicking on the timestamp will bring you directly to the the comment's location below the post. To approve a comment or mark it as pending, hit the green or yellow circle in the status column. In the _Post_ column, click on the post's title to enter Edit mode. To see all comments on that post, click on the comment icon, which also indicates the number of comments.
@@ -64,5 +66,3 @@ Field                 | Description
 :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Comments              | Determine whether users need to provide an e-mail address in order to comment and set a period of time after which it is no longer possible to comment a post.
 Appearance            | Enable [Gravatar](http://gravatar.com), change the order of comments and allow nesting of comments by a maximum number that you set.
-
-![Blog Comments](assets/blog-comments.png)

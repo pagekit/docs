@@ -28,8 +28,8 @@ Limitations of this approach: One request per JavaScript file that is required b
 For a setup including a webpack configuration, you can look at the [hello extension](https://github.com/pagekit/extension-hello).
 
 1. Create js file or Vue component in your extension. Example Javascript file: [settings.js](https://github.com/pagekit/extension-hello/blob/master/app/views/settings.js) and Example Vue component: [link.vue](https://github.com/pagekit/extension-hello/blob/master/app/components/link.vue).
-2. Set up the webpack config for your extension. The webpack config defines which JavaScript modules your extension provides, in which output file the resulting bundle should be stored and which dependencies you are using in your module. Example for a [webpack.config.js](https://github.com/pagekit/extension-hello/blob/master/).webpack.config.js
-3. Run `webpack` in the root directory of your Pagekti installation. The webpack config of Pagekit is setup to traverse all packages and use their webpack
+2. Set up the webpack config for your extension. The webpack config defines which JavaScript modules your extension provides, in which output file the resulting bundle should be stored and which dependencies you are using in your module. Example for a [webpack.config.js](https://github.com/pagekit/extension-hello/blob/master/)
+3. Run `webpack` in the root directory of your Pagekit installation. The webpack config of Pagekit is setup so that it traverses all packages and reads their webpack configurations as well.
 4. Require the generated bundle from your view files. `<?php $view->script('settings', 'hello:app/bundle/settings.js', ['vue', 'jquery']) ?>`
 
 ## Create and register Vue components
@@ -49,4 +49,4 @@ This basically happens in four steps:
 3. Add the Vue component to the webpack bundle, i.e. `"link": "./app/components/link.vue"`. [Source example](https://github.com/pagekit/extension-hello/blob/master/webpack.config.js#L6)
 4. Make sure the component's bundle file is loaded in the backend via PHP, i.e. `$scripts->register('hello-link', 'hello:app/bundle/link.js', '~panel-link');` [Source example](https://github.com/pagekit/extension-hello/blob/master/index.php)
 
-**Note** These are the steps needed when making use of Webpack. You can achieve the same without webpack. Simply skip setp 3. You can create the Vue component in a plain `*.js` file with the template included as a literal string for the `template` property. Make sure to use the path to that JavaScript file in step 4.
+**Note** These are the steps needed when making use of Webpack. You can achieve the same without webpack. Simply skip step 3. You can create the Vue component in a plain `*.js` file with the template included as a literal string for the `template` property. Make sure to use the path to that JavaScript file in step 4.

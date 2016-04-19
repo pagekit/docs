@@ -1,17 +1,19 @@
 # Getting Help
-If you do not find answers to your questions in our documentation, you might be looking for a more direct channel to receive help and discuss your problems. Depending on your matter, you have several methods to reach the developers and the Pagekit community.
+<p class="uk-article-lead">There are several channels to reach the developers and the Pagekit community to get direct assistance.</p>
+
+If you can't find the right answers to your questions, you can turn to one of our other sources to get help and discuss your issues, but also to receive news and update notifications.
 
 ## Gitter
-Gitter is a great chat tool tightly coupled with GitHub. You will need to create a free GitHub account if you don't already have one. Once done, you can access the chat at [https://gitter.im/pagekit/pagekit](https://gitter.im/pagekit/pagekit) or you can download one of ther [Gitter apps](https://gitter.im/apps).
+Gitter is a chat tool that is tightly coupled with GitHub. If you don't already have one, you will need to create a free GitHub account. Once done, you can access the chat at [https://gitter.im/pagekit/pagekit](https://gitter.im/pagekit/pagekit) or you can download one of the available [Gitter apps](https://gitter.im/apps).
 
 ## Github Issues
-If you want to report a bug or want to contribute your ideas, you can use the [Pagekit GitHub Issues tracker](https://github.com/pagekit/pagekit/issues).
+If you want to report a bug or contribute your ideas, you can use the [Pagekit GitHub Issues tracker](https://github.com/pagekit/pagekit/issues).
 
 ## Twitter
-By [following us on Twitter](https://twitter.com/pagekit) you will get real-time news about Pagekit development and events we are attending.
+Follow [Pagekit on Twitter](https://twitter.com/pagekit) to get real-time news regarding the development and all events we are attending.
 
 ## Google+
-We have an active [Google+ community](https://plus.google.com/communities/104125443335488004107) that is the perfect place to learn and discuss about Pagekit. Feel free to share your own projects built with Pagekit.
+We have an active [Google+ community](https://plus.google.com/communities/104125443335488004107) that is a good place to discuss and learn about Pagekit. Feel free to share your own projects built with Pagekit.
 
 ## Pagekit Blog
-Read major project news and articles for developers on the [Pagekit Blog](http://pagekit.com/blog). Stay up to date with new releases and join the discussion in the comments.
+Read major project news and articles for developers on the [Pagekit Blog](http://pagekit.com/blog). Stay up to date with new releases and join the discussion in the comments section.

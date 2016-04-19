@@ -1,10 +1,23 @@
 # Themes
-<p class="uk-article-lead">A theme changes the look of your site. In its simplest form a theme generates the surrounding html markup for your extensions' content output.</p>
+<p class="uk-article-lead">A theme changes the look of your site. In its simplest form a theme generates the surrounding HTML markup for the content output of your extensions.</p>
 
-**Note** The examples in this guide are taken from the _Hello_ theme. It's available via the Pagekit marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
+**Note** The examples in this guide are taken from the _Hello_ theme, which is available in the Marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
 
-## Package definition: composer.json
-A theme is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` and looks as follows. Detailed information is available in the [Packages](../developer-basics/packages.md) chapter.
+<ul class="uk-list">
+    <li><a href="#package-definition">Package definition</a></li>
+    <li><a href="#module-definition">Module definition</a></li>
+    <li><a href="#layout-file">Layout file</a></li>
+    <li><a href="#menu-and-position-renderer">Menu and Position renderer</a></li>
+    <li><a href="#default-pagekit-markup">Default Pagekit markup</a></li>
+    <li><a href="#overwrite-system-views">Overwrite system views</a></li>
+    <li><a href="#add-theme-options-to-the-site-interface">Add theme options to the Site interface</a></li>
+    <li><a href="#add-a-theme-tab-to-the-node-configuration-in-the-site-tree">Add a Theme tab to the Node configuration in the Site Tree</a></li>
+    <li><a href="#add-theme-options-to-the-widget-interface">Add theme options to the Widget interface</a></li>
+    <li><a href="#manually-add-a-settings-screen">Manually add a settings screen</a></li>
+</ul>
+
+## Package definition
+A theme is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` file and looks as follows. For detailed information, take a look the [Packages](../developer-basics/packages.md) chapter.
 
 ```json
 {
@@ -15,10 +28,10 @@ A theme is a regular Pagekit [package](../developer-basics/packages.md) of the t
 }
 ```
 
-## Module definition: index.php
-A theme in itself is simply a [Module](../developer-basics/modules.md). So you may want to read up on modules first. This opens up a lot of possibilities to what a theme can do.
+## Module definition
+A theme in itself is simply a [module](../developer-basics/modules.md). So you may want to read up on modules first. This opens up a lot of possibilities with regard to what a theme can do.
 
-Define the positions and menus of your theme, load additional scripts and much more. To get started, here is a shortened example of the `index.php`. Explanations of the theme specific properties follow below.
+Define the positions and menus of your theme, load additional scripts and much more. Here is a shortened example of the `index.php` to get you started. Explanations of the theme specific properties follow below.
 
 ```php
 
@@ -47,12 +60,12 @@ return [
 ];
 ```
 
-Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as we will show below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label which displays in the admin panel.
+Your theme defines locations to render menus and widgets. The actual rendering happens in the `template.php`, as is demonstrated below. However, your theme needs to register these positions before. This happens with the `menus` and `positions` property. These contain arrays of the position name and a label, which is displayed in the admin panel.
 
-### `menus`: Register menu positions for a theme
-In your theme you can render menus from the Pagekit system in as many positions as you want. To make these positions known to Pagekit, you need to register them using the `menus` property.
+### Menus
+In your theme, you can render menus from the Pagekit system in as many positions as you want. To make these positions known to Pagekit, you need to register them using the `menus` property.
 
-Each menu position is defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. `Main`).
+Each menu position is defined by an identifier (e.g. `main`) and a label to be displayed to the user (e.g. _Main_).
 
 ```php
 'menus' => [
@@ -63,10 +76,10 @@ Each menu position is defined by an identifier (i.e. `main`) and a label to be d
 ],
 ```
 
-### `positions`: Register widget positions for a theme
-Widget positions allow users to publish Widgets in several locations of your theme markup. They appear in the Widget area of the Pagekit admin panel are selectable by the user when setting up a Widget.
+### Positions
+Widget positions allow users to publish widgets in several locations of your theme markup. They appear in the _Widgets_ area of the Pagekit admin panel and can be selected by the user when setting up a widget.
 
-Each widget position is defined by an identifier (i.e. `sidebar`) and a label to be displayed to the user (i.e. `Sidebar`).
+Each widget position is defined by an identifier (i.e. `sidebar`) and a label to be displayed to the user (i.e. _Sidebar_).
 
 ```php
 'positions' => [
@@ -76,8 +89,8 @@ Each widget position is defined by an identifier (i.e. `sidebar`) and a label to
 ],
 ```
 
-## The layout file
-Next to the other mandatory module files, a theme brings its own `views/template.php` file. It is the main file for the theme markup. It is a PHP file that has the following objects available for rendering:
+## Layout file
+Apart from the mandatory module files, a theme brings its own `views/template.php` file. It is the main file for the theme's markup with the following objects available for rendering.
 
 Object    | Description
 --------- | ------------------------------
@@ -141,14 +154,14 @@ Themes and extensions in Pagekit are very much the same. Try not to think in ter
 
 Most importantly, the module definition in your theme's `index.php` can contain all properties, no matter if you have a theme or an extension. If you want to add a Settings screen to the admin panel, register additional tabs to the Site Tree or the Widget management interface, all of that works exactly the same.
 
-## Menu and Position Renderer
-You might want to use custom menu or position renderer. Below you'll find two examples on how to use them.
+## Menu and Position renderer
+You might want to use a custom menu or position renderer. Below you'll find two examples of how to use them.
 
 ```php
 <?= $view->menu('main', 'menu-navbar.php') ?>
 ```
 
-In this case the `main` menu will be rendererd with the `menu-navbar.php` layout file:
+In this case the `main` menu will be rendererd with the `menu-navbar.php` layout file.
 
 ```php
 <ul class="uk-navbar-nav">
@@ -170,7 +183,7 @@ The same works for widget positions.
 <?= $view->position('hero', 'position-grid.php') ?>
 ```
 
-Here, the widget position `hero` will be rendered with the `position-grid.php` layout file:
+Here, the widget position `hero` will be rendered with the `position-grid.php` layout file.
 
 ```php
 <?php foreach ($widgets as $widget) : ?>
@@ -189,9 +202,9 @@ Here, the widget position `hero` will be rendered with the `position-grid.php` l
 ```
 
 ## Default Pagekit markup
-The Pagekit admin panel is built using the UIkit frontend framework. That is why the Pagekit core extensions such as static pages and the blog output markup with CSS classes from UIkit. You are, however, in no way forced to use UIkit to create your own themes.
+The Pagekit admin panel is built using the UIkit frontend framework. That is why Pagekit core extensions, like static pages and the blog, output markup with CSS classes from UIkit. You are, however, in no way obliged to use UIkit to create your own themes.
 
-To style the Pagekit system output, you can just add the CSS for a few classes instead of including the UIkit CSS. The `theme.css` that comes with the Hello extension already comes with the classes you need to style.
+To style the Pagekit system output, you can just add the CSS for a few classes instead of including the entire UIkit CSS. The `theme.css` file that comes with the Hello extension already includes the necessary classes.
 
 If you want to completely change the markup that Pagekit itself generates, you also have the possibility to overwrite system view files, to provide custom widget renderer and custom menu renderer.
 
@@ -204,12 +217,12 @@ File                         | Original view file                       | Descri
 `views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view
 `views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view
 
-To understand which variables you have available in these views, check out the markup in the original view file.
+To understand which variables are available in these views, check out the markup in the original view file.
 
-## Add theme options to Site interface
+## Add theme options to the Site interface
 This is done via JavaScript, most comfortably when you make use of Vue components.
 
-Load your own JS when the Site Tree interface is currently active. In your `index.php`, you can do that when you listen to the right event:
+Load your own JS when the Site Tree interface is currently active. In your `index.php`, you can do this when you listen to the right event.
 
 ```
 'events' => [
@@ -226,7 +239,7 @@ Load your own JS when the Site Tree interface is currently active. In your `inde
 
 The `js/site-theme.js` contains a Vue component which renders the interface and takes care of storing of the theme settings.
 
-**Note**: Although it's possible to do all of this in a single JS file and have the markup be represented in a string, best practice is to actually create `*.vue` files with your Vue component. Examples can be found in the `app/components` folder of the default _One_ theme.
+**Note** Although it's possible to do all of this in a single JS file and have the markup represented in a string, the best practice is to actually create `*.vue` files with your Vue component. Examples can be found in the `app/components` folder of the default _One_ theme.
 
 ```js
 window.Site.components['site-theme'] = {
@@ -260,8 +273,8 @@ window.Site.components['site-theme'] = {
 };
 ```
 
-## Add Theme tab to Node configuration in Site Tree
-Often you want to attach theme options to a specific Node in the Site tree. For example you want to allow the user to pick a Hero image which can be different per page. To do so, we can add a _Theme_ tab to the Site interface.
+## Add a Theme tab to the Node configuration in the Site Tree
+Often you want to attach theme options to a specific Node in the Site tree. For example, you want to allow the user to pick a Hero image, which can be different per page. To do so, we can add a _Theme_ tab to the Site interface.
 
 ```php
 'events' => [
@@ -293,10 +306,10 @@ window.Site.components['node-theme'] = {
 };
 ```
 
-**Note** Compare with full Vue components in `app/components` folder of the default _One_ theme.
+**Note** Compare with full Vue components in the `app/components` folder of the default _One_ theme.
 
-## Add theme options to Widget interface
-Register a script to be loaded in Widget edit view.
+## Add theme options to the Widget interface
+Register a script to be loaded in the _Widget_ edit view.
 
 ```
 'view.system/widget/edit' => function ($event, $view) {
@@ -321,10 +334,10 @@ window.Widgets.components['widget-theme'] = {
 };
 ```
 
-**Note** Compare with full Vue components in `app/components` folder of the default _One_ theme.
+**Note** Compare with full Vue components in the `app/components` folder of the default _One_ theme.
 
-## Add a settings screen manually
-If the prepared ways of adding a settings screen do not satisfy your needs, you can also manually create a completely new interface. With the module definition in `index.php` you have full control and can do something like the following:
+## Manually add a settings screen
+If the prepared ways of adding a settings screen do not satisfy your needs, you can also manually create a completely new interface. With the module definition in the `index.php` file you have full control and can do something like the following:
 1. Create a View file for your settings screen.
 2. Create a new Controller with an action that renders the view file.
 3. Register controller and routes inside your `index.php`

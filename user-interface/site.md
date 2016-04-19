@@ -37,7 +37,7 @@ The item's type is displayed in the tree view as well. Drag an item to the right
 
 Next to each item there’s a checkbox. Enabling the checkbox of one or more items will display a toolbar that offers a number of quick tasks, like moving or deleting a page and enabling or disabling multiple items at once.
 
-### Type: Pages
+### Type: Page
 
 Pages are basically the equivalent to a static webpage. Typically, you would use pages for content like an _About Us_ or _Contact_ page. For editorial content, however, you would rather use blog posts.
 

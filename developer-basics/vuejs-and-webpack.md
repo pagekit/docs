@@ -99,9 +99,9 @@ To load and use the compiled Vue components, load the compiled bundle file from 
 
 For a setup including a webpack configuration, you can look at the [hello extension](https://github.com/pagekit/extension-hello).
 
-1. Create js file or Vue component in your extension. Example Javascript file: [settings.js](https://github.com/pagekit/extension-hello/blob/master/app/views/settings.js) and Example Vue component: [link.vue](https://github.com/pagekit/extension-hello/blob/master/app/components/link.vue).
-2. Set up the webpack config for your extension. The webpack config defines which JavaScript modules your extension provides, in which output file the resulting bundle should be stored and which dependencies you are using in your module. Example for a [webpack.config.js](https://github.com/pagekit/extension-hello/blob/master/)
-3. Run `webpack` in the root directory of your Pagekit installation. The webpack config of Pagekit is setup so that it traverses all packages and reads their webpack configurations as well.
+1. Create Vue component in your extension. Example `*.vue` file: [link.vue](https://github.com/pagekit/extension-hello/blob/master/app/components/link.vue).
+2. Set up the `webpack.config.js` for your extension. The webpack config defines which JavaScript modules your extension provides in which output file the resulting bundle should be compiled. Example for a [webpack.config.js](https://github.com/pagekit/extension-hello/blob/master/webpack.config.js)
+3. Run `webpack` or `webpack --watch` in the root directory of your Pagekit installation. The webpack config of Pagekit is setup so that it traverses all packages and reads their webpack configurations as well.
 4. Require the generated bundle from your view files. `<?php $view->script('settings', 'hello:app/bundle/settings.js', ['vue', 'jquery']) ?>`
 
 ## Create and register Vue components

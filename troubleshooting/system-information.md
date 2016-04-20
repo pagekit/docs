@@ -1,9 +1,7 @@
 # System Information
-<p class="uk-article-lead">If you run into problems with Pagekit, there are a few steps you should try.</p>
+<p class="uk-article-lead">If you run into problems with Pagekit, reviewing your system information can help yourself and others on the support channels to understand potential problems.</p>
 
-A lot of times when an error occurs, you will have to retrieve more information about the system environment Pagekit runs on.
-
-Pagekit offers this information in the admin panel, just go to _System > Info_.
+Information about your server environment can be found in the Pagekit admin panel, just navigate to _System > Info_.
 
 Menu          | Description
 ------------- | ---------------------------------------------------------------------------------------------------------------

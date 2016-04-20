@@ -1,23 +1,32 @@
 # Configuration File
-<p class="uk-article-lead">Change settings in Pagekit's configuration file.</p>
+<p class="uk-article-lead">The Pagekit configuration file is automatically created when you install Pagekit. If you want to change configuration settings manually, this article explains syntax and content of the file.</p>
 
-Pagekit stores parts of its configuration in a `/config.php` file located on the root level. It is auto generated during the installation. The normal way of editing it would be through Pagekit _System > Settings_ admin area, although there are situations where the manual editing is necessary. The following sections describe the most common settings.
+Usually, you do not need to fiddle with the configuration file `config.php` after it has been created by the installer. The normal way of changing configuration is through _System > Settings_ in the Pagekit admin panel.
+
+Sometimes manually editing this file is still necessary and useful, for example when troubleshooting a broken installation or when moving an existing Pagekit installation to a new server.
+
+In the following code listing you see an example configuration with the most common settings.
+
+Usually you only have one database connection present. The example includes both examples to show how configuration works for different database drivers. Only the `default` connection will be used by Pagekit (in this example `sqlite` is used).
 
 ```php
 'database' => [
-  'default' => 'mysql',      // default database connection
+  'default' => 'sqlite',     // default database connection
   'connections' => [         // array of database connections
-    'mysql' => [             // database driver name, mysql or sqlite
-      'host' => 'localhost', // database server host name
-      'user' => 'user',      // database server user name
-      'password' => 'pass',  // database password
+    'sqlite' => [            // database driver name, here: sqlite
+      'prefix' => 'pk_',     // prefix in front of every table
+    ],
+    'mysql' => [             // database driver name, here: mysql
+      'host' => 'localhost', // server host name
+      'user' => 'user',      // server user name
+      'password' => 'pass',  // server user password
       'dbname' => 'pagekit', // database name
-      'prefix' => 'pk_'      // database prefix
-    ]
+      'prefix' => 'pk_'      // prefix in front of every table
+    ],
   ]
 ],
 'system' => [
-  'secret' => 'secret'       // the secret string generated during installation
+  'secret' => 'secret'       // a secret string generated during installation
 ],
 'system/cache' => [
   'caches' => [
@@ -25,15 +34,15 @@ Pagekit stores parts of its configuration in a `/config.php` file located on the
       'storage' => 'auto'    // the cache method to be used, if enabled
     ]
   ],
-  'nocache' => false         // the cache state - you can disable it entirely by setting to 'true'
+  'nocache' => false         // the cache state - disable entirely by setting to true
 ],
 'system/finder' => [
-  'storage' => '/storage'    // the relative path to the storage folder - e.g. media files will be stored here
+  'storage' => '/storage'    // relative path to a folder used for uploads, cache etc.
 ],
 'application' => [
-  'debug' => false           // the debug mode state - enable while developing to get debug output
+  'debug' => false           // debug mode state, enable while developing to get debug output
 ],
 'debug' => [
-  'enabled' => false         // the debug toolbar state - enable it to get information, about requests, memory usage etc
+  'enabled' => false         // debug toolbar state, enable to get information, about requests, routes etc.
 ]
 ```

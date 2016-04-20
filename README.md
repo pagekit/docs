@@ -38,6 +38,7 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   5. [Response](developer-basics/response.md)
   5. [Users & Permissions](developer-basics/users-permissions.md)
   6. [Views & Templating](developer-basics/views-templating.md)
+  6. [Vue & Webpack](developer-basics/vuejs-and-webpack.md)
   7. [Database](developer-basics/database.md)
   7. [ORM](developer-basics/orm.md)
   8. [Translation](developer-basics/translation.md)

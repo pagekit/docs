@@ -1,9 +1,13 @@
 # Dashboard Widgets
-<p class="uk-article-lead">Use Dashboard Widgets to render small chunks of content at the admin panel's dashboard.</p>
 
-## Create a Dashboard Widget
-A Dashboard Widget is created as a [Vue](http://vuejs.org) component.
-1. Create a Vue component for your Widget, save it under your extension: `app/components/widget-hello.vue`
+<p class="uk-article-lead">The Dashboard is the first screen that is shown after logging in to the admin panel. It gives an overview of the website and contains multiple Dashboard Widgets. You can create your own Dashboard Widget that can display useful information or offer shortcuts to other areas of your extension.</p>
+
+
+A Dashboard Widget is created as a [Vue](http://vuejs.org) component. The following example explains how to create the Widget using a webpack configuration in your extension. If you are not sure what Vue.js and Webpack are or how they work together, you might want to read the [Vue and Webpack](../developer-basics/vue-and-webpack.md) article first.
+
+## Create a Vue component
+
+To get started, create a Vue component for your Widget and save it in a subfolder of your extension extension: `<extension>/app/components/widget-hello.vue`
 
 ```vue
 <template>
@@ -53,7 +57,9 @@ A Dashboard Widget is created as a [Vue](http://vuejs.org) component.
 </script>
 ```
 
-1. Add the Vue component to your extension's `webpack.config.js`:
+## Add to webpack config
+
+Now, add the Vue component to your extension's `webpack.config.js`:
 
 ```
 entry: {
@@ -63,7 +69,10 @@ entry: {
 ```
 
 Run `webpack` once to have the new component be available in your bundle. When developing it is a good idea to have `webpack --watch` running in the background.
-1. Register the bundled JavaScript file inside your extension's `index.php`.
+
+## Make sure the Dashboard widget is loaded
+
+Register the bundled JavaScript file inside your extension's `index.php`.
 
 Make sure the file is loaded _before_ the dashboard initialization code by using the tilde: `~dashboard`.
 

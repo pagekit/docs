@@ -1,6 +1,12 @@
-# Users and Permissions
+# Users &amp; Permissions
 
 <p class="uk-article-lead">Pagekit comes with a prepared signup procedure and a powerful user manager. With all of these users in your system, your extension can easily make use of roles and permissions.</p>
+
+<ul class="uk-list">
+    <li><a href="#concepts">Concepts</a></li>
+    <li><a href="#show-content-to-specific-role-only">Show content to specific role only</a></li>
+    <li><a href="#register-permissions-from-a-module-definition">Register permissions from a module definition</a></li>
+</ul>
 
 ## Concepts
 

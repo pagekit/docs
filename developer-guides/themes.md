@@ -149,11 +149,6 @@ Object    | Description
 </html>
 ```
 
-## Doing more with themes
-Themes and extensions in Pagekit are very much the same. Try not to think in terms of developing a theme vs. developing an extension but rather understand that you have access to Pagekit's framework all the time.
-
-Most importantly, the module definition in your theme's `index.php` can contain all properties, no matter if you have a theme or an extension. If you want to add a Settings screen to the admin panel, register additional tabs to the Site Tree or the Widget management interface, all of that works exactly the same.
-
 ## Menu and Position renderer
 You might want to use a custom menu or position renderer. Below you'll find two examples of how to use them.
 
@@ -206,10 +201,10 @@ The Pagekit admin panel is built using the UIkit frontend framework. That is why
 
 To style the Pagekit system output, you can just add the CSS for a few classes instead of including the entire UIkit CSS. The `theme.css` file that comes with the Hello extension already includes the necessary classes.
 
-If you want to completely change the markup that Pagekit itself generates, you also have the possibility to overwrite system view files, to provide custom widget renderer and custom menu renderer.
+If you want to completely change the markup that Pagekit itself generates, you also have the possibility to overwrite system view files.
 
 ## Overwrite system views
-To overwrite system view files, you just need to put template files in the correct locations inside your theme folder.
+To overwrite system view files, you just need to create corresponding folders inside your theme to mimic the original structure and put the template files there, as shown in the table below.
 
 File                         | Original view file                       | Description
 ---------------------------- | ---------------------------------------- | ------------------------

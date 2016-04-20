@@ -10,7 +10,6 @@ Log in on [pagekit.com](https://pagekit.com) and navigate to the _Developer_ sec
 
 Hit _Submit_ and you will be presented with a settings screen for your new package. Notice how the _Status_ of the package is set to _Unpublished_ by default.
 
-## Synchronize Releases with Github
 ## Versions
 When you have finished a new version of your extension and try to upload it to the marketplace, make sure to increase the _version_ number in the `composer.json` file.
 

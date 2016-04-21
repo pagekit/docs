@@ -1,9 +1,9 @@
-# Views and Templating
-<p class="uk-article-lead">While the controller is handling the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently Pagekit supports a PHP engine only.</p>
+# Views &amp; Templating
+<p class="uk-article-lead">While the controller handles the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently, Pagekit only supports a PHP engine.</p>
 
 ## Rendered view response
 
-The most common way to render a view from is to return an array from your controller action. Use the `'$view'` property to pass parameters to your view renderer.
+The most common way to render a view is to return an array from your controller action. Use the `'$view'` property to pass parameters to your view renderer.
 
 ```php
 public function indexAction($name = '')
@@ -36,11 +36,11 @@ The rendered view file could look like this:
 ```
 
 
-This view is wrapped in the main layout by default. If you do not want that, you can change `'layout' => false` in the $view array.
+This view is wrapped in the main layout by default. To avoid this behavior, you can change `'layout' => false` in the $view array.
 
 ## Render a view manually
 
-You can also manually access the View service to render a template file. This may come in handy when you dynamically determine which view to load.
+You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load.
 
 ```php
 
@@ -71,7 +71,7 @@ The according view file:
 The views are rendered using the PHP templating engine, which offers defined global template variables and a set of view helpers.
 
 ### Including other views
-Rendering sub views from your view is done with the `$view` helper. The `render`method evaluates and returns the content of the given template file. This is identical to rendering the view manually from the controller.
+Rendering sub views from your view is done with the `$view` helper. The `render` method evaluates and returns the content of the given template file. This is identical to rendering the view manually from the controller.
 
 ```php
 $view->render('extension://hello/views/view.php', ['id' => 1])
@@ -85,14 +85,14 @@ As seen earlier, each route has a name that you can use to dynamically generate 
 <a href="<?= $view->url('@hello/default/view', ['id' => 23]) ?>">View article 23</a>
 ```
 
-You can link to assets like images or other files using `@url.to`.
+You can link to assets, like images or other files, using `@url.to`.
 
 ```HTML
 <img src="<?= $view->url()->getStatic('extensions/hello/extension.svg') ?>" alt="Extension icon" />
 ```
 
 ## Working with Assets
-<p class="uk-article-lead">Assets are the static files needed in your project, including CSS, JS and image files.
+Assets are the static files needed in your project, including CSS, JS and image files.
 
 ### Generate URL to static assets
 To generate a route to a static asset, use the `getStatic` method of the `UrlProvider` class.

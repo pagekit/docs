@@ -1,6 +1,13 @@
 # Views &amp; Templating
 <p class="uk-article-lead">While the controller handles the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently, Pagekit only supports a PHP engine.</p>
 
+<ul class="uk-list">
+    <li><a href="#rendered-view-response">Rendered view response</a></li>
+    <li><a href="#render-a-view-manually">Render a view manually</a></li>
+    <li><a href="#templating">Templating</a></li>
+    <li><a href="#working-with-assets">Working with Assets</a></li>
+</ul>
+
 ## Rendered view response
 
 The most common way to render a view is to return an array from your controller action. Use the `'$view'` property to pass parameters to your view renderer.

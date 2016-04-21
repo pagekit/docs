@@ -1,7 +1,7 @@
 # System Information
-<p class="uk-article-lead">If you run into problems with Pagekit, reviewing your system information can help yourself and others on the support channels to understand potential problems.</p>
+<p class="uk-article-lead">If you run into problems with Pagekit, reviewing your system information can help you and others on the support channels to understand potential problems.</p>
 
-Information about your server environment can be found in the Pagekit admin panel, just navigate to _System > Info_.
+Information about your server environment can be found in the Pagekit admin panel; just navigate to _System > Info_.
 
 Menu          | Description
 ------------- | ---------------------------------------------------------------------------------------------------------------

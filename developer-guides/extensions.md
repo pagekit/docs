@@ -112,7 +112,7 @@ In the `events` property of your module's `index.php`, register a JavaScript fil
 
 ```php
 'view.scripts' => function ($event, $scripts) {
-    $scripts->register('link-blog', 'hello:/link-hello.js', '~panel-link');
+    $scripts->register('link-hello', 'hello:/link-hello.js', '~panel-link');
 }
 ```
 

@@ -41,7 +41,7 @@ Key       | Description                       | More
 `nodes`    | Register Nodes for the Site Tree | [Details](#register-nodes-for-site-tree)
 `settings`    | Link to a settings screen | [Details](#link-to-a-settings-screen)
 `menu` | Add menu items to the admin panel | [Details](#add-menu-items-to-the-admin-panel)
-`widgtes`    | Register Widgets | [Details](#register-widgets)
+`widgets`    | Register Widgets | [Details](#register-widgets)
 
 ## Bootstrap code
 

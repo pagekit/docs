@@ -191,7 +191,7 @@ $app->config('hello')->set('message', 'Custom message');
 
 **Note**. If you directly read the config from the module, it will still have the old value. After the next request, Pagekit will have merged the changes and made them available as the `config` property of the `$module` instance.
 
-## Register Nodes for the Site Tree
+## Register Nodes for Site Tree
 Nodes are similar to routes with the main difference that they can be dragged around in the Site Tree View and therefore dynamically result in a calculated route.
 
 When you have added a Node, it will be available in the Site Tree. Click the _Add Page_ button to see the Dropdown of all available Node types.

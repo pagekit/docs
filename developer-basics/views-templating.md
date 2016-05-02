@@ -129,3 +129,28 @@ To include a JavaScript file in your template, call the `script helper` from the
 ```
 
 **Note** Internally, `style()` and `script()` each work with their own Asset Manager. As these are separate from each other, you can assign the same name to a CSS and JS file without conflict (both called `theme` in the above example).
+
+### Async and deferred script execution
+
+By default, a script that is included in the head section of the rendered HML markup, is fetched and executed immediately. Only afterwards does the browser continue to parse the page.
+
+To change this behaviour, you can use the keywords `async` and `defer` when loading a script. Set the appropriate option in your PHP code and the resulting `<script>` tag will have these attributes set accordingly.
+
+Attribute | Description
+--------- | -----------
+`async` | Tell the browser to execute the script asynchronously which means that parsing the page continues even while the script is being executed
+`defer` | Tell the browser that the script is meant to be executed after the document has been parsed. Browser support of this HTML feature is not perfect, but using it might only cause problems in cases where the execution order of scripts is important.
+
+Example: Deferred execution, no dependencies.
+
+```
+<?php $view->script('theme', 'theme:js/theme.js', [], ['defer']) ?>
+```
+
+Example: Deferred and async execution, with dependencies.
+
+```
+<?php $view->script('theme', 'theme:js/theme.js', ['jquery', 'uikit'], ['defer', 'async']) ?>
+```
+
+

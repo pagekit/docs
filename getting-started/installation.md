@@ -1,5 +1,5 @@
 # Installation
-<p class="uk-article-lead">Pagekit's installation process is quick and easy and shouldn't take up more than a few minutes.</p>
+<p class="uk-article-lead">Pagekit's installation process is quick and easy and only takes a few minutes.</p>
 
 <ul class="uk-list">
     <li><a href="#step-1-download-and-open-the-installer">Step 1: Download and open the Installer</a></li>

@@ -16,7 +16,7 @@ Make sure that [Composer](https://getcomposer.org/doc/00-intro.md#installation-n
 Clone the repository.
 
 ```
-git clone --branch develop git://github.com/pagekit/pagekit.git
+git clone --branch develop https://github.com/pagekit/pagekit.git
 ```
 
 Navigate to the cloned directory and install PHP dependencies.

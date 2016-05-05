@@ -52,7 +52,7 @@ class HelloController
 }
 ```
 
-By default, your extension (or theme) will be booted and a set of default routes will be generated automatically. You can use the [developer toolbar](../tools/developer-toolbar.md) to view the newly registered routes (along with all core routes).
+By default, your extension (or theme) will be booted and a set of default routes will be generated automatically. You can use the [developer toolbar](../troubleshooting/debug-mode.md) to view the newly registered routes (along with all core routes).
 
 Here is how to understand a route:
 

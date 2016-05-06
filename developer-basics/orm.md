@@ -71,7 +71,7 @@ class Topic
 
 A few things to note:
 
-A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritance. The main difference is that a class can use multiple traits while it could only inherit from one single class.
+A model is a plain PHP class that uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritance. The main difference is that a class can use multiple traits while it could only inherit from one single class.
 
 The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
 
@@ -101,7 +101,7 @@ The application data you represent in your database model has certain relations 
 
 ### Belongs-to relation
 
-The basic annotation that is used across the different relation types it the `@BelongsTo` annotation above a model property. In the following example (taken from the `Post` model of the Blog) we specify a `$user` property, which is defined to point to the instance of the Pagekit `User` model.
+The basic annotation that is used across the different relation types is the `@BelongsTo` annotation above a model property. In the following example (taken from the `Post` model of the Blog) we specify a `$user` property, which is defined to point to the instance of the Pagekit `User` model.
 
 The `keyFrom` parameter specify which source property is used to point to the user id. Note how we also need to define the according `user_id` property in order for the relationship to be resolved by a query.
 

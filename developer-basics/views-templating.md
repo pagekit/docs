@@ -34,7 +34,7 @@ public function indexAction($name = '')
 The rendered view file could look like this:
 
 ```php
-<!-- extensions/hello/views/index.php -->
+<!-- packages/hello/views/index.php -->
 
 <h1>Hello <?= $name ?></h1>
 <p>
@@ -47,7 +47,7 @@ This view is wrapped in the main layout by default. To avoid this behavior, you 
 
 ## Render a view manually
 
-You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load.
+You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load. Note that `hello` in the example below refers to the package name.
 
 ```php
 
@@ -57,7 +57,7 @@ class MyController {
 
     public function anotherViewAction()
     {
-        return App::render('extension://hello/views/view.php', ['id' => 1]);
+        return App::render('hello/views/view.php', ['id' => 1]);
     }
 
 }
@@ -66,7 +66,7 @@ class MyController {
 The according view file:
 
 ```HTML
-<!-- extensions/hello/views/index.php -->
+<!-- packages/hello/views/index.php -->
 
 <h1>You are viewing article number <?= $id ?></h1>
 <p>
@@ -81,7 +81,7 @@ The views are rendered using the PHP templating engine, which offers defined glo
 Rendering sub views from your view is done with the `$view` helper. The `render` method evaluates and returns the content of the given template file. This is identical to rendering the view manually from the controller.
 
 ```php
-$view->render('extension://hello/views/view.php', ['id' => 1])
+$view->render('hello/views/view.php', ['id' => 1])
 ```
 
 ### Link to routes
@@ -95,7 +95,7 @@ As seen earlier, each route has a name that you can use to dynamically generate 
 You can link to assets, like images or other files, using `@url.to`.
 
 ```HTML
-<img src="<?= $view->url()->getStatic('extensions/hello/extension.svg') ?>" alt="Extension icon" />
+<img src="<?= $view->url()->getStatic('hello/extension.svg') ?>" alt="Extension icon" />
 ```
 
 ## Working with Assets

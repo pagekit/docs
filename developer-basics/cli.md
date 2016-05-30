@@ -15,7 +15,7 @@ $ ./pagekit             # run pagekit CLI script
 
 When simple invoking the CLI tool without any arguments, it will output the Pagekit version number, some basic usage information and list the available commands that you can use.
 
-```sh
+```
 $ ./pagekit
 Pagekit version 1.0.2
 
@@ -123,11 +123,13 @@ To learn what a CLI command actually does and how it is used, you can use the `h
 
 Example:
 
-`./pagekit help install`
+```sh
+./pagekit help install
+```
 
 Usage and arguments:
 
-```sh
+```
 Usage:
   help <command>
 

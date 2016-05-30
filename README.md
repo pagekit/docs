@@ -42,7 +42,8 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   7. [Database](developer-basics/database.md)
   7. [ORM](developer-basics/orm.md)
   8. [Translation](developer-basics/translation.md)
-  9. [Pagekit source](developer-basics/source.md)
+  9. [CLI](developer-basics/cli.md)
+  10. [Pagekit source](developer-basics/source.md)
 
 - Troubleshooting
   1. [System Information](troubleshooting/system-information.md)

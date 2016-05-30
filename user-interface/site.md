@@ -12,11 +12,15 @@
 </ul>
 
 ## Pages and menus
-Manage your site's content in the site tree. You can see an overview of all pages in the right and their associated menus in the left column. When hovering a single entry, an _Edit_ and a _Remove_ button will appear for that menu. To create a new menu, hit the _Add Menu_ button. You don't have to create a menu only to navigate through your site. You might also want to use it instead to group content from your site for easier management in the admin area.
+Manage your site's content in the site tree. You can see an overview of all existing menus on the left side of the interface. When hovering a single entry, an _Edit_ and a _Remove_ button will appear for that menu. To create a new menu, hit the _Add Menu_ button. You don't have to create a menu only to navigate through your site. You might also want to use it instead to group content from your site for easier management in the admin area.
+
+Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view. Both are accessible below the list of menus.
 
 ![Menu overview](assets/site.png)
 
-Each menu item and its assigned page are displayed inside the right column. Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view. Both are accessible below the list of menus.
+If you click a menu (for example _Portfolio menu_ in the screenshot above), the right side of the interface will update. Here, you can see all items of the selected menu. 
+
+Usually, a menu item is either a static page or a link (which points to either an internal destination on your own website, or an external link). However, a menu item could also be of another type that has been added by one of your installed extensions. An example for this is the _Blog_ extensions, which can be positioned at any location of the site tree.
 
 ## Render menus
 
@@ -25,7 +29,7 @@ If you hover over a menu and click the *Edit* icon, a modal dialog will appear. 
 ![Menu positions](assets/site-menu-edit.png)
 
 ## Pages
-Pages can be managed in the tree view in the right column of the interface. It shows the hierarchic structure of your page and can be sorted via drag and drop.
+Pages and other menu items can be managed in the tree view in the right column of the interface. It shows the hierarchical structure of your website's content and can be sorted via drag and drop.
 
 To create a new page, hit the _Add Page_ button in the top right hand corner and select the type of page you would like to create. Pagekit comes with a few pre-defined types – any extension can add new types to that list. You can also edit existing pages by clicking on their title in the site tree. This will lead you to an edit screen, which looks different depending on the type of the item you're creating.
 

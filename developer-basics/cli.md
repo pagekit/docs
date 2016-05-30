@@ -1,6 +1,6 @@
 # Command Line Interface
 
-Pagekit exposes some of its core functionality to developers via its command line interface (CLI). A number of commands are available that offer useful tools and helpers.
+<p class="uk-article-lead">Pagekit exposes some of its core functionality to developers via its command line interface (CLI). A number of commands are available that offer useful tools and helpers.</p>
 
 ## Basic usage
 

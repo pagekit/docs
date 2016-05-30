@@ -1,16 +1,17 @@
 # Views &amp; Templating
-<p class="uk-article-lead">While the controller handles the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. Currently, Pagekit only supports a PHP engine.</p>
+<p class="uk-article-lead">While the controller handles the incoming request, the view is responsible for rendering the response. To achieve this, it utilizes a templating engine. In Pagekit, you can use plain PHP templates or the Twig templating engine.</p>
 
 <ul class="uk-list">
     <li><a href="#rendered-view-response">Rendered view response</a></li>
     <li><a href="#render-a-view-manually">Render a view manually</a></li>
     <li><a href="#templating">Templating</a></li>
     <li><a href="#working-with-assets">Working with Assets</a></li>
+    <li><a href="#twig-templates">Twig templates</a></li>
 </ul>
 
 ## Rendered view response
 
-The most common way to render a view is to return an array from your controller action. Use the `'$view'` property to pass parameters to your view renderer.
+The most common way to render a view is to return an array from your controller action. Use the `$view` property to pass parameters to your view renderer.
 
 ```php
 public function indexAction($name = '')
@@ -34,14 +35,13 @@ public function indexAction($name = '')
 The rendered view file could look like this:
 
 ```php
-<!-- extensions/hello/views/index.php -->
+<!-- packages/pagekit/extension-hello/views/index.php -->
 
 <h1>Hello <?= $name ?></h1>
 <p>
    ...
 </p>
 ```
-
 
 This view is wrapped in the main layout by default. To avoid this behavior, you can change `'layout' => false` in the $view array.
 
@@ -57,7 +57,7 @@ class MyController {
 
     public function anotherViewAction()
     {
-        return App::render('extension://hello/views/view.php', ['id' => 1]);
+        return App::render('hello:views/view.php', ['id' => 1]);
     }
 
 }
@@ -66,7 +66,7 @@ class MyController {
 The according view file:
 
 ```HTML
-<!-- extensions/hello/views/index.php -->
+<!-- packages/pagekit/extension-hello/views/index.php -->
 
 <h1>You are viewing article number <?= $id ?></h1>
 <p>
@@ -81,7 +81,7 @@ The views are rendered using the PHP templating engine, which offers defined glo
 Rendering sub views from your view is done with the `$view` helper. The `render` method evaluates and returns the content of the given template file. This is identical to rendering the view manually from the controller.
 
 ```php
-$view->render('extension://hello/views/view.php', ['id' => 1])
+$view->render('hello:views/view.php', ['id' => 1])
 ```
 
 ### Link to routes
@@ -153,4 +153,78 @@ Example: Deferred and async execution, with dependencies.
 <?php $view->script('theme', 'theme:js/theme.js', ['jquery', 'uikit'], ['defer', 'async']) ?>
 ```
 
+## Twig templates
+
+Instead of using plain PHP for templating, you can also use Twig for your theme and extension templates. You can find documentation on the basic [Twig syntax and features](http://twig.sensiolabs.org/doc/templates.html) in the official Twig docs. Similar to the official Hello theme for default PHP templating, a [boilerplate Twig theme](https://github.com/florianletsch/theme-twig) also exists and can be used as a starting point.
+
+### Building themes with Twig
+
+By default, the main template file that Pagekit uses from a theme is located at `views/template.php` and it is rendered using the default PHP renderer. In your theme's `index.php` you can define a different layout file to be used as the main template.
+
+```
+/**
+ * Change default layout to use a Twig template.
+ */
+'layout' => 'views:template.twig',
+```
+
+The file extension `*.twig` will cause Pagekit to render this template with the Twig engine. A basic example for your theme's `views/template.twig` looks as follows.
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{ view.render('head') | raw }}
+        {{ view.style('theme', 'theme:css/theme.css') }}
+        {{ view.script('theme', 'theme:js/theme.js') }}
+    </head>
+    <body>
+
+        <!-- Render logo or title with site URL -->
+        <a href="{{ view.url().get() }}">
+            {% set logo = params.logo %}
+            {% if logo %}
+                <img src="{{ logo }}" alt="Logo">
+            {% else %}
+                {{ params.title }}
+            {% endif %}
+        </a>
+
+        <!-- Render menu position -->
+        {% if view.menu().exists('main') %}
+            {{ view.menu('main') | raw }}
+        {% endif %}
+
+        <!-- Render widget position -->
+        {% if view.position().exists('sidebar') %}
+            {{ view.position('sidebar') | raw }}
+        {% endif %}
+
+        <!-- Render system messages -->
+        {{ view.render('messages') | raw }}
+
+        <!-- Render content -->
+        {{ view.render('content') | raw }}
+
+        <!-- Insert code before the closing body tag  -->
+        {{ view.render('footer') | raw }}
+
+    </body>
+</html>
+```
+
+As you can see, you can use basic Twig syntax for outputting escaped content (`{{ ... }}`) and non-escaped output (`{{ ... | raw }}`). Default control structures like `if` and `for` are available, for details please look at the [Twig syntax](http://twig.sensiolabs.org/doc/templates.html) documentation.
+
+Pagekit's view helpers and functions are exposed via the view renderer, which is available as `view` inside the template. PHP expressions can simply be translated to Twig syntax, for example for adding a CSS file to the current page:
+
+```html
+<!-- PHP version -->
+<?php $view->style('theme', 'theme:css/theme.css'); ?>
+
+<!-- Twig version -->
+{{ view.style('theme', 'theme:css/theme.css') }}
+```
 

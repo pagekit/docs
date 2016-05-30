@@ -2,9 +2,12 @@
 In this guide you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.
 
 ## Getting started
+
+For this guide, we assume you have a running Pagekit installation on a local server environment. If that is not the case, [download](https://pagekit.com/download) a Pagekit installation package and quickly [install](../getting-started/installation.md) it. Then login to the admin area and have a look at the Theme section of the integrated Marketplace.
+
 The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketplace/package/pagekit/theme-hello), a blueprint for developing themes, including code examples and a general foundation to help you get started.
 
-First of all [download](https://pagekit.com/package/pagekit/theme-hello.zip) and install the theme and get familiar with the overall file structure. When installed, the *Hello* theme is located in *packages/pagekit/theme-hello*. It is recommendable to install a simple theme on the side for reference, like [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration.
+First of all [download](https://pagekit.com/package/pagekit/theme-hello.zip) and install the theme and have a look at the overall file structure. When installed, the *Hello* theme is located in *packages/pagekit/theme-hello*. It is recommendable to install a simple theme on the side for reference, like [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration.
 
 ## Structure
 Let's take a look at some of the central files and folders that you will deal with when developing your own theme.
@@ -16,8 +19,8 @@ Let's take a look at some of the central files and folders that you will deal wi
   theme.js                // empty file for your scripts
 /views
   template.php            // renders the theme's output; logo, menu, main content, sidebar and footer positions are available by default
-composer.json             // package definition needed for the theme in order to be recognized by Pagekit
-image.jpg                 // preview screenshot of the theme
+composer.json             // package definition so that Pagekit recognizes the theme
+image.jpg                 // preview screenshot
 index.php                 // contains theme information and configures the default settings of all positions and options
 CHANGELOG.md              // contains information on the current and previous package versions
 README.md                 // contains basic information and points you to the documentation
@@ -315,6 +318,57 @@ You can also add specific options to widgets themselves. In this case, we would 
     <div class="uk-panel <?= $widget->theme['panel'] ?>">
 	```
 
+
+## Adding JavaScript
+
+Included in Hello theme, you will find an empty JavaScript file `js/script.js`. Here, you can add your own JavaScript code. In the Hello Theme, the file is loaded because it is included in the `template.php` as follows:
+
+```
+<?php $view->script('theme', 'theme:js/theme.js') ?>
+```
+
+When including a script, it needs a unique identifier (`theme`) and the path to the script file (`theme:js/theme.js`). As you can see, you can use `theme:` as a short version for the file path to your theme directory. To add more JavaScript files, simply add more lines in the same way.
+
+### Adding multiple JavaScript files with dependencies
+
+In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to also add the UIkit JavaScript files. 
+
+One way to add the UIkit JavaScript would be to move the UIkit JavaScript files to the `js/` directory, along with jQuery. Note that UIkit requires that you load jQuery before you can use the UIkit JavaScript components. 
+
+Including these three files would look as follows. 
+
+```
+<?php $view->script('theme-jquery', 'theme:js/jquery.min.js') ?>
+<?php $view->script('theme-uikit', 'theme:js/uikit.min.js', 'theme-jquery') ?>
+<?php $view->script('theme', 'theme:js/theme.js', 'theme-uikit') ?>
+```
+
+Note how we now add a third parameter, which defines _dependencies_ of the script that we are loading. Dependencies are other JavaScript files that have to be loaded earlier. So in the example, Pagekit will definitely make sure to load the three files in the following order: jQuery, UIkit and then our own `theme.js`. In this specific example, this mechanism does not seem very useful, because the scripts will probably be loaded in exactly the order that we put them in the `template.php`, right? That is correct, but imagine these lines being located in different files and sub-templates of your theme. Defining dependencies will make sure that Pagekit always loads the files in a correct order.
+
+As you can already see in the example above, dependencies are references using the unique string identifier (e.g. `theme-jquery`). In our example, this identifier is given to the script the first time it is included using the `script()` method. So, as you have seen now, this method takes three parameter: `$view->script($identifier, $path_to_script, $dependencies)`.
+
+### Adding third party scripts, like jQuery
+
+You may ask yourself why we called the included jQuery script `theme-jquery` and not simply `jquery`. In general, it is always useful to prefix your own identifiers, to avoid collisions with other extensions. However, in this specific example, the identifiers `jquery` and `uikit` are already taken, because Pagekit itself includes jQuery and UIkit. This means that you can already load these JavaScript files without including them in your theme. That way, all themes and extensions can share a single version of jQuery (and UIkit, if they use UIkit) to avoid conflicts.
+
+```
+<?php $view->script('theme', 'theme:js/theme.js', ['uikit', 'jquery']) ?>
+```
+
+As you can see in the example, the third parameter of the `script()` method can also take a list of multiple dependencies. In the earlier example we have only passed in a single string (for example `theme-jquery`). Pass in a string for a single dependency, or a list for multiple depencies — both are possible.
+
+The currently loaded version of jQuery and UIkit depend on the current version of Pagekit. With new releases of Pagekit, the versions of these libraries will continually be updated. While this allows for always having a current version available, a potential downside would be that you need to make sure your code also works for the new versions of these libraries.
+
+## Wrapping up
+
+In this guide, you  have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
+
+- You are now familiar with the **file structure** of a Pagekit theme. The main entry point for configuration and custom code is the theme's `index.php`, the main template file is located at `views/template.php` inside the theme
+- **Widgets and menus** are managed from the Pagekit admin area and are rendered in special positions of your theme. You have learned how to create these positions and how to change the default widget rendering.
+- To make sure your theme is customizable from the admin area, you can add your own **settings screens**. These can be added to the Site Tree, to the Site settings and to the Widget editor.
+- To **add JavaScript** to your theme, you can add your own code and include the script files in your template. You can also add third party libraries like UIkit and jQuery that help you to add interaction to your website.
+
+With these skills you are now in a position to create Pagekit themes, both for client projects and also for the Pagekit marketplace.
 
 
 

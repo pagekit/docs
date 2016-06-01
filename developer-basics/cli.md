@@ -7,15 +7,15 @@
 Open a terminal and navigate to the directory of an existing Pagekit installation. The script `pagekit` (no file extension) in that directory is a PHP script that can be run from the command line. 
 
 ```sh
-$ cd /var/www/pagekit   # navigate to pagekit directory
-$ ./pagekit             # run pagekit CLI script
+cd /var/www/pagekit   # navigate to pagekit directory
+./pagekit             # run pagekit CLI script
 ```
 
 **Note** You might need to make this script executable using `chmod +x pagekit`. Alternatively you can explicetly call your PHP interpreter `php pagekit`.
 
 When simple invoking the CLI tool without any arguments, it will output the Pagekit version number, some basic usage information and list the available commands that you can use.
 
-```
+```txt
 $ ./pagekit
 Pagekit version 1.0.2
 
@@ -50,15 +50,15 @@ Available commands:
   translation:fetch    Fetches current translation files from languages repository
 ```
 
-To actually run a command, you can add arguments when running the CLI tool. For example, installing the Hello extension from the marketplace will look as follows.
+To run a command, you can add arguments when invoking the CLI tool. For example, installing the Hello extension from the marketplace will look as follows.
 
 ```sh
-$ ./pagekit install pagekit/hello 
+./pagekit install pagekit/hello 
 ```
 
 ## Available Commands
 
-The available commands include helpers for extension and theme developers, but also core tools that make maintaining the Pagekit project itself easier (such as the `build` command). 
+The available commands include helpers for extension and theme developers, but also tools that make maintaining the Pagekit project itself easier for the Pagekit developer team (such as the `build` command). 
 
 ### Build package archive
 
@@ -85,7 +85,7 @@ Options:
 
 ### Build Pagekit release archive
 
-This command is used by the Pagekit maintainers to build a Pagekit release package.
+This command is used by the Pagekit maintainers to build a Pagekit release package. It will create a `*.zip` archive in the root folder of the Pagekit installation. This release package can then be used both as a package as you can download it from the official Pagekit website, or as an custom installation that you could deliver, e.g. to your clients.
 
 Example:
 
@@ -102,7 +102,7 @@ Usage:
 
 ### Clear the cache
 
-To empty the cache directory and remove other temporary files, you can use the `clearcache` command.
+To empty the cache you can use the `clearcache` command. This command removes all `*.cache` files from the cache directory, which is located at `tmp/cache` in a usual Pagekit installation.
 
 Example:
 

@@ -320,7 +320,7 @@ _You can add any kind of Settings screen to the admin area_
     </template>
 	```
 
-2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab to the interface by adding the following to the `index.php` file.
+2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `index.php` file.
 
 	```
     'events' => [
@@ -452,7 +452,7 @@ _A theme can add any kind of options to the Widget editor_
 
 ## Wrapping up
 
-In this guide, you  have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
+In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
 
 - You are now familiar with the **file structure** of a Pagekit theme. The main entry point for configuration and custom code is the theme's `index.php`, the main template file is located at `views/template.php` inside the theme
 - To **add JavaScript** to your theme, you can add your own code and include the script files in your template. You can also add third party libraries like UIkit and jQuery that help you to add interaction to your website.

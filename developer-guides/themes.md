@@ -124,12 +124,12 @@ Object    | Description
         <a href="<?= $view->url()->get() ?>">
             <img src="<?= $this->escape($logo) ?>" alt="">
         </a>
-        <?php endif ?>
+        <?php endif; ?>
 
         <!-- Render menu position -->
         <?php if ($view->menu()->exists('main')) : ?>
             <?= $view->menu('main') ?>
-        <?php endif ?>
+        <?php endif; ?>
 
         <!-- Render widget position -->
         <?php if ($view->position()->exists('sidebar')) : ?>

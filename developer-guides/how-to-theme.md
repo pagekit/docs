@@ -63,9 +63,9 @@ In the previous section we have seen how easy it is to add plain CSS files to yo
 
 When using UIkit, this has the great advantage that you can simply modify a variable to apply global changes, for example altering the primary theme color.
 
-To comfortably work with the LESS pre-processor, you should have a few tools installed and available on your command line: *npm*, *Gulp* and *bower*. If you do not have them installed, do a quick Google search, there are plenty of tutorials available online.
+To comfortably work with the LESS pre-processor, you should have a few tools installed and available on your command line: *npm*, *gulp* and *bower*. If you do not have them installed, do a quick Google search, there are plenty of tutorials available online.
 
-FIXME FLO: aksdhjkashdjashd
+Please note that there are plenty of possible file structure setups you could choose from. In the following steps we suggest the structure that is also used for the official Pagekit themes that you can find on the marketplace. While these might look like many steps to your when you create a theme for the first time, in our experience this setup allows for well ordered code (customizations for each UI
 
 1. In your theme, create four new files `package.json`, `bower.json`, `.bowerrc` and `gulpfile.js`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
 
@@ -74,27 +74,11 @@ FIXME FLO: aksdhjkashdjashd
 	```
 {
   "name": "pagekit-theme-hello",
-  "scripts": {
-    "install": "bower install && gulp",
-    "archive": "gulp && webpack -p && composer archive --format=zip"
-  },
   "devDependencies": {
-    "babel-core": "^6.1.2",
-    "babel-loader": "^6.1.0",
-    "babel-plugin-transform-runtime": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
-    "babel-runtime": "^5.8.0",
-    "bower": "^1.7.6",
-    "json-loader": "^0.5.2",
-    "gulp": "^3.8.10",
-    "gulp-header": "^1.2.2",
-    "gulp-less": "^3.0.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-util": "^3.0.4",
-    "merge-stream": "^0.1.7",
-    "vue-html-loader": "^1.0.0",
-    "vue-loader": "^8.2.0",
-    "webpack": "^1.12.9"
+    "bower": "*",
+    "gulp": "*",
+    "gulp-less": "*",
+    "gulp-rename": "*"
   }
 }
 	```
@@ -103,7 +87,7 @@ FIXME FLO: aksdhjkashdjashd
 	
 	```
 {
-  "name": "theme-one",
+  "name": "theme-hello",
   "dependencies": {
     "uikit": "*"
   },
@@ -123,23 +107,16 @@ FIXME FLO: aksdhjkashdjashd
 	
 	```js
 	var gulp       = require('gulp'),
-	    header     = require('gulp-header'),
 	    less       = require('gulp-less'),
 	    rename     = require('gulp-rename');
-	
-	// banner for the css files
-	var banner = "/*! <%= data.title %> <%= data.version %> | (c) 2014 Pagekit | MIT License */\n";
-	
-	gulp.task('default', ['compile']);
 	
 	/**
 	 * Compile all less files
 	 */
-	gulp.task('compile', function () {
+	gulp.task('default', function () {
 	
 	    return gulp.src('less/theme.less', {base: __dirname})
 	        .pipe(less({compress: true}))
-	        .pipe(header(banner, { data: require('./package.json') }))
 	        .pipe(rename(function (file) {
 	            // the compiled less file should be stored in the css/ folder instead of the less/ folder
 	            file.dirname = file.dirname.replace('less', 'css');
@@ -151,7 +128,7 @@ FIXME FLO: aksdhjkashdjashd
 		 * Watch for changes in files
 		 */
 		gulp.task('watch', function () {
-		    gulp.watch('less/*.less', ['compile']);
+		    gulp.watch('less/*.less', ['default']);
 		});
 	```	
 
@@ -170,7 +147,9 @@ app/
         jquery/    result of bower install
 less/
     uikit/
+        accordion.less
         alert.less
+        article.less
         ... many uikit components
     uikit.less
 .bowerrc

@@ -73,19 +73,19 @@ Please note that there are plenty of possible file structure setups you could ch
 	
 	```
 {
-  "name": "pagekit-theme-hello",
-  "devDependencies": {
-    "bower": "*",
-    "gulp": "*",
-    "gulp-less": "*",
-    "gulp-rename": "*"
-  }
+    "name": "pagekit-theme-hello",
+     "devDependencies": {
+         "bower": "*",
+         "gulp": "*",
+         "gulp-less": "*",
+         "gulp-rename": "*"
+     }
 }
 	```
 	
 	`bower.json` tells bower to fetch the newest release of UIkit. That way you can always run `bower install` to fetch the current LESS source files from UIkit:
 	
-	```
+	```js
 {
   "name": "theme-hello",
   "dependencies": {
@@ -97,7 +97,7 @@ Please note that there are plenty of possible file structure setups you could ch
 	
     `.bowerrc` includes configuration settings for bower. By default, bower install everything in a directory called `bower_components` on the top level of the theme directory. Just out of preference, we change that default directory:
 	
-	```
+	```js
 {
     "directory": "app/assets"
 }

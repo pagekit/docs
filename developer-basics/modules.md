@@ -103,7 +103,7 @@ Use the `routes` property to mount controllers to a route. Learn more about [Rou
 ```
 
 ## Define permissions
-Your module can define permissions. These can then be assigned to roles in the Pagekit User &amp; Permissions area. 
+Your module can define permissions. These can then be assigned to roles in the Pagekit User &amp; Permissions area.
 
 The unique permission names you define (here `hello: manage settings`) are used as an identifier across the codebase. You can use this identifier to protect your routes from users who do not have this permission and prevent users from performing unauthorized actions.
 
@@ -123,7 +123,7 @@ A simple way to then protect a controller action is by using an annotation as fo
 <?php
 
 class MyController {
-	
+
 	/**
   	* @Access("hello: manage settings")
   	*/
@@ -148,7 +148,7 @@ This works whenever the Pagekit filesystem is used (i.e. when generating the url
 ## Listen to events
 Events are triggered at several points in the Pagekit core and potentially by other modules. An event always has a unique name that identifies it. You can register callback functions to any event.
 
-For more information on the Event system, check out the [Events section](../developer-basics/architecture-events.md)
+For more information on the Event system, check out the [Events section](events.md)
 
 ```php
 'events' => [
@@ -161,7 +161,7 @@ For more information on the Event system, check out the [Events section](../deve
 ```
 
 ## Default module configuration
-In many cases you want to allow the user to change settings for your module, for example by providing a settings screen. To make sure your module always has some configuration values right from the start, you can provide a default module configuration. 
+In many cases you want to allow the user to change settings for your module, for example by providing a settings screen. To make sure your module always has some configuration values right from the start, you can provide a default module configuration.
 
 ```php
 'config' => [

@@ -33,13 +33,13 @@ README.md                 // contains basic information and points you to the do
 ### CSS
 Hello theme doesn't contain any styles. The included `css/theme.css` file lists all CSS classes that are rendered by the Pagekit core extensions without additional styling. You can add your own CSS to these classes.
 
-The Pagekit admin interface and the Pagekit default themes are built with the [UIkit front-end framework](http://getuikit.com/). So you might want to consider using it for your project as well. In the following example we will be building our theme using UIkit. If you use another framework or even no framework at all, the basic approach of including CSS is similar.
+The Pagekit admin interface and the Pagekit default themes are built with the [UIkit front-end framework](http://getuikit.com/). So you might want to consider using it for your project as well. In the following example we will be building our theme using UIkit. If you use another framework or no framework at all, the basic approach of including CSS is similar.
 
-There are many possible ways to setup your theme's file structure. We can recommend two approaches here. One is the "classic" way of including plain CSS. The second one is more complex to setup initially, but allows for far more flexibility.
+There are many possible ways to set up your theme's file structure. We can recommend two approaches here. One is the "classic" way of including plain CSS. The second one is more complex to set up initially, but allows for far more flexibility.
 
 #### The simple way: Include plain CSS files
 
-Go to the [UIkit website](http://getuikit.com/), download the latest release and unpack it. UIkit includes three themes: Default, Gradient and Almost Flat. To include the Default theme, copy the `css/uikit.min.css` file from the UIkit package and paste it into the `theme-hello/css/` folder of your theme.
+Go to the [UIkit website](http://getuikit.com/), download the latest release and unpack it. UIkit comes with three themes: Default, Gradient and Almost Flat. To include the Default theme, copy the `css/uikit.min.css` file from the UIkit package and paste it into the `theme-hello/css/` folder of your theme.
 
 To make sure the file is loaded by Pagekit, open the main layout file of the theme which is located at `theme-hello/views/template.php`. 
 
@@ -59,35 +59,34 @@ That's it, your theme now contains UIkit's CSS. To add your own CSS rules, simpl
 
 #### The advanced way: Setup with Gulp and LESS
 
-In the previous section we have seen how easy it is to add plain CSS files to your theme. If you have more experience with building websites, you are probably familiar with more flexible ways of styling your content. A good example for this is using a CSS pre-processor like LESS. This allows you to use things such as variables which make your code easier to read and manage.
+In the previous section we have seen how easy it is to add plain CSS files to your theme. If you have experience with building websites, you are probably familiar with more flexible ways of styling your content. A good example for this is using a CSS pre-processor like LESS. This allows you to use things such as variables, which make your code easier to read and manage.
 
-When using UIkit, this has the great advantage that you can simply modify a variable to apply global changes, for example changing the primary theme color.
+When using UIkit, this has the great advantage that you can simply modify a variable to apply global changes, for example altering the primary theme color.
 
-To comfortably work with the LESS pre-processor, you should have a few tools installed and available on your command line: npm, Gulp, bower. If you do not have them installed, do a quick Google search, there are plenty of tutorials available online.
+To comfortably work with the LESS pre-processor, you should have a few tools installed and available on your command line: *npm*, *Gulp* and *bower*. If you do not have them installed, do a quick Google search, there are plenty of tutorials available online.
 
 FIXME FLO: aksdhjkashdjashd
 
 1. In your theme, create three new files `package.json`, `bower.json` and `gulpfile.js`. Paste the following contents into these files.
 
-	`package.json`:	
+```
+`package.json`:	
 
-	```
-FIXME
-	```
+```
+    FIXME
+	
 	
 	`bower.json`
 	
 	```
-FIXME
+    FIXME
 	```
 	
 	`gulpfile.js`
 	
 	```
-FIXME
+    FIXME
 	```	
-2. 
-
 
 1. Go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and copy the `themes/default` folder (or one of the other themes).
 2. Create a `/less` folder inside your theme, paste the `/default` folder in there and rename it to `/uikit`.
@@ -141,22 +140,99 @@ The currently loaded version of jQuery and UIkit depend on the current version o
 ## Layout
 The central files for your theme's layout are `views/template.php` and `index.php`. The actual rendering happens in the `template.php`. 
 
-FIXME FRANZI: a few markup changes (uk-container, uk-container-center, footer?)
+As you can see, this file contains a very basic setup for you to start creating your own content. So, you might want to add a bit of a layout to the existing content. Let's try wrapping a container around our main content and dividing the system output and sidebar into a grid.
 
-FIXME FRANZI: To create more complex layouts, you can use widgets, menus ...
+Around **line 27** the `views/template.php` file renders the sidebar position, system messages and the actual content.
 
-FIXME FRANZI: CONCEPTS: Widget, menu, page content. SCREENSHOT!
+```
+<!-- Render widget position -->
+<?php if ($view->position()->exists('sidebar')) : ?>
+    <?= $view->position('sidebar') ?>
+<?php endif; ?>
+
+<!-- Render system messages -->
+<?= $view->render('messages') ?>
+
+<!-- Render content -->
+<?= $view->render('content') ?>
+```
+
+Using UIkit's [Block](http://getuikit.com/docs/block.html) and [Utility](http://getuikit.com/docs/utility.html) components we will create a position block and a container with a fluid width.
+
+It is always a good idea to prefix your own classes, so they will not collide with other CSS you might be using. For example, all UIkit classes are prefixed `uk-`. To distinguish classes or ids that come from this theme, we will use the prefix `tm-`. Consequently, we will add the class and id `tm-main` to identify the section.
+
+```
+<div id="tm-main" class="tm-main uk-block">
+    <div class="uk-container uk-container-center">
+
+        <!-- Render widget position -->
+        <?php if ($view->position()->exists('sidebar')) : ?>
+            <?= $view->position('sidebar') ?>
+        <?php endif; ?>
+
+        <!-- Render system messages -->
+        <?= $view->render('messages') ?>
+
+        <!-- Render content -->
+        <?= $view->render('content') ?>
+
+    </div>
+</div>
+```
+
+Now we want the system output and sidebar to actually be side by side. The [Grid](http://getuikit.com/docs/grid.html) component can help us here. For a more semantic layout, we will use `&lt;main&gt;` and `&lt;aside&gt;` elements for the containers.
+
+```
+<div id="tm-main" class="tm-main uk-block">
+    <div class="uk-container uk-container-center">
+
+        <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+
+            <main class="<?= $view->position()->exists('sidebar') ? 'uk-width-medium-3-4' : 'uk-width-1-1'; ?>">
+
+                <!-- Render system messages -->
+                <?= $view->render('messages') ?>
+
+                <!-- Render content -->
+                <?= $view->render('content') ?>
+
+            </main>
+
+            <?php if ($view->position()->exists('sidebar')) : ?>
+            <aside class="uk-width-medium-1-4">
+                <?= $view->position('sidebar') ?>
+            </aside>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+</div>
+```
+
+### Theme elements
+
+To create more complex layouts, you can add your own widget positions, menus and options for both. A regular theme basically consists of widgets, menus and the actual page content.
+
+The page <em>content</em> is nothing other than Pagekit's system output. That means that the content of any page that you create will be rendered in this area.
+
+<em>Widgets</em> are small chunks of content that you can render in different positions of your site, so that they will be displayed in specific locations of your site's markup.
+
+To navigate through any site, you first need to set up a <em>menu</em>. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
+
+[SCREENSHOT]
+
+_A typical site layout consists of the main navigation, the page content and a sidebar_
 
 However, your theme needs to register all positions before. This happens in the `index.php` file through the `menus` and `positions` properties. These contain arrays of the position name and a label, which is displayed in the admin panel. This file is also used to load additional scripts and much more.
 
 ## Navbar
+
 One of the first things you will want to render in your theme is the main navigation. 
 
 [SCREENSHOT]
 
 _By default, the Hello theme renders menu items in a very simple vertical navigation._
-
-Menu positions allow users to publish menus in several locations of your theme markup
 
 1. Each menu position is defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*). Hello theme already has two predefined  menu positions.
 
@@ -169,9 +245,9 @@ Menu positions allow users to publish menus in several locations of your theme m
     ]
 	```
 	
-	[SCREENSHOT SITE TREE MENUS]
+[SCREENSHOT SITE TREE MENUS]
 	
-	_A menu can be published to the defined positions in the Pagekit Site Tree_
+_A menu can be published to the defined positions in the Pagekit Site Tree_
 
 2. With the concept of modularity in mind, Pagekit renders position layouts in separate files. For the navigation, create the `views/menu-navbar.php` file containing the following:
 
@@ -234,17 +310,13 @@ The main menu should now automatically be rendered in the new *Navbar* position.
 
 _With our changes, menu items are now rendered in a horizontal navbar._
 
-
 ### Adding theme options
 
 FIXME FRANZI: Example "navbar sticky"
 
 ## Widgets
-Widgets are small chunks of content that you can render in different positions of your site.
 
-### Rendering a widget position
-
-Widget positions allow users to publish widgets in several locations of your theme markup. They appear in the *Widgets* area of the Pagekit admin panel and can be selected by the user when setting up a widget. 
+Widget positions allow users to publish widgets in several locations of your theme markup. They appear in the *Widgets* area of the Pagekit admin panel and can be selected by the user when setting up a widget.
 
 1. To render a new widget position, you first need to register it with the `index.php` file. For example, if we want a create a new *Top* position, we will define it through the `positions` property.
 

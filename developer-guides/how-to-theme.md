@@ -632,29 +632,14 @@ In this case we want to add the option to apply a different background color to 
 
             section: {
                 label: 'Theme',
-                icon: 'pk-icon-large-brush',
-                priority: 15
+                priority: 90
             },
 
-            data: function () {
-                return _.extend({config: {}}, window.$theme);
-            },
-
-            events: {
-
-                save: function() {
-
-                    this.$http.post('admin/system/settings/config', {name: this.name, config: this.config}).catch(function (res) {
-                        this.$notify(res.data, 'danger');
-                    });
-
-                }
-
-            }
+            props: ['node']
 
         };
 
-        window.Site.components['site-theme'] = module.exports;
+        window.Site.components['node-theme'] = module.exports;
 
     </script>
     ```

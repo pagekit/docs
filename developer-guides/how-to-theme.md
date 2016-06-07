@@ -324,9 +324,9 @@ _By default, the Hello theme renders menu items in a very simple vertical naviga
     ]
     ```
     
-![Menu position in Site Tree](assets/howto-theme-menu-position.png)
+    ![Menu position in Site Tree](assets/howto-theme-menu-position.png)
 	
-_A menu can be published to the defined positions in the Pagekit Site Tree_
+    _A menu can be published to the defined positions in the Pagekit Site Tree_
 
 2. With the concept of modularity in mind, Pagekit renders position layouts in separate files. For the navigation, create the `views/menu-navbar.php` file containing the following:
 
@@ -383,7 +383,7 @@ _A menu can be published to the defined positions in the Pagekit Site Tree_
     </nav>
 	```
 
-The main menu should now automatically be rendered in the new *Navbar* position. 
+    The main menu should now automatically be rendered in the new *Navbar* position. 
 
 4. You will probably also want the logo to appear inside the navbar. So wrap the `&lt;nav&gt;` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
 
@@ -408,9 +408,9 @@ The main menu should now automatically be rendered in the new *Navbar* position.
     </nav>
     ```
 
-![Horizontal navbar](assets/howto-theme-navbar.png)
+    ![Horizontal navbar](assets/howto-theme-navbar.png)
 
-_With our changes, menu items are now rendered in a horizontal navbar._
+    _With our changes, menu items are now rendered in a horizontal navbar._
 
 ### Adding theme options
 
@@ -744,7 +744,6 @@ In this guide, you have learned the basic knowledge and tools to create themes f
 - To **add JavaScript** to your theme, you can add your own code and include the script files in your template. You can also add third party libraries like UIkit and jQuery that help you to add interaction to your website.
 - **Widgets and menus** are managed from the Pagekit admin area and are rendered in special positions of your theme. You have learned how to create these positions and how to change the default widget rendering.
 - To make sure your theme is customizable from the admin area, you can add your own **settings screens**. These can be added to the Site Tree, to the Site settings and to the Widget editor.
-
 
 With these skills you are now in a position to create Pagekit themes, both for client projects and also for the Pagekit marketplace.
 

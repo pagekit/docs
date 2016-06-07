@@ -7,7 +7,7 @@ For this guide, we assume you have a running Pagekit installation on a local ser
 
 The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketplace/package/pagekit/theme-hello), a blueprint for developing themes, including code examples and a general foundation to help you get started.
 
-[SCREENSHOT HELLO THEME WITH DEMO CONTENT aka NOTHING]
+![Hello Theme unstyled](assets/howto-theme-hello-plain.png)
 
 _The Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme._
 
@@ -65,9 +65,9 @@ When using UIkit, this has the great advantage that you can simply modify a vari
 
 To comfortably work with the LESS pre-processor, you should have a few tools installed and available on your command line: *npm*, *gulp* and *bower*. If you do not have them installed, do a quick Google search, there are plenty of tutorials available online.
 
-There are plenty of possible file structure setups. In the following steps we suggest the structure that is also used for the official Pagekit themes. While the following might look like many steps when you create a theme for the first time, in our experience this setup allows for well structured code, easy UIkit customizations and a comfortable way to keep UIkit up to date using Bower.
+There are a number of possible file structure setups. In the following passage we suggest the structure that is also used for the official Pagekit themes. While it might look like many steps when you create a theme for the first time, in our experience this setup allows for well structured code, easy UIkit customizations and a comfortable way to keep UIkit up to date using Bower.
 
-1. In your theme, create new files `package.json`, `bower.json`, `.bowerrc`, `gulpfile.js` and `less/theme.less`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
+1. In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `gulpfile.js` and `less/theme.less`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
 
 	`package.json`. This file defines all JavaScript dependencies that are installed when running `npm install` and includes several npm packages that we will we use, for example when compiling LESS to CSS:
 	
@@ -95,7 +95,7 @@ There are plenty of possible file structure setups. In the following steps we su
 	}
 	```
 	
-    `.bowerrc` includes configuration settings for bower. By default, bower install everything in a directory called `bower_components` inside the theme directory. Simply out of preference, we change that default directory:
+    `.bowerrc` includes configuration settings for bower. By default, bower installs everything in a directory called `/bower_components` inside the theme directory. Simply out of preference, we change that default directory:
 	
 	```js
 	{
@@ -103,7 +103,7 @@ There are plenty of possible file structure setups. In the following steps we su
 	}
 	```
 	
-	`gulpfile.js` contains all tasks which we can run using Gulp. We only need a task to compile the LESS to CSS. For convenience we also add a `watch` task that can be run to automatically recompile LESS when any changes to the files have been detected:
+	`gulpfile.js` contains all tasks which we can run using Gulp. We only need a task to compile LESS to CSS. For convenience we also add a `watch` task that can be run to automatically recompile LESS when any changes to the files have been detected:
 	
 	```js
 	var gulp       = require('gulp'),
@@ -123,17 +123,19 @@ There are plenty of possible file structure setups. In the following steps we su
 		gulp.task('watch', function () {
 		    gulp.watch('less/*.less', ['default']);
 		});
-	```	
+
+    ```
 	
-	`less/theme.less` for your theme's styles and also for importing UIkit so that it is also compiled by the Gulp task we have defined above.
+	`less/theme.less` is the place where you store your theme's styles. Mind that you first need to import UIkit so that it is also compiled by the Gulp task we have defined above.
 	
-	```less
+	```
+    less
 	@import "uikit/uikit.less";
 	
 	// your theme styles will follow here...
 	```
 	
-	`.gitignore` is a file you could create optionally, if you manage your code using Git. You probably do not want to commit the downloaded packages by bower and also not the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit marketplace.
+	`.gitignore` is an optional file you could create, if you manage your code using Git. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
 	
 	```
 	/app/assets/*
@@ -144,7 +146,7 @@ There are plenty of possible file structure setups. In the following steps we su
 	*.zip
 	```
 	
-2. After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes if you like).
+2. After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like).
 3. Create a `/less` folder inside your theme, copy and paste the `default` theme folder in there and rename it to `/uikit`, so that it is located at `less/uikit` inside your theme folder.
 4. The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
 5. Open your theme in a new console tab (for example `cd pagekit/packages/theme-hello`) and run `npm install`, `bower install` and `gulp`.
@@ -159,7 +161,7 @@ app/
 less/
     uikit/
         ... many uikit components
-    	 uikit.less
+    	uikit.less
     theme.less
 .bowerrc
 bower.json
@@ -171,7 +173,7 @@ package.json
 With this file setup in place, we have now achieved the following:
 
 - **Separation** of theme styles and UIkit customizations. Add your own styles in `less/theme.less`, customize UIkit in `less/uikit/*`
-- **Easily customize UIkit**: Every UIkit component's settings are located in its own `*.less` file. For example, to change the body font size, open `less/uikit/base.less` and change the value of `@base-body-font-size`, then re-run `gulp`. To use any of the [UIkit add-on components](http://getuikit.com/docs/components.html), open `less/uikit.less` and import the add-on's less file form the `app/assets` directory, for example for the slideshow, add the line: `@import "../../app/assets/uikit/less/components/slideshow.less";` and re-run `gulp.`
+- **Easily customize UIkit**: Every UIkit component's settings are located in its own `*.less` file. For example, to change the body font size, open `less/uikit/base.less` and change the value of `@base-body-font-size`, then re-run `gulp`. To use any of the [UIkit add-on components](http://getuikit.com/docs/components.html), open `less/uikit.less` and import the add-on's less file from the `app/assets` directory, for example for the slideshow, add the line: `@import "../../app/assets/uikit/less/components/slideshow.less";` and re-run `gulp.`
 - **Easily update UIkit**: Run `bower install` to fetch the newest version of UIkit and run `gulp` to re-compile your LESS files to CSS.
  
 
@@ -187,7 +189,7 @@ When including a script, it needs a unique identifier (`theme`) and the path to 
 
 ### Adding multiple JavaScript files with dependencies
 
-In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to also add the UIkit JavaScript files. 
+In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files, as well. 
 
 One way to add the UIkit JavaScript would be to move the UIkit JavaScript files to the `js/` directory, along with jQuery. Note that UIkit requires that you load jQuery before you can use the UIkit JavaScript components. 
 
@@ -312,17 +314,16 @@ One of the first things you will want to render in your theme is the main naviga
 
 _By default, the Hello theme renders menu items in a very simple vertical navigation._
 
-1. Each menu position is defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*). Hello theme already has two predefined  menu positions.
+1. Hello theme comes with the predefined *Main* menu position. When adding a new position it needs to be defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*).
 
-	```
+    ```
     'menu' => [
-	
+    
         'main' => 'Main',
-        'offcanvas' => 'Offcanvas'
-	
+    
     ]
-	```
-	
+    ```
+    
 [SCREENSHOT SITE TREE MENUS]
 	
 _A menu can be published to the defined positions in the Pagekit Site Tree_

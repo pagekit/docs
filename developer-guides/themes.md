@@ -156,7 +156,7 @@ You might want to use a custom menu or position renderer. Below you'll find two 
 <?= $view->menu('main', 'menu-navbar.php') ?>
 ```
 
-In this case the `main` menu will be rendererd with the `menu-navbar.php` layout file.
+In this case the `main` menu will be rendered with the `menu-navbar.php` layout file.
 
 ```php
 <ul class="uk-navbar-nav">

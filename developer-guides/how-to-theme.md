@@ -324,7 +324,7 @@ _By default, the Hello theme renders menu items in a very simple vertical naviga
     ]
     ```
     
-![Menu position in Site Tree](assets/howto-theme-menu-positions.png)
+![Menu position in Site Tree](assets/howto-theme-menu-position.png)
 	
 _A menu can be published to the defined positions in the Pagekit Site Tree_
 

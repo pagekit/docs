@@ -237,7 +237,7 @@ Around **line 27** the `views/template.php` file renders the sidebar position, s
 <?= $view->render('content') ?>
 ```
 
-Using UIkit's [Block](http://getuikit.com/docs/block.html) and [Utility](http://getuikit.com/docs/utility.html) components we will create a position block and a container with a fluid width.
+Using UIkit's [Block](http://getuikit.com/docs/block.html) and [Utility](http://getuikit.com/docs/utility.html) components, we will create a position block and a container with a fluid width.
 
 It is always a good idea to prefix your own classes, so they will not collide with other CSS you might be using. For example, all UIkit classes are prefixed `uk-`. To distinguish classes or IDs that come from this theme, we will use the prefix `tm-`. Consequently, we add the class and ID `tm-main` to identify the section.
 
@@ -292,13 +292,13 @@ Now we want the system output and sidebar to actually be side by side. The [Grid
 
 ### Theme elements
 
-To create more complex layouts, you can add your own widget positions, menus and options for both. A regular theme basically consists of widgets, menus and the actual page content.
+To create more complex layouts, you can add your own widget positions, menus and options for both. A regular theme basically consists of widgets, menus and the page content itself.
 
-The page <em>content</em> is nothing other than Pagekit's system output. That means that the content of any page you create will be rendered in this area.
+The page *content* is nothing other than Pagekit's system output. That means that the content of any page you create will be rendered in this area.
 
-<em>Widgets</em> are small chunks of content that you can render in different positions of your site, so that they will be displayed in specific locations of your site's markup.
+*Widgets* are small chunks of content that you can render in different positions of your site, so that they will be displayed in specific locations of your site's markup.
 
-To navigate through any site, you first need to set up a <em>menu</em>. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
+To navigate through any site, you first need to set up a *menu*. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
 
 [SCREENSHOT]
 
@@ -488,7 +488,7 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
     </script>
     ```
 
-3. To actually apply the script and add the option to the Site Tree, also add the following to the `index.php` file.
+3. To apply the script and add the option to the Site Tree, you also need to add the following to the `index.php` file.
 
     ```
     'events' => [
@@ -501,7 +501,7 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
     ]
     ```
 
-4. The default setting for the navbar mode needs to be added in the `index.php`.
+4. Add the default setting for the navbar mode in the `index.php` file.
 
     ```
     'config' => [
@@ -533,9 +533,9 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
 
 6. After that, run the command *webpack* on the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string.
 
-    Whenever you apply changes to the vue component, you need to run this task again. Alternatively, you can run `webpack --watch` which will stay active and automatically recompile when you changed the vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
+    Whenever you apply changes to the vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
 
-7. Lastly we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since iis not included in the framework core, it needs to be loaded seperately with theme's JavaScript.
+7. Lastly, we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since it is not included in the framework core, it needs to be loaded seperately with theme's JavaScript.
 
     ```
     <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky']) ?>
@@ -556,8 +556,8 @@ Widget positions allow users to publish widgets in several locations of your the
 	```
     'positions' => [
 
-        'navbar' => 'Navbar',
-        'top' => 'Top',
+        'sidebar' => 'Sidebar',
+        'top' => 'Top'
 
     ],
 	```
@@ -596,6 +596,8 @@ Widget positions allow users to publish widgets in several locations of your the
     <?php endif ?>
 	```
 
+Now can select *Top* for any widget that you want to render in the newly created position.
+
 ### Adding position options
 In this case we want to add the option to apply a different background color to our new Top position.
 
@@ -621,29 +623,70 @@ In this case we want to add the option to apply a different background color to 
     </template>
 	```
 
-2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `index.php` file.
+2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `node-theme.vue` file.
+    
+    ```
+    <script>
+
+        module.exports = {
+
+            section: {
+                label: 'Theme',
+                icon: 'pk-icon-large-brush',
+                priority: 15
+            },
+
+            data: function () {
+                return _.extend({config: {}}, window.$theme);
+            },
+
+            events: {
+
+                save: function() {
+
+                    this.$http.post('admin/system/settings/config', {name: this.name, config: this.config}).catch(function (res) {
+                        this.$notify(res.data, 'danger');
+                    });
+
+                }
+
+            }
+
+        };
+
+        window.Site.components['site-theme'] = module.exports;
+
+    </script>
+    ```
+
+3. In the chapter about theme options, we inserted the event listener to the `index.php` file in order to add the option to the Site Tree. Now we need to do the same thing for the site setting.
 
 	```
     'events' => [
 
-        'view.system/site/admin/edit' => function($event, $view) {
+        'view.system/site/admin/settings' => function ($event, $view) use ($app) {
+            $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
+            $view->data('$theme', $this);
+        },
+
+        'view.system/site/admin/edit' => function ($event, $view) {
             $view->script('node-theme', 'theme:app/bundle/node-theme.js', 'site-edit');
         }
 
     ]
 	```
 
-3. The default setting for the widget position also needs to be added in the `index.php`.
+4. The default setting for the widget position also needs to be added in the `index.php`.
 
 	```
     'node' => [
 
-        'top_style' => 'uk-block-muted',
+        'top_style' => 'uk-block-muted'
 
     ],
 	```
 
-4. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file needs to be registered with this file, as well, to be compiled into JavaScript.
+5. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file needs to be registered with this file, as well, to be compiled into JavaScript.
 
 	```
     entry: {
@@ -652,9 +695,9 @@ In this case we want to add the option to apply a different background color to 
     },
 	```
 
-5. After that you can run the command *webpack* on the theme folder and `node-theme.vue` will be compiled into `/bundle/node-theme.js` with the template markup converted to an inline string.
+6. After that you can run the command *webpack* on the theme folder and `node-theme.vue` will be compiled into `/bundle/node-theme.js` with the template markup converted to an inline string.
 
-6. Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
+7. Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
 
 	```
     <div id="top" class="tm-top uk-block <?= $params['top_style'] ?>">
@@ -690,33 +733,35 @@ _A theme can add any kind of options to the Widget editor_
         </div>
 
     </template>
-
-    <script>
-
-        module.exports = {
-
-            section: {
-                label: 'Theme',
-                priority: 90
-            },
-
-            props: ['widget', 'config']
-
-        };
-
-        window.Widgets.components['theme'] = module.exports;
-
-    </script>
 	```
 
 2. Add the widget component to the `webpack.config.json` file, so it will be compiled to JavaScript when running *webpack*.
+    
+    ```
+<script>
+
+    module.exports = {
+
+        section: {
+            label: 'Theme',
+            priority: 90
+        },
+
+        props: ['widget', 'config']
+
+    };
+
+    window.Widgets.components['theme'] = module.exports;
+
+</script>
+    ```
 
 3. To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `index.php` file.
 
 	```
     'view.system/widget/edit' => function ($event, $view) {
         $view->script('widget-theme', 'theme:app/bundle/widget-theme.js', 'widget-edit');
-    },
+    }
 	```
 
 4. The default setting for the widget also needs to be added in the `index.php`.

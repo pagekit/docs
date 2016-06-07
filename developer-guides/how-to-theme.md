@@ -239,7 +239,7 @@ Around **line 27** the `views/template.php` file renders the sidebar position, s
 
 Using UIkit's [Block](http://getuikit.com/docs/block.html) and [Utility](http://getuikit.com/docs/utility.html) components we will create a position block and a container with a fluid width.
 
-It is always a good idea to prefix your own classes, so they will not collide with other CSS you might be using. For example, all UIkit classes are prefixed `uk-`. To distinguish classes or ids that come from this theme, we will use the prefix `tm-`. Consequently, we will add the class and id `tm-main` to identify the section.
+It is always a good idea to prefix your own classes, so they will not collide with other CSS you might be using. For example, all UIkit classes are prefixed `uk-`. To distinguish classes or IDs that come from this theme, we will use the prefix `tm-`. Consequently, we add the class and ID `tm-main` to identify the section.
 
 ```
 <div id="tm-main" class="tm-main uk-block">
@@ -294,7 +294,7 @@ Now we want the system output and sidebar to actually be side by side. The [Grid
 
 To create more complex layouts, you can add your own widget positions, menus and options for both. A regular theme basically consists of widgets, menus and the actual page content.
 
-The page <em>content</em> is nothing other than Pagekit's system output. That means that the content of any page that you create will be rendered in this area.
+The page <em>content</em> is nothing other than Pagekit's system output. That means that the content of any page you create will be rendered in this area.
 
 <em>Widgets</em> are small chunks of content that you can render in different positions of your site, so that they will be displayed in specific locations of your site's markup.
 
@@ -310,7 +310,7 @@ However, your theme needs to register all positions before. This happens in the 
 
 One of the first things you will want to render in your theme is the main navigation. 
 
-[SCREENSHOT]
+![Main navigation unstyled](assets/howto-theme-menu-unstyled.png)
 
 _By default, the Hello theme renders menu items in a very simple vertical navigation._
 
@@ -324,7 +324,7 @@ _By default, the Hello theme renders menu items in a very simple vertical naviga
     ]
     ```
     
-[SCREENSHOT SITE TREE MENUS]
+![Menu position in Site Tree](assets/howto-theme-menu-positions.png)
 	
 _A menu can be published to the defined positions in the Pagekit Site Tree_
 
@@ -369,7 +369,7 @@ _A menu can be published to the defined positions in the Pagekit Site Tree_
     <?php endif ?>
 	```
 
-3. To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Render the `menu-navbar.php` file inside the element as follows:
+3. To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Load the `menu-navbar.php` file inside the element as follows:
 
 	```
     <nav class="uk-navbar">
@@ -383,15 +383,169 @@ _A menu can be published to the defined positions in the Pagekit Site Tree_
     </nav>
 	```
 
-The main menu should now automatically be rendered in the new *Navbar* position.
+The main menu should now automatically be rendered in the new *Navbar* position. 
 
-[SCREENSHOT]
+4. You will probably also want the logo to appear inside the navbar. So wrap the `&lt;nav&gt;` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
+
+    ```
+    <nav class="uk-navbar">
+
+        <!-- Render logo or title with site URL -->
+        <a class="uk-navbar-brand" href="<?= $view->url()->get() ?>">
+            <?php if ($logo = $params['logo']) : ?>
+                <img src="<?= $this->escape($logo) ?>" alt="">
+            <?php else : ?>
+                <?= $params['title'] ?>
+            <?php endif ?>
+        </a>
+
+        <?php if ($view->menu()->exists('main')) : ?>
+        <div class="uk-navbar-flip">
+            <?= $view->menu('main', 'menu-navbar.php') ?>
+        </div>
+        <?php endif ?>
+
+    </nav>
+    ```
+
+![Horizontal navbar](assets/howto-theme-navbar.png)
 
 _With our changes, menu items are now rendered in a horizontal navbar._
 
 ### Adding theme options
 
-FIXME FRANZI: Example "navbar sticky"
+Pagekit uses [Vue.js](https://vuejs.org/) to build its administration interface. Here is a [Video tutorial](https://youtu.be/3gPGyhTroSA?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) on Vue.js in Pagekit.
+
+A frequently requested feature is for the navbar to remain fixed at the top of the browser window when scrolling down the site. In the following steps, we are going to add this as an option to our theme.
+
+1. First, we need to create the folder `app/components` and in it the file `site-theme.vue`. Settings stored in this file affect the entire website and can be found under *Theme* in the *Settings* tab of the Site Tree. They cannot be applied to a specific page.
+
+    ![Site Tree](assets/howto-theme-site-tree.png)
+
+    _You can add any kind of Settings screen to the admin area_
+
+    In the freshly created file `site-theme.vue` we add the option which will be displayed in the Pagekit administration.
+
+    ```
+    <template>
+
+        <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
+            <div data-uk-margin>
+                <h2 class="uk-margin-remove">{{ 'Theme' | trans }}</h2>
+            </div>
+            <div data-uk-margin>
+                <button class="uk-button uk-button-primary" type="submit">{{ 'Save' | trans }}</button>
+            </div>
+        </div>
+
+        <div class="uk-form uk-form-horizontal">
+
+            <div class="uk-form-row">
+                <label for="form-navbar-mode" class="uk-form-label">{{ 'Navbar Mode' | trans }}</label>
+                <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="config.navbar_sticky"> {{ 'Sticky Navigation' | trans }}</label>
+                </p>
+            </div>
+
+        </div>
+
+    </template>
+    ```
+
+2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following script below the option in the `site-theme.vue` file.
+
+    ```
+    <script>
+
+        module.exports = {
+
+            section: {
+                label: 'Theme',
+                icon: 'pk-icon-large-brush',
+                priority: 15
+            },
+
+            data: function () {
+                return _.extend({config: {}}, window.$theme);
+            },
+
+            events: {
+
+                save: function() {
+
+                    this.$http.post('admin/system/settings/config', {name: this.name, config: this.config}).catch(function (res) {
+                        this.$notify(res.data, 'danger');
+                    });
+
+                }
+
+            }
+
+        };
+
+        window.Site.components['site-theme'] = module.exports;
+
+    </script>
+    ```
+
+3. To actually apply the script and add the option to the Site Tree, also add the following to the `index.php` file.
+
+    ```
+    'events' => [
+
+        'view.system/site/admin/settings' => function ($event, $view) use ($app) {
+            $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
+            $view->data('$theme', $this);
+        }
+
+    ]
+    ```
+
+4. The default setting for the navbar mode needs to be added in the `index.php`.
+
+    ```
+    'config' => [
+            'navbar_sticky' => false
+        ],
+    ```
+
+5. Vue components need to be compiled into JavaScript using Webpack. To do so, create the file `webpack.config.js` in your theme folder:
+
+        ```
+        module.exports = [
+
+            {
+                entry: {
+                    "site-theme": "./app/components/site-theme.vue"
+                },
+                output: {
+                    filename: "./app/bundle/[name].js"
+                },
+                module: {
+                    loaders: [
+                        { test: /\.vue$/, loader: "vue" }
+                    ]
+                }
+            }
+
+        ];
+        ```
+
+6. After that, run the command *webpack* on the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string.
+
+    Whenever you apply changes to the vue component, you need to run this task again. Alternatively, you can run `webpack --watch` which will stay active and automatically recompile when you changed the vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
+
+7. Lastly we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since iis not included in the framework core, it needs to be loaded seperately with theme's JavaScript.
+
+    ```
+    <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky']) ?>
+    ```
+
+    Now all you need to do is render the option into the actual navbar.
+
+    ```
+    <nav class="uk-navbar<?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>">
+    ```
 
 ## Widgets
 
@@ -443,13 +597,9 @@ Widget positions allow users to publish widgets in several locations of your the
 	```
 
 ### Adding position options
-Pagekit uses [Vue.js](https://vuejs.org/) to build its administration interface. Here is a [Video tutorial](https://youtu.be/3gPGyhTroSA?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) on Vue.js in Pagekit. In this case we want to add the option to apply a different background color to our new Top position.
+In this case we want to add the option to apply a different background color to our new Top position.
 
-[SCREENSHOT]
-
-_You can add any kind of Settings screen to the admin area_
-
-1. First, we need to create the folder `app/components` and in it the file `node-theme.vue`. Here we add the option which will be displayed in the Pagekit administration.
+1. First, we need to create the file `node-theme.vue` inside the folder `app/components`. Here we add the option which will be displayed in the Pagekit administration. Settings that are stored in this file can be applied to each page separately by entering the appropriate item in the site tree and clicking the *Theme* tab.
 
 	```
     <template>
@@ -493,31 +643,16 @@ _You can add any kind of Settings screen to the admin area_
     ],
 	```
 
-4. Vue components need to be compiled into JavaScript using Webpack. To do so, create the file `webpack.config.js` in your theme folder:
+4. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file needs to be registered with this file, as well, to be compiled into JavaScript.
 
 	```
-    module.exports = [
-
-        {
-            entry: {
-                "node-theme": "./app/components/node-theme.vue",
-            },
-            output: {
-                filename: "./app/bundle/[name].js"
-            },
-            module: {
-                loaders: [
-                    { test: /\.vue$/, loader: "vue" }
-                ]
-            }
-        }
-
-    ];
+    entry: {
+        "node-theme": "./app/components/node-theme.vue",
+        "site-theme": "./app/components/site-theme.vue"
+    },
 	```
 
 5. After that you can run the command *webpack* on the theme folder and `node-theme.vue` will be compiled into `/bundle/node-theme.js` with the template markup converted to an inline string.
-
-	Whenever you apply changes to the vue component, you need to run this task again. Alternatively, you can run `webpack --watch` which will stay active and automatically recompile when you changed the vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
 
 6. Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
 

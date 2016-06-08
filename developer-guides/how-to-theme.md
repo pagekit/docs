@@ -72,9 +72,11 @@ Now add another line to add the UIkit CSS. Make sure to add it **above** the lin
 
 That's it, your theme now contains UIkit's CSS. To add your own CSS rules, simply edit `theme-hello/css/theme.css`.
 
-![Default UIkit styling](assets/guide-theme-basic-css.png)
+<figure class="uk-thumbnail">
+    <img src="assets/guide-theme-basic-css.png" alt="Default UIkit styling">
+    <figcaption class="uk-thumbnail-caption">Adding the CSS from UIkit will add default styling to the rendered markup. To actually make it pretty, we also need to add some classes to the markup, customize the default UIkit style and maybe add our own CSS styling</figcaption>
+</figure>
 
-_Adding the CSS from UIkit will add default styling to the rendered markup. To actually make it pretty, we also need to add some classes to the markup, customize the default UIkit style and maybe add our own CSS styling_
 
 #### The advanced way: Setup with Gulp and LESS
 
@@ -361,9 +363,10 @@ The page *content* is nothing other than Pagekit's system output. That means tha
 
 To navigate through any site, you first need to set up a *menu*. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
 
-![Typical theme elements](assets/guide-theme-elements.png)
-
-_A typical site layout consists of the main navigation, the page content and several widget positions_
+<figure class="uk-thumbnail">
+    <img src="assets/guide-theme-elements.png" alt="Typical theme elements">
+    <figcaption class="uk-thumbnail-caption">A typical site layout consists of the main navigation, the page content and several widget positions</figcaption>
+</figure>
 
 However, your theme needs to register all positions before. This happens in the `index.php` file through the `menus` and `positions` properties. These contain arrays of the position name and a label, which is displayed in the admin panel. This file is also used to load additional scripts and much more.
 
@@ -371,9 +374,10 @@ However, your theme needs to register all positions before. This happens in the 
 
 One of the first things you will want to render in your theme is the main navigation. 
 
-![Main navigation unstyled](assets/howto-theme-menu-unstyled.png)
-
-_By default, Hello theme renders menu items in a very simple vertical navigation._
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-menu-unstyled.png" alt="Main navigation unstyled">
+    <figcaption class="uk-thumbnail-caption">By default, Hello theme renders menu items in a very simple vertical navigation.</figcaption>
+</figure>
 
 #### Step 1
 
@@ -386,10 +390,12 @@ Hello theme comes with the predefined *Main* menu position. When adding a new po
     
 ]
 ```
-    
-![Menu position in Site Tree](assets/howto-theme-menu-position.png)
-	
-_A menu can be published to the defined positions in the Pagekit Site Tree_
+
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-menu-position.png" alt="Menu position in Site Tree">
+    <figcaption class="uk-thumbnail-caption">A menu can be published to the defined positions in the Pagekit Site Tree.</figcaption>
+</figure>
+
 
 #### Step 2
 
@@ -477,9 +483,10 @@ You will probably also want the logo to appear inside the navbar. So wrap the `<
 </nav>
 ```
 
-![Horizontal navbar](assets/howto-theme-navbar.png)
-
-_With our changes, menu items are now rendered in a horizontal navbar._
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-navbar.png" alt="Horizontal navbar">
+    <figcaption class="uk-thumbnail-caption">With our changes, menu items are now rendered in a horizontal navbar.</figcaption>
+</figure>
 
 ### Adding theme options
 
@@ -491,9 +498,10 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
 
 First, we need to create the folder `app/components` and in it the file `site-theme.vue`. Settings stored in this file affect the entire website and can be found under *Theme* in the *Settings* tab of the Site Tree. They cannot be applied to a specific page.
 
-![Site Tree](assets/howto-theme-site-tree.png)
-
-_You can add any kind of Settings screen to the admin area_
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-site-tree.png" alt="Site Tree">
+    <figcaption class="uk-thumbnail-caption">You can add any kind of Settings screen to the admin area.</figcaption>
+</figure>
 
 In the freshly created file `site-theme.vue` we add the option which will be displayed in the Pagekit administration.
 
@@ -695,9 +703,10 @@ To render the new position in the theme's markup, we need to add it to the `view
 
 Now can select *Top* for any widget that you want to render in the newly created position.
 
-![Widget position](assets/guide-theme-select-position.png)
-
-_Select the new position when creating a widget._
+<figure class="uk-thumbnail">
+    <img src="assets/guide-theme-select-position.png" alt="Widget position">
+    <figcaption class="uk-thumbnail-caption">Select the new position when creating a widget.</figcaption>
+</figure>
 
 ### Adding position options
 The example before added configuration options which applied for the whole site. We can also extend the Site Tree with configuration that only applies for a certain page. Let us add the option to apply a different background color to our new Top position.
@@ -807,16 +816,18 @@ Lastly, to actually render the chosen setting into the widget position, we need 
 
 In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
 
-![Node options added by the theme](assets/guide-theme-node.png)
-	
-_Node options added by the theme._
+<figure class="uk-thumbnail">
+    <img src="assets/guide-theme-node.png" alt="Node options added by the theme">
+    <figcaption class="uk-thumbnail-caption">Node options added by the theme.</figcaption>
+</figure>
 
 ### Adding widget options
 You can also add specific options to widgets themselves. In this case, we would like to provide a panel style option that can be selected for each widget.
 
-![Widget options](assets/howto-theme-widget-options.png)
-
-_A theme can add any kind of options to the Widget editor_
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-widget-options.png" alt="Widget options">
+    <figcaption class="uk-thumbnail-caption">A theme can add any kind of options to the Widget editor.</figcaption>
+</figure>
 
 #### Step 1
 

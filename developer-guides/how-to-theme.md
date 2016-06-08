@@ -10,9 +10,10 @@ For this guide, we assume you have a running Pagekit installation on a local ser
 
 The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketplace/package/pagekit/theme-hello), a blueprint for developing themes, including code examples and a general foundation to help you get started.
 
-![Hello Theme unstyled](assets/howto-theme-hello-plain.png)
-
-_Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme._
+<figure class="uk-thumbnail">
+    <img src="assets/howto-theme-hello-plain.png" alt="Hello Theme unstyled">
+    <figcaption class="uk-thumbnail-caption">Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme.</figcaption>
+</figure>
 
 First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in `packages/pagekit/theme-hello`. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this guide though, we only need Hello theme.
 

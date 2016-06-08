@@ -82,95 +82,107 @@ To comfortably work with the LESS pre-processor, you should have a few tools ins
 
 There are a number of possible file structure setups. In the following passage we suggest the structure that is also used for the official Pagekit themes. While it might look like many steps when you create a theme for the first time, in our experience this setup allows for well structured code, easy UIkit customizations and a comfortable way to keep UIkit up to date using Bower.
 
-1. In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `gulpfile.js` and `less/theme.less`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
+#### Step 1
 
-	`package.json`. This file defines all JavaScript dependencies that are installed when running `npm install` and includes several npm packages that we will we use, for example when compiling LESS to CSS:
-	
-	```
-	{
-	    "name": "theme-hello",
-		"devDependencies": {
-		     "bower": "*",
-		     "gulp": "*",
-		     "gulp-less": "*",
-		     "gulp-rename": "*"
-		 }
-	}
-	```
-	
-	`bower.json` tells bower to fetch the newest release of UIkit. That way you can always run `bower install` to fetch the current LESS source files from UIkit:
-	
-	```js
-	{
-		"name": "theme-hello",
-		"dependencies": {
-			"uikit": "*"
-		},
-		"private": true
-	}
-	```
-	
-    `.bowerrc` includes configuration settings for bower. By default, bower installs everything in a directory called `/bower_components` inside the theme directory. Simply out of preference, we change that default directory:
-	
-	```js
-	{
-	    "directory": "app/assets"
-	}
-	```
-	
-	`gulpfile.js` contains all tasks which we can run using Gulp. We only need a task to compile LESS to CSS. For convenience we also add a `watch` task that can be run to automatically recompile LESS when any changes to the files have been detected:
-	
-	```js
-	var gulp       = require('gulp'),
-	    less       = require('gulp-less'),
-	    rename     = require('gulp-rename');
-	
-		gulp.task('default', function () {
-		    return gulp.src('less/theme.less', {base: __dirname})
-		        .pipe(less({compress: true}))
-		        .pipe(rename(function (file) {
-		            // the compiled file should be stored in the css/ folder instead of the less/ folder
-		            file.dirname = file.dirname.replace('less', 'css');
-		        }))
-		        .pipe(gulp.dest(__dirname));
-        });
-		
-		gulp.task('watch', function () {
-		    gulp.watch('less/*.less', ['default']);
-		});
+In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `gulpfile.js` and `less/theme.less`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
 
-    ```
+`package.json`. This file defines all JavaScript dependencies that are installed when running `npm install` and includes several npm packages that we will we use, for example when compiling LESS to CSS:
 	
-	`less/theme.less` is the place where you store your theme's styles. Mind that you first need to import UIkit so that it is also compiled by the Gulp task we have defined above.
+```
+{
+    "name": "theme-hello",
+	"devDependencies": {
+	     "bower": "*",
+	     "gulp": "*",
+	     "gulp-less": "*",
+	     "gulp-rename": "*"
+	 }
+}
+```
 	
-	```less
-	@import "uikit/uikit.less";
+`bower.json` tells bower to fetch the newest release of UIkit. That way you can always run `bower install` to fetch the current LESS source files from UIkit:
 	
-	// use icon font from system
-	@icon-font-path: "../../../../app/assets/uikit/fonts";
+```js
+{
+	"name": "theme-hello",
+	"dependencies": {
+		"uikit": "*"
+	},
+	"private": true
+}
+```
 	
-	// your theme styles will follow here...
-	```
+`.bowerrc` includes configuration settings for bower. By default, bower installs everything in a directory called `/bower_components` inside the theme directory. Simply out of preference, we change that default directory:
 	
-	`.gitignore` is an optional file that is useful when you manage your code using Git. In Hello theme, a version of the file already exists. You can add new entries so that it looks as follows. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
+```js
+{
+    "directory": "app/assets"
+}
+```
 	
-	```txt
-	/app/bundle/*
-	/app/assets/*
-	/node_modules
-	/css
-	.DS_Store
-	.idea
-	*.zip
-	```
+`gulpfile.js` contains all tasks which we can run using Gulp. We only need a task to compile LESS to CSS. For convenience we also add a `watch` task that can be run to automatically recompile LESS when any changes to the files have been detected:
 	
-2. After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like). Note that you need the Github version for this, not the css-only version we have downloaded in the simple setup.
+```js
+var gulp       = require('gulp'),
+    less       = require('gulp-less'),
+    rename     = require('gulp-rename');
 	
-	![Download UIkit from Github](assets/guide-theme-download-uikit.png)
+	gulp.task('default', function () {
+	    return gulp.src('less/theme.less', {base: __dirname})
+	        .pipe(less({compress: true}))
+	        .pipe(rename(function (file) {
+	            // the compiled file should be stored in the css/ folder instead of the less/ folder
+	            file.dirname = file.dirname.replace('less', 'css');
+	        }))
+	        .pipe(gulp.dest(__dirname));
+    });
+	
+	gulp.task('watch', function () {
+	    gulp.watch('less/*.less', ['default']);
+	});
 
-3. Create a `/less` folder inside your theme, copy and paste the `default` theme folder in there and rename it to `/uikit`, so that it is located at `less/uikit` inside your theme folder.
-4. The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line 4 to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
-5. Open your theme in a new console tab (for example `cd pagekit/packages/theme-hello`) and run `npm install`, `bower install` and `gulp`.
+```
+	
+`less/theme.less` is the place where you store your theme's styles. Mind that you first need to import UIkit so that it is also compiled by the Gulp task we have defined above.
+	
+```less
+@import "uikit/uikit.less";
+	
+// use icon font from system
+@icon-font-path: "../../../../app/assets/uikit/fonts";
+	
+// your theme styles will follow here...
+```
+	
+`.gitignore` is an optional file that is useful when you manage your code using Git. In Hello theme, a version of the file already exists. You can add new entries so that it looks as follows. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
+	
+```txt
+/app/bundle/*
+/app/assets/*
+/node_modules
+/css
+.DS_Store
+.idea
+*.zip
+```
+	
+#### Step 2
+
+ After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like). Note that you need the Github version for this, not the css-only version we have downloaded in the simple setup.
+	
+![Download UIkit from Github](assets/guide-theme-download-uikit.png)
+
+#### Step 3
+
+Create a `/less` folder inside your theme, copy and paste the `default` theme folder in there and rename it to `/uikit`, so that it is located at `less/uikit` inside your theme folder.
+
+#### Step 4
+
+The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line 4 to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
+
+#### Step 5 
+
+Open your theme in a new console tab (for example `cd pagekit/packages/theme-hello`) and run `npm install`, `bower install` and `gulp`.
 
 Now, that were quite a few steps. Make sure your file structure looks as follows now (plus additional theme files that were there before):
 
@@ -359,103 +371,111 @@ One of the first things you will want to render in your theme is the main naviga
 
 _By default, Hello theme renders menu items in a very simple vertical navigation._
 
-1. Hello theme comes with the predefined *Main* menu position. When adding a new position it needs to be defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*).
+#### Step 1
 
-    ```
-    'menu' => [
-    
-        'main' => 'Main',
-    
-    ]
-    ```
-    
-    ![Menu position in Site Tree](assets/howto-theme-menu-position.png)
-	
-    _A menu can be published to the defined positions in the Pagekit Site Tree_
+Hello theme comes with the predefined *Main* menu position. When adding a new position it needs to be defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*).
 
-2. With the concept of modularity in mind, Pagekit renders position layouts in separate files. For the navigation, create the `views/menu-navbar.php` file containing the following:
+```
+'menu' => [
+    
+    'main' => 'Main',
+    
+]
+```
+    
+![Menu position in Site Tree](assets/howto-theme-menu-position.png)
+	
+_A menu can be published to the defined positions in the Pagekit Site Tree_
 
-	```
-    <?php if ($root->getDepth() === 0) : ?>
-    <ul class="uk-navbar-nav">
-    <?php endif ?>
+#### Step 2
+
+With the concept of modularity in mind, Pagekit renders position layouts in separate files. For the navigation, create the `views/menu-navbar.php` file containing the following:
+
+```
+<?php if ($root->getDepth() === 0) : ?>
+<ul class="uk-navbar-nav">
+<?php endif ?>
 	
-        <?php foreach ($root->getChildren() as $node) : ?>
-        <li class="<?= $node->hasChildren() ? 'uk-parent' : '' ?><?= $node->get('active') ? ' uk-active' : '' ?>" <?= ($root->getDepth() === 0 && $node->hasChildren()) ? 'data-uk-dropdown':'' ?>>
-            <a href="<?= $node->getUrl() ?>"><?= $node->title ?></a>
+    <?php foreach ($root->getChildren() as $node) : ?>
+    <li class="<?= $node->hasChildren() ? 'uk-parent' : '' ?><?= $node->get('active') ? ' uk-active' : '' ?>" <?= ($root->getDepth() === 0 && $node->hasChildren()) ? 'data-uk-dropdown':'' ?>>
+        <a href="<?= $node->getUrl() ?>"><?= $node->title ?></a>
 	
-            <?php if ($node->hasChildren()) : ?>
+        <?php if ($node->hasChildren()) : ?>
 	
-                <?php if ($root->getDepth() === 0) : ?>
-                <div class="uk-dropdown uk-dropdown-navbar">
-                <?php endif ?>
-	
-                    <?php if ($root->getDepth() === 0) : ?>
-                    <ul class="uk-nav uk-nav-navbar">
-                    <?php elseif ($root->getDepth() === 1) : ?>
-                    <ul class="uk-nav-sub">
-                    <?php else : ?>
-                    <ul>
-                    <?php endif ?>
-                        <?= $view->render('menu-navbar.php', ['root' => $node]) ?>
-                    </ul>
-	
-                <?php if ($root->getDepth() === 0) : ?>
-                </div>
-                <?php endif ?>
-	
+            <?php if ($root->getDepth() === 0) : ?>
+            <div class="uk-dropdown uk-dropdown-navbar">
             <?php endif ?>
 	
-        </li>
-        <?php endforeach ?>
+                <?php if ($root->getDepth() === 0) : ?>
+                <ul class="uk-nav uk-nav-navbar">
+                <?php elseif ($root->getDepth() === 1) : ?>
+                <ul class="uk-nav-sub">
+                <?php else : ?>
+                <ul>
+                <?php endif ?>
+                    <?= $view->render('menu-navbar.php', ['root' => $node]) ?>
+                </ul>
 	
-    <?php if ($root->getDepth() === 0) : ?>
-    </ul>
-    <?php endif ?>
-	```
-
-3. To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Load the `menu-navbar.php` file inside the element as follows (you can remove the existing block where `$view->menu('main')` is rendered).
-
-	```
-    <nav class="uk-navbar">
-	
-        <?php if ($view->menu()->exists('main')) : ?>
-        <div class="uk-navbar-flip">
-            <?= $view->menu('main', 'menu-navbar.php') ?>
-        </div>
-        <?php endif ?>
-	
-    </nav>
-	```
-
-    The main menu should now automatically be rendered in the new *Navbar* position. 
-
-4. You will probably also want the logo to appear inside the navbar. So wrap the `<nav>` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
-
-    ```
-    <nav class="uk-navbar">
-
-        <!-- Render logo or title with site URL -->
-        <a class="uk-navbar-brand" href="<?= $view->url()->get() ?>">
-            <?php if ($logo = $params['logo']) : ?>
-                <img src="<?= $this->escape($logo) ?>" alt="">
-            <?php else : ?>
-                <?= $params['title'] ?>
+            <?php if ($root->getDepth() === 0) : ?>
+            </div>
             <?php endif ?>
-        </a>
-
-        <?php if ($view->menu()->exists('main')) : ?>
-        <div class="uk-navbar-flip">
-            <?= $view->menu('main', 'menu-navbar.php') ?>
-        </div>
+	
         <?php endif ?>
+	
+    </li>
+    <?php endforeach ?>
+	
+<?php if ($root->getDepth() === 0) : ?>
+</ul>
+<?php endif ?>
+```
 
-    </nav>
-    ```
+#### Step 3
 
-    ![Horizontal navbar](assets/howto-theme-navbar.png)
+To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Load the `menu-navbar.php` file inside the element as follows (you can remove the existing block where `$view->menu('main')` is rendered).
 
-    _With our changes, menu items are now rendered in a horizontal navbar._
+```
+<nav class="uk-navbar">
+	
+    <?php if ($view->menu()->exists('main')) : ?>
+    <div class="uk-navbar-flip">
+        <?= $view->menu('main', 'menu-navbar.php') ?>
+    </div>
+    <?php endif ?>
+	
+</nav>
+```
+
+The main menu should now automatically be rendered in the new *Navbar* position. 
+
+#### Step 4
+
+You will probably also want the logo to appear inside the navbar. So wrap the `<nav>` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
+
+```
+<nav class="uk-navbar">
+
+    <!-- Render logo or title with site URL -->
+    <a class="uk-navbar-brand" href="<?= $view->url()->get() ?>">
+        <?php if ($logo = $params['logo']) : ?>
+            <img src="<?= $this->escape($logo) ?>" alt="">
+        <?php else : ?>
+            <?= $params['title'] ?>
+        <?php endif ?>
+    </a>
+
+    <?php if ($view->menu()->exists('main')) : ?>
+    <div class="uk-navbar-flip">
+        <?= $view->menu('main', 'menu-navbar.php') ?>
+    </div>
+    <?php endif ?>
+
+</nav>
+```
+
+![Horizontal navbar](assets/howto-theme-navbar.png)
+
+_With our changes, menu items are now rendered in a horizontal navbar._
 
 ### Adding theme options
 
@@ -463,191 +483,211 @@ Pagekit uses [Vue.js](https://vuejs.org/) to build its administration interface.
 
 A frequently requested feature is for the navbar to remain fixed at the top of the browser window when scrolling down the site. In the following steps, we are going to add this as an option to our theme.
 
-1. First, we need to create the folder `app/components` and in it the file `site-theme.vue`. Settings stored in this file affect the entire website and can be found under *Theme* in the *Settings* tab of the Site Tree. They cannot be applied to a specific page.
+#### Step 1
 
-    ![Site Tree](assets/howto-theme-site-tree.png)
+First, we need to create the folder `app/components` and in it the file `site-theme.vue`. Settings stored in this file affect the entire website and can be found under *Theme* in the *Settings* tab of the Site Tree. They cannot be applied to a specific page.
 
-    _You can add any kind of Settings screen to the admin area_
+![Site Tree](assets/howto-theme-site-tree.png)
 
-    In the freshly created file `site-theme.vue` we add the option which will be displayed in the Pagekit administration.
+_You can add any kind of Settings screen to the admin area_
 
-    ```
-    <template>
+In the freshly created file `site-theme.vue` we add the option which will be displayed in the Pagekit administration.
 
-        <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
-            <div data-uk-margin>
-                <h2 class="uk-margin-remove">{{ 'Theme' | trans }}</h2>
-            </div>
-            <div data-uk-margin>
-                <button class="uk-button uk-button-primary" type="submit">{{ 'Save' | trans }}</button>
-            </div>
+```
+<template>
+
+    <div class="uk-margin uk-flex uk-flex-space-between uk-flex-wrap" data-uk-margin>
+        <div data-uk-margin>
+            <h2 class="uk-margin-remove">{{ 'Theme' | trans }}</h2>
+        </div>
+        <div data-uk-margin>
+            <button class="uk-button uk-button-primary" type="submit">{{ 'Save' | trans }}</button>
+        </div>
+    </div>
+
+    <div class="uk-form uk-form-horizontal">
+
+        <div class="uk-form-row">
+            <label for="form-navbar-mode" class="uk-form-label">{{ 'Navbar Mode' | trans }}</label>
+            <p class="uk-form-controls-condensed">
+                <label><input type="checkbox" v-model="config.navbar_sticky"> {{ 'Sticky Navigation' | trans }}</label>
+            </p>
         </div>
 
-        <div class="uk-form uk-form-horizontal">
+    </div>
 
-            <div class="uk-form-row">
-                <label for="form-navbar-mode" class="uk-form-label">{{ 'Navbar Mode' | trans }}</label>
-                <p class="uk-form-controls-condensed">
-                    <label><input type="checkbox" v-model="config.navbar_sticky"> {{ 'Sticky Navigation' | trans }}</label>
-                </p>
-            </div>
+</template>
+```
 
-        </div>
+#### Step 2
 
-    </template>
-    ```
+Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following script below the option in the `site-theme.vue` file.
 
-2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following script below the option in the `site-theme.vue` file.
+```
+<script>
 
-    ```
-    <script>
+    module.exports = {
 
-        module.exports = {
+        section: {
+            label: 'Theme',
+            icon: 'pk-icon-large-brush',
+            priority: 15
+        },
 
-            section: {
-                label: 'Theme',
-                icon: 'pk-icon-large-brush',
-                priority: 15
-            },
+        data: function () {
+            return _.extend({config: {}}, window.$theme);
+        },
 
-            data: function () {
-                return _.extend({config: {}}, window.$theme);
-            },
+        events: {
 
-            events: {
+            save: function() {
 
-                save: function() {
-
-                    this.$http.post('admin/system/settings/config', {name: this.name, config: this.config}).catch(function (res) {
-                        this.$notify(res.data, 'danger');
-                    });
-
-                }
+                this.$http.post('admin/system/settings/config', {name: this.name, config: this.config}).catch(function (res) {
+                    this.$notify(res.data, 'danger');
+                });
 
             }
 
-        };
-
-        window.Site.components['site-theme'] = module.exports;
-
-    </script>
-    ```
-
-3. To load the script and add the option to the Site Tree, you also need to add the following to the `index.php` file.
-
-    ```
-    'events' => [
-
-        'view.system/site/admin/settings' => function ($event, $view) use ($app) {
-            $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
-            $view->data('$theme', $this);
         }
 
-    ]
-    ```
+    };
 
-4. Add the default setting for the navbar mode in the `index.php` file.
+    window.Site.components['site-theme'] = module.exports;
 
-    ```
-    'config' => [
-            'navbar_sticky' => false
-        ],
-    ```
+</script>
+```
 
-5. Vue components need to be compiled into JavaScript using Webpack. To do so, create the file `webpack.config.js` in your theme folder:
+#### Step 3
 
-    ```
-    module.exports = [
+To load the script and add the option to the Site Tree, you also need to add the following to the `index.php` file.
 
-        {
-            entry: {
-                "site-theme": "./app/components/site-theme.vue"
-            },
-            output: {
-                filename: "./app/bundle/[name].js"
-            },
-            module: {
-                loaders: [
-                    { test: /\.vue$/, loader: "vue" }
-                ]
-            }
+```
+'events' => [
+
+    'view.system/site/admin/settings' => function ($event, $view) use ($app) {
+        $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
+        $view->data('$theme', $this);
+    }
+
+]
+```
+
+#### Step 4
+
+Add the default setting for the navbar mode in the `index.php` file.
+
+```
+'config' => [
+    'navbar_sticky' => false
+],
+```
+
+#### Step 5
+
+Vue components need to be compiled into JavaScript using Webpack. To do so, create the file `webpack.config.js` in your theme folder:
+
+```
+module.exports = [
+
+    {
+        entry: {
+            "site-theme": "./app/components/site-theme.vue"
+        },
+        output: {
+            filename: "./app/bundle/[name].js"
+        },
+        module: {
+            loaders: [
+                { test: /\.vue$/, loader: "vue" }
+            ]
         }
+    }
 
-    ];
-    ```
+];
+```
 
-6. After that, run the command `webpack` inside the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string. 
+#### Step 6
+
+After that, run the command `webpack` inside the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string. 
 	
-	If you haven't worked with it before, you will quickly need to [install webpack globally](http://webpack.github.io/docs/installation.html) and then also run the following in your project directory to have a local webpack version and a Vue compiler available.
+If you haven't worked with it before, you will quickly need to [install webpack globally](http://webpack.github.io/docs/installation.html) and then also run the following in your project directory to have a local webpack version and a Vue compiler available.
 
-	```
-	npm install webpack vue-loader vue-html-loader babel-core babel-loader babel-preset-es2015 babel-plugin-transform-runtime --save-dev
-	```
+```
+npm install webpack vue-loader vue-html-loader babel-core babel-loader babel-preset-es2015 babel-plugin-transform-runtime --save-dev
+```
 	
-    Whenever you now apply changes to the Vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
+Whenever you now apply changes to the Vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
 
-7. Lastly, we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since it is not included in the framework core, it needs to be loaded explicitely. YOu can do that by adding a dependency to the sticky component when loading the theme's JavaScript.
+#### Step 7
 
-    ```
-    <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky']) ?>
-    ```
+Lastly, we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since it is not included in the framework core, it needs to be loaded explicitely. YOu can do that by adding a dependency to the sticky component when loading the theme's JavaScript.
 
-    Now all you need to do is render the option into the actual navbar in `template.php`.
+```
+<?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky']) ?>
+```
 
-    ```
-    <nav class="uk-navbar uk-position-z-index" <?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>>
-    ```
+Now all you need to do is render the option into the actual navbar in `template.php`.
+
+```
+<nav class="uk-navbar uk-position-z-index" <?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>>
+```
     
-    In the admin area, go to *Site &gt; Settings &gt; Theme*  and enable the _Sticky Navigation_ option to see it take effect on your website.
+In the admin area, go to *Site &gt; Settings &gt; Theme*  and enable the _Sticky Navigation_ option to see it take effect on your website.
 
 ## Widgets
 
 Widget positions allow users to publish widgets in several locations of your theme markup. They appear in the *Widgets* area of the Pagekit admin panel and can be selected by the user when setting up a widget.
 
-1. To render a new widget position, you first need to register it with the `index.php` file. For example, if we want a create a new *Top* position, we will define it through the `positions` property.
+#### Step 1
 
-	```
-    'positions' => [
+To render a new widget position, you first need to register it with the `index.php` file. For example, if we want a create a new *Top* position, we will define it through the `positions` property.
 
-        'sidebar' => 'Sidebar',
-        'top' => 'Top'
+```
+'positions' => [
 
-    ],
-	```
+    'sidebar' => 'Sidebar',
+    'top' => 'Top'
 
-2. Now that we have made the new position known to Pagekit, we need also to create a position renderer. We could skip this step and use a default renderer, but then all widgets would simply render below each pther. So to lay out the widgets in a grid, create the file `views/position-grid.php`:
+],
+```
 
-	```
-    <?php foreach ($widgets as $widget) : ?>
-    <div class="uk-width-medium-1-<?= count($widgets) ?>">
+#### Step 2
 
-        <div class="uk-panel">
+Now that we have made the new position known to Pagekit, we need also to create a position renderer. We could skip this step and use a default renderer, but then all widgets would simply render below each pther. So to lay out the widgets in a grid, create the file `views/position-grid.php`:
 
-            <h3 class="uk-panel-title"><?= $widget->title ?></h3>
+```
+<?php foreach ($widgets as $widget) : ?>
+<div class="uk-width-medium-1-<?= count($widgets) ?>">
 
-            <?= $widget->get('result') ?>
+    <div class="uk-panel">
 
-        </div>
+        <h3 class="uk-panel-title"><?= $widget->title ?></h3>
+
+        <?= $widget->get('result') ?>
 
     </div>
-    <?php endforeach ?>
-	```
 
-3. To render the new position in the theme's markup, we need to add it to the `views/template.php` file, after the closing `</nav>` tag:
+</div>
+<?php endforeach ?>
+```
 
-	```
-    <?php if ($view->position()->exists('top')) : ?>
-    <div id="top" class="tm-top">
-        <div class="uk-container uk-container-center">
+#### Step 3
 
-            <section class="uk-grid uk-grid-match" data-uk-grid-margin>
-                <?= $view->position('top', 'position-grid.php') ?>
-            </section>
+To render the new position in the theme's markup, we need to add it to the `views/template.php` file, after the closing `</nav>` tag:
 
-        </div>
+```
+<?php if ($view->position()->exists('top')) : ?>
+<div id="top" class="tm-top">
+    <div class="uk-container uk-container-center">
+
+        <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+            <?= $view->position('top', 'position-grid.php') ?>
+        </section>
+
     </div>
-    <?php endif ?>
-	```
+</div>
+<?php endif ?>
+```
 
 Now can select *Top* for any widget that you want to render in the newly created position.
 
@@ -658,98 +698,114 @@ _Select the new position when creating a widget._
 ### Adding position options
 The example before added configuration options which applied for the whole site. We can also extend the Site Tree with configuration that only applies for a certain page. Let us add the option to apply a different background color to our new Top position.
 
-1. First, we need to create the file `node-theme.vue` inside the folder `app/components`. Here we add the option which will be displayed in the Pagekit administration. Settings that are stored in this file can be applied to each page separately by entering the appropriate item in the site tree and clicking the *Theme* tab.
+#### Step 1
 
-	```
-    <template>
+First, we need to create the file `node-theme.vue` inside the folder `app/components`. Here we add the option which will be displayed in the Pagekit administration. Settings that are stored in this file can be applied to each page separately by entering the appropriate item in the site tree and clicking the *Theme* tab.
 
-        <div class="uk-form-horizontal">
+```
+<template>
 
-            <div class="uk-form-row">
-                <label for="form-top-style" class="uk-form-label">Top {{ 'Position' | trans }}</label>
-                <div class="uk-form-controls">
-                    <select id="form-top-style" class="uk-form-width-large" v-model="node.theme.top_style">
-                        <option value="uk-block-default">{{ 'Default' | trans }}</option>
-                        <option value="uk-block-muted">{{ 'Muted' | trans }}</option>
-                    </select>
-                </div>
+    <div class="uk-form-horizontal">
+
+        <div class="uk-form-row">
+            <label for="form-top-style" class="uk-form-label">Top {{ 'Position' | trans }}</label>
+            <div class="uk-form-controls">
+                <select id="form-top-style" class="uk-form-width-large" v-model="node.theme.top_style">
+                    <option value="uk-block-default">{{ 'Default' | trans }}</option>
+                    <option value="uk-block-muted">{{ 'Muted' | trans }}</option>
+                </select>
             </div>
-
         </div>
 
-    </template>
-	```
+    </div>
 
-2. Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `node-theme.vue` file.
+</template>
+```
+
+#### Step 2
+
+Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `node-theme.vue` file.
     
-    ```
-    <script>
+```
+<script>
 
-        module.exports = {
+    module.exports = {
 
-            section: {
-                label: 'Theme',
-                priority: 90
-            },
-
-            props: ['node']
-
-        };
-
-        window.Site.components['node-theme'] = module.exports;
-
-    </script>
-    ```
-
-3. In the chapter about theme options, we inserted the event listener to the `index.php` file in order to load the script and add the option to the Site Tree. Now we need to do the same thing for the site setting. The complete `events` section should then look like this.
-
-	```
-    'events' => [
-
-        'view.system/site/admin/settings' => function ($event, $view) use ($app) {
-            $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
-            $view->data('$theme', $this);
+        section: {
+            label: 'Theme',
+            priority: 90
         },
 
-        'view.system/site/admin/edit' => function ($event, $view) {
-            $view->script('node-theme', 'theme:app/bundle/node-theme.js', 'site-edit');
-        }
+        props: ['node']
 
-    ]
-	```
+    };
 
-4. The default setting for the widget position also needs to be added in the `index.php`.
+    window.Site.components['node-theme'] = module.exports;
 
-	```
-    'node' => [
+</script>
+```
 
-        'top_style' => 'uk-block-muted'
+#### Step 3
 
-    ],
-	```
+In the chapter about theme options, we inserted the event listener to the `index.php` file in order to load the script and add the option to the Site Tree. Now we need to do the same thing for the site setting. The complete `events` section should then look like this.
 
-5. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file also needs to be registered to be compiled into JavaScript.
+```
+'events' => [
 
-	```
-    entry: {
-        "node-theme": "./app/components/node-theme.vue",
-        "site-theme": "./app/components/site-theme.vue"
+    'view.system/site/admin/settings' => function ($event, $view) use ($app) {
+        $view->script('site-theme', 'theme:app/bundle/site-theme.js', 'site-settings');
+        $view->data('$theme', $this);
     },
-	```
 
-6. Now you can run the command *webpack* inside the theme folder and `node-theme.vue` will be compiled into `app/bundle/node-theme.js`.
+    'view.system/site/admin/edit' => function ($event, $view) {
+        $view->script('node-theme', 'theme:app/bundle/node-theme.js', 'site-edit');
+    }
 
-7. Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
+]
+```
 
-	```
-    <div id="top" class="tm-top uk-block <?= $params['top_style'] ?>">
-	```
+#### Step 4 
+
+The default setting for the widget position also needs to be added in the `index.php`.
+
+```
+'node' => [
+
+    'top_style' => 'uk-block-muted'
+
+],
+```
+
+#### Step 5
+
+In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file also needs to be registered to be compiled into JavaScript.
+
+```
+entry: {
+    "node-theme": "./app/components/node-theme.vue",
+    "site-theme": "./app/components/site-theme.vue"
+},
+```
+
+#### Step 6
+
+Now you can run the command *webpack* inside the theme folder and `node-theme.vue` will be compiled into `app/bundle/node-theme.js`.
+
+#### Step 7
+
+Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
+
+```
+<div id="top" class="tm-top uk-block <?= $params['top_style'] ?>">
+```
 	
-8. In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
+#### Step 8
 
-	![Node options added by the theme](assets/guide-theme-node.png)
+In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
+
+![Node options added by the theme](assets/guide-theme-node.png)
 	
-	_Node options added by the theme._
+_Node options added by the theme._
 
 ### Adding widget options
 You can also add specific options to widgets themselves. In this case, we would like to provide a panel style option that can be selected for each widget.
@@ -758,87 +814,101 @@ You can also add specific options to widgets themselves. In this case, we would 
 
 _A theme can add any kind of options to the Widget editor_
 
-1. First, we need to create a `app/components/widget-theme.vue` file inside the folder `app/components`. This renders the select box from which we will be able to choose the widget's style.
+#### Step 1
 
-	```
-    <template>
+First, we need to create a `app/components/widget-theme.vue` file inside the folder `app/components`. This renders the select box from which we will be able to choose the widget's style.
 
-        <div class="uk-form-horizontal">
+```
+<template>
 
-            <div class="uk-form-row">
-                <label for="form-theme-panel" class="uk-form-label">{{ 'Panel Style' | trans }}</label>
-                <div class="uk-form-controls">
-                    <select id="form-theme-panel" class="uk-form-width-large" v-model="widget.theme.panel">
-                        <option value="">{{ 'None' | trans }}</option>
-                        <option value="uk-panel-box">{{ 'Box' | trans }}</option>
-                        <option value="uk-panel-box uk-panel-box-primary">{{ 'Box Primary' | trans }}</option>
-                        <option value="uk-panel-box uk-panel-box-secondary">{{ 'Box Secondary' | trans }}</option>
-                        <option value="uk-panel-header">{{ 'Header' | trans }}</option>
-                    </select>
-                </div>
+    <div class="uk-form-horizontal">
+
+        <div class="uk-form-row">
+            <label for="form-theme-panel" class="uk-form-label">{{ 'Panel Style' | trans }}</label>
+            <div class="uk-form-controls">
+                <select id="form-theme-panel" class="uk-form-width-large" v-model="widget.theme.panel">
+                    <option value="">{{ 'None' | trans }}</option>
+                    <option value="uk-panel-box">{{ 'Box' | trans }}</option>
+                    <option value="uk-panel-box uk-panel-box-primary">{{ 'Box Primary' | trans }}</option>
+                    <option value="uk-panel-box uk-panel-box-secondary">{{ 'Box Secondary' | trans }}</option>
+                    <option value="uk-panel-header">{{ 'Header' | trans }}</option>
+                </select>
             </div>
-
         </div>
 
-    </template>
-	```
+    </div>
 
-2. Now we still have to make this option available in the widget administration. To do so, we can create a *Theme* tab in the interface by adding the following to the `widget-theme.vue` file.
+</template>
+```
+
+#### Step 2
+
+Now we still have to make this option available in the widget administration. To do so, we can create a *Theme* tab in the interface by adding the following to the `widget-theme.vue` file.
     
-    ```
-    <script>
+```
+<script>
 
-        module.exports = {
+    module.exports = {
 
-            section: {
-                label: 'Theme',
-                priority: 90
-            },
+        section: {
+            label: 'Theme',
+            priority: 90
+        },
 
-            props: ['widget', 'config']
+        props: ['widget', 'config']
 
-        };
+    };
 
-        window.Widgets.components['theme'] = module.exports;
+    window.Widgets.components['theme'] = module.exports;
 
-    </script>
-    ```
+</script>
+```
 
-3. To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `events` section in the file `index.php`.
+#### Step 3
 
-    ```
-    'view.system/widget/edit' => function ($event, $view) {
-        $view->script('widget-theme', 'theme:app/bundle/widget-theme.js', 'widget-edit');
-    }
-    ```
+To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `events` section in the file `index.php`.
 
-4. The default setting for the widget also needs to be added in the `index.php`.
+```
+'view.system/widget/edit' => function ($event, $view) {
+    $view->script('widget-theme', 'theme:app/bundle/widget-theme.js', 'widget-edit');
+}
+```
 
-    ```
-    'widget' => [
+#### Step 4
 
-        'panel' => ''
+The default setting for the widget also needs to be added in the `index.php`.
 
-    ],
-    ```
+```
+'widget' => [
 
-5. Add the `widget-theme` entry to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run `webpack` in the theme folder afterwards).
+    'panel' => ''
 
-    ```
-    entry: {
-        "node-theme": "./app/components/node-theme.vue",
-        "site-theme": "./app/components/site-theme.vue",
-        "widget-theme": "./app/components/widget-theme.vue"
-    },
-    ```
+],
+```
 
-6. Now all we need to do is render the chosen setting into the widget in the `position-grid.php` file.
+#### Step 5
 
-	```
-    <div class="uk-panel <?= $widget->theme['panel'] ?>">
-	```
+Add the `widget-theme` entry to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run `webpack` in the theme folder afterwards).
+
+```
+entry: {
+    "node-theme": "./app/components/node-theme.vue",
+    "site-theme": "./app/components/site-theme.vue",
+    "widget-theme": "./app/components/widget-theme.vue"
+},
+```
+
+#### Step 6
+
+Now all we need to do is render the chosen setting into the widget in the `position-grid.php` file.
+
+```
+<div class="uk-panel <?= $widget->theme['panel'] ?>">
+```
 	
-7. When editing a widget, you will now see a _Theme_ tab on top of the editor, where you can access the _Panel Style_ configuration that we have just added.	
+#### Step 7
+
+When editing a widget, you will now see a _Theme_ tab on top of the editor, where you can access the _Panel Style_ configuration that we have just added.	
 	
 ## Overwrite system views
 

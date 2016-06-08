@@ -11,12 +11,12 @@ The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketpla
 
 _Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme._
 
-First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in *packages/pagekit/theme-hello*. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this guide though, we only need Hello theme.
+First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in `packages/pagekit/theme-hello`. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this guide though, we only need Hello theme.
 
 ## Structure
 Let's take a look at some of the central files and folders that you will deal with when developing your own theme.
 
-```
+```txt
 /css
   theme.css               // skeleton css with pre-defined classes
 /js
@@ -32,7 +32,7 @@ README.md                 // contains basic information
 
 ### Rename your theme
 
-If you simpley change the files of Hello theme, any Marketplace updates to the theme will overwrite your changes. Also, you will probably want to give the theme your own custom name. If you decide to upload the theme to the marketplace, your even need to name it differently. This requires three simple steps:
+If you simply change the files of Hello theme, any Marketplace updates to the theme will overwrite your changes. Also, you will probably want to give the theme your own custom name. If you decide to upload the theme to the marketplace, you even need to name it differently. This requires three simple steps:
 
 1. Copy all files from `packages/pagekit/theme-hello` to `packages/your-name/your-theme` (you will need to create these folders).
 2. Open `composer.json` and replace `"name": "pagekit/theme-hello",` with `"name": "your-name/your-theme"`. ALso change `"title": "Hello"` to `"title": "Your theme"`.
@@ -154,7 +154,7 @@ There are a number of possible file structure setups. In the following passage w
 	
 	`.gitignore` is an optional file that is useful when you manage your code using Git. In Hello theme, a version of the file already exists. You can add new entries so that it looks as follows. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
 	
-	```
+	```txt
 	/app/bundle/*
 	/app/assets/*
 	/node_modules
@@ -357,7 +357,7 @@ One of the first things you will want to render in your theme is the main naviga
 
 ![Main navigation unstyled](assets/howto-theme-menu-unstyled.png)
 
-_By default, the Hello theme renders menu items in a very simple vertical navigation._
+_By default, Hello theme renders menu items in a very simple vertical navigation._
 
 1. Hello theme comes with the predefined *Main* menu position. When adding a new position it needs to be defined by an identifier (i.e. `main`) and a label to be displayed to the user (i.e. *Main*).
 

@@ -274,18 +274,15 @@ The currently loaded version of jQuery and UIkit depend on the current version o
 ## Layout
 The central files for your theme's layout are `views/template.php` and `index.php`. The actual rendering happens in the `template.php`. 
 
-As you can see, this file contains a very basic setup for you to start creating your own content. So, you might want to add a bit of a layout to the existing content. Let's try wrapping a container around our main content and dividing the system output and sidebar into a grid.
+When you open the `template.php`, you see a very basic setup for you to get started. Let's wrapping a container around our main content and divide the system output and sidebar into a grid.
 
-Around **line 27** the `views/template.php` file renders the sidebar position, system messages and the actual content.
+Around **line 30** the `views/template.php` file renders the sidebar position and the actual content.
 
 ```
 <!-- Render widget position -->
 <?php if ($view->position()->exists('sidebar')) : ?>
     <?= $view->position('sidebar') ?>
 <?php endif; ?>
-
-<!-- Render system messages -->
-<?= $view->render('messages') ?>
 
 <!-- Render content -->
 <?= $view->render('content') ?>
@@ -304,9 +301,6 @@ It is always a good idea to prefix your own classes, so they will not collide wi
             <?= $view->position('sidebar') ?>
         <?php endif; ?>
 
-        <!-- Render system messages -->
-        <?= $view->render('messages') ?>
-
         <!-- Render content -->
         <?= $view->render('content') ?>
 
@@ -323,9 +317,6 @@ Now we want the system output and sidebar to actually be side by side. The [Grid
         <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
 
             <main class="<?= $view->position()->exists('sidebar') ? 'uk-width-medium-3-4' : 'uk-width-1-1'; ?>">
-
-                <!-- Render system messages -->
-                <?= $view->render('messages') ?>
 
                 <!-- Render content -->
                 <?= $view->render('content') ?>
@@ -423,7 +414,7 @@ _By default, the Hello theme renders menu items in a very simple vertical naviga
     <?php endif ?>
 	```
 
-3. To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Load the `menu-navbar.php` file inside the element as follows:
+3. To render the actual navbar in the `template.php` file, create a `<nav>` element and add the `.uk-navbar` class. Load the `menu-navbar.php` file inside the element as follows (you can remove the existing block where `$view->menu('main')` is rendered).
 
 	```
     <nav class="uk-navbar">
@@ -439,7 +430,7 @@ _By default, the Hello theme renders menu items in a very simple vertical naviga
 
     The main menu should now automatically be rendered in the new *Navbar* position. 
 
-4. You will probably also want the logo to appear inside the navbar. So wrap the `&lt;nav&gt;` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
+4. You will probably also want the logo to appear inside the navbar. So wrap the `<nav>` element around the logo as well and add the `.uk-navbar-brand` class, to apply the appropriate spacing.
 
     ```
     <nav class="uk-navbar">
@@ -542,7 +533,7 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
     </script>
     ```
 
-3. To apply the script and add the option to the Site Tree, you also need to add the following to the `index.php` file.
+3. To load the script and add the option to the Site Tree, you also need to add the following to the `index.php` file.
 
     ```
     'events' => [
@@ -585,21 +576,29 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
     ];
     ```
 
-6. After that, run the command *webpack* on the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string.
+6. After that, run the command `webpack` inside the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string. 
+	
+	If you haven't worked with it before, you will quickly need to [install webpack globally](http://webpack.github.io/docs/installation.html) and then also run the following in your project directory to have a local webpack version and a Vue compiler available.
 
-    Whenever you apply changes to the vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
+	```
+	npm install webpack vue-loader vue-html-loader babel-core babel-loader babel-preset-es2015 babel-plugin-transform-runtime --save-dev
+	```
+	
+    Whenever you now apply changes to the Vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
 
-7. Lastly, we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since it is not included in the framework core, it needs to be loaded seperately with theme's JavaScript.
+7. Lastly, we want to load the necessary JavaScript dependencies in the head of our `views/template.php` file. In our case we are using the [Sticky component](http://getuikit.com/docs/sticky.html) from UIkit. Since it is not included in the framework core, it needs to be loaded explicitely. YOu can do that by adding a dependency to the sticky component when loading the theme's JavaScript.
 
     ```
     <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky']) ?>
     ```
 
-    Now all you need to do is render the option into the actual navbar.
+    Now all you need to do is render the option into the actual navbar in `template.php`.
 
     ```
-    <nav class="uk-navbar<?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>">
+    <nav class="uk-navbar uk-position-z-index" <?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>>
     ```
+    
+    In the admin area, go to *Site &gt; Settings &gt; Theme*  and enable the _Sticky Navigation_ option to see it take effect on your website.
 
 ## Widgets
 
@@ -616,7 +615,7 @@ Widget positions allow users to publish widgets in several locations of your the
     ],
 	```
 
-2. Now we have made the new position known to Pagekit, we need to create a position renderer. To lay out the widgets of the position in a grid, create the file `views/position-grid.php`:
+2. Now that we have made the new position known to Pagekit, we need also to create a position renderer. We could skip this step and use a default renderer, but then all widgets would simply render below each pther. So to lay out the widgets in a grid, create the file `views/position-grid.php`:
 
 	```
     <?php foreach ($widgets as $widget) : ?>
@@ -634,7 +633,7 @@ Widget positions allow users to publish widgets in several locations of your the
     <?php endforeach ?>
 	```
 
-3. To render the new position in the theme's markup, we need to add it to the `views/template.php` file, as well:
+3. To render the new position in the theme's markup, we need to add it to the `views/template.php` file, after the closing `</nav>` tag:
 
 	```
     <?php if ($view->position()->exists('top')) : ?>
@@ -652,8 +651,12 @@ Widget positions allow users to publish widgets in several locations of your the
 
 Now can select *Top* for any widget that you want to render in the newly created position.
 
+![Widget position](assets/guide-theme-select-position.png)
+
+_Select the new position when creating a widget._
+
 ### Adding position options
-In this case we want to add the option to apply a different background color to our new Top position.
+The example before added configuration options which applied for the whole site. We can also extend the Site Tree with configuration that only applies for a certain page. Let us add the option to apply a different background color to our new Top position.
 
 1. First, we need to create the file `node-theme.vue` inside the folder `app/components`. Here we add the option which will be displayed in the Pagekit administration. Settings that are stored in this file can be applied to each page separately by entering the appropriate item in the site tree and clicking the *Theme* tab.
 
@@ -698,7 +701,7 @@ In this case we want to add the option to apply a different background color to 
     </script>
     ```
 
-3. In the chapter about theme options, we inserted the event listener to the `index.php` file in order to add the option to the Site Tree. Now we need to do the same thing for the site setting.
+3. In the chapter about theme options, we inserted the event listener to the `index.php` file in order to load the script and add the option to the Site Tree. Now we need to do the same thing for the site setting. The complete `events` section should then look like this.
 
 	```
     'events' => [
@@ -725,7 +728,7 @@ In this case we want to add the option to apply a different background color to 
     ],
 	```
 
-5. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file needs to be registered with this file, as well, to be compiled into JavaScript.
+5. In the chapter about theme options we created the file `webpack.config.js`. Our `node-theme.vue` file also needs to be registered to be compiled into JavaScript.
 
 	```
     entry: {
@@ -734,13 +737,19 @@ In this case we want to add the option to apply a different background color to 
     },
 	```
 
-6. After that you can run the command *webpack* on the theme folder and `node-theme.vue` will be compiled into `/bundle/node-theme.js` with the template markup converted to an inline string.
+6. Now you can run the command *webpack* inside the theme folder and `node-theme.vue` will be compiled into `app/bundle/node-theme.js`.
 
 7. Lastly, to actually render the chosen setting into the widget position, we need to add the `.uk-block` class and the style parameter to the position itself in the `template.php` file.
 
 	```
     <div id="top" class="tm-top uk-block <?= $params['top_style'] ?>">
 	```
+	
+8. In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
+
+	![Node options added by the theme](assets/guide-theme-node.png)
+	
+	_Node options added by the theme._
 
 ### Adding widget options
 You can also add specific options to widgets themselves. In this case, we would like to provide a panel style option that can be selected for each widget.
@@ -795,7 +804,7 @@ _A theme can add any kind of options to the Widget editor_
     </script>
     ```
 
-3. To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `index.php` file.
+3. To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `events` section in the file `index.php`.
 
     ```
     'view.system/widget/edit' => function ($event, $view) {
@@ -813,7 +822,7 @@ _A theme can add any kind of options to the Widget editor_
     ],
     ```
 
-5. Add the widget component to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run *webpack* on the theme folder afterwards).
+5. Add the `widget-theme` entry to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run `webpack` in the theme folder afterwards).
 
     ```
     entry: {
@@ -829,9 +838,11 @@ _A theme can add any kind of options to the Widget editor_
     <div class="uk-panel <?= $widget->theme['panel'] ?>">
 	```
 	
+7. When editing a widget, you will now see a _Theme_ tab on top of the editor, where you can access the _Panel Style_ configuration that we have just added.	
+	
 ## Overwrite system views
 
-With your theme, you can also customize the way how Pagekit renders static pages and blog posts. You simply overwrite system view files to apply your own layout. To do so, create corresponding folders inside your theme to mimic the original structure of the Pagekit system and put the template files there:
+A theme can also customize the way how Pagekit renders static pages and blog posts. You simply overwrite system view files to apply your own layout. To do so, create corresponding folders inside your theme to mimic the original structure of the Pagekit system and put the template files there:
 
 File                         | Original view file                       | Description
 ---------------------------- | ---------------------------------------- | ------------------------

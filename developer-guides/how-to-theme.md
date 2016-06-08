@@ -11,24 +11,34 @@ The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketpla
 
 _The Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme._
 
-First of all [download](https://pagekit.com/package/pagekit/theme-hello.zip) and install the theme and have a look at the overall file structure. When installed, the *Hello* theme is located in *packages/pagekit/theme-hello*. It is recommendable to install a simple theme on the side for reference, like [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration.
+First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in *packages/pagekit/theme-hello*. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this guide though, we only need Hello theme.
 
 ## Structure
 Let's take a look at some of the central files and folders that you will deal with when developing your own theme.
 
 ```
 /css
-  theme.css               // skeleton file containing a number of pre-defined classes for navigations, forms and utilities that you can use
+  theme.css               // skeleton css with pre-defined classes
 /js
   theme.js                // empty file for your scripts
 /views
   template.php            // renders the theme's output; logo, menu, main content, sidebar and footer positions are available by default
 composer.json             // package definition so that Pagekit recognizes the theme
 image.jpg                 // preview screenshot
-index.php                 // contains theme information and configures the default settings of all positions and options
-CHANGELOG.md              // contains information on the current and previous package versions
-README.md                 // contains basic information and points you to the documentation
+index.php                 // the central theme configuration
+CHANGELOG.md              // changes of current and previous versions
+README.md                 // contains basic information
 ```
+
+### Rename your theme
+
+If you simpley change the files of Hello theme, any Marketplace updates to the theme will overwrite your changes. Also, you will probably want to give the theme your own custom name. If you decide to upload the theme to the marketplace, your even need to name it differently. This requires three simple steps:
+
+1. Copy all files from `packages/pagekit/theme-hello` to `packages/your-name/your-theme` (you will need to create these folders).
+2. Open `composer.json` and replace `"name": "pagekit/theme-hello",` with `"name": "your-name/your-theme"`. ALso change `"title": "Hello"` to `"title": "Your theme"`.
+3. Open `index.php` and replace `'name' => 'theme-hello'` with `'name' => 'your-theme'`.
+
+Out of simplicity, the rest of the guide will still call it `theme-hello` in the examples.
 
 ### CSS
 Hello theme doesn't contain any styles. The included `css/theme.css` file lists all CSS classes that are rendered by the Pagekit core extensions without additional styling. You can add your own CSS to these classes.
@@ -43,23 +53,28 @@ Go to the [UIkit website](http://getuikit.com/), download the latest release and
 
 To make sure the file is loaded by Pagekit, open the main layout file of the theme which is located at `theme-hello/views/template.php`. 
 
-In the `<head>` section of this layout file, we see that one css file is included already.
+In the `<head>` section of this layout file, we see that one CSS file is included already.
 
 ```
 <?php $view->style('theme', 'theme:css/theme.css') ?>
 ```
 
-Now add the following line **above** to make sure that the `uikit.min.css` file is loaded.
+Now add another line to add the UIkit CSS. Make sure to add it **above** the line that is already present, so that it looks as follows.
 
 ```
-<?php $view->style('my-uikit', 'theme:css/ukit.min.css') ?>
+<?php $view->style('custom-uikit', 'theme:css/uikit.min.css') ?>
+<?php $view->style('theme', 'theme:css/theme.css') ?>
 ```
 
 That's it, your theme now contains UIkit's CSS. To add your own CSS rules, simply edit `theme-hello/css/theme.css`.
 
+![Default UIkit styling](assets/guide-theme-basic-css.png)
+
+_Adding the CSS from UIkit will add default styling to the rendered markup. To actually make it pretty, we also need to add some classes to the markup, customize the default UIkit style and maybe add our own CSS styling_
+
 #### The advanced way: Setup with Gulp and LESS
 
-In the previous section we have seen how easy it is to add plain CSS files to your theme. If you have experience with building websites, you are probably familiar with more flexible ways of styling your content. A good example for this is using a CSS pre-processor like LESS. This allows you to use things such as variables, which make your code easier to read and manage.
+In the previous section we have seen how easy it is to add plain CSS files to your theme. If you have experience with building websites, you are probably familiar with more flexible ways of styling your content. A good example for this is using a CSS pre-processor like [LESS](http://lesscss.org/). This allows you to use things such as variables, which make your code easier to read and manage.
 
 When using UIkit, this has the great advantage that you can simply modify a variable to apply global changes, for example altering the primary theme color.
 
@@ -128,27 +143,33 @@ There are a number of possible file structure setups. In the following passage w
 	
 	`less/theme.less` is the place where you store your theme's styles. Mind that you first need to import UIkit so that it is also compiled by the Gulp task we have defined above.
 	
-	```
-    less
+	```less
 	@import "uikit/uikit.less";
+	
+	// use icon font from system
+	@icon-font-path: "../../../../app/assets/uikit/fonts";
 	
 	// your theme styles will follow here...
 	```
 	
-	`.gitignore` is an optional file you could create, if you manage your code using Git. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
+	`.gitignore` is an optional file that is useful when you manage your code using Git. In Hello theme, a version of the file already exists. You can add new entries so that it looks as follows. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
 	
 	```
+	/app/bundle/*
 	/app/assets/*
-	/css
 	/node_modules
+	/css
 	.DS_Store
 	.idea
 	*.zip
 	```
 	
-2. After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like).
+2. After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like). Note that you need the Github version for this, not the css-only version we have downloaded in the simple setup.
+	
+	![Download UIkit from Github](assets/guide-theme-download-uikit.png)
+
 3. Create a `/less` folder inside your theme, copy and paste the `default` theme folder in there and rename it to `/uikit`, so that it is located at `less/uikit` inside your theme folder.
-4. The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
+4. The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line 4 to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
 5. Open your theme in a new console tab (for example `cd pagekit/packages/theme-hello`) and run `npm install`, `bower install` and `gulp`.
 
 Now, that were quite a few steps. Make sure your file structure looks as follows now (plus additional theme files that were there before):
@@ -156,13 +177,16 @@ Now, that were quite a few steps. Make sure your file structure looks as follows
 ```
 app/
     assets/
-        uikit/     result of bower install
         jquery/    result of bower install
+        uikit/     result of bower install
+css/
+    theme.css      result of gulp
 less/
     uikit/
-        ... many uikit components
+        ... uikit components
     	uikit.less
     theme.less
+node_modules/      result of npm install
 .bowerrc
 bower.json
 gulpfile.js
@@ -179,15 +203,13 @@ With this file setup in place, we have now achieved the following:
 
 ## Adding JavaScript
 
-Included in Hello theme, you will find an empty JavaScript file `js/script.js`. Here, you can add your own JavaScript code. In the Hello Theme, the file is loaded because it is already included in the `template.php` as follows:
+Included in Hello theme, you will find an empty JavaScript file `js/script.js`. Here, you can add your own JavaScript code. In Hello Theme, the file is loaded because it is already included in the `template.php` as follows:
 
 ```
 <?php $view->script('theme', 'theme:js/theme.js') ?>
 ```
 
-When including a script, it needs a unique identifier (`theme`) and the path to the script file (`theme:js/theme.js`). As you can see, you can use `theme:` as a short version for the file path to your theme directory. To add more JavaScript files, simply add more lines in the same way. Make sure to assign different identifier to the scripts. If you call all of them `theme`, only the last one will be included.
-
-For example, let us also include the UIkit JavaScript. Simply add the following line to the `template.php`, but add it before the line that is already present, so that it looks as follows.
+When including a script, it needs a unique identifier (`theme`) and the path to the script file (`theme:js/theme.js`). As you can see, you can use `theme:` as a short version for the file path to your theme directory. To add more JavaScript files, simply add more lines in the same way. Make sure to assign different identifier to the scripts. If you would call all of them `theme`, only the last one will be included.
 
 ```
 <?php $view->script('theme', 'theme:js/theme.js') ?>
@@ -199,9 +221,9 @@ While adding multiple `script()` calls is the simplest way to include JavaScript
 
 ### Adding multiple JavaScript files with dependencies
 
-In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files, as well. Note that UIkit requires loading jQuery before you can use the UIkit JavaScript components. 
+In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files. Note that UIkit requires loading jQuery before you can use the UIkit JavaScript components. 
 
-Including these three files looks as follows:
+Locate the previous line `script('theme', ...)` in the head of `views/template.php` and replace it with the following three lines.
 
 ```
 <?php $view->script('theme-jquery', 'theme:app/assets/jquery/dist/jquery.min.js') ?>
@@ -209,9 +231,33 @@ Including these three files looks as follows:
 <?php $view->script('theme', 'theme:js/theme.js', 'theme-uikit') ?>
 ```
 
+This example assumes you have used the advanced setup from above, where bower has installed both UIkit and jQuery into the `app/assets` folder. If you are working with a simpler setup instead, just download and copy `jquery.min.js` and `uikit.min.js` to some place in your theme and change the paths in the example accordingly.
+
 Note how we now add a third parameter, which defines _dependencies_ of the script that we are loading. Dependencies are other JavaScript files that have to be loaded earlier. So in the example, Pagekit will definitely make sure to load the three files in the following order: jQuery, UIkit and then our own `theme.js`. In this specific example, this mechanism does not seem very useful, because the scripts will probably be loaded in exactly the order that we put them in the `template.php`, right? That is correct, but imagine these lines being located in different files and sub-templates of your theme. Defining dependencies will make sure that Pagekit always loads the files in a correct order.
 
 As you can already see in the example above, dependencies are referenced using the unique string identifier (e.g. `theme-jquery`). In our example, this identifier is given to the script the first time it is included using the `script()` method. So, as you have seen now, this method takes three parameters: `$view->script($identifier, $path_to_script, $dependencies)`.
+
+To confirm this has worked, open `views/template.php` and add the following lines (`data-uk-*` is the prefix for UIkit's Javascript components).
+
+```
+<!-- ADD id="top" to body -->
+<body id="top"> 
+
+	<!-- LEAVE existing content ... -->
+	...
+	
+	<!-- ADD to-top-scroller -->
+	<div class="uk-text-center">
+       <a href="#top" data-uk-smooth-scroll=""><i class="uk-icon-caret-up"></i></a>
+    </div>
+
+	<!-- LEAVE rendering of footer section  -->
+    <?= $view->render('footer') ?>
+
+</body>
+```
+
+When you refresh the browser, you will see a smaller arrow that you can use to smoothly scroll to the top of the browser window. If the browser does not scroll smoothly, but jumps immediately, please check if you have written everything exactly as in the examples.
 
 ### Adding third party scripts, like jQuery
 

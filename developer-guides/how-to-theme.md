@@ -1,5 +1,8 @@
 # How to develop a theme
-In this guide you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.
+
+<p class="uk-article-lead">In this guide you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.</p>
+
+**Note** The [completed theme](https://github.com/pagekit/example-theme) can be found on Github.
 
 ## Getting started
 
@@ -926,6 +929,8 @@ To understand which variables are available in these views, look at the markup i
 
 In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
 
+**Note** The [completed theme](https://github.com/pagekit/example-theme) can be found on Github.
+
 - You are now familiar with the **file structure** of a Pagekit theme. The main entry point for configuration and custom code is the theme's `index.php`, the main template file is located at `views/template.php` inside the theme.
 - We have presented an approach for a modern **front-end workflow** with tools such as LESS, Gulp and Bower. You can customize this setup to your own preferences.
 - To **add JavaScript** to your theme, you can add your own code and include the script files in your template. You can also add third party libraries like UIkit and jQuery that help you to add interaction to your website.
@@ -934,6 +939,3 @@ In this guide, you have learned the basic knowledge and tools to create themes f
 - To **overwrite system views**, your theme can include custom view files to alter the way static pages and blog posts are rendered.
 
 With these skills you are now in a position to create Pagekit themes, both for client projects and also for the Pagekit marketplace.
-
-
-

@@ -14,7 +14,9 @@
 ## Pages and menus
 Manage your site's content in the site tree. You can see an overview of all existing menus on the left side of the interface. When hovering a single entry, an _Edit_ and a _Remove_ button will appear for that menu. To create a new menu, hit the _Add Menu_ button. You don't have to create a menu only to navigate through your site. You might also want to use it instead to group content from your site for easier management in the admin area.
 
-Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view. Both are accessible below the list of menus.
+Pages without a menu are listed in the _Not Linked_ view, while trashed pages are listed in the _Trash_ view. Both are accessible below the list of menus. 
+
+**Note** Mind that content extensions that need to be linked to, like the [Blog](https://pagekit.com/marketplace/package/pagekit/blog) and [Portfolio](https://pagekit.com/marketplace/package/bixie/portfolio), can be found under _Not Linked_, as well, upon first installing them.
 
 ![Menu overview](assets/site.png)
 

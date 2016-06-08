@@ -691,11 +691,11 @@ In this case we want to add the option to apply a different background color to 
 ### Adding widget options
 You can also add specific options to widgets themselves. In this case, we would like to provide a panel style option that can be selected for each widget.
 
-[SCREENSHOT]
+![Widget options](assets/howto-theme-widget-options.png)
 
 _A theme can add any kind of options to the Widget editor_
 
-1. First, we need to create a `app/components/widget-theme.vue` file:
+1. First, we need to create a `app/components/widget-theme.vue` file inside the folder `app/components`. This renders the select box from which we will be able to choose the widget's style.
 
 	```
     <template>
@@ -720,52 +720,61 @@ _A theme can add any kind of options to the Widget editor_
     </template>
 	```
 
-2. Add the widget component to the `webpack.config.json` file, so it will be compiled to JavaScript when running *webpack*.
+2. Now we still have to make this option available in the widget administration. To do so, we can create a *Theme* tab in the interface by adding the following to the `widget-theme.vue` file.
     
     ```
-<script>
+    <script>
 
-    module.exports = {
+        module.exports = {
 
-        section: {
-            label: 'Theme',
-            priority: 90
-        },
+            section: {
+                label: 'Theme',
+                priority: 90
+            },
 
-        props: ['widget', 'config']
+            props: ['widget', 'config']
 
-    };
+        };
 
-    window.Widgets.components['theme'] = module.exports;
+        window.Widgets.components['theme'] = module.exports;
 
-</script>
+    </script>
     ```
 
 3. To make the option available in the widget administration, we can create a *Theme* tab to the interface by adding the following to the `index.php` file.
 
-	```
+    ```
     'view.system/widget/edit' => function ($event, $view) {
         $view->script('widget-theme', 'theme:app/bundle/widget-theme.js', 'widget-edit');
     }
-	```
+    ```
 
-4. The default setting for the widget also needs to be added in the `index.php`.
+    4. The default setting for the widget also needs to be added in the `index.php`.
 
-	```
-    'widget' => [
+        ```
+        'widget' => [
 
-        'panel' => ''
+            'panel' => ''
 
-    ],
-	```
+        ],
+        ```
 
-5. Now all we need to do is render the chosen setting into the widget in the `position-grid.php` file.
+5. Add the widget component to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run *webpack* on the theme folder afterwards).
+
+    ```
+    entry: {
+        "node-theme": "./app/components/node-theme.vue",
+        "site-theme": "./app/components/site-theme.vue",
+        "widget-theme": "./app/components/widget-theme.vue"
+    },
+    ```
+
+6. Now all we need to do is render the chosen setting into the widget in the `position-grid.php` file.
 
 	```
     <div class="uk-panel <?= $widget->theme['panel'] ?>">
 	```
 	
-
 ## Wrapping up
 
 In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.

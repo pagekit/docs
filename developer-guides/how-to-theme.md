@@ -179,25 +179,33 @@ With this file setup in place, we have now achieved the following:
 
 ## Adding JavaScript
 
-Included in Hello theme, you will find an empty JavaScript file `js/script.js`. Here, you can add your own JavaScript code. In the Hello Theme, the file is loaded because it is included in the `template.php` as follows:
+Included in Hello theme, you will find an empty JavaScript file `js/script.js`. Here, you can add your own JavaScript code. In the Hello Theme, the file is loaded because it is already included in the `template.php` as follows:
 
 ```
 <?php $view->script('theme', 'theme:js/theme.js') ?>
 ```
 
-When including a script, it needs a unique identifier (`theme`) and the path to the script file (`theme:js/theme.js`). As you can see, you can use `theme:` as a short version for the file path to your theme directory. To add more JavaScript files, simply add more lines in the same way.
+When including a script, it needs a unique identifier (`theme`) and the path to the script file (`theme:js/theme.js`). As you can see, you can use `theme:` as a short version for the file path to your theme directory. To add more JavaScript files, simply add more lines in the same way. Make sure to assign different identifier to the scripts. If you call all of them `theme`, only the last one will be included.
+
+For example, let us also include the UIkit JavaScript. Simply add the following line to the `template.php`, but add it before the line that is already present, so that it looks as follows.
+
+```
+<?php $view->script('theme', 'theme:js/theme.js') ?>
+<?php $view->script('plugins', 'theme:js/plugins.js') ?>
+<?php $view->script('slideshow', 'theme:js/slideshow.js') ?>
+```
+
+While adding multiple `script()` calls is the simplest way to include JavaScript, the `script()` helper allows for way more powerful ways to include JavaScript files which can also depend on each other. Let us look at that in more depth in the next sections.
 
 ### Adding multiple JavaScript files with dependencies
 
-In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files, as well. 
+In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files, as well. Note that UIkit requires loading jQuery before you can use the UIkit JavaScript components. 
 
-One way to add the UIkit JavaScript would be to move the UIkit JavaScript files to the `js/` directory, along with jQuery. Note that UIkit requires that you load jQuery before you can use the UIkit JavaScript components. 
-
-Including these three files would look as follows. 
+Including these three files looks as follows:
 
 ```
-<?php $view->script('theme-jquery', 'theme:js/jquery.min.js') ?>
-<?php $view->script('theme-uikit', 'theme:js/uikit.min.js', 'theme-jquery') ?>
+<?php $view->script('theme-jquery', 'theme:app/assets/jquery/dist/jquery.min.js') ?>
+<?php $view->script('theme-uikit', 'theme:app/assets/uikit/js/uikit.min.js', 'theme-jquery') ?>
 <?php $view->script('theme', 'theme:js/theme.js', 'theme-uikit') ?>
 ```
 
@@ -511,25 +519,25 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
 
 5. Vue components need to be compiled into JavaScript using Webpack. To do so, create the file `webpack.config.js` in your theme folder:
 
-        ```
-        module.exports = [
+    ```
+    module.exports = [
 
-            {
-                entry: {
-                    "site-theme": "./app/components/site-theme.vue"
-                },
-                output: {
-                    filename: "./app/bundle/[name].js"
-                },
-                module: {
-                    loaders: [
-                        { test: /\.vue$/, loader: "vue" }
-                    ]
-                }
+        {
+            entry: {
+                "site-theme": "./app/components/site-theme.vue"
+            },
+            output: {
+                filename: "./app/bundle/[name].js"
+            },
+            module: {
+                loaders: [
+                    { test: /\.vue$/, loader: "vue" }
+                ]
             }
+        }
 
-        ];
-        ```
+    ];
+    ```
 
 6. After that, run the command *webpack* on the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string.
 
@@ -749,15 +757,15 @@ _A theme can add any kind of options to the Widget editor_
     }
     ```
 
-    4. The default setting for the widget also needs to be added in the `index.php`.
+4. The default setting for the widget also needs to be added in the `index.php`.
 
-        ```
-        'widget' => [
+    ```
+    'widget' => [
 
-            'panel' => ''
+        'panel' => ''
 
-        ],
-        ```
+    ],
+    ```
 
 5. Add the widget component to the `webpack.config.json` file, so it will be compiled to JavaScript (don't forget to run *webpack* on the theme folder afterwards).
 
@@ -775,6 +783,18 @@ _A theme can add any kind of options to the Widget editor_
     <div class="uk-panel <?= $widget->theme['panel'] ?>">
 	```
 	
+## Overwrite system views
+
+With your theme, you can also customize the way how Pagekit renders static pages and blog posts. You simply overwrite system view files to apply your own layout. To do so, create corresponding folders inside your theme to mimic the original structure of the Pagekit system and put the template files there:
+
+File                         | Original view file                       | Description
+---------------------------- | ---------------------------------------- | ------------------------
+`views/system/site/page.php` | `/app/system/site/views/page.php`        | Default static page view
+`views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view
+`views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view
+
+To understand which variables are available in these views, look at the markup in the original view file.	
+	
 ## Wrapping up
 
 In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
@@ -783,6 +803,7 @@ In this guide, you have learned the basic knowledge and tools to create themes f
 - To **add JavaScript** to your theme, you can add your own code and include the script files in your template. You can also add third party libraries like UIkit and jQuery that help you to add interaction to your website.
 - **Widgets and menus** are managed from the Pagekit admin area and are rendered in special positions of your theme. You have learned how to create these positions and how to change the default widget rendering.
 - To make sure your theme is customizable from the admin area, you can add your own **settings screens**. These can be added to the Site Tree, to the Site settings and to the Widget editor.
+- To **overwrite system views**, your theme can include custom view files to alter the way static pages and blog posts are rendered.
 
 With these skills you are now in a position to create Pagekit themes, both for client projects and also for the Pagekit marketplace.
 

@@ -354,9 +354,9 @@ The page *content* is nothing other than Pagekit's system output. That means tha
 
 To navigate through any site, you first need to set up a *menu*. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
 
-[SCREENSHOT]
+![Typical theme elements](assets/guide-theme-elements.png)
 
-_A typical site layout consists of the main navigation, the page content and a sidebar_
+_A typical site layout consists of the main navigation, the page content and several widget positions_
 
 However, your theme needs to register all positions before. This happens in the `index.php` file through the `menus` and `positions` properties. These contain arrays of the position name and a label, which is displayed in the admin panel. This file is also used to load additional scripts and much more.
 

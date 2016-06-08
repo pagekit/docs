@@ -237,18 +237,18 @@ Note how we now add a third parameter, which defines _dependencies_ of the scrip
 
 As you can already see in the example above, dependencies are referenced using the unique string identifier (e.g. `theme-jquery`). In our example, this identifier is given to the script the first time it is included using the `script()` method. So, as you have seen now, this method takes three parameters: `$view->script($identifier, $path_to_script, $dependencies)`.
 
-To confirm this has worked, open `views/template.php` and add the following lines (`data-uk-*` is the prefix for UIkit's Javascript components).
+To confirm this has worked, open `views/template.php` and add the following lines (`data-uk-*` is the prefix for UIkit's JavaScript components).
 
 ```
-<!-- ADD id="top" to body -->
-<body id="top"> 
+<!-- ADD id="up" to body -->
+<body id="up"> 
 
 	<!-- LEAVE existing content ... -->
 	...
 	
 	<!-- ADD to-top-scroller -->
 	<div class="uk-text-center">
-       <a href="#top" data-uk-smooth-scroll=""><i class="uk-icon-caret-up"></i></a>
+       <a href="#up" data-uk-smooth-scroll=""><i class="uk-icon-caret-up"></i></a>
     </div>
 
 	<!-- LEAVE rendering of footer section  -->
@@ -257,7 +257,7 @@ To confirm this has worked, open `views/template.php` and add the following line
 </body>
 ```
 
-When you refresh the browser, you will see a smaller arrow that you can use to smoothly scroll to the top of the browser window. If the browser does not scroll smoothly, but jumps immediately, please check if you have written everything exactly as in the examples.
+When you refresh the browser, you will see a small arrow that you can use to smoothly scroll to the top of the browser window. If the browser does not scroll smoothly, but jumps immediately, please check if you have written everything exactly as in the examples.
 
 ### Adding third party scripts, like jQuery
 
@@ -314,7 +314,7 @@ It is always a good idea to prefix your own classes, so they will not collide wi
 </div>
 ```
 
-Now we want the system output and sidebar to actually be side by side. The [Grid](http://getuikit.com/docs/grid.html) component can help us here. For a more semantic layout, we will use `&lt;main&gt;` and `&lt;aside&gt;` elements for the containers.
+Now we want the system output and sidebar to actually be side by side. The [Grid](http://getuikit.com/docs/grid.html) component can help us here. For a more semantic layout, we will use `<main>` and `<aside>` elements for the containers.
 
 ```
 <div id="tm-main" class="tm-main uk-block">

@@ -23,6 +23,7 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
 
 - Developer Guides
   1. [How to: Example Extension](developer-guides/todo-extension.md)
+  2. [How to: Theme](developer-guides/how-to-theme.md)
   2. [Extensions](developer-guides/extensions.md)
   3. [Themes](developer-guides/themes.md)
   4. [Widgets](developer-guides/widgets.md)

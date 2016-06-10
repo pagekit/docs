@@ -109,7 +109,7 @@ To generate a route to a static asset, use the `getStatic` method of the `UrlPro
 ```
 
 ### Include CSS in view file
-To include a CSS file in your view, call the `style helper` from the `View`. The first parameter is a unique identifier for the stylesheet, while the second paramter is the path of the stylesheet where `theme:` is a reference to the root directory of a package named 'theme'. You can define its dependencies through the third parameter.
+To include a CSS file in your view, call the `style helper` from the `View`. The first parameter is a unique identifier for the stylesheet, while the second parameter is the path of the stylesheet where `theme:` is a reference to the root directory of a package named 'theme'. You can define its dependencies through the third parameter.
 
 ```
 <?php $view->style('name', 'package:dir/style.css') ?>

@@ -1,7 +1,7 @@
 # Themes
 <p class="uk-article-lead">A theme changes the look of your site. In its simplest form a theme generates the surrounding HTML markup for the content output of your extensions.</p>
 
-**Note** The examples in this guide are taken from the _Hello_ theme, which is available in the Marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
+**Note** The examples in this tutorial are taken from the _Hello_ theme, which is available in the Marketplace. When installed, the _Hello_ theme is located in `/packages/pagekit/theme-hello`.
 
 <ul class="uk-list">
     <li><a href="#package-definition">Package definition</a></li>

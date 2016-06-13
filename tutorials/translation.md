@@ -13,14 +13,14 @@ If you would like to improve or complete an existing localization, go to [Pageki
 
 To take part in the Pagekit project, you must first click the _Join team_ button in the language folder. Once we've approved your request, you will be able to access the language team and can start to translate the project. Thanks!
 
-![Join team](assets/guide-translation-join.png)
+![Join team](assets/tutorial-translation-join.png)
 
 Choose the resource you want to contribute to by clicking on it, this will open an options screen. By clicking _Translate now_ you will enter the Transifex editor, which allows you to translate on the fly without having to down- and upload the files.
 
 ## Request a language
 If your language is not listed, you can add a new language to the project. To do so, go to the [Pagekit project](http://www.transifex.com/organization/pagekit/) on Transifex and add a new language by clicking the button on the right hand side _Request language_. We will then get notified and can review and approve your added language.
 
-![Request a language](assets/guide-translation-request.png)
+![Request a language](assets/tutorial-translation-request.png)
 
 Following our approval, you will have two options:
 
@@ -32,4 +32,4 @@ In case you already created a .po language file, you can easily upload it by cli
 
 A green bar in each column shows you the progress of each localization.
 
-![Options](assets/guide-translation-options.png)
+![Options](assets/tutorial-translation-options.png)

@@ -220,7 +220,7 @@ For more information on nodes, check out the [Routing section](../developer/rout
 
 ## Node options
 
-If your module wants to add a configuration screen to the content editor in the Site Tree, you can use the `node` property to add default options to the node object (complete explanation for configuration screen in the [Theme guide](../tutorials/theme.md#adding-position-options)).
+If your module wants to add a configuration screen to the content editor in the Site Tree, you can use the `node` property to add default options to the node object (complete explanation for configuration screen in the [Theme tutorial](../tutorials/theme.md#adding-position-options)).
 
 
 In the following example, a theme defines a `top_style` property which is automatically added to every node object that is rendered. By default, the property will have the value `uk-block-muted`, which is a CSS class that we want to render for the `top` position, in this example.
@@ -241,7 +241,7 @@ When rendering a page in the `template.php` of the theme, you can then access th
 
 With the `node` property, you set the default value for every node. To allow the user to change these values, you will want to add an interface to the admin area (typically in the form of an addition _Theme_ tab when editing a page's content).
 
-To allow the user to change the values of the default widget options that you have defined here, you can add an interface to the admin area. To achieve that, you define a JavaScript component to display the editing screen ([Example](https://github.com/pagekit/example-theme/blob/master/app/components/node-theme.vue)), register that JavaScript file on the content editor page ([Example](https://github.com/pagekit/example-theme/blob/master/index.php#L43)) and optionally update your Webpack configuration, if you are using Webpack ([Example](https://github.com/pagekit/example-theme/blob/master/webpack.config.js#L5)). A complete explanation for this can be found in the [Theme guide](../tutorials/theme.md#adding-position-options).
+To allow the user to change the values of the default widget options that you have defined here, you can add an interface to the admin area. To achieve that, you define a JavaScript component to display the editing screen ([Example](https://github.com/pagekit/example-theme/blob/master/app/components/node-theme.vue)), register that JavaScript file on the content editor page ([Example](https://github.com/pagekit/example-theme/blob/master/index.php#L43)) and optionally update your Webpack configuration, if you are using Webpack ([Example](https://github.com/pagekit/example-theme/blob/master/webpack.config.js#L5)). A complete explanation for this can be found in the [Theme tutorial](../tutorials/theme.md#adding-position-options).
 
 ## Add menu items to the admin panel
 You can add menu items to the admin panel's main navigation. These can link to any registered route and be limited to certain access permissions. The `access` property determines if the menu item is visible or not.
@@ -303,7 +303,7 @@ A Widget is also a module. With the `widgets` property you can register all widg
 
 ## Widget options
 
-If your module wants to add a configuration screen to the Widget editor (which is often the case when developing a theme), you can use the `widget` property to add default options to the widget object (a complete example for a widget configuration screen is in the [Theme guide](../tutorials/theme.md#adding-widget-options)).
+If your module wants to add a configuration screen to the Widget editor (which is often the case when developing a theme), you can use the `widget` property to add default options to the widget object (a complete example for a widget configuration screen is in the [Theme tutorial](../tutorials/theme.md#adding-widget-options)).
 
 In the following example, a theme defines a `panel` property which is automatically added to every widget object that is rendered. By default, the property will have the empty string as its value.
 
@@ -321,4 +321,4 @@ When rendering the widget, you can then access that property from the `$widget->
 <?php echo $widget->theme['panel'] ?>
 ```
 
-To allow the user, to change the values of the default widget options that you have defined here, you can add an interface to the admin area. To achieve that, you define a JavaScript component to display the editing screen ([Example](https://github.com/pagekit/example-theme/blob/master/app/components/widget-theme.vue)), register that JavaScript file on the widget editor page ([Example](https://github.com/pagekit/example-theme/blob/master/index.php#L47)) and optionally update your Webpack configuration, if you are using Webpack ([Example](https://github.com/pagekit/example-theme/blob/master/webpack.config.js#L7)). A complete explanation for this can be found in the [Theme guide](../tutorials/theme.md#adding-widget-options).
+To allow the user, to change the values of the default widget options that you have defined here, you can add an interface to the admin area. To achieve that, you define a JavaScript component to display the editing screen ([Example](https://github.com/pagekit/example-theme/blob/master/app/components/widget-theme.vue)), register that JavaScript file on the widget editor page ([Example](https://github.com/pagekit/example-theme/blob/master/index.php#L47)) and optionally update your Webpack configuration, if you are using Webpack ([Example](https://github.com/pagekit/example-theme/blob/master/webpack.config.js#L7)). A complete explanation for this can be found in the [Theme tutorial](../tutorials/theme.md#adding-widget-options).

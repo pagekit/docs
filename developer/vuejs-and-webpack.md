@@ -54,9 +54,9 @@ This solution is perfectly fine if you prefer not to use Webpack. However, using
 </script>
 ```
 
-As you can see, you do not need to define a template as a clunky string. Instead, Webpack converts the readable `*.vue` file and compiles it into a `*.js` file with the template markup converted to an inline string. 
+As you can see, you do not need to define a template as a clunky string. Instead, Webpack converts the readable `*.vue` file and compiles it into a `*.js` file with the template markup converted to an inline string.
 
-Webpack is a tool that runs on your terminal and then compiles the `*.vue` files to `*.js` files. Pagekit has a default `webpack.config.js` on the root level. When you run `webpack` or `webpack --watch` in the Pagekit folder, it will traverse all themes and extensions in the `packages` subfolders. 
+Webpack is a tool that runs on your terminal and then compiles the `*.vue` files to `*.js` files. Pagekit has a default `webpack.config.js` on the root level. When you run `webpack` or `webpack --watch` in the Pagekit folder, it will traverse all themes and extensions in the `packages` subfolders.
 
 Your package also needs to have its own `webpack.config.js` in your package, for example `packages/pagekit/example/webpack.config.js`. This file defines which `*.vue` files are compiled and what ouput file they should be compiled to.
 

@@ -1,7 +1,7 @@
 
 # How to develop a complete extension
 
-<p class="uk-article-lead">This guide follows all steps needed to setup and develop a full extension to manage Todo items in the admin area of Pagekit. You will learn about basic extension concepts, controllers, routing, view rendering and the Vue.js framework.</p>
+<p class="uk-article-lead">This tutorial follows all steps needed to setup and develop a full extension to manage Todo items in the admin area of Pagekit. You will learn about basic extension concepts, controllers, routing, view rendering and the Vue.js framework.</p>
 
 ## Content
 
@@ -13,7 +13,7 @@
 <li><a href="#the-completed-example">The completed example</a></li>
 </ol>
 
-If you prefer video instead of text, check out the [Youtube playlist with all screencasts](https://www.youtube.com/playlist?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) included in this guide.
+If you prefer video instead of text, check out the [Youtube playlist with all screencasts](https://www.youtube.com/playlist?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) included in this tutorial.
 
 **Note** The [completed example](https://github.com/pagekit/example-todo) is available on Github.
 

@@ -1,12 +1,12 @@
 # How to develop a theme
 
-<p class="uk-article-lead">In this guide you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.</p>
+<p class="uk-article-lead">In this tutorial you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.</p>
 
 **Note** The [completed theme](https://github.com/pagekit/example-theme) can be found on Github.
 
 ## Getting started
 
-For this guide, we assume you have a running Pagekit installation on a local server environment. If that is not the case, [download](https://pagekit.com/download) a Pagekit installation package and quickly [install](../getting-started/installation.md) it. Then login to the admin area and have a look at the Theme section of the integrated Marketplace.
+For this tutorial, we assume you have a running Pagekit installation on a local server environment. If that is not the case, [download](https://pagekit.com/download) a Pagekit installation package and quickly [install](../getting-started/installation.md) it. Then login to the admin area and have a look at the Theme section of the integrated Marketplace.
 
 The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketplace/package/pagekit/theme-hello), a blueprint for developing themes, including code examples and a general foundation to help you get started.
 
@@ -15,7 +15,7 @@ The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketpla
     <figcaption class="uk-thumbnail-caption">Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme.</figcaption>
 </figure>
 
-First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in `packages/pagekit/theme-hello`. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this guide though, we only need Hello theme.
+First of all install the theme from the Pagekit marketplace and have a look at the overall file structure. When installed, the *Hello* theme is located in `packages/pagekit/theme-hello`. If you develop your own themes in the future, we recommend to install a simple theme on the side for reference, like the default [Theme One](https://pagekit.com/marketplace/package/pagekit/theme-one). That way you can compare structural elements and get some inspiration. For this tutorial though, we only need Hello theme.
 
 ## Structure
 Let's take a look at some of the central files and folders that you will deal with when developing your own theme.
@@ -42,7 +42,7 @@ If you simply change the files of Hello theme, any Marketplace updates to the th
 2. Open `composer.json` and replace `"name": "pagekit/theme-hello",` with `"name": "your-name/your-theme"`. ALso change `"title": "Hello"` to `"title": "Your theme"`.
 3. Open `index.php` and replace `'name' => 'theme-hello'` with `'name' => 'your-theme'`.
 
-Out of simplicity, the rest of the guide will still call it `theme-hello` in the examples.
+Out of simplicity, the rest of the tutorial will still call it `theme-hello` in the examples.
 
 ### CSS
 Hello theme doesn't contain any styles. The included `css/theme.css` file lists all CSS classes that are rendered by the Pagekit core extensions without additional styling. You can add your own CSS to these classes.
@@ -73,7 +73,7 @@ Now add another line to add the UIkit CSS. Make sure to add it **above** the lin
 That's it, your theme now contains UIkit's CSS. To add your own CSS rules, simply edit `theme-hello/css/theme.css`.
 
 <figure class="uk-thumbnail">
-    <img src="assets/guide-theme-basic-css.png" alt="Default UIkit styling">
+    <img src="assets/tutorial-theme-basic-css.png" alt="Default UIkit styling">
     <figcaption class="uk-thumbnail-caption">Adding the CSS from UIkit will add default styling to the rendered markup. To actually make it pretty, we also need to add some classes to the markup, customize the default UIkit style and maybe add our own CSS styling</figcaption>
 </figure>
 
@@ -176,7 +176,7 @@ var gulp       = require('gulp'),
 
  After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like). Note that you need the Github version for this, not the css-only version we have downloaded in the simple setup.
 
-![Download UIkit from Github](assets/guide-theme-download-uikit.png)
+![Download UIkit from Github](assets/tutorial-theme-download-uikit.png)
 
 #### Step 3
 
@@ -364,7 +364,7 @@ The page *content* is nothing other than Pagekit's system output. That means tha
 To navigate through any site, you first need to set up a *menu*. For this purpose, Pagekit provides different menu positions that allow users to publish menus in several locations of the theme markup.
 
 <figure class="uk-thumbnail">
-    <img src="assets/guide-theme-elements.png" alt="Typical theme elements">
+    <img src="assets/tutorial-theme-elements.png" alt="Typical theme elements">
     <figcaption class="uk-thumbnail-caption">A typical site layout consists of the main navigation, the page content and several widget positions</figcaption>
 </figure>
 
@@ -704,7 +704,7 @@ To render the new position in the theme's markup, we need to add it to the `view
 Now can select *Top* for any widget that you want to render in the newly created position.
 
 <figure class="uk-thumbnail">
-    <img src="assets/guide-theme-select-position.png" alt="Widget position">
+    <img src="assets/tutorial-theme-select-position.png" alt="Widget position">
     <figcaption class="uk-thumbnail-caption">Select the new position when creating a widget.</figcaption>
 </figure>
 
@@ -817,7 +817,7 @@ Lastly, to actually render the chosen setting into the widget position, we need 
 In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
 
 <figure class="uk-thumbnail">
-    <img src="assets/guide-theme-node.png" alt="Node options added by the theme">
+    <img src="assets/tutorial-theme-node.png" alt="Node options added by the theme">
     <figcaption class="uk-thumbnail-caption">Node options added by the theme.</figcaption>
 </figure>
 
@@ -939,7 +939,7 @@ To understand which variables are available in these views, look at the markup i
 
 ## Wrapping up
 
-In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
+In this tutorial, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.
 
 **Note** The [completed theme](https://github.com/pagekit/example-theme) can be found on Github.
 

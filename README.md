@@ -7,9 +7,8 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   3. [Installation](getting-started/installation.md)
   4. [Updating](getting-started/updating.md)
   5. [Configuration File](getting-started/configuration-file.md)
-  6. [File Structure](getting-started/file-structure.md)
-  7. [Server Configuration](getting-started/server-configuration.md)
-  8. [Getting Help](getting-started/getting-help.md)
+  6. [Server Configuration](getting-started/server-configuration.md)
+  7. [Getting Help](getting-started/getting-help.md)
 
 - User Interface
   1. [Dashboard](user-interface/dashboard.md)
@@ -21,8 +20,8 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   7. [Editor](user-interface/editor.md)
   8. [Finder](user-interface/finder.md)
 
-- Developer Guides
-  1. [How to: Example Extension](developer-guides/todo-extension.md)
+- Tutorials
+  1. [How to: Extension](developer-guides/todo-extension.md)
   2. [How to: Theme](developer-guides/how-to-theme.md)
   2. [Extensions](developer-guides/extensions.md)
   3. [Themes](developer-guides/themes.md)
@@ -31,7 +30,8 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   6. [Translate Pagekit](developer-guides/translation.md)
   7. [Marketplace](developer-guides/marketplace.md)
 
-- Developer Basics
+- Developer Fundamentals
+  1. [File Structure](developer-basics/file-structure.md)
   1. [Application](developer-basics/application.md)
   2. [Packages](developer-basics/packages.md)
   3. [Modules](developer-basics/modules.md)

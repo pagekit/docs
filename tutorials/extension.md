@@ -1,5 +1,5 @@
 
-# How to develop a complete extension
+# How to develop an extension
 
 <p class="uk-article-lead">This tutorial follows all steps needed to setup and develop a full extension to manage Todo items in the admin area of Pagekit. You will learn about basic extension concepts, controllers, routing, view rendering and the Vue.js framework.</p>
 
@@ -16,8 +16,6 @@
 If you prefer video instead of text, check out the [Youtube playlist with all screencasts](https://www.youtube.com/playlist?list=PL2rU5GxE-MQ7aYIcxTmDh4-BTHRM-9lto) included in this tutorial.
 
 **Note** The [completed example](https://github.com/pagekit/example-todo) is available on Github.
-
----
 
 ## Step 1: Extending Pagekit using Modules
 
@@ -93,8 +91,6 @@ return [
 In order to test the functionality, make sure you enable the extension in the backend. When it is active you will see the printed output at the top of your screen.
 
 This minimal example shows how small a fully functional module can be. It has access to the `Application` instance.  With this object you can access all services, trigger events and listen to events triggered by other modules.
-
----
 
 ## Step 2: Routing and Controller
 
@@ -191,8 +187,6 @@ To add menu items use the `menu` property in your module definition. Add the fol
 
 Refresh the Pagekit backend and you will see a new menu item which links to the `@todo` route.
 
----
-
 ## Step 3: View rendering and module config
 
 <p class="uk-article-lead">In the past steps, we have looked at the basics of modules and routing. However, our first controller only returned simple strings. In this step, let us look at actual view rendering.</p>
@@ -270,8 +264,6 @@ We can store changes to the module config in the database. The changes from the 
 // modifying the module config
 App::config('todo')->set('entries', $entries);
 ```
-
----
 
 ## Step 4: Using Vue.js in a Pagekit extension
 

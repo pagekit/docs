@@ -21,9 +21,8 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   8. [Finder](user-interface/finder.md)
 
 - Tutorials
-  1. [How to: Extension](developer-guides/todo-extension.md)
+  1. [How to: Extension](developer-guides/extension.md)
   2. [How to: Theme](developer-guides/how-to-theme.md)
-  2. [Extensions](developer-guides/extensions.md)
   3. [Themes](developer-guides/themes.md)
   4. [Widgets](developer-guides/widgets.md)
   5. [Dashboard Widgets](developer-guides/dashboard-widgets.md)

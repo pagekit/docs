@@ -73,10 +73,12 @@ Database migrations are defined in the `'updates'` section of the `scripts.php` 
 
 Within the `scripts.php`, you can hook into different events of the extension lifecycle.
 
-- `install`: Called when the extension is installed. Usually you create your tables here.
-- `enable`: Called when the extension is enabled in the admin area.
-- `uninstall`: Called when the extension is removed. This is the place to tidy up whatever you have created, i.e. drop all tables of your extension.
-- `updates`: Run any code when your extension is updated. Expects an array where each key is the version number from which this code should be run. Example:
+| Event hook        | Description    |
+| ----------- | -------------- |
+| `install`   | Called when the extension is installed. Usually you create your tables here.
+| `enable`    | Called when the extension is enabled in the admin area.
+| `uninstall` | Called when the extension is removed. This is the place to tidy up whatever you have created, i.e. drop all tables of your extension.
+| `updates`   | Run any code when your extension is updated. Expects an array where each key is the version number from which this code should be run. Example:
 
     ```
      /*
@@ -146,10 +148,12 @@ $query = Application::db()->createQueryBuilder();
 
 #### Basic selects and conditions
 
-- `select($columns = ['*'])`: Creates and adds a "select" to the query.
-- `from($table)`: Creates and sets a "from" to the query.
-- `where($condition, array $params = [])`: Creates and adds a "where" to the query.
-- `orWhere($condition, array $params = [])`: Creates and adds a "or where" to the query.
+Method   | Description
+-------- | -----------
+`select($columns = ['*'])` | Creates and adds a "select" to the query.
+`from($table)` | Creates and sets a "from" to the query.
+`where($condition, array $params = [])` | Creates and adds a "where" to the query.
+`orWhere($condition, array $params = [])` | Creates and adds a "or where" to the query.
 
 Example:
 
@@ -167,20 +171,24 @@ $comments = $query
 
 #### Query execution
 
-- `get($columns = ['*'])`: Execute the query and get all results.
-- `first($columns = ['*'])`: Execute the query and get the first result.
-- `count($column = '*')`: Execute the query and get the "count" result.
-- `execute($columns = ['*'])`: Execute the "select" query.
-- `update(array $values)`: Execute the "update" query with the given values.
-- `delete()`: Execute the "delete" query.
+Method   | Description
+-------- | -----------
+`get($columns = ['*'])` | Execute the query and get all results.
+`first($columns = ['*'])` | Execute the query and get the first result.
+`count($column = '*')` | Execute the query and get the "count" result.
+`execute($columns = ['*'])` | Execute the "select" query.
+`update(array $values)` | Execute the "update" query with the given values.
+`delete()` | Execute the "delete" query.
 
 
 #### Aggregate functions
 
-- `min($column)`: Execute the query and get the "min" result.
-- `max($column)`: Execute the query and get the "max" result.
-- `sum($column)`: Execute the query and get the "sum" result.
-- `avg($column)`: Execute the query and get the "avg" result.
+Method         | Description
+-------------- | -----------
+`min($column)` | Execute the query and get the "min" result.
+`max($column)` | Execute the query and get the "max" result.
+`sum($column)` | Execute the query and get the "sum" result.
+`avg($column)` | Execute the query and get the "avg" result.
 
 Example:
 
@@ -197,25 +205,29 @@ $count = $query
 
 #### Advanced query methods
 
-- `whereIn($column, $values, $not = false, $type = null)`: Creates and adds a "where in" to the query.
-- `orWhereIn($column, $values, $not = false)`
-- `whereExists(Closure $callback, $not = false, $type = null)`: Creates and adds a "where exists" to the query.
-- `orWhereExists(Closure $callback, $not = false)`: Creates and adds a "or where exists" to the query.
-- `whereInSet($column, $values, $not = false, $type = null)`: Creates and adds a "where FIND_IN_SET" equivalent to the query.
-- `groupBy($groupBy)`: Creates and adds a "group by" to the query.
-- `having($having, $type = null)`: Creates and adds a "having" to the query.
-- `orHaving($having)`: Creates and adds a "or having" to the query.
-- `orderBy($sort, $order = null)`: Creates and adds an "order by" to the query.
-- `offset($offset)`: Sets the offset of the query which means that the results will not start with the first result but with the result defined by the integer index `$offset`. This is useful for paging.
-- `limit($limit)`: Sets the limit of the query. `$limit` defines the maximum count of results to be returned.
-- `getSQL()`: Gets the query SQL.
+Method   | Description
+-------- | -----------
+`whereIn($column, $values, $not = false, $type = null)` | Creates and adds a "where in" to the query.
+`orWhereIn($column, $values, $not = false)` | Creates and adds a "or where in" to the query.
+`whereExists($callback, $not = false, $type = null)` | Creates and adds a "where exists" to the query.
+`orWhereExists(Closure $callback, $not = false)` | Creates and adds a "or where exists" to the query.
+`whereInSet($column, $values, $not = false, $type = null)` | Creates and adds a "where FIND_IN_SET" equivalent to the query.
+`groupBy($groupBy)` | Creates and adds a "group by" to the query.
+`having($having, $type = null)` | Creates and adds a "having" to the query.
+`orHaving($having)` | Creates and adds a "or having" to the query.
+`orderBy($sort, $order = null)` | Creates and adds an "order by" to the query.
+`offset($offset)` | Sets the offset of the query which means that the results will not start with the first result but with the result defined by the integer index `$offset`. This is useful for paging.
+`limit($limit)` | Sets the limit of the query. `$limit` defines the maximum count of results to be returned.
+`getSQL()` | Gets the query SQL.
 
 #### Joins
 
-- `join($table, $condition = null, $type = 'inner')`: Creates and adds a "join" to the query.
-- `innerJoin($table, $condition = null)`: Creates and adds an "inner join" to the query.
-- `leftJoin($table, $condition = null)`: leftJoin($table, $condition = null)
-- `rightJoin($table, $condition = null)`: Creates and adds a "right join" to the query.
+Method   | Description
+-------- | -----------
+`join($table, $condition = null, $type = 'inner')` | Creates and adds a "join" to the query.
+`innerJoin($table, $condition = null)` | Creates and adds an "inner join" to the query.
+`leftJoin($table, $condition = null)` | leftJoin($table, $condition = null)
+`rightJoin($table, $condition = null)` | Creates and adds a "right join" to the query.
 
 ### 2. ORM Queries
 
@@ -229,22 +241,26 @@ $result = Role::where(['id <> ?'], [Role::ROLE_ANONYMOUS])->orderBy('priority')-
 
 The following methods are available (defined in the [ModelTrait](https://github.com/pagekit/pagekit/blob/develop/app/modules/database/src/ORM/ModelTrait.php)).
 
-- `create($data = [])`: Creates a new instance of this model from the passed in data array.
-- `where($condition, array $params = [])`: Specify a where condition. Question marks in the condition are replaced by the parameters that you pass in. Returns a `QueryBuilder` object so you can chain method calls for more specific queries. Example: `User::where(['name = ?'], ['peter'])`
-- `find($id)`: Retrieves a model entity by its identifier.
-- `findAll()`: Retrieves all entities of this model.
-- `save(array $data = [])`: Saves the model entity.
-- `delete()`: Deletes the model entity.
-- `toArray(array $data = [], array $ignore = [])`: Returns the model data as an array. Pass in a list of property keys to be included as the `$data` parameter. Pass in a list of property keys to be excluded as the `$ignore` parameter.
-- `query()`: Returns a `ORM\QueryBuilder` instance to use any methods from that class. This instance offers all methods from the regular query builder, plus some additional ones, specifically for ORM.
+Method   | Description
+-------- | -----------
+`create($data = [])` | Creates a new instance of this model from the passed in data array.
+`where($condition, array $params = [])` | Specify a where condition. Question marks in the condition are replaced by the parameters that you pass in. Returns a `QueryBuilder` object so you can chain method calls for more specific queries. Example: `User::where(['name = ?'], ['peter'])`
+`find($id)` | Retrieves a model entity by its identifier.
+`findAll()` | Retrieves all entities of this model.
+`save(array $data = [])` | Saves the model entity.
+`delete()` | Deletes the model entity.
+`toArray(array $data = [], array $ignore = [])` | Returns the model data as an array. Pass in a list of property keys to be included as the `$data` parameter. Pass in a list of property keys to be excluded as the `$ignore` parameter.
+`query()` | Returns a `ORM\QueryBuilder` instance to use any methods from that class. This instance offers all methods from the regular query builder, plus some additional ones, specifically for ORM.
 
 #### ORM Query Builder: Additional methods
 
-- `get()`: Executes the query and gets all results.
-- `first()`: Executes the query and gets the first result.
-- `related($related)`: Set the relations that will be eager loaded.
-- `getRelations()`: Gets all relations of the query.
-- `getNestedRelations($relation)`: Gets all nested relations of the query.
+Method   | Description
+-------- | -----------
+`get()` | Executes the query and gets all results.
+`first()` | Executes the query and gets the first result.
+`related($related)` | Set the relations that will be eager loaded.
+`getRelations()` | Gets all relations of the query.
+`getNestedRelations($relation)` | Gets all nested relations of the query.
 
 Example:
 

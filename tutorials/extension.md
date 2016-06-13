@@ -38,7 +38,7 @@ Every package belongs to a specific vendor name, which becomes clear when you lo
 Core packages are part of the `pagekit` namespace and located in the appropriate subdirectory inside `/packages`. Any third party packages (yours!) will have their own vendor name and therefore sit in a separate subfolder.
 
 ```
-/packages                 
+/packages
     /pagekit
         /blog
         /theme-one
@@ -121,13 +121,13 @@ class TodoController
 
     public function indexAction()
     {
-       return "Yay.";    
+       return "Yay.";
     }
 
 }
 ```
 
-To limit the access to the admin area and mount this controller to an admin url, we use the annotation `@Access(admin=true)`. Annotations are keywords which are placed in the comment block above a class or method. Learn [more about annotations](http://pagekit.com/docs/developer-basics/routing#annotations).
+To limit the access to the admin area and mount this controller to an admin url, we use the annotation `@Access(admin=true)`. Annotations are keywords which are placed in the comment block above a class or method. Learn [more about annotations](http://pagekit.com/docs/developer/routing#annotations).
 
 To use this controller, we need to autoload our namespace and mount the controller to a route. Add the following properties to the configuration array in your `index.php`.
 
@@ -152,7 +152,7 @@ To use this controller, we need to autoload our namespace and mount the controll
             // which controller to mount
             'controller' => 'Pagekit\\Todo\\Controller\\TodoController'
         ]
-    ],  
+    ],
 
     // ...
 ```
@@ -205,8 +205,8 @@ To pass parameters to the view renderer, a controller action returns a PHP array
 
 ```
 public function indexAction()
-{       
-    return [   
+{
+    return [
     	'$view' => [
             'title' => 'TODO management',
             'name' => 'todo:views/admin/index.php'

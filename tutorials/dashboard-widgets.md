@@ -3,7 +3,7 @@
 <p class="uk-article-lead">The Dashboard is the first screen that is shown after logging in to the admin panel. It gives an overview of the website and contains multiple Dashboard Widgets. You can create your own Dashboard Widget that can display useful information or offer shortcuts to other areas of your extension.</p>
 
 
-A Dashboard Widget is created as a [Vue.js](http://vuejs.org) component. The following example explains how to create the Widget using a webpack configuration in your extension. If you are not sure what Vue.js and Webpack are or how they work together, you might want to read the [Vue.js and Webpack](../developer-basics/vuejs-and-webpack.md) article first.
+A Dashboard Widget is created as a [Vue.js](http://vuejs.org) component. The following example explains how to create the Widget using a webpack configuration in your extension. If you are not sure what Vue.js and Webpack are or how they work together, you might want to read the [Vue.js and Webpack](../developer/vuejs-and-webpack.md) article first.
 
 ## Create a Vue component
 

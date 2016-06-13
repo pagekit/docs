@@ -6,6 +6,6 @@ Depending on your goals with Pagekit you might want to read only pieces of the d
 
 1. Pagekit [installation](installation.md), [requirements](requirements.md) and places to [find help](../getting-started/getting-help.md) if you are stuck.
 2. Learn how to use the Pagekit [user interface](../user-interface/dashboard.md).
-3. To get started as a developer, learn [how to create an extension](../developer-guides/extension.md) and [how to build a theme](../developer-guides/themes.md).
-4. For a complete video guide on building an extension, watch [the screencast about an example extension](../developer-guides/extension.md).
-5. For more fundamental developer topics, read up on e.g. [packages](../developer-basics/packages.md), [modules](../developer-basics/packages.md) and [packages](../developer-basics/routing.md).
+3. To get started as a developer, learn [how to create an extension](../tutorials/extension.md) and [how to build a theme](../tutorials/theme.md).
+4. For a complete video guide on building an extension, watch [the screencast about an example extension](../tutorials/extension.md).
+5. For more fundamental developer topics, read up on e.g. [packages](../developer/packages.md), [modules](../developer/packages.md) and [packages](../developer/routing.md).

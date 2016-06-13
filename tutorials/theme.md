@@ -55,7 +55,7 @@ There are many possible ways to set up your theme's file structure. We can recom
 
 Go to the [UIkit website](http://getuikit.com/), download the latest release and unpack it. UIkit comes with three themes: Default, Gradient and Almost Flat. To include the Default theme, copy the `css/uikit.min.css` file from the UIkit package and paste it into the `theme-hello/css/` folder of your theme.
 
-To make sure the file is loaded by Pagekit, open the main layout file of the theme which is located at `theme-hello/views/template.php`. 
+To make sure the file is loaded by Pagekit, open the main layout file of the theme which is located at `theme-hello/views/template.php`.
 
 In the `<head>` section of this layout file, we see that one CSS file is included already.
 
@@ -93,7 +93,7 @@ There are a number of possible file structure setups. In the following passage w
 In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `gulpfile.js` and `less/theme.less`. Paste the following contents into these files. If you have named your theme differently, replace any occurences of the string `theme-hello` with your theme name.
 
 `package.json`. This file defines all JavaScript dependencies that are installed when running `npm install` and includes several npm packages that we will we use, for example when compiling LESS to CSS:
-	
+
 ```
 {
     "name": "theme-hello",
@@ -105,9 +105,9 @@ In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `g
 	 }
 }
 ```
-	
+
 `bower.json` tells bower to fetch the newest release of UIkit. That way you can always run `bower install` to fetch the current LESS source files from UIkit:
-	
+
 ```js
 {
 	"name": "theme-hello",
@@ -117,22 +117,22 @@ In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `g
 	"private": true
 }
 ```
-	
+
 `.bowerrc` includes configuration settings for bower. By default, bower installs everything in a directory called `/bower_components` inside the theme directory. Simply out of preference, we change that default directory:
-	
+
 ```js
 {
     "directory": "app/assets"
 }
 ```
-	
+
 `gulpfile.js` contains all tasks which we can run using Gulp. We only need a task to compile LESS to CSS. For convenience we also add a `watch` task that can be run to automatically recompile LESS when any changes to the files have been detected:
-	
+
 ```js
 var gulp       = require('gulp'),
     less       = require('gulp-less'),
     rename     = require('gulp-rename');
-	
+
 	gulp.task('default', function () {
 	    return gulp.src('less/theme.less', {base: __dirname})
 	        .pipe(less({compress: true}))
@@ -142,26 +142,26 @@ var gulp       = require('gulp'),
 	        }))
 	        .pipe(gulp.dest(__dirname));
     });
-	
+
 	gulp.task('watch', function () {
 	    gulp.watch('less/*.less', ['default']);
 	});
 
 ```
-	
+
 `less/theme.less` is the place where you store your theme's styles. Mind that you first need to import UIkit so that it is also compiled by the Gulp task we have defined above.
-	
+
 ```less
 @import "uikit/uikit.less";
-	
+
 // use icon font from system
 @icon-font-path: "../../../../app/assets/uikit/fonts";
-	
+
 // your theme styles will follow here...
 ```
-	
+
 `.gitignore` is an optional file that is useful when you manage your code using Git. In Hello theme, a version of the file already exists. You can add new entries so that it looks as follows. You probably don't want to commit the downloaded packages by bower and the generated CSS. Just make sure to include the generated CSS when you upload the theme to your server or the Pagekit Marketplace.
-	
+
 ```txt
 /app/bundle/*
 /app/assets/*
@@ -171,11 +171,11 @@ var gulp       = require('gulp'),
 .idea
 *.zip
 ```
-	
+
 #### Step 2
 
  After you have created the files above, go to the [UIkit Github repository](https://github.com/uikit/uikit), download the Zip, unpack it and find the `themes/default` folder (or one of the other themes, if you like). Note that you need the Github version for this, not the css-only version we have downloaded in the simple setup.
-	
+
 ![Download UIkit from Github](assets/guide-theme-download-uikit.png)
 
 #### Step 3
@@ -186,7 +186,7 @@ Create a `/less` folder inside your theme, copy and paste the `default` theme fo
 
 The style we just copied needs to import the core UIkit LESS, so that it can be compiled successfully. To make this possible, you need to update the import path in your theme's `less/uikit/uikit.less` file. Make sure to change the import in line 4 to the following path: `@import "../../app/assets/uikit/less/uikit.less";`
 
-#### Step 5 
+#### Step 5
 
 Open your theme in a new console tab (for example `cd pagekit/packages/theme-hello`) and run `npm install`, `bower install` and `gulp`.
 
@@ -209,7 +209,7 @@ node_modules/      result of npm install
 bower.json
 gulpfile.js
 package.json
-... other theme files 
+... other theme files
 ```
 
 With this file setup in place, we have now achieved the following:
@@ -217,7 +217,7 @@ With this file setup in place, we have now achieved the following:
 - **Separation** of theme styles and UIkit customizations. Add your own styles in `less/theme.less`, customize UIkit in `less/uikit/*`
 - **Easily customize UIkit**: Every UIkit component's settings are located in its own `*.less` file. For example, to change the body font size, open `less/uikit/base.less` and change the value of `@base-body-font-size`, then re-run `gulp`. To use any of the [UIkit add-on components](http://getuikit.com/docs/components.html), open `less/uikit.less` and import the add-on's less file from the `app/assets` directory, for example for the slideshow, add the line: `@import "../../app/assets/uikit/less/components/slideshow.less";` and re-run `gulp.`
 - **Easily update UIkit**: Run `bower install` to fetch the newest version of UIkit and run `gulp` to re-compile your LESS files to CSS.
- 
+
 
 ## Adding JavaScript
 
@@ -239,7 +239,7 @@ While adding multiple `script()` calls is the simplest way to include JavaScript
 
 ### Adding multiple JavaScript files with dependencies
 
-In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files. Note that UIkit requires loading jQuery before you can use the UIkit JavaScript components. 
+In the earlier examples we have now worked with CSS from UIkit. If you also want to use UIkit's JavaScript components and utilities, it makes sense to add the UIkit JavaScript files. Note that UIkit requires loading jQuery before you can use the UIkit JavaScript components.
 
 Locate the previous line `script('theme', ...)` in the head of `views/template.php` and replace it with the following three lines.
 
@@ -259,11 +259,11 @@ To confirm this has worked, open `views/template.php` and add the following line
 
 ```
 <!-- ADD id="up" to body -->
-<body id="up"> 
+<body id="up">
 
 	<!-- LEAVE existing content ... -->
 	...
-	
+
 	<!-- ADD to-top-scroller -->
 	<div class="uk-text-center">
        <a href="#up" data-uk-smooth-scroll=""><i class="uk-icon-caret-up"></i></a>
@@ -290,7 +290,7 @@ As you can see in the example, the third parameter of the `script()` method can 
 The currently loaded version of jQuery and UIkit depend on the current version of Pagekit. With new releases of Pagekit, the versions of these libraries will continually be updated. While this allows for always having a current version available, a potential downside would be that you need to make sure your code also works for the new versions of these libraries.
 
 ## Layout
-The central files for your theme's layout are `views/template.php` and `index.php`. The actual rendering happens in the `template.php`. 
+The central files for your theme's layout are `views/template.php` and `index.php`. The actual rendering happens in the `template.php`.
 
 When you open the `template.php`, you see a very basic setup for you to get started. Let's wrapping a container around our main content and divide the system output and sidebar into a grid.
 
@@ -372,7 +372,7 @@ However, your theme needs to register all positions before. This happens in the 
 
 ## Navbar
 
-One of the first things you will want to render in your theme is the main navigation. 
+One of the first things you will want to render in your theme is the main navigation.
 
 <figure class="uk-thumbnail">
     <img src="assets/howto-theme-menu-unstyled.png" alt="Main navigation unstyled">
@@ -385,9 +385,9 @@ Hello theme comes with the predefined *Main* menu position. When adding a new po
 
 ```
 'menu' => [
-    
+
     'main' => 'Main',
-    
+
 ]
 ```
 
@@ -405,17 +405,17 @@ With the concept of modularity in mind, Pagekit renders position layouts in sepa
 <?php if ($root->getDepth() === 0) : ?>
 <ul class="uk-navbar-nav">
 <?php endif ?>
-	
+
     <?php foreach ($root->getChildren() as $node) : ?>
     <li class="<?= $node->hasChildren() ? 'uk-parent' : '' ?><?= $node->get('active') ? ' uk-active' : '' ?>" <?= ($root->getDepth() === 0 && $node->hasChildren()) ? 'data-uk-dropdown':'' ?>>
         <a href="<?= $node->getUrl() ?>"><?= $node->title ?></a>
-	
+
         <?php if ($node->hasChildren()) : ?>
-	
+
             <?php if ($root->getDepth() === 0) : ?>
             <div class="uk-dropdown uk-dropdown-navbar">
             <?php endif ?>
-	
+
                 <?php if ($root->getDepth() === 0) : ?>
                 <ul class="uk-nav uk-nav-navbar">
                 <?php elseif ($root->getDepth() === 1) : ?>
@@ -425,16 +425,16 @@ With the concept of modularity in mind, Pagekit renders position layouts in sepa
                 <?php endif ?>
                     <?= $view->render('menu-navbar.php', ['root' => $node]) ?>
                 </ul>
-	
+
             <?php if ($root->getDepth() === 0) : ?>
             </div>
             <?php endif ?>
-	
+
         <?php endif ?>
-	
+
     </li>
     <?php endforeach ?>
-	
+
 <?php if ($root->getDepth() === 0) : ?>
 </ul>
 <?php endif ?>
@@ -446,17 +446,17 @@ To render the actual navbar in the `template.php` file, create a `<nav>` element
 
 ```
 <nav class="uk-navbar">
-	
+
     <?php if ($view->menu()->exists('main')) : ?>
     <div class="uk-navbar-flip">
         <?= $view->menu('main', 'menu-navbar.php') ?>
     </div>
     <?php endif ?>
-	
+
 </nav>
 ```
 
-The main menu should now automatically be rendered in the new *Navbar* position. 
+The main menu should now automatically be rendered in the new *Navbar* position.
 
 #### Step 4
 
@@ -620,15 +620,15 @@ module.exports = [
 
 #### Step 6
 
-After that, run the command `webpack` inside the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string. 
-	
+After that, run the command `webpack` inside the theme folder and `site-theme.vue` will be compiled into `/bundle/site-theme.js` with the template markup converted to an inline string.
+
 If you haven't worked with it before, you will quickly need to [install webpack globally](http://webpack.github.io/docs/installation.html) and then also run the following in your project directory to have a local webpack version and a Vue compiler available.
 
 ```
 npm install webpack vue-loader vue-html-loader babel-core babel-loader babel-preset-es2015 babel-plugin-transform-runtime --save-dev
 ```
-	
-Whenever you now apply changes to the Vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer-basics/vuejs-and-webpack).
+
+Whenever you now apply changes to the Vue component, you need to run this task again. Alternatively, you can run `webpack --watch` or `webpack -w` which will stay active and automatically recompile whenever you change the Vue component. You can quit this command with the shortcut *Ctrl + C* For more information on Vue and Webpack, take a closer look at [this doc](https://pagekit.com/docs/developer/vuejs-and-webpack).
 
 #### Step 7
 
@@ -643,7 +643,7 @@ Now all you need to do is render the option into the actual navbar in `template.
 ```
 <nav class="uk-navbar uk-position-z-index" <?= $params['navbar_sticky'] ? ' data-uk-sticky' : '' ?>>
 ```
-    
+
 In the admin area, go to *Site &gt; Settings &gt; Theme*  and enable the _Sticky Navigation_ option to see it take effect on your website.
 
 ## Widgets
@@ -738,7 +738,7 @@ First, we need to create the file `node-theme.vue` inside the folder `app/compon
 #### Step 2
 
 Now we still have to make this option available in the Site Tree. To do so, we can create a *Theme* tab in the interface by adding the following to the `node-theme.vue` file.
-    
+
 ```
 <script>
 
@@ -777,7 +777,7 @@ In the chapter about theme options, we inserted the event listener to the `index
 ]
 ```
 
-#### Step 4 
+#### Step 4
 
 The default setting for the widget position also needs to be added in the `index.php`.
 
@@ -811,7 +811,7 @@ Lastly, to actually render the chosen setting into the widget position, we need 
 ```
 <div id="top" class="tm-top uk-block <?= $params['top_style'] ?>">
 ```
-	
+
 #### Step 8
 
 In the site tree, you now see a _Theme_ tab when editing a page. Here you can configure the new option. This configuration only applies for this specific page.
@@ -859,7 +859,7 @@ First, we need to create a `app/components/widget-theme.vue` file inside the fol
 #### Step 2
 
 Now we still have to make this option available in the widget administration. To do so, we can create a *Theme* tab in the interface by adding the following to the `widget-theme.vue` file.
-    
+
 ```
 <script>
 
@@ -920,11 +920,11 @@ Now all we need to do is render the chosen setting into the widget in the `posit
 ```
 <div class="uk-panel <?= $widget->theme['panel'] ?>">
 ```
-	
+
 #### Step 7
 
-When editing a widget, you will now see a _Theme_ tab on top of the editor, where you can access the _Panel Style_ configuration that we have just added.	
-	
+When editing a widget, you will now see a _Theme_ tab on top of the editor, where you can access the _Panel Style_ configuration that we have just added.
+
 ## Overwrite system views
 
 A theme can also customize the way how Pagekit renders static pages and blog posts. You simply overwrite system view files to apply your own layout. To do so, create corresponding folders inside your theme to mimic the original structure of the Pagekit system and put the template files there:
@@ -935,8 +935,8 @@ File                         | Original view file                       | Descri
 `views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view
 `views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view
 
-To understand which variables are available in these views, look at the markup in the original view file.	
-	
+To understand which variables are available in these views, look at the markup in the original view file.
+
 ## Wrapping up
 
 In this guide, you have learned the basic knowledge and tools to create themes for Pagekit. Let us summarize which topics we have covered.

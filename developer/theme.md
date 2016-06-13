@@ -17,7 +17,7 @@
 </ul>
 
 ## Package definition
-A theme is a regular Pagekit [package](../developer-basics/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` file and looks as follows. For detailed information, take a look the [Packages](../developer-basics/packages.md) chapter.
+A theme is a regular Pagekit [package](../developer/packages.md) of the type `pagekit-theme`. Each package needs a description in order to be recognized by Pagekit. This description is located in the `composer.json` file and looks as follows. For detailed information, take a look the [Packages](../developer/packages.md) chapter.
 
 ```json
 {
@@ -29,7 +29,7 @@ A theme is a regular Pagekit [package](../developer-basics/packages.md) of the t
 ```
 
 ## Module definition
-A theme in itself is simply a [module](../developer-basics/modules.md). So you may want to read up on modules first. This opens up a lot of possibilities with regard to what a theme can do.
+A theme in itself is simply a [module](../developer/modules.md). So you may want to read up on modules first. This opens up a lot of possibilities with regard to what a theme can do.
 
 Define the positions and menus of your theme, load additional scripts and much more. Here is a shortened example of the `index.php` to get you started. Explanations of the theme specific properties follow below.
 

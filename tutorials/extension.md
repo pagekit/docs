@@ -1,5 +1,5 @@
 
-# How to develop an extension
+# How to develop a Pagekit extension
 
 <p class="uk-article-lead">This tutorial follows all steps needed to setup and develop a full extension to manage Todo items in the admin area of Pagekit. You will learn about basic extension concepts, controllers, routing, view rendering and the Vue.js framework.</p>
 

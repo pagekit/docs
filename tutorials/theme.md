@@ -1,4 +1,4 @@
-# How to develop a theme
+# How to develop a Pagekit theme
 
 <p class="uk-article-lead">In this tutorial you will learn how to develop your own theme from our Hello Theme blueprint. You will find out about the theme structure and follow the essential steps to add new positions and options.</p>
 

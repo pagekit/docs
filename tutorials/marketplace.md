@@ -1,7 +1,7 @@
-# Publish a Package at the Marketplace
+# Publish a package on the Marketplace
 <p class="uk-article-lead">An extension or theme in the Marketplace can be installed directly from the Pagekit admin interface.</p>
 
-## Create an account at pagekit.com
+## Create an account
 Before you can upload a package for the first time, you have to create an account at [pagekit.com](https://pagekit.com).
 
 Log in on [pagekit.com](https://pagekit.com) and navigate to the _Developer_ section. Hit the _Submit Package_ button and upload your package.

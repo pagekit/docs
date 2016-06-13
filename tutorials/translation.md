@@ -1,4 +1,4 @@
-# Translating Pagekit
+# Help translating Pagekit
 <p class="uk-article-lead">We work with Transifex, a simple and easy platform where you can share language files and work together on localization.</p>
 
 Feel free to join [Pagekit on Transifex](http://www.transifex.com/organization/pagekit). After a fast [sign up](http://www.transifex.com/signup/) you can help correct existing translations or add your own language.

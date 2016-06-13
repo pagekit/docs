@@ -23,10 +23,9 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
 - Tutorials
   1. [Extension](tutorials/extension.md)
   2. [Theme](tutorials/theme.md)
-  4. [Widgets](tutorials/widgets.md)
-  5. [Dashboard Widgets](tutorials/dashboard-widgets.md)
-  6. [Translate Pagekit](tutorials/translation.md)
-  7. [Marketplace](tutorials/marketplace.md)
+  3. [Dashboard Widgets](tutorials/dashboard-widgets.md)
+  4. [Translate Pagekit](tutorials/translation.md)
+  5. [Marketplace](tutorials/marketplace.md)
 
 - Developer Fundamentals
   1. [File Structure](developer/file-structure.md)
@@ -40,6 +39,7 @@ This is the documentation for [Pagekit](https://pagekit.com), a modular open sou
   8. [Theme](developer/theme.md)
   8. [Views & Templating](developer/views-templating.md)
   9. [Vue & Webpack](developer/vuejs-and-webpack.md)
+  4. [Widgets](developer/widgets.md)
   10. [Database](developer/database.md)
   11. [ORM](developer/orm.md)
   12. [Translation](developer/translation.md)

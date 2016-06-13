@@ -290,8 +290,8 @@ Link to a route that renders your settings screen. Setting this property makes P
 'settings' => '@hello/admin/settings',
 ```
 
-## Register Widgets
-A Widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [Widgets](../tutorials/widgets.md).
+## Register widgets
+A widget is also a module. With the `widgets` property you can register all widget module definition files. Each of those files is expected to return a PHP array in the form of a valid module definition. Learn more about [widgets](../developer/widgets.md).
 
 ```php
 'widgets' => [
@@ -303,7 +303,7 @@ A Widget is also a module. With the `widgets` property you can register all widg
 
 ## Widget options
 
-If your module wants to add a configuration screen to the Widget editor (which is often the case when developing a theme), you can use the `widget` property to add default options to the widget object (a complete example for a widget configuration screen is in the [Theme tutorial](../tutorials/theme.md#adding-widget-options)).
+If your module wants to add a configuration screen to the widget editor (which is often the case when developing a theme), you can use the `widget` property to add default options to the widget object (a complete example for a widget configuration screen is in the [Theme tutorial](../tutorials/theme.md#adding-widget-options)).
 
 In the following example, a theme defines a `panel` property which is automatically added to every widget object that is rendered. By default, the property will have the empty string as its value.
 

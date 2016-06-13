@@ -69,9 +69,9 @@ class Topic
 
 ```
 
-A few things to note:
+A model is a plain PHP class that uses the trait `Pagekit\Database\ORM\ModelTrait`. Traits allow to include certain behaviour into a class - similar to simple class inheritance. The main difference is that a class can use multiple traits while it could only inherit from one single class.
 
-A model is a plain PHP class uses the trait `Pagekit\Database\ORM\ModelTrait`. If you are unfamiliar with traits, have a quick looks at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php). Basically it is a concept to pull certain behaviour into a class - similar to simple class inheritance. The main difference is that a class can use multiple traits while it could only inherit from one single class.
+**Note** If you are unfamiliar with traits, have a quick look at the [official PHP documentation on traits](http://php.net/manual/en/language.oop5.traits.php).
 
 The annotation `@Entity(tableClass="@my_table")` binds the Model to the database table `pk_my_table` (`@` is automatically replaced by the database prefix of your installation )
 
@@ -93,7 +93,6 @@ Annotations will only work if you start the multiline comment with two asterisks
 When defining a property in a class, you can bind that variable to a table column, by putting the `/** @Column(type="string") */` annotation right above the property definition. You can use any types supported by [Doctrine DBAL](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html).
 
 The class you reference in your model class also has to exist in the database.
-
 
 ## Relations
 
@@ -361,11 +360,13 @@ The relation itself is then defined in each Model class where you want to be abl
 
 The `@ManyToMany` annotation takes the following parameters.
 
-- `targetEntity`: The target model class
-- `tableThrough`  Name of the junction table
-- `keyThroughFrom` Name of the foreign key in "from" direction
-- `keyThroughTo` Name of the foreign key in "to" direction
-- `orderBy` (optional) Order by statement
+Argument         | Description
+---------------- | -----------
+`targetEntity`   | The target model class
+`tableThrough`   | Name of the junction table
+`keyThroughFrom` | Name of the foreign key in "from" direction
+`keyThroughTo`   | Name of the foreign key in "to" direction
+`orderBy`        | (optional) Order by statement
 
 Example annotation:
 

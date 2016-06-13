@@ -11,7 +11,7 @@ For this tutorial, we assume you have a running Pagekit installation on a local 
 The Pagekit Marketplace features our [Hello Theme](https://pagekit.com/marketplace/package/pagekit/theme-hello), a blueprint for developing themes, including code examples and a general foundation to help you get started.
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-hello-plain.png" alt="Hello Theme unstyled">
+    <img src="assets/tutorial-theme-hello-plain.png" alt="Hello Theme unstyled">
     <figcaption class="uk-thumbnail-caption">Hello theme doesn't provide any styling, but gives you a good starting point to develop your own theme.</figcaption>
 </figure>
 
@@ -375,7 +375,7 @@ However, your theme needs to register all positions before. This happens in the 
 One of the first things you will want to render in your theme is the main navigation.
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-menu-unstyled.png" alt="Main navigation unstyled">
+    <img src="assets/tutorial-theme-menu-unstyled.png" alt="Main navigation unstyled">
     <figcaption class="uk-thumbnail-caption">By default, Hello theme renders menu items in a very simple vertical navigation.</figcaption>
 </figure>
 
@@ -392,7 +392,7 @@ Hello theme comes with the predefined *Main* menu position. When adding a new po
 ```
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-menu-position.png" alt="Menu position in Site Tree">
+    <img src="assets/tutorial-theme-menu-position.png" alt="Menu position in Site Tree">
     <figcaption class="uk-thumbnail-caption">A menu can be published to the defined positions in the Pagekit Site Tree.</figcaption>
 </figure>
 
@@ -484,7 +484,7 @@ You will probably also want the logo to appear inside the navbar. So wrap the `<
 ```
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-navbar.png" alt="Horizontal navbar">
+    <img src="assets/tutorial-theme-navbar.png" alt="Horizontal navbar">
     <figcaption class="uk-thumbnail-caption">With our changes, menu items are now rendered in a horizontal navbar.</figcaption>
 </figure>
 
@@ -499,7 +499,7 @@ A frequently requested feature is for the navbar to remain fixed at the top of t
 First, we need to create the folder `app/components` and in it the file `site-theme.vue`. Settings stored in this file affect the entire website and can be found under *Theme* in the *Settings* tab of the Site Tree. They cannot be applied to a specific page.
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-site-tree.png" alt="Site Tree">
+    <img src="assets/tutorial-theme-site-tree.png" alt="Site Tree">
     <figcaption class="uk-thumbnail-caption">You can add any kind of Settings screen to the admin area.</figcaption>
 </figure>
 
@@ -825,7 +825,7 @@ In the site tree, you now see a _Theme_ tab when editing a page. Here you can co
 You can also add specific options to widgets themselves. In this case, we would like to provide a panel style option that can be selected for each widget.
 
 <figure class="uk-thumbnail">
-    <img src="assets/howto-theme-widget-options.png" alt="Widget options">
+    <img src="assets/tutorial-theme-widget-options.png" alt="Widget options">
     <figcaption class="uk-thumbnail-caption">A theme can add any kind of options to the Widget editor.</figcaption>
 </figure>
 

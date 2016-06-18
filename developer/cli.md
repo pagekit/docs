@@ -4,7 +4,7 @@
 
 ## Basic usage
 
-Open a terminal and navigate to the directory of an existing Pagekit installation. The script `pagekit` (no file extension) in that directory is a PHP script that can be run from the command line. 
+Open a terminal and navigate to the directory of an existing Pagekit installation. The script `pagekit` (no file extension) in that directory is a PHP script that can be run from the command line.
 
 ```sh
 cd /var/www/pagekit   # navigate to pagekit directory
@@ -17,7 +17,7 @@ When simple invoking the CLI tool without any arguments, it will output the Page
 
 ```txt
 $ ./pagekit
-Pagekit version 1.0.2
+Pagekit version 1.0.3
 
 Usage:
   command [options] [arguments]
@@ -32,18 +32,18 @@ Options:
   -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 
 Available commands:
-  archive              Archives an extension or theme.
-  build                Builds a .zip release file.
-  clearcache           Clears the system cache.
+  archive              Archives an extension or theme
+  build                Builds a .zip release file
+  clearcache           Clears the system cache
   help                 Displays help for a command
-  install              Installs a Pagekit package.
+  install              Installs a Pagekit package
   list                 Lists commands
-  migrate              Migrates Pagekit.
-  self-update          Checks for newer Pagekit versions and installs the latest.
-  setup                Setup a Pagekit installation.
-  start                Starts the built-in web server.
-  uninstall            Uninstalls a Pagekit package.
-  update               Updates dependencies of Pagekit packages.
+  migrate              Migrates Pagekit
+  self-update          Checks for newer Pagekit versions and installs the latest
+  setup                Setup a Pagekit installation
+  start                Starts the built-in web server
+  uninstall            Uninstalls a Pagekit package
+  update               Updates dependencies of Pagekit packages
  extension
   extension:translate  Generates extension's translation .pot/.po/.php files
  translation
@@ -53,12 +53,12 @@ Available commands:
 To run a command, you can add arguments when invoking the CLI tool. For example, installing the Hello extension from the marketplace will look as follows.
 
 ```sh
-./pagekit install pagekit/hello 
+./pagekit install pagekit/hello
 ```
 
 ## Available Commands
 
-The available commands include helpers for extension and theme developers, but also tools that make maintaining the Pagekit project itself easier for the Pagekit developer team (such as the `build` command). 
+The available commands include helpers for extension and theme developers, but also tools that make maintaining the Pagekit project itself easier for the Pagekit developer team (such as the `build` command).
 
 ### Build package archive
 
@@ -131,10 +131,14 @@ Usage and arguments:
 
 ```
 Usage:
-  help <command>
+  help [options] [--] [<command_name>]
 
 Arguments:
-  command               The command to read about
+  command               The command to execute
+  command_name          The command name [default: "help"]
+
+Options:
+      --format=FORMAT   The output format (txt, xml, json, or md) [default: "txt"]
 ```
 
 ### Install a package from the Pagekit marketplace
@@ -162,8 +166,24 @@ Options:
 
 You can kist all available CLI commands with the `list` command. This creates the same output as running the CLI script without any parameters.
 
+Example:
+
 ```sh
 ./pagekit list
+```
+
+Usage, arguments and options:
+
+```sh
+Usage:
+  list [options] [--] [<namespace>]
+
+Arguments:
+  namespace            The namespace name
+
+Options:
+      --raw            To output raw command list
+      --format=FORMAT  The output format (txt, xml, json, or md) [default: "txt"]
 ```
 
 ### Run Pagekit migrations
@@ -211,7 +231,7 @@ You can run a terminal command from a freshly downloaded Pagekit installation pa
 Example to install Pagekit using SQLite and default admin user:
 
 ```sh
-./pagekit setup --adminpass=<SOMETHING-SECURE>
+./pagekit setup --password=<SOMETHING-SECURE>
 ```
 
 Usage and options:
@@ -221,15 +241,17 @@ Usage:
   setup [options]
 
 Options:
-      --adminpass=ADMINPASS    Admin account password.
-      --adminmail[=ADMINMAIL]  Admin account email. [default: "admin@example.com"]
-      --dbdriver=DBDRIVER      DB driver (sqlite or mysql). Default: mysql [default: "mysql"]
-      --dbprefix[=DBPREFIX]    DB prefix. Default: pk_ [default: "pk_"]
-      --dbhost[=DBHOST]        MySQL host. [default: "localhost"]
-      --dbname[=DBNAME]        MySQL database name. [default: "pagekit"]
-      --dbuser[=DBUSER]        MySQL user. Default: root [default: "root"]
-      --dbpass[=DBPASS]        MySQL password. Default: <empty> [default: ""]
-      --locale[=LOCALE]        Locale. Default: en_US [default: "en_US"]
+  -u, --username=USERNAME      Admin username [default: "admin"]
+  -p, --password=PASSWORD      Admin account password
+  -t, --title[=TITLE]          Site title [default: "Pagekit"]
+  -m, --mail[=MAIL]            Admin account email [default: "admin@example.com"]
+  -d, --db-driver=DB-DRIVER    DB driver ('sqlite' or 'mysql') [default: "sqlite"]
+      --db-prefix[=DB-PREFIX]  DB prefix [default: "pk_"]
+  -H, --db-host[=DB-HOST]      MySQL host
+  -N, --db-name[=DB-NAME]      MySQL database name
+  -U, --db-user[=DB-USER]      MySQL user
+  -P, --db-pass[=DB-PASS]      MySQL password
+  -l, --locale[=LOCALE]        Locale
 ```
 
 ### Start the built-in webserver

@@ -141,7 +141,7 @@ public function saveAction($id, $title, $config)
 
 You can also check for a token to protect against [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery). Add `csrf=true` to your request annotation and include the `@token` call in the view that submits a form to this method.
 
-Check out `Pagekit\Filter\FilterManager` for a complete list over available filters. Some filters have additional options, like `pregreplace`.
+Check out `Pagekit\Filter\FilterManager` for a complete list of available filters. Some filters have additional options, like `pregreplace`.
 
 ```php
 /**
@@ -168,7 +168,7 @@ class SettingsController
 }
 ```
 
-Now, only users with the admin area access permission can access the controller actions. If you want to use further restrictions and only allow certain users to do specific actions (like manage users etc.), you can add restrictions to single controller actions.
+Now, only users with the _Access admin area_ permission can access the controller actions. If you want to use further restrictions and only allow certain users to do specific actions (like manage users etc.), you can add restrictions to single controller actions.
 
 Define permissions in the `extension.php` (or `theme.php`) file and combine them however you want. Access restrictions from the controller level will be combined with access restrictions on the single actions. Therefore you can set a basic _minimum_ access level for your controller and limit certain actions, like administrative actions, to users with more specific permissions.
 
@@ -182,7 +182,7 @@ Define permissions in the `extension.php` (or `theme.php`) file and combine them
   }
 ```
 
-Of course, you can also use these restrictions even if the controller is no admin area controller. You can also check for admin permissions on single controller actions.
+Of course, you can also use these restrictions even if the controller is not an admin area controller. You can also check for admin permissions on single controller actions.
 
 ```php
 /**

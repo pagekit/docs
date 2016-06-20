@@ -100,7 +100,7 @@ The application data you represent in your database model has certain relations 
 
 ### Belongs-to relation
 
-The basic annotation that is used across the different relation types it the `@BelongsTo` annotation above a model property. In the following example (taken from the `Post` model of the Blog) we specify a `$user` property, which is defined to point to the instance of the Pagekit `User` model.
+The basic annotation that is used across the different relation types is the `@BelongsTo` annotation above a model property. In the following example (taken from the `Post` model of the Blog) we specify a `$user` property, which is defined to point to the instance of the Pagekit `User` model.
 
 The `keyFrom` parameter specify which source property is used to point to the user id. Note how we also need to define the according `user_id` property in order for the relationship to be resolved by a query.
 

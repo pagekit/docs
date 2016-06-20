@@ -43,11 +43,11 @@ The rendered view file could look like this:
 </p>
 ```
 
-This view is wrapped in the main layout by default. To avoid this behavior, you can change `'layout' => false` in the $view array.
+This view is wrapped in the main layout by default. To avoid this behavior, you can change `'layout' => false` in the `$view` array.
 
 ## Render a view manually
 
-You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load.
+You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load. Note that `hello:` in the example below refers to the package name.
 
 ```php
 
@@ -92,10 +92,10 @@ As seen earlier, each route has a name that you can use to dynamically generate 
 <a href="<?= $view->url('@hello/default/view', ['id' => 23]) ?>">View article 23</a>
 ```
 
-You can link to assets, like images or other files, using `@url.to`.
+You can link to assets, like images or other files, using the `getStatic($path)` method of the URL provider.
 
 ```HTML
-<img src="<?= $view->url()->getStatic('extensions/hello/extension.svg') ?>" alt="Extension icon" />
+<img src="<?= $view->url()->getStatic('hello:extension.svg') ?>" alt="Extension icon" />
 ```
 
 ## Working with Assets

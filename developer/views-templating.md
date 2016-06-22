@@ -160,13 +160,13 @@ Attribute | Description
 Example: Deferred execution, no dependencies.
 
 ```
-<?php $view->script('theme', 'theme:js/theme.js', [], ['defer']) ?>
+<?php $view->script('theme', 'theme:js/theme.js', [], ['defer' => true]) ?>
 ```
 
 Example: Deferred and async execution, with dependencies.
 
 ```
-<?php $view->script('theme', 'theme:js/theme.js', ['jquery', 'uikit'], ['defer', 'async']) ?>
+<?php $view->script('theme', 'theme:js/theme.js', ['jquery', 'uikit'], ['defer' => true, 'async' => true]) ?>
 ```
 
 ## Twig templates

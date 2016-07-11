@@ -159,7 +159,7 @@ Example:
 
 ```
 // create query
-$query = $query = Application::db()->createQueryBuilder();
+$query = Application::db()->createQueryBuilder();
 
 // fetch title and content of all blog posts that do not have any comments
 $comments = $query

@@ -47,7 +47,7 @@ This view is wrapped in the main layout by default. To avoid this behavior, you 
 
 ## Render a view manually
 
-You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load. Note that `hello:` in the example below refers to the package name.
+You can also manually access the `View` service to render a template file. This may come in handy, if you dynamically determine which view to load. Note that `hello:` in the example below refers to the resource shorthand as defined in the package's [module definition](modules.md#register-resource-shorthands).
 
 ```php
 
@@ -57,7 +57,7 @@ class MyController {
 
     public function anotherViewAction()
     {
-        return App::render('hello:views/view.php', ['id' => 1]);
+        return App::view()->render('hello:views/view.php', ['id' => 1]);
     }
 
 }
@@ -109,7 +109,7 @@ To generate a route to a static asset, use the `getStatic` method of the `UrlPro
 ```
 
 ### Include CSS in view file
-To include a CSS file in your view, call the `style` helper from the `View`. 
+To include a CSS file in your view, call the `style` helper from the `View`.
 
 ```php
 $view->style($id, $path [, $dependencies ])
@@ -144,7 +144,7 @@ Example:
 <?php $view->script('theme', 'theme:js/theme.js', ['jquery', 'uikit']) ?>
 ```
 
-**Note** Internally, `style()` and `script()` each work with their own Asset Manager. As these are separate from each other, you can assign the same name to a CSS and JS file without conflict (both called `theme` in the above example). However, no two scripts or stylesheets may have the same identifier. For example, when adding two stylesheets, one could be named 'theme', and the other 'custom'. 
+**Note** Internally, `style()` and `script()` each work with their own Asset Manager. As these are separate from each other, you can assign the same name to a CSS and JS file without conflict (both called `theme` in the above example). However, no two scripts or stylesheets may have the same identifier. For example, when adding two stylesheets, one could be named 'theme', and the other 'custom'.
 
 ### Async and deferred script execution
 

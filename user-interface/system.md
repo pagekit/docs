@@ -53,7 +53,7 @@ When hovering a item, an info button and additional options, like a permissions 
 
 ## Themes
 
-Here you can find all themes with a preview image. When hovering a theme, a star and a trash icon will appear. Click on the star to activate a theme.
+Here you can find all themes with a preview image. When hovering a theme, a check and a trash icon will appear. Click on the star to activate a theme.
 
 The _Customize_ button on the active theme will take you directly to the _Settings_ tab in the _Site_ section of your Pagekit administration.
 

@@ -12,57 +12,6 @@ Another common problem is that the `mod_rewrite` module is not enabled on your w
 
 ## nginx
 
-With Nginx, connect [PHP to Nginx](http://wiki.nginx.org/PHPFcgiExample). The following two sections explain how to enable pretty URLs and pretty URL generation. For other user contributed nginx configuration, please refer to [Github issue #26](https://github.com/pagekit/pagekit/issues/62).
+With Nginx, connect [PHP to Nginx](http://wiki.nginx.org/PHPFcgiExample). Update your nginx config according to the [basic example configuration](https://gist.github.com/DarrylDias/be8955970f4b37fdd682). Please note that out of the box, the Apache solution provides more features from its configuration, such as compression and cache headers for assets. These are currently not included in the nginx configuration.
 
-### Enable pretty URLs
-
-To support pretty URLs which do not contain `index.php`, add the following to your nginx configuration.
-
-
-```nginx
-location / {
-    try_files $uri $uri/ /index.php?$args;
-}
-```
-
-An example of a nginx server configuration looks like follows. Make sure to replace the default port, host and the paths referencing log and config files. The file might look look different on your server depending on what else you have configured.
-
-```nginx
-server {
-    listen       8080;
-    server_name  localhost;
-    root         /var/www/;
-
-    access_log  /usr/local/etc/nginx/logs/default.access.log  main;
-
-    location / {
-        include   /usr/local/etc/nginx/conf.d/php-fpm;
-        try_files $uri $uri/ /index.php?$args;
-    }
-
-}
-```
-
-### Make sure Pagekit generates pretty URLs
-
-With the above configuration, pretty URLs will work already. However, Pagekit will still generate URLs including the filename `index.php`, for example `example.com/index.php/blog`.
-
-To make sure Pagekit generates pretty URLs, e.g `example.com/blog`, you can tell nginx to pretend it has `mod_rewrite` enabled. Add the following line to your FastCGI configuration.
-
-```
-fastcgi_param  HTTP_MOD_REWRITE  On;
-```
-
-An example of a full `php-fpm` configuration looks as follows. It might look look different on your server depending on what else you have configured.
-
-```nginx
-location ~ \.php$ {
-    try_files      $uri = 404;
-    fastcgi_pass   127.0.0.1:9000;
-    fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    fastcgi_param  HTTP_MOD_REWRITE  On;
-    include        fastcgi_params;
-}
-```
-
+If you have trouble with pretty URLs, there is an extension to [enforce pretty URLs](https://pagekit.com/marketplace/package/tobbe/enforce-modrewrite) on your site. Before you install that extension, make sure that your installation successfully resolves pretty URLs. Otherwise you will lock yourself out of the admin area and have to disable the extension in the database directly.

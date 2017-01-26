@@ -12,6 +12,6 @@ Another common problem is that the `mod_rewrite` module is not enabled on your w
 
 ## nginx
 
-With Nginx, connect [PHP to Nginx](http://wiki.nginx.org/PHPFcgiExample). Update your nginx config according to the [basic example configuration](https://gist.github.com/DarrylDias/be8955970f4b37fdd682). Please note that out of the box, the Apache solution provides more features from its configuration, such as compression and cache headers for assets. These are currently not included in the nginx configuration.
+With Nginx, connect [PHP to Nginx](http://wiki.nginx.org/PHPFcgiExample). Update your nginx config according to the [basic example configuration](https://gist.github.com/xorinzor/a5b68445ac34bc9078a434d2a534731f). Please note that out of the box, the Apache solution provides more features from its configuration, such as compression and cache headers for assets. These are currently not included in the nginx configuration.
 
 If you have trouble with pretty URLs, there is an extension to [enforce pretty URLs](https://pagekit.com/marketplace/package/tobbe/enforce-modrewrite) on your site. Before you install that extension, make sure that your installation successfully resolves pretty URLs. Otherwise you will lock yourself out of the admin area and have to disable the extension in the database directly.

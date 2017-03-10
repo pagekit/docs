@@ -1,8 +1,8 @@
-# Pagekit Documentation
-This is the documentation for [Pagekit](https://pagekit.com), a modular open source CMS built with modern technologies.
+# Документация Pagekit
+Это документация для [Pagekit](https://pagekit.com), модульной open source CMS созданной с использованием современных технологий.
 
-- Getting Started
-  1. [Introduction](getting-started/introduction.md)
+- Начало работы
+  1. [Введение](getting-started/introduction.md)
   2. [Requirements](getting-started/requirements.md)
   3. [Installation](getting-started/installation.md)
   4. [Updating](getting-started/updating.md)

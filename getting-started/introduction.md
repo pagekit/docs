@@ -1,11 +1,11 @@
-# Pagekit Documentation
+# Документация Pagekit
 
-<p class="uk-article-lead">Pagekit is a modern and lightweight open source CMS. In the documentation you will learn how to install it, how to use the interface and how to develop extensions and themes for the Pagekit platform.</p>
+<p class="uk-article-lead">Pagekit - это современная, легковесная open source CMS. В документации вы найдёте информацию о том как её установить и использовать интерфейс, а также как разрабатывать расширения и темы для платформы Pagekit.</p>
 
-Depending on your goals with Pagekit you might want to read only pieces of the documentation or start in different places. As some starting points, we recommend the following quick links right into the different sections.
+В зависимости от ваших целей с Pagekit вы можете прочитать только часть документации или начать в разных местах. В качестве отправной точки мы рекомендуем следующие быстрые ссылки в разные разделы.
 
-1. Pagekit [installation](installation.md), [requirements](requirements.md) and places to [find help](../getting-started/getting-help.md) if you are stuck.
-2. Learn how to use the Pagekit [user interface](../user-interface/dashboard.md).
-3. To get started as a developer, learn [how to create an extension](../tutorials/extension.md) and [how to build a theme](../tutorials/theme.md).
-4. For a complete video tutorial on building an extension, watch [the screencast about an example extension](../tutorials/extension.md).
-5. For more fundamental developer topics, read up on e.g. [packages](../developer/packages.md), [modules](../developer/modules.md) and [routing](../developer/routing.md).
+1. Pagekit [установка](installation.md), [требования](requirements.md) и места для [поиска помощи](../getting-started/getting-help.md) если вы затряли.
+2. Изучайте как использовать [пользовательский интерфейс](../user-interface/dashboard.md) Pagekit.
+3. Чтобы начать работу в качестве разработчика, изучите [как создавать расширения](../tutorials/extension.md) и [как делать темы](../tutorials/theme.md).
+4. [Смотрите скринкасты](../tutorials/extension.md) по созданию примера расширения.
+5. Для более фундаментальных тем для разработчика прочитайте, например [пакеты](../developer/packages.md), [модули](../developer/modules.md) и [роутинг](../developer/routing.md).

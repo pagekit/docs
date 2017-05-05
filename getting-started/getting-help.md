@@ -17,3 +17,6 @@ We have an active [Google+ community](https://plus.google.com/communities/104125
 
 ## Pagekit Blog
 Read major project news and articles for developers on the [Pagekit Blog](http://pagekit.com/blog). Stay up to date with new releases and join the discussion in the comments section.
+
+## Pagekit Forum
+A passionate Pagekit user has started a forum for the community to discuss and share their knowledge. It's available in German and English and open for everybody to join. Head over to the [Pagekit forum](https://pagekit-forum.org/) and register for free.

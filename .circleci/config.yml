@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: Update Environment
-          command: apk update && apk add rsync
+          command: apk update && apk add rsync openssh
       - checkout
       - run:
           name: Transfer Files

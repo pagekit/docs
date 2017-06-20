@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: alpine:3.5
+    working_directory: ~/pagekit-docs
+    branches:
+        only:
+          - master
+    steps:
+      - run:
+          name: Update Environment
+          command: apt-get update && apt-get -y install rsync
+      - checkout
+      - run:
+          name: Transfer Files
+          command: rsync -avz --delete --exclude ".git*" . $PAGEKIT_DOC_SERVER

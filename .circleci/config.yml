@@ -10,8 +10,8 @@ jobs:
     steps:
       - run:
           name: Update Environment
-          command: apk update && apk add rsync openssh
+          command: apk update && apk add rsync openssh-client
       - checkout
       - run:
           name: Transfer Files
-          command: rsync -avz --delete --exclude ".git*" . $PAGEKIT_DOC_SERVER
+          command: rsync -avze "ssh -o StrictHostKeyChecking=no" --delete --exclude ".git*" --exclude ".circleci" . $PAGEKIT_DOC_SERVER

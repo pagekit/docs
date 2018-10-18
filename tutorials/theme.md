@@ -101,7 +101,12 @@ In your theme, create the new files `package.json`, `bower.json`, `.bowerrc`, `g
 	     "bower": "*",
 	     "gulp": "*",
 	     "gulp-less": "*",
-	     "gulp-rename": "*"
+	     "gulp-rename": "*",
+	     "vue-hot-reload-api": "^1.2.0",
+	     "vue-html-loader": "^1.0.0",
+	     "vue-loader": "^8.2.0",
+	     "vue-style-loader": "^1.0.0",
+	     "webpack": "^1.12.9"
 	 }
 }
 ```

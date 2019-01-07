@@ -3,8 +3,8 @@
 
 If you can't find the right answers to your questions, you can turn to one of our other sources to get help and discuss your issues, but also to receive news and update notifications.
 
-## Gitter
-Gitter is a chat tool that is tightly coupled with GitHub. If you don't already have one, you will need to create a free GitHub account. Once done, you can access the chat at [https://gitter.im/pagekit/pagekit](https://gitter.im/pagekit/pagekit) or you can download one of the available [Gitter apps](https://gitter.im/apps).
+## Discord
+Discord is the chat service we use. Access the free chat at [https://discord.gg/e7Kw47E](https://discord.gg/e7Kw47E).
 
 ## Github Issues
 If you want to report a bug or contribute your ideas, you can use the [Pagekit GitHub Issues tracker](https://github.com/pagekit/pagekit/issues).

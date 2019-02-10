@@ -206,11 +206,12 @@ If you want to completely change the markup that Pagekit itself generates, you a
 ## Overwrite system views
 To overwrite system view files, you just need to create corresponding folders inside your theme to mimic the original structure and put the template files there, as shown in the table below.
 
-File                         | Original view file                       | Description
----------------------------- | ---------------------------------------- | ------------------------
-`views/system/site/page.php` | `/app/system/site/views/page.php`        | Default static page view
-`views/blog/post.php`        | `/packages/pagekit/blog/views/post.php`  | Blog post single view
-`views/blog/posts.php`       | `/packages/pagekit/blog/views/posts.php` | Blog posts list view
+File                          | Original view file                         | Description
+----------------------------- | ------------------------------------------ | ------------------------
+`views/system/site/page.php`  | `/app/system/modules/site/views/page.php`  | Default static page view
+`views/system/user/login.php` | `/app/system/modules/user/views/login.php` | Default static login view
+`views/blog/post.php`         | `/packages/pagekit/blog/views/post.php`    | Blog post single view
+`views/blog/posts.php`        | `/packages/pagekit/blog/views/posts.php`   | Blog posts list view
 
 To understand which variables are available in these views, check out the markup in the original view file.
 

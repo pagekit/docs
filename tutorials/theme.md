@@ -39,7 +39,7 @@ README.md                 // contains basic information
 If you simply change the files of Hello theme, any Marketplace updates to the theme will overwrite your changes. Also, you will probably want to give the theme your own custom name. If you decide to upload the theme to the marketplace, you even need to name it differently. This requires three simple steps:
 
 1. Copy all files from `packages/pagekit/theme-hello` to `packages/your-name/your-theme` (you will need to create these folders).
-2. Open `composer.json` and replace `"name": "pagekit/theme-hello",` with `"name": "your-name/your-theme"`. ALso change `"title": "Hello"` to `"title": "Your theme"`.
+2. Open `composer.json` and replace `"name": "pagekit/theme-hello",` with `"name": "your-name/your-theme"`. Also change `"title": "Hello"` to `"title": "Your theme"`.
 3. Open `index.php` and replace `'name' => 'theme-hello'` with `'name' => 'your-theme'`.
 
 Out of simplicity, the rest of the tutorial will still call it `theme-hello` in the examples.
